@@ -1,0 +1,23 @@
+# R and RStudio Help {#app-rstudio}
+
+Some students may not feel comfortable working in a console-based application
+like RStudio. This appendix provides a basic bootcamp for Rstudio, but
+cannot be a comprehensive manual on RStudio, and it certainly cannot be one for R.
+Good places to get more detailed help include:
+
+  - R help manuals
+  - Stack Overflow
+  
+Some of the sections in this appendix are text-based, and some contain little
+more than links to YouTube videos created by me or someone else.
+
+## Projects and Directories
+
+
+## R Packages
+
+
+## Working with Tables
+
+
+## Graphics with `ggplot`

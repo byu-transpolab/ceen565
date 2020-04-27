@@ -84,7 +84,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-24}
+    \date{2020-04-27}
 
 \usepackage{booktabs}
 
@@ -104,7 +104,10 @@ transportation planning and elementary travel modeling. A description for this c
 is:
 
 \begin{quote}
-An advanced course in urban transportation planning. Urban transportation as the outcome of an economic system, details and techniques for four-step travel model development, applications of travel models within a legal and regulatory context.
+An advanced course in urban transportation planning. Urban transportation as
+the outcome of an economic system, details and techniques for four-step travel
+model development, applications of travel models within a legal and regulatory
+context.
 \end{quote}
 
 The book is organized into six units:
@@ -134,8 +137,120 @@ so, and then complete an alternatives analysis using their models. To create
 the time and space to do this project, we cover ``softer'' and conceptual topics
 in the second half of the course.
 
+The demonstration model the students calibrate and study is a model built in the
+Cube travel modeling software for the Roanoke, Virginia, metropolitan region.
+The model is a relatively advanced four-step, trip-based model with only 250
+zones. The limited zone size means that the entire model system runs in
+approximately 15 minutes on a laptop computer. I am grateful to Virginia DOT for
+allowing my students the use of this model. Directions on how to use the Roanoke
+model are given in the \protect\hyperlink{app-demomodel}{Appendices}.
+
+A handful of assignments require the students to write numerical programs or
+estimate statistical models. Some guidance on using R and RStudio to accomplish
+these assignments is also given in the \protect\hyperlink{app-rstudio}{Appendices}.
+
 \hypertarget{chap-blocks}{%
 \chapter{Building Blocks}\label{chap-blocks}}
+
+This chapter contains concepts, definitions, and mathematical techniques that will
+be used throughout the semester.
+
+\hypertarget{planning-for-human-systems}{%
+\section{Planning for Human Systems}\label{planning-for-human-systems}}
+
+If you look out on any sufficiently busy road, you will see a steady stream of
+vehicles passing by. Each vehicle is largely indistinguishable from the others,
+and it is easy as an engineer responsible for that road to see the cars driving
+by as little more than an input to a problem. But the \emph{people} inside the cars
+should not be indistinguishable from each other. Each person who is driving or
+riding in each of those cars has their own reasons to be driving on that road.
+One person might be driving to work; one person might be trying to get home to
+his or her family. Another car might hold a family going on vacation, or a group
+of friends heading to a movie.
+
+If you don't recognize that each person who travels is
+If the road is congested, then the
+only apparent solution is to ``fix'' the road by expanding its capacity.
+
+\hypertarget{travel-model-building-blocks}{%
+\section{Travel Model Building Blocks}\label{travel-model-building-blocks}}
+
+\hypertarget{travel-analysis-zones}{%
+\subsection{Travel Analysis Zones}\label{travel-analysis-zones}}
+
+SE Data
+
+\hypertarget{highway-networks}{%
+\subsection{Highway Networks}\label{highway-networks}}
+
+Functional Type
+
+Link capacity
+
+Free-flow speed
+
+Centroid connectors
+
+\hypertarget{matrices}{%
+\subsection{Matrices}\label{matrices}}
+
+Skim matrices
+
+OD matrices
+
+\hypertarget{statistical-and-mathematical-techniques}{%
+\section{Statistical and Mathematical Techniques}\label{statistical-and-mathematical-techniques}}
+
+\hypertarget{iterative-proportional-fitting}{%
+\subsection{Iterative Proportional Fitting}\label{iterative-proportional-fitting}}
+
+\hypertarget{numerical-optimization}{%
+\subsection{Numerical Optimization}\label{numerical-optimization}}
+
+\hypertarget{regression-analysis}{%
+\subsection{Regression Analysis}\label{regression-analysis}}
+
+\hypertarget{hw-blocks}{%
+\section*{Homework}\label{hw-blocks}}
+\addcontentsline{toc}{section}{Homework}
+
+\begin{quote}
+Some of these questions require a completed run of the demonstration model.
+For instructions on accessing and running the model, see the \protect\hyperlink{app-demomodel}{Appendix}
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  With the TAZ layer and socioeconomic data in the demonstration model, make a
+  set of choropleth maps showing: total households; household density; total jobs;
+  job density; density of manufacturing vs office vs retail employment. Compare
+  your maps with aerial imagery from Google Maps or OpenStreetMap. Describe the
+  spatial patterns of the socioeconomic data in the model region. Identify which
+  zones constitute the central business district, and identify any outlying
+  employment centers.
+\item
+  With the highway network layer in the demonstration model, create maps
+  showing: link functional type; link free flow speed; and link hourly capacity.
+  Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+  Identify the major freeways and principal arterials in the model region. \emph{Note}:
+  you will need to run the demonstration model through the network setup step to
+  calculate the capacities and append them to the link.
+\item
+  Find the shortest free-flow speed path along the network between two zones.
+  Find the shortest distance path between the same two zones. Are the paths the
+  same? Do the paths match what an online mapping service shows for a trip in the
+  middle of the night?
+\item
+  Open the highway assignment report, which shows vehicle hours and miles
+  traveled by facility type. What percent of the region's VMT occurs on freeways?
+  What percent of the region's lane-miles are freeways?
+\item
+  Open the output highway network. Create a map of the
+  highway links showing PM period level of service based on the volume to capacity
+  ratios in the table below. How would you characterize traffic in Roanoke? Which
+  is the worst-performing major facility?
+\end{enumerate}
 
 \hypertarget{chap-tripgen}{%
 \chapter{Trip Generation}\label{chap-tripgen}}
@@ -151,6 +266,62 @@ in the second half of the course.
 
 \hypertarget{chap-process}{%
 \chapter{The Planning Process}\label{chap-process}}
+
+\hypertarget{appendix-appendix}{%
+\appendix}
+
+
+\hypertarget{app-demomodel}{%
+\chapter{Demonstration Model}\label{app-demomodel}}
+
+\hypertarget{running-the-model}{%
+\section{Running the Model}\label{running-the-model}}
+
+\hypertarget{files-and-reports}{%
+\section{Files and Reports}\label{files-and-reports}}
+
+\hypertarget{cube-tips-and-tricks}{%
+\section{Cube Tips and Tricks}\label{cube-tips-and-tricks}}
+
+\hypertarget{shortest-paths}{%
+\subsection{Shortest Paths}\label{shortest-paths}}
+
+\hypertarget{working-with-matrices}{%
+\subsection{Working with Matrices}\label{working-with-matrices}}
+
+\hypertarget{writing-custom-scripts}{%
+\subsection{Writing Custom Scripts}\label{writing-custom-scripts}}
+
+\hypertarget{app-rstudio}{%
+\chapter{R and RStudio Help}\label{app-rstudio}}
+
+Some students may not feel comfortable working in a console-based application
+like RStudio. This appendix provides a basic bootcamp for Rstudio, but
+cannot be a comprehensive manual on RStudio, and it certainly cannot be one for R.
+Good places to get more detailed help include:
+
+\begin{itemize}
+\tightlist
+\item
+  R help manuals
+\item
+  Stack Overflow
+\end{itemize}
+
+Some of the sections in this appendix are text-based, and some contain little
+more than links to YouTube videos created by me or someone else.
+
+\hypertarget{projects-and-directories}{%
+\section{Projects and Directories}\label{projects-and-directories}}
+
+\hypertarget{r-packages}{%
+\section{R Packages}\label{r-packages}}
+
+\hypertarget{working-with-tables}{%
+\section{Working with Tables}\label{working-with-tables}}
+
+\hypertarget{graphics-with-ggplot}{%
+\section{\texorpdfstring{Graphics with \texttt{ggplot}}{Graphics with ggplot}}\label{graphics-with-ggplot}}
 
 \bibliography{book.bib}
 
