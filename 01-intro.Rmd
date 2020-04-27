@@ -1,2 +1,90 @@
 # Building Blocks {#chap-blocks}
 
+This chapter contains concepts, definitions, and mathematical techniques that will
+be used throughout the semester. 
+
+## Planning for Human Systems
+
+If you look out on any sufficiently busy road, you will see a steady stream of
+vehicles passing by. Each vehicle is largely indistinguishable from the others,
+and it is easy as an engineer responsible for that road to see the cars driving
+by as little more than an input to a problem. But the *people* inside the cars
+should not be indistinguishable from each other. Each person who is driving or
+riding in each of those cars has their own reasons to be driving on that road.
+One person might be driving to work; one person might be trying to get home to
+his or her family. Another car might hold a family going on vacation, or a group
+of friends heading to a movie.
+
+If you don't recognize that each person who travels is 
+If the road is congested, then the
+only apparent solution is to "fix" the road by expanding its capacity. 
+
+
+## Travel Model Building Blocks
+
+### Travel Analysis Zones
+
+SE Data
+
+
+### Highway Networks
+
+Functional Type
+
+Link capacity
+
+Free-flow speed
+
+Centroid connectors
+
+### Matrices
+
+Skim matrices
+
+OD matrices
+
+
+## Statistical and Mathematical Techniques
+
+### Iterative Proportional Fitting
+
+### Numerical Optimization
+
+### Regression Analysis
+
+
+## Homework {-#hw-blocks}
+
+> Some of these questions require a completed run of the demonstration model.
+For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
+
+1. With the TAZ layer and socioeconomic data in the demonstration model, make a
+set of choropleth maps showing: total households; household density; total jobs;
+job density; density of manufacturing vs office vs retail employment. Compare
+your maps with aerial imagery from Google Maps or OpenStreetMap. Describe the
+spatial patterns of the socioeconomic data in the model region. Identify which
+zones constitute the central business district, and identify any outlying
+employment centers.
+
+1. With the highway network layer in the demonstration model, create maps
+showing: link functional type; link free flow speed; and link hourly capacity.
+Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+Identify the major freeways and principal arterials in the model region. *Note*:
+you will need to run the demonstration model through the network setup step to
+calculate the capacities and append them to the link.
+   
+1. Find the shortest free-flow speed path along the network between two zones.
+Find the shortest distance path between the same two zones. Are the paths the
+same? Do the paths match what an online mapping service shows for a trip in the
+middle of the night?
+
+1. Open the highway assignment report, which shows vehicle hours and miles
+traveled by facility type. What percent of the region's VMT occurs on freeways?
+What percent of the region's lane-miles are freeways? 
+
+1. Open the output highway network. Create a map of the 
+highway links showing PM period level of service based on the volume to capacity
+ratios in the table below. How would you characterize traffic in Roanoke? Which
+is the worst-performing major facility?
+
+
