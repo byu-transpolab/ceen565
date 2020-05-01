@@ -46,12 +46,14 @@ OD matrices
 
 ## Statistical and Mathematical Techniques
 
-### Iterative Proportional Fitting
+Many elements of travel modeling and forecasting require complex numerical and
+quantitative techniques. In this section we will present some of these techniques.
 
-### Numerical Optimization
+### Iterative Proportional Fitting
 
 ### Regression Analysis
 
+### Numerical Optimization
 
 ## Homework {-#hw-blocks}
 

@@ -30,6 +30,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -84,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-27}
+    \date{2020-04-30}
 
 \usepackage{booktabs}
 
@@ -201,14 +241,17 @@ OD matrices
 \hypertarget{statistical-and-mathematical-techniques}{%
 \section{Statistical and Mathematical Techniques}\label{statistical-and-mathematical-techniques}}
 
+Many elements of travel modeling and forecasting require complex numerical and
+quantitative techniques. In this section we will present some of these techniques.
+
 \hypertarget{iterative-proportional-fitting}{%
 \subsection{Iterative Proportional Fitting}\label{iterative-proportional-fitting}}
 
-\hypertarget{numerical-optimization}{%
-\subsection{Numerical Optimization}\label{numerical-optimization}}
-
 \hypertarget{regression-analysis}{%
 \subsection{Regression Analysis}\label{regression-analysis}}
+
+\hypertarget{numerical-optimization}{%
+\subsection{Numerical Optimization}\label{numerical-optimization}}
 
 \hypertarget{hw-blocks}{%
 \section*{Homework}\label{hw-blocks}}
@@ -295,10 +338,17 @@ For instructions on accessing and running the model, see the \protect\hyperlink{
 \hypertarget{app-rstudio}{%
 \chapter{R and RStudio Help}\label{app-rstudio}}
 
-Some students may not feel comfortable working in a console-based application
-like RStudio. This appendix provides a basic bootcamp for Rstudio, but
-cannot be a comprehensive manual on RStudio, and it certainly cannot be one for R.
-Good places to get more detailed help include:
+R is a powerful, open-source statistical programming language used by both
+professional and academic data scientists. It is among the computer languages
+most suited to modern data science, and is growing rapidly in its user base and
+available packages.
+
+Some students may not feel comfortable working in a programming language like R or
+a console-based application like RStudio, especially if they have used applications
+primarily through a GUI.
+This appendix provides a basic bootcamp for R and Rstudio, but cannot be a
+comprehensive manual on RStudio, and it certainly cannot be one for R. Good
+places to get more detailed help include:
 
 \begin{itemize}
 \tightlist
@@ -311,14 +361,473 @@ Good places to get more detailed help include:
 Some of the sections in this appendix are text-based, and some contain little
 more than links to YouTube videos created by me or someone else.
 
-\hypertarget{projects-and-directories}{%
-\section{Projects and Directories}\label{projects-and-directories}}
+\hypertarget{installing}{%
+\section{Installing}\label{installing}}
+
+There are two pieces of software you should install:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{R} \url{https://cran.r-project.org/}: this contains
+  the system libraries necessary to run R commands in a terminal on your computer,
+  and contains a few additional helper applications. Install the most recent
+  stable release for your operating system.
+\item
+  \textbf{RStudio} \url{https://rstudio.com/products/rstudio/download/} is an integrated application that makes using R considerably easier
+  with text completion, file managment, and some GUI features.
+\end{itemize}
+
+Both software are available for Windows, MacOS, and Linux. The videos and screenshots
+of the application I post will use MacOS; the R code for all systems is the same,
+and the RStudio interface all systems is very similar with minor differences.
+
+\hypertarget{rstudio-orientation}{%
+\section{RStudio Orientation}\label{rstudio-orientation}}
+
+\href{http://www.youtube.com/embed/c3xv8wOIj-g?rel=0}{\includegraphics{ceen565_files/figure-latex/rstudio-orientation-1.pdf}}
+
+There is a very useful ``cheat sheet'' for working with RStudio on the \href{https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet}{RStudio}
+website.
 
 \hypertarget{r-packages}{%
 \section{R Packages}\label{r-packages}}
 
+One of the strengths of R is the ability for anyone to write packages. These
+packages make it easier to read manipulate, and vizualize data; to estimate
+statistical models; or to communicate results.
+
+There are a number of ways to install additional packages. The most straightforward
+is to use the \texttt{install.packages()} function in the console. The problems
+in this book are solved with two additional packages\footnote{\texttt{tidyverse} is actually a collection
+  of very useful packages, and many R users just load them all at once.}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{) }\CommentTok{# a suite of tools for data manipulation}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"mlogit"}\NormalTok{) }\CommentTok{# discrete choice modeling}
+\end{Highlighting}
+\end{Shaded}
+
+RStudio also contains an interface to install and update packages.
+
+Sometimes you want to use a package that has not yet been pushed to CRAN, the
+international repository of ``approved'' R packages. This may be because the package
+is in development, or for one reason or another does not meet CRAN's standards
+for completeness, etc. Oftentimes, the package has been made available on GitHub.
+You can install a package directly from GitHub with the \texttt{devtools} library. One
+package you will want for the problems in the book is the \texttt{nhts2017} package
+on the BYU Transportation GitHub account.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{# tools for installing development packages}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"gregmacfarlane/nhts2017"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You only need to \textbf{install} a package once on your computer. But every time you
+want to \textbf{use} a function in a package, you need to load the package with the
+\texttt{library()} function. To load the \texttt{tidyverse} packages, for instance,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+If you get errors when you run the command above, it means that for some reason
+you did not install the package correctly. And if you ever get an error like
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{kable}\NormalTok{(}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|l}
+\hline
+x & y\\
+\hline
+1 & blue\\
+\hline
+2 & red\\
+\hline
+\end{tabular}
+
+It often means you didn't load the library. In this case, the \texttt{kable()} function
+to make pretty tables is part of the \texttt{knitr} package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(knitr)}
+\KeywordTok{kable}\NormalTok{(}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|l}
+\hline
+x & y\\
+\hline
+1 & blue\\
+\hline
+2 & red\\
+\hline
+\end{tabular}
+
 \hypertarget{working-with-tables}{%
 \section{Working with Tables}\label{working-with-tables}}
+
+Most data you will work with comes in a \emph{tabular} form, meaning that the data
+is formatted in columns of variables and rows of observations.
+
+\hypertarget{reading-data}{%
+\subsection{Reading Data}\label{reading-data}}
+
+Tabular data is often stored in a comma-separated values \texttt{.csv} file. To read a
+data file like this in R, you can use the \texttt{read\_csv()} function included in
+\texttt{tidyverse}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trips <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/demo_trips.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   houseid = col_double(),
+##   personid = col_character(),
+##   trpmiles = col_double(),
+##   trippurp = col_character()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(trips)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 924 x 4
+##     houseid personid trpmiles trippurp
+##       <dbl> <chr>       <dbl> <chr>   
+##  1 30182694 01         13.6   HBW     
+##  2 40532989 02          9.38  HBSOCREC
+##  3 40729475 01          5.06  HBSHOP  
+##  4 40290784 01          0.509 HBSOCREC
+##  5 30118876 02          0.599 NHB     
+##  6 30352119 01         20.3   HBO     
+##  7 30085077 01         22.5   NHB     
+##  8 30180962 02          0.581 HBSOCREC
+##  9 40155356 01          2.74  HBO     
+## 10 30069734 01          4.65  NHB     
+## # ... with 914 more rows
+\end{verbatim}
+
+This function will make a guess as to what the columns types should be. Often
+we want to keep ID values as characters, even if they are numeric (this preserves
+leading \texttt{0} values, etc.). We can tell \texttt{read\_csv()} what types we expect with
+the \texttt{col\_types} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trips <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/demo_trips.csv"}\NormalTok{, }\DataTypeTok{col_types =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{houseid =} \KeywordTok{col_character}\NormalTok{()))}
+\KeywordTok{print}\NormalTok{(trips)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 924 x 4
+##    houseid  personid trpmiles trippurp
+##    <chr>    <chr>       <dbl> <chr>   
+##  1 30182694 01         13.6   HBW     
+##  2 40532989 02          9.38  HBSOCREC
+##  3 40729475 01          5.06  HBSHOP  
+##  4 40290784 01          0.509 HBSOCREC
+##  5 30118876 02          0.599 NHB     
+##  6 30352119 01         20.3   HBO     
+##  7 30085077 01         22.5   NHB     
+##  8 30180962 02          0.581 HBSOCREC
+##  9 40155356 01          2.74  HBO     
+## 10 30069734 01          4.65  NHB     
+## # ... with 914 more rows
+\end{verbatim}
+
+You can also write tables back to \texttt{.csv} with the \texttt{write\_csv()} command.
+
+\hypertarget{modifying-and-summarizing-tables}{%
+\subsection{Modifying and Summarizing Tables}\label{modifying-and-summarizing-tables}}
+
+In much of this section, we will work with the \texttt{nhts\_trips} dataset of trips
+from the 2017 National Household Travel Survey in the \texttt{nhts2017} package you
+installed from GitHub above.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(nhts2017)}
+\NormalTok{trips <-}\StringTok{ }\NormalTok{nhts_trips}
+\NormalTok{trips}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 923,572 x 62
+##    houseid personid tdtrpnum strttime            endtime            
+##    <chr>   <chr>       <dbl> <dttm>              <dttm>             
+##  1 300000~ 01              1 2017-10-10 10:00:00 2017-10-10 10:15:00
+##  2 300000~ 01              2 2017-10-10 15:10:00 2017-10-10 15:30:00
+##  3 300000~ 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00
+##  4 300000~ 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00
+##  5 300000~ 03              1 2017-10-10 08:45:00 2017-10-10 09:00:00
+##  6 300000~ 03              2 2017-10-10 14:30:00 2017-10-10 14:45:00
+##  7 300000~ 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00
+##  8 300000~ 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00
+##  9 300000~ 01              1 2017-10-10 05:50:00 2017-10-10 06:05:00
+## 10 300000~ 01              2 2017-10-10 07:00:00 2017-10-10 07:15:00
+## # ... with 923,562 more rows, and 57 more variables: trvlcmin <dbl+lbl>,
+## #   trpmiles <dbl+lbl>, trptrans <chr+lbl>, trpaccmp <dbl+lbl>,
+## #   trphhacc <dbl+lbl>, vehid <chr+lbl>, trwaittm <dbl+lbl>,
+## #   numtrans <dbl+lbl>, tracctm <dbl+lbl>, drop_prk <chr+lbl>,
+## #   tregrtm <dbl+lbl>, whodrove <chr+lbl>, whyfrom <chr+lbl>,
+## #   loop_trip <chr+lbl>, trphhveh <chr+lbl>, hhmemdrv <chr+lbl>,
+## #   hh_ontd <dbl+lbl>, nonhhcnt <dbl+lbl>, numontrp <dbl+lbl>,
+## #   psgr_flg <chr+lbl>, pubtrans <chr+lbl>, trippurp <chr+lbl>,
+## #   dweltime <dbl+lbl>, tdwknd <chr+lbl>, vmt_mile <dbl+lbl>,
+## #   drvr_flg <chr+lbl>, whytrp1s <chr+lbl>, ontd_p1 <chr+lbl>,
+## #   ontd_p2 <chr+lbl>, ontd_p3 <chr+lbl>, ontd_p4 <chr+lbl>,
+## #   ontd_p5 <chr+lbl>, ontd_p6 <chr+lbl>, ontd_p7 <chr+lbl>,
+## #   ontd_p8 <chr+lbl>, ontd_p9 <chr+lbl>, ontd_p10 <chr+lbl>,
+## #   ontd_p11 <chr+lbl>, ontd_p12 <chr+lbl>, ontd_p13 <chr+lbl>,
+## #   tdcaseid <chr>, tracc_wlk <chr+lbl>, tracc_pov <chr+lbl>,
+## #   tracc_bus <chr+lbl>, tracc_crl <chr+lbl>, tracc_sub <chr+lbl>,
+## #   tracc_oth <chr+lbl>, tregr_wlk <chr+lbl>, tregr_pov <chr+lbl>,
+## #   tregr_bus <chr+lbl>, tregr_crl <chr+lbl>, tregr_sub <chr+lbl>,
+## #   tregr_oth <chr+lbl>, whyto <chr+lbl>, gasprice <chr>, wttrdfin <dbl>,
+## #   whytrp90 <chr+lbl>
+\end{verbatim}
+
+\hypertarget{select-filter-and-chains}{%
+\subsubsection{Select, Filter, and Chains}\label{select-filter-and-chains}}
+
+This table is pretty overwhelming. But there are two functions that can help
+us pare it down:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{select()} lets you select columns in a table using the names of the columns.
+\item
+  \texttt{filter()} lets you select rows in a table that meet a certain condition.
+\end{itemize}
+
+Let's practice this by selecting our \texttt{trips} dataset to only include the id
+columns, the trip length, and the trip purpose.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{(trips, houseid, personid, trpmiles, trippurp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 923,572 x 4
+##    houseid  personid  trpmiles trippurp                                    
+##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                                   
+##  1 30000007 01            5.24 HBO [Home-based trip (other)]               
+##  2 30000007 01            5.15 HBO [Home-based trip (other)]               
+##  3 30000007 02           84.0  HBW [Home-based trip (work)]                
+##  4 30000007 02           81.6  HBW [Home-based trip (work)]                
+##  5 30000007 03            2.25 HBO [Home-based trip (other)]               
+##  6 30000007 03            2.24 HBO [Home-based trip (other)]               
+##  7 30000008 01            8.02 HBW [Home-based trip (work)]                
+##  8 30000008 01            8.02 HBW [Home-based trip (work)]                
+##  9 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreatio~
+## 10 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreatio~
+## # ... with 923,562 more rows
+\end{verbatim}
+
+Let's also practice filtering the \texttt{trips} dataset to only include trips
+of the purpose ``HBO'' (home-based other). Notice how the number of rows
+in the table trips is much smaller.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{filter}\NormalTok{(trips, trippurp }\OperatorTok{==}\StringTok{ "HBW"}\NormalTok{) }\CommentTok{# use double equals as comparison}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 117,368 x 62
+##    houseid personid tdtrpnum strttime            endtime            
+##    <chr>   <chr>       <dbl> <dttm>              <dttm>             
+##  1 300000~ 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00
+##  2 300000~ 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00
+##  3 300000~ 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00
+##  4 300000~ 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00
+##  5 300000~ 01              5 2017-10-10 09:00:00 2017-10-10 09:20:00
+##  6 300000~ 01              7 2017-10-10 15:30:00 2017-10-10 16:05:00
+##  7 300000~ 01              1 2017-10-10 08:00:00 2017-10-10 08:20:00
+##  8 300000~ 01              2 2017-10-10 18:00:00 2017-10-10 20:00:00
+##  9 300000~ 02              3 2017-10-10 09:00:00 2017-10-10 11:00:00
+## 10 300000~ 02              4 2017-10-10 18:30:00 2017-10-10 20:30:00
+## # ... with 117,358 more rows, and 57 more variables: trvlcmin <dbl+lbl>,
+## #   trpmiles <dbl+lbl>, trptrans <chr+lbl>, trpaccmp <dbl+lbl>,
+## #   trphhacc <dbl+lbl>, vehid <chr+lbl>, trwaittm <dbl+lbl>,
+## #   numtrans <dbl+lbl>, tracctm <dbl+lbl>, drop_prk <chr+lbl>,
+## #   tregrtm <dbl+lbl>, whodrove <chr+lbl>, whyfrom <chr+lbl>,
+## #   loop_trip <chr+lbl>, trphhveh <chr+lbl>, hhmemdrv <chr+lbl>,
+## #   hh_ontd <dbl+lbl>, nonhhcnt <dbl+lbl>, numontrp <dbl+lbl>,
+## #   psgr_flg <chr+lbl>, pubtrans <chr+lbl>, trippurp <chr+lbl>,
+## #   dweltime <dbl+lbl>, tdwknd <chr+lbl>, vmt_mile <dbl+lbl>,
+## #   drvr_flg <chr+lbl>, whytrp1s <chr+lbl>, ontd_p1 <chr+lbl>,
+## #   ontd_p2 <chr+lbl>, ontd_p3 <chr+lbl>, ontd_p4 <chr+lbl>,
+## #   ontd_p5 <chr+lbl>, ontd_p6 <chr+lbl>, ontd_p7 <chr+lbl>,
+## #   ontd_p8 <chr+lbl>, ontd_p9 <chr+lbl>, ontd_p10 <chr+lbl>,
+## #   ontd_p11 <chr+lbl>, ontd_p12 <chr+lbl>, ontd_p13 <chr+lbl>,
+## #   tdcaseid <chr>, tracc_wlk <chr+lbl>, tracc_pov <chr+lbl>,
+## #   tracc_bus <chr+lbl>, tracc_crl <chr+lbl>, tracc_sub <chr+lbl>,
+## #   tracc_oth <chr+lbl>, tregr_wlk <chr+lbl>, tregr_pov <chr+lbl>,
+## #   tregr_bus <chr+lbl>, tregr_crl <chr+lbl>, tregr_sub <chr+lbl>,
+## #   tregr_oth <chr+lbl>, whyto <chr+lbl>, gasprice <chr>, wttrdfin <dbl>,
+## #   whytrp90 <chr+lbl>
+\end{verbatim}
+
+One \textbf{\emph{extremely}} useful feature of the \texttt{tidyverse} functions is the chain
+operator, \texttt{\%\textgreater{}\%}. This operator basically does the opposite of the assigment
+operator \texttt{\textless{}-}. While assignment says ``take the thing on the right and put it in
+the thing on the left,'' chain says ``take the thing on the left and pass it as
+the first argument of the function on the right.'' What this means in practice is
+we can chain R commands together. So we can do the \texttt{select} \emph{and} the \texttt{filter}
+statements in sequence,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trips }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(houseid, personid, trpmiles, trippurp) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(trippurp }\OperatorTok{==}\StringTok{ "HBW"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 117,368 x 4
+##    houseid  personid  trpmiles trippurp                    
+##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                   
+##  1 30000007 02           84.0  HBW [Home-based trip (work)]
+##  2 30000007 02           81.6  HBW [Home-based trip (work)]
+##  3 30000008 01            8.02 HBW [Home-based trip (work)]
+##  4 30000008 01            8.02 HBW [Home-based trip (work)]
+##  5 30000012 01            4.29 HBW [Home-based trip (work)]
+##  6 30000012 01            6.82 HBW [Home-based trip (work)]
+##  7 30000039 01           11.5  HBW [Home-based trip (work)]
+##  8 30000041 01           73.7  HBW [Home-based trip (work)]
+##  9 30000041 02           77.9  HBW [Home-based trip (work)]
+## 10 30000041 02           77.8  HBW [Home-based trip (work)]
+## # ... with 117,358 more rows
+\end{verbatim}
+
+Notice that we didn't have to tell the \texttt{select} and \texttt{filter} functions the
+name of the table we were selecting or filtering. The \texttt{\%\textgreater{}\%} chain operator did
+that for us.
+
+Once we have the table we want, we can assign it to a new object called \texttt{mytrips}
+In this case, let's get \texttt{HBO} and \texttt{HBW} trips.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mytrips <-}\StringTok{ }\NormalTok{trips }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(houseid, personid, trpmiles, trippurp) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(trippurp }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"HBW"}\NormalTok{, }\StringTok{"HBO"}\NormalTok{)) }\CommentTok{# use %in% for multiple comparisons.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mutate-summarize-and-group}{%
+\subsection{Mutate, Summarize, and Group}\label{mutate-summarize-and-group}}
+
+Sometimes we want to calculate a new column in a table, or recompute an
+existing column. We can do that with the \texttt{mutate} function, and we can
+put more than one calculation in a single \texttt{mutate} statement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mytrips }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{tripkm =}\NormalTok{ trpmiles }\OperatorTok{*}\StringTok{ }\FloatTok{1.60934}\NormalTok{, }\CommentTok{# convert miles to km.}
+    \DataTypeTok{longtrip =} \KeywordTok{ifelse}\NormalTok{(tripkm }\OperatorTok{>}\StringTok{ }\DecValTok{50}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{) }\CommentTok{# is trip longer than 50 km?}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 307,390 x 6
+##    houseid  personid  trpmiles trippurp                     tripkm longtrip
+##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                  <dbl+lb> <lgl>   
+##  1 30000007 01            5.24 HBO [Home-based trip (oth~     8.44 FALSE   
+##  2 30000007 01            5.15 HBO [Home-based trip (oth~     8.29 FALSE   
+##  3 30000007 02           84.0  HBW [Home-based trip (wor~   135.   TRUE    
+##  4 30000007 02           81.6  HBW [Home-based trip (wor~   131.   TRUE    
+##  5 30000007 03            2.25 HBO [Home-based trip (oth~     3.62 FALSE   
+##  6 30000007 03            2.24 HBO [Home-based trip (oth~     3.61 FALSE   
+##  7 30000008 01            8.02 HBW [Home-based trip (wor~    12.9  FALSE   
+##  8 30000008 01            8.02 HBW [Home-based trip (wor~    12.9  FALSE   
+##  9 30000012 01            4.29 HBW [Home-based trip (wor~     6.91 FALSE   
+## 10 30000012 01            6.82 HBW [Home-based trip (wor~    11.0  FALSE   
+## # ... with 307,380 more rows
+\end{verbatim}
+
+Other times we want to calculate summary statistics like means.
+For this we can use the \texttt{summarize()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mytrips }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}
+    \DataTypeTok{mean_trip =} \KeywordTok{mean}\NormalTok{(trpmiles),}
+    \DataTypeTok{sd_trip =} \KeywordTok{sd}\NormalTok{(trpmiles),}
+    \DataTypeTok{max_trip =} \KeywordTok{max}\NormalTok{(trpmiles),}
+    \DataTypeTok{min_trip =} \KeywordTok{min}\NormalTok{(trpmiles)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   mean_trip sd_trip max_trip min_trip
+##       <dbl>   <dbl>    <dbl>    <dbl>
+## 1      9.81    32.1    5699.       -9
+\end{verbatim}
+
+Finally, we sometimes want to calculate summary statistics for different groups.
+We can tell \texttt{tidyverse} to group our tables with the \texttt{group\_by()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mytrips }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(trippurp) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}
+    \DataTypeTok{mean_trip =} \KeywordTok{mean}\NormalTok{(trpmiles),}
+    \DataTypeTok{sd_trip =} \KeywordTok{sd}\NormalTok{(trpmiles),}
+    \DataTypeTok{max_trip =} \KeywordTok{max}\NormalTok{(trpmiles),}
+    \DataTypeTok{min_trip =} \KeywordTok{min}\NormalTok{(trpmiles)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 5
+##   trippurp                      mean_trip sd_trip max_trip min_trip
+## * <chr+lbl>                         <dbl>   <dbl>    <dbl>    <dbl>
+## 1 HBO [Home-based trip (other)]      7.73    32.0    5699.       -9
+## 2 HBW [Home-based trip (work)]      13.2     31.9    2927.       -9
+\end{verbatim}
+
+\begin{quote}
+As you might expect, work trips are on average longer than other kinds of trips.
+But some people report very long trips! You might want to filter your data more
+carefully for real analyses.
+\end{quote}
 
 \hypertarget{graphics-with-ggplot}{%
 \section{\texorpdfstring{Graphics with \texttt{ggplot}}{Graphics with ggplot}}\label{graphics-with-ggplot}}
