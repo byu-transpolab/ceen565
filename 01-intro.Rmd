@@ -1,7 +1,7 @@
 # Building Blocks {#chap-blocks}
 
 This chapter contains concepts, definitions, and mathematical techniques that will
-be used throughout the semester. 
+be used throughout the semester. Critical terms to understand are given in **bold**.
 
 ## Planning for Human Systems
 
@@ -15,12 +15,59 @@ One person might be driving to work; one person might be trying to get home to
 his or her family. Another car might hold a family going on vacation, or a group
 of friends heading to a movie.
 
-If you don't recognize that each person who travels is 
-If the road is congested, then the
-only apparent solution is to "fix" the road by expanding its capacity. 
+If you don't recognize that each person who travels is different, with different
+needs and purposes, then it is easy to look only at the **supply** of transportation
+infrastructure. Is the road wide enough? Is the traffic signal timed appropriately?
+But as with anything in the economy transportation is a function of both supply 
+and **demand**. Why are so many people trying to get down this one road *right now*?
+Why didn't more people take transit? Why didn't some people choose a different
+destination? Or why didn't some people just stay home in the first place? 
+
+Transportation planning therefore must be concerned with both the supply of
+infrastructure and the demand for travel. For the most part, economists consider
+travel a **derived demand**, which means people only go to the hassle of 
+travelling somewhere if they have some other reason to be there. No one 
+typically just drives around (with the possible exception of teenagers on a
+weekend night); they are going to work, or school, or a social engagement, or
+*something*.
+
+Travel demand has not been stable over time. The availability of inexpensive
+automobiles in the 20th Century created demand for inter-city and intra-urban
+roads that did not exist before. Rising labor force participation rates for
+women radically changed the number and types of trips the average household
+makes in an average day. Technological developments like teleconferencing and
+smartphone-enabled ridehailing could generate different trends. At the same
+time, populations in most regions continue to grow. **Planning** for future 
+transportation infrastructure is difficult because of the uncertainty of the
+future, but it is necessary to keep economies rolling and preseve or improve
+quality of life.
+
+In the United States and most societies with some democratic process,
+**decisions** about what transportation facilities to build, which policies to
+implement, and how to build a city generally fall to **decision makers**. These
+decision makers consist of mayors, city councils, planning commissions, 
+state legislatures, Congress, state and federal agencies, and innumerable others
+who are elected by the public, or who are accountable to others who have been.
+In making decisions about how to spend public money on civil infrastructure or
+enact tax or other policies, decision makers consult **plans** developed by
+professional engineers and planners.
+
+As engineers and planners, we are rarely in a position to *make* decisions, but
+we have a responsibility to provide accurate data and technical analysis to 
+support decision makers. There is a misconception that transportation planners
+must accurately predict the future to be relevant. The purpose of transportation
+planning is not to perfectly envision what will happen under every scenario, 
+it is to provide information that will help make good decisions now so that
+the future is at least as pleasant as the present. We all have hopes for what
+our lives and community will look like ten or twenty years from now; it may not
+be possible for anyone to provide analysis entirely free of all personal bias.
+But as you conduct your work as an engineer and planner, you owe the public your
+integrity and competence as you provide information to their representatives.
 
 
 ## Travel Model Building Blocks
+
+### Data Collection and Terms
 
 ### Travel Analysis Zones
 
@@ -59,6 +106,23 @@ quantitative techniques. In this section we will present some of these technique
 
 > Some of these questions require a completed run of the demonstration model.
 For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
+
+1. How does recreational transportation --- i.e., going for a bike ride --- fit into the
+theory of derived demand for travel?
+
+1. Think about a recent transportation-related construction project you have
+seen in your community. Find an article in a local newspaper discussing the project.
+Why was the project built (or why is it being built)? Who supports the project?
+Does anyone oppose the project? Write a short paragraph including a link and 
+citation to the article.
+
+1. Download the [rmove](https://rmove.rsginc.com/) mobile application, and log 
+in with the password given you by the instructor. Track your daily activies and
+trips for *three days*. You may include at most one weekend day. Write a short
+summary of your activities, including:
+
+    - How many trips you took each day
+    - The mode split of all your trips
 
 1. With the TAZ layer and socioeconomic data in the demonstration model, make a
 set of choropleth maps showing: total households; household density; total jobs;
