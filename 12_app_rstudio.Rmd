@@ -34,14 +34,14 @@ of the application I post will use MacOS; the R code for all systems is the same
 and the RStudio interface all systems is very similar with minor differences.
 
 ## RStudio Orientation
+The video below gives a very basic introduction to RStudio.
 
-```{r rstudio-orientation, echo = FALSE}
-knitr::include_url("http://www.youtube.com/embed/c3xv8wOIj-g?rel=0")
+```{r orient-video, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/c3xv8wOIj-g")
 ```
 
-
-There is a very useful "cheat sheet" for working with RStudio on the [RStudio](https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet)
-website.
+ There is also a very useful [cheat sheet](https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet) 
+for working with RStudio on the Rstudio website.
 
 ## R Packages
 
