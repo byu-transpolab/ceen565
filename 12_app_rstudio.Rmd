@@ -69,7 +69,7 @@ You can install a package directly from GitHub with the `devtools` library. One
 package you will want for the problems in the book is the `nhts2017` package
 on the BYU Transportation GitHub account.
 
-```{r github-install, eval = FALSE}
+```{r github-install, eval = FALSE, echo = TRUE}
 install.packages("devtools") # tools for installing development packages
 devtools::install_github("gregmacfarlane/nhts2017")
 ```
@@ -78,21 +78,21 @@ You only need to **install** a package once on your computer. But every time you
 want to **use** a function in a package, you need to load the package with the
 `library()` function. To load the `tidyverse` packages, for instance, 
 
-```{r library-demo}
+```{r library-demo, echo = TRUE}
 library(tidyverse)
 ```
 
 If you get errors when you run the command above, it means that for some reason
 you did not install the package correctly. And if you ever get an error like
 
-```{r show-error, error = TRUE }
+```{r show-error, error = TRUE, echo = TRUE }
 kable(tibble(x = 1:2, y = c("blue", "red")))
 ```
 
 It often means you didn't load the library. In this case, the `kable()` function
 to make pretty tables is part of the `knitr` package.
 
-```{r show-kable}
+```{r show-kable, echo = TRUE}
 library(knitr)
 kable(tibble(x = 1:2, y = c("blue", "red")))
 ```
@@ -107,7 +107,7 @@ Tabular data is often stored in a comma-separated values `.csv` file. To read a
 data file like this in R, you can use the `read_csv()` function included in
 `tidyverse`. 
 
-```{r show-read}
+```{r show-read, echo = TRUE}
 trips <- read_csv("data/demo_trips.csv")
 print(trips)
 ```
@@ -117,7 +117,7 @@ we want to keep ID values as characters, even if they are numeric (this preserve
 leading `0` values, etc.). We can tell `read_csv()` what types we expect with 
 the `col_types` argument.
 
-```{r show-readtypes}
+```{r show-readtypes, echo = TRUE}
 trips <- read_csv("data/demo_trips.csv", col_types = list(houseid = col_character()))
 print(trips)
 ```
@@ -130,7 +130,7 @@ In much of this section, we will work with the `nhts_trips` dataset of trips
 from the 2017 National Household Travel Survey in the `nhts2017` package you
 installed from GitHub above. 
 
-```{r trips}
+```{r trips, echo = TRUE}
 library(nhts2017)
 trips <- nhts_trips
 trips
@@ -146,7 +146,7 @@ us pare it down:
 Let's practice this by selecting our `trips` dataset to only include the id
 columns, the trip length, and the trip purpose.
 
-```{r select}
+```{r select, echo = TRUE}
 select(trips, houseid, personid, trpmiles, trippurp)
 ```
 
@@ -154,7 +154,7 @@ Let's also practice filtering the `trips` dataset to only include trips
 of the purpose "HBO" (home-based other). Notice how the number of rows
 in the table trips is much smaller.
 
-```{r filter}
+```{r filter, echo = TRUE}
 filter(trips, trippurp == "HBW") # use double equals as comparison
 ```
 
@@ -166,7 +166,7 @@ the first argument of the function on the right." What this means in practice is
 we can chain R commands together. So we can do the `select` *and* the `filter` 
 statements in sequence,
 
-```{r chain}
+```{r chain, echo = TRUE}
 trips %>%
   select(houseid, personid, trpmiles, trippurp) %>%
   filter(trippurp == "HBW")
@@ -179,19 +179,19 @@ that for us.
 Once we have the table we want, we can assign it to a new object called `mytrips`
 In this case, let's get `HBO` and `HBW` trips.
 
-```{r mytrips}
+```{r mytrips, echo = TRUE}
 mytrips <- trips %>%
   select(houseid, personid, trpmiles, trippurp) %>%
   filter(trippurp %in% c("HBW", "HBO")) # use %in% for multiple comparisons.
 ```
 
-### Mutate, Summarize, and Group
+### Mutate, Summarize, and Group {#app-mutate}
 
 Sometimes we want to calculate a new column in a table, or recompute an
 existing column. We can do that with the `mutate` function, and we can
 put more than one calculation in a single `mutate` statement.
 
-```{r mutate}
+```{r mutate, echo = TRUE}
 mytrips %>%
   mutate(
     tripkm = trpmiles * 1.60934, # convert miles to km.
@@ -202,7 +202,7 @@ mytrips %>%
 Other times we want to calculate summary statistics like means.
 For this we can use the `summarize()` function. 
 
-```{r summarize}
+```{r summarize, echo = TRUE}
 mytrips %>%
   summarize(
     mean_trip = mean(trpmiles),
@@ -215,7 +215,7 @@ mytrips %>%
 Finally, we sometimes want to calculate summary statistics for different groups.
 We can tell `tidyverse` to group our tables with the `group_by()` function.
 
-```{r groupby}
+```{r groupby, echo = TRUE}
 mytrips %>%
   group_by(trippurp) %>%
   summarize(

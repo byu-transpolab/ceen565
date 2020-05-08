@@ -10,6 +10,14 @@ link-citations: yes
 description: "These are notes and assignments related to the *Urban Transportation Planning*  class at BYU."
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
+library(tidyverse)
+library(sf)
+library(nhts2017)
+library(mlogit)
+```
+
 # Foreword {-#syllabus}
 
 This book contains course notes and assignments for a senior / graduate class in
