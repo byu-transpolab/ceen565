@@ -57,3 +57,10 @@ model are given in the [Appendices](#app-demomodel).
 A handful of assignments require the students to write numerical programs or
 estimate statistical models. Some guidance on using R and RStudio to accomplish
 these assignments is also given in the [Appendices](#app-rstudio).
+
+### Acknowledgements {-}
+Photographs in the textbook are the work of the author unless otherwise attributed.
+The vector art in the textbook uses icons from FontAwesome and the Noun Project
+distributed under creative commons licenses. Specific attributions are below:
+
+  - training wheels by Marco Fleseri from the Noun Project
