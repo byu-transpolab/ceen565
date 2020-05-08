@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-05-01}
+    \date{2020-05-08}
 
 \usepackage{booktabs}
 
@@ -189,11 +189,25 @@ A handful of assignments require the students to write numerical programs or
 estimate statistical models. Some guidance on using R and RStudio to accomplish
 these assignments is also given in the \protect\hyperlink{app-rstudio}{Appendices}.
 
+\hypertarget{acknowledgements}{%
+\subsection*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{subsection}{Acknowledgements}
+
+Photographs in the textbook are the work of the author unless otherwise attributed.
+The vector art in the textbook uses icons from FontAwesome and the Noun Project
+distributed under creative commons licenses. Specific attributions are below:
+
+\begin{itemize}
+\tightlist
+\item
+  training wheels by Marco Fleseri from the Noun Project
+\end{itemize}
+
 \hypertarget{chap-blocks}{%
 \chapter{Building Blocks}\label{chap-blocks}}
 
 This chapter contains concepts, definitions, and mathematical techniques that will
-be used throughout the semester.
+be used throughout the semester. Critical terms to understand are given in \textbf{bold}.
 
 \hypertarget{planning-for-human-systems}{%
 \section{Planning for Human Systems}\label{planning-for-human-systems}}
@@ -208,17 +222,258 @@ One person might be driving to work; one person might be trying to get home to
 his or her family. Another car might hold a family going on vacation, or a group
 of friends heading to a movie.
 
-If you don't recognize that each person who travels is
-If the road is congested, then the
-only apparent solution is to ``fix'' the road by expanding its capacity.
+If you don't recognize that each person who travels is different, with different
+needs and purposes, then it is easy to look only at the \textbf{supply} of transportation
+infrastructure. Is the road wide enough? Is the traffic signal timed appropriately?
+But as with anything in the economy transportation is a function of both supply
+and \textbf{demand}. Why are so many people trying to get down this one road \emph{right now}?
+Why didn't more people take transit? Why didn't some people choose a different
+destination? Or why didn't some people just stay home in the first place?
+
+Transportation planning therefore must be concerned with both the supply of
+infrastructure and the demand for travel. For the most part, economists consider
+travel a \textbf{derived demand}, which means people only go to the hassle of
+travelling somewhere if they have some other reason to be there. No one
+typically just drives around (with the possible exception of teenagers on a
+weekend night); they are going to work, or school, or a social engagement, or
+\emph{something}.
+
+Travel demand has not been stable over time. The availability of inexpensive
+automobiles in the 20th Century created demand for inter-city and intra-urban
+roads that did not exist before. Rising labor force participation rates for
+women radically changed the number and types of trips the average household
+makes in an average day. Technological developments like teleconferencing and
+smartphone-enabled ridehailing could generate different trends. At the same
+time, populations in most regions continue to grow. \textbf{Planning} for future
+transportation infrastructure is difficult because of the uncertainty of the
+future, but it is necessary to keep economies rolling and preseve or improve
+quality of life.
+
+In the United States and most societies with some democratic process,
+\textbf{decisions} about what transportation facilities to build, which policies to
+implement, and how to build a city generally fall to \textbf{decision makers}. These
+decision makers consist of mayors, city councils, planning commissions,
+state legislatures, Congress, state and federal agencies, and innumerable others
+who are elected by the public, or who are accountable to others who have been.
+In making decisions about how to spend public money on civil infrastructure or
+enact tax or other policies, decision makers consult \textbf{plans} developed by
+professional engineers and planners.
+
+As engineers and planners, we are rarely in a position to \emph{make} decisions, but
+we have a responsibility to provide accurate data and technical analysis to
+support decision makers. There is a misconception that transportation planners
+must accurately predict the future to be relevant. The purpose of transportation
+planning is not to perfectly envision what will happen under every scenario,
+it is to provide information that will help make good decisions now so that
+the future is at least as pleasant as the present. We all have hopes for what
+our lives and community will look like ten or twenty years from now; it may not
+be possible for anyone to provide analysis entirely free of all personal bias.
+But as you conduct your work as an engineer and planner, you owe the public your
+integrity and competence as you provide information to their representatives.
 
 \hypertarget{travel-model-building-blocks}{%
 \section{Travel Model Building Blocks}\label{travel-model-building-blocks}}
+
+In this section, we present some of the terms used in transportation planning
+and modeling, as well as some of the data objects used in constructing travel
+demand models.
+
+\hypertarget{household-travel-surveys}{%
+\subsection{Household Travel Surveys}\label{household-travel-surveys}}
+
+Travel demand models try to represent individual behavior. How many trips
+does the average household make per day? How do people respond to changes in
+transit fare? And how can a modeler know if the model accurately reflects
+total traffic?
+
+Household travel surveys are a critical component of much travel modeling
+practice and research, and are a primary way to answer some of these questions.
+In a travel survey, a regional planning
+agency\footnote{Like a Metropolitan Planning Organization (MPO).} will recruit households
+to participate in the survey. Often there is some kind of reward to encourage
+participation, like a gift card or raffle. Once recruited, household members
+fill out a diary of their activities on an assigned day; Figure
+\ref{fig:travel-diary} shows an example of one activity from a survey diary.
+From the example, you can see the kinds of data that are available: where the
+person traveled, which travel mode they used, and what was their reason for
+making the trip.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/travel_diary} \caption{Example travel survey diary entry.}\label{fig:travel-diary}
+\end{figure}
+
+Not all travel surveys are filled in on forms; nowadays telephone interviews or
+mobile applications are more common (more on that below). But for decades, paper
+travel surveys were the basis of almost all transportation behavior science.
+
+Once the surveys are collected, the data is usually processed into several tables
+stored in different files or a database.
+
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{Households} table has one row for each household in the dataset, including
+  information about the number of people in the household, the number of vehicles,
+  and the household income.
+\item
+  A \textbf{Persons} table has one row for each person in the dataset --- including
+  which household they are a part of (to link with the households table) --- and
+  personal attributes like age, student or worker status.
+\item
+  A \textbf{Vehicles} table has one row for each vehicle owned by the households in
+  in the dataset, including attributes like model year, vehicle class, and fuel
+  efficiency.
+\item
+  A \textbf{Trips} table has one row for each trip taken by each person in the dataset.
+  This table can be linked against the other tables if necessary, and contains
+  information like the trip purpose and many other elements collected with the form
+  in Figure \ref{fig:travel-diary}.
+\end{itemize}
+
+Tables \ref{tab:show-nhts-hh} through \ref{tab:show-nhts-trips} show
+data collected from one household in the 2017 National Household Travel Survey.
+The household contains four people, two of whom are working adults in their late
+thirties. (the other two are children, and the NHTS did not collect their trip
+data). The household has two vehicles, and on the survey travel day person 2
+appeared to make a few very long trips. It's impossible to know if this
+is a typical day for this person or not, but that's the data that was collected.
+
+\begin{table}
+
+\caption{\label{tab:show-nhts-hh}NHTS Households File}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l|r}
+\hline
+houseid & hhsize & numadlt & wrkcount & hhvehcnt & hhfaminc & wthhfin\\
+\hline
+30000082 & 4 & 2 & 2 & 2 & \$100,000 to \$124,999 & 1148.809\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:show-nhts-persons}NHTS Persons File}
+\centering
+\begin{tabular}[t]{l|l|r|l|l}
+\hline
+houseid & personid & r\_age & educ & r\_sex\\
+\hline
+30000082 & 01 & 39 & Graduate degree or professional degree & Female\\
+\hline
+30000082 & 02 & 38 & Bachelor's degree & Male\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:show-nhts-vehicles}NHTS Vehicles File}
+\centering
+\begin{tabular}[t]{l|l|r|l|l|l|r}
+\hline
+houseid & vehid & vehyear & make & model & fueltype & od\_read\\
+\hline
+30000082 & 01 & 2011 & Mazda & Mazda3 & Gas & 83644\\
+\hline
+30000082 & 02 & 2007 & Toyota & Yaris & Gas & 120615\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:show-nhts-trips}NHTS Trips File}
+\centering
+\begin{tabular}[t]{l|l|l|l|r|l|l}
+\hline
+houseid & personid & strttime & endtime & trpmiles & trptrans & trippurp\\
+\hline
+30000082 & 01 & 2017-10-10 07:45:00 & 2017-10-10 07:52:00 & 2.710 & Car & Home-based trip (other)\\
+\hline
+30000082 & 01 & 2017-10-10 08:09:00 & 2017-10-10 08:13:00 & 1.432 & Car & Not a home-based trip\\
+\hline
+30000082 & 01 & 2017-10-10 08:24:00 & 2017-10-10 08:28:00 & 0.777 & Car & Not a home-based trip\\
+\hline
+30000082 & 01 & 2017-10-10 16:53:00 & 2017-10-10 16:57:00 & 1.075 & Car & Not a home-based trip\\
+\hline
+30000082 & 01 & 2017-10-10 17:18:00 & 2017-10-10 17:26:00 & 2.727 & Car & Home-based trip (other)\\
+\hline
+30000082 & 02 & 2017-10-10 07:30:00 & 2017-10-10 07:33:00 & 2.136 & Car & Home-based trip (shopping)\\
+\hline
+30000082 & 02 & 2017-10-10 07:38:00 & 2017-10-10 08:50:00 & 88.581 & Car & Not a home-based trip\\
+\hline
+30000082 & 02 & 2017-10-10 08:58:00 & 2017-10-10 09:49:00 & 45.341 & Car & Not a home-based trip\\
+\hline
+30000082 & 02 & 2017-10-10 10:51:00 & 2017-10-10 12:24:00 & 28.208 & Car & Not a home-based trip\\
+\hline
+30000082 & 02 & 2017-10-10 17:00:00 & 2017-10-10 17:05:00 & 0.239 & Walk & Not a home-based trip\\
+\hline
+30000082 & 02 & 2017-10-10 19:15:00 & 2017-10-10 19:26:00 & 0.267 & Walk & Not a home-based trip\\
+\hline
+30000082 & 02 & 2017-10-10 19:30:00 & 2017-10-10 20:43:00 & 29.293 & Car & Not a home-based trip\\
+\hline
+\end{tabular}
+\end{table}
+
+Note that that the households data in Table \ref{tab:show-nhts-hh} contains a
+numeric column called \texttt{wthhfin}. This is a survey \emph{weight}. Because it is impossible
+to sample everyone in a population, there needs to be a way to \emph{expand} the survey
+to the population. What this number means is that the selected household carries
+the same \emph{weight} in this survey as approximately 1100 households in the general
+population. Also note that not every household's weight will be equal; because
+some population groups have different survey response weights, some households
+will need to be weighted more heavily so that the survey reflects the general
+population. Most software packages have functions that allow you to
+calculate statistics or estimate models including weighted values. The code
+chunk below shows how to calculate the average number of workers per household
+with and without weights in R; as you can see, omitting the weights leads
+to a substantial change in the survey analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Average workers per household with no weights}
+\KeywordTok{mean}\NormalTok{(nhts_households}\OperatorTok{$}\NormalTok{wrkcount)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9891438
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Average workers per household, weighted}
+\KeywordTok{weighted.mean}\NormalTok{(nhts_households}\OperatorTok{$}\NormalTok{wrkcount, nhts_households}\OperatorTok{$}\NormalTok{wthhfin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.173206
+\end{verbatim}
+
+Travel survey methodology is changing rapidly as a result of mobile devices with
+location capabilities. First, most travel surveys are now administered through a
+mobile application: respondents are invited to install an app on their smartphone
+that tracks the respondent's position and occasionally asks questions about
+trip purpose or mode. This makes collecting and cleaning data considerably easier
+than traditional paper surveys, and it also lowers the response burden for the
+survey participants. Another change that mobile data has brought to travel surveys
+is the introduction of large datasets of location information that planners can
+purchase directly from cellular providers or third-party providers. Though these
+data do not have all the information on demographics and preferences a survey
+would provide, they provide a considerably larger and more detailed sample
+on things like overall trip flows. As a result, it may be possible to collect
+surveys less frequently, or to reduce survey sample sizes.
 
 \hypertarget{travel-analysis-zones}{%
 \subsection{Travel Analysis Zones}\label{travel-analysis-zones}}
 
 SE Data
+
+Households
+
+Firms
 
 \hypertarget{highway-networks}{%
 \subsection{Highway Networks}\label{highway-networks}}
@@ -244,14 +499,21 @@ OD matrices
 Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.
 
+\hypertarget{continuous-and-discrete-distributions}{%
+\subsection{Continuous and Discrete Distributions}\label{continuous-and-discrete-distributions}}
+
 \hypertarget{iterative-proportional-fitting}{%
 \subsection{Iterative Proportional Fitting}\label{iterative-proportional-fitting}}
+
+Iterative Proportional Fitting
 
 \hypertarget{regression-analysis}{%
 \subsection{Regression Analysis}\label{regression-analysis}}
 
 \hypertarget{numerical-optimization}{%
 \subsection{Numerical Optimization}\label{numerical-optimization}}
+
+Let's say you have a function with a
 
 \hypertarget{hw-blocks}{%
 \section*{Homework}\label{hw-blocks}}
@@ -264,6 +526,29 @@ For instructions on accessing and running the model, see the \protect\hyperlink{
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\item
+  How does recreational transportation --- i.e., going for a bike ride --- fit into the
+  theory of derived demand for travel? Write a short paragraph explaining your thoughts
+  based on what we covered in lecture and the text.
+\item
+  Think about a recent transportation-related construction project you have
+  seen in your community. Find an article in a local newspaper discussing the project.
+  Why was the project built (or why is it being built)? Who supports the project?
+  Does anyone oppose the project? Write a short paragraph including a link and
+  citation to the article.
+\item
+  Download the \href{https://rmove.rsginc.com/}{rmove} mobile application, and log
+  in with the password given you by the instructor. Track your daily activies and
+  trips for \emph{three days}. You may include at most one weekend day. Write a short
+  summary of your activities, including:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How many trips you took each day
+  \item
+    The mode split of all your trips
+  \end{itemize}
 \item
   With the TAZ layer and socioeconomic data in the demonstration model, make a
   set of choropleth maps showing: total households; household density; total jobs;
@@ -297,6 +582,16 @@ For instructions on accessing and running the model, see the \protect\hyperlink{
 
 \hypertarget{chap-tripgen}{%
 \chapter{Trip Generation}\label{chap-tripgen}}
+
+\hypertarget{trip-production}{%
+\section{Trip Production}\label{trip-production}}
+
+\hypertarget{trip-attraction}{%
+\section{Trip Attraction}\label{trip-attraction}}
+
+\hypertarget{hw-tripgen}{%
+\section*{Homework}\label{hw-tripgen}}
+\addcontentsline{toc}{section}{Homework}
 
 \hypertarget{chap-distribution}{%
 \chapter{Trip Distribution}\label{chap-distribution}}
@@ -403,13 +698,6 @@ There are a number of ways to install additional packages. The most straightforw
 is to use the \texttt{install.packages()} function in the console. The problems
 in this book are solved with two additional packages\footnote{\texttt{tidyverse} is actually a collection
   of very useful packages, and many R users just load them all at once.}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{) }\CommentTok{# a suite of tools for data manipulation}
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"mlogit"}\NormalTok{) }\CommentTok{# discrete choice modeling}
-\end{Highlighting}
-\end{Shaded}
 
 RStudio also contains an interface to install and update packages.
 
@@ -745,8 +1033,8 @@ In this case, let's get \texttt{HBO} and \texttt{HBW} trips.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{mutate-summarize-and-group}{%
-\subsection{Mutate, Summarize, and Group}\label{mutate-summarize-and-group}}
+\hypertarget{app-mutate}{%
+\subsection{Mutate, Summarize, and Group}\label{app-mutate}}
 
 Sometimes we want to calculate a new column in a table, or recompute an
 existing column. We can do that with the \texttt{mutate} function, and we can

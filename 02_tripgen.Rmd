@@ -1,1 +1,10 @@
 # Trip Generation {#chap-tripgen}
+
+
+## Trip Production
+
+
+## Trip Attraction
+
+
+## Homework {-#hw-tripgen}
