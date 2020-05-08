@@ -1,5 +1,11 @@
 # Building Blocks {#chap-blocks}
 
+```{r setup-blocks, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+library(tidyverse)
+library(nhts2017)
+```
+
 This chapter contains concepts, definitions, and mathematical techniques that will
 be used throughout the semester. Critical terms to understand are given in **bold**.
 
@@ -67,11 +73,132 @@ integrity and competence as you provide information to their representatives.
 
 ## Travel Model Building Blocks
 
-### Data Collection and Terms
+In this section, we present some of the terms used in transportation planning
+and modeling, as well as some of the data objects used in constructing travel
+demand models.
+
+### Household Travel Surveys
+Travel demand models try to represent individual behavior. How many trips
+does the average household make per day? How do people respond to changes in 
+transit fare? And how can a modeler know if the model accurately reflects 
+total traffic?
+
+Household travel surveys are a critical component of much travel modeling
+practice and research, and are a primary way to answer some of these questions.
+In a travel survey, a regional planning 
+agency^[Like a Metropolitan Planning Organization (MPO).] will recruit households
+to participate in the survey. Often there is some kind of reward to encourage
+participation, like a gift card or raffle. Once recruited, household members
+fill out a diary of their activities on an assigned day; Figure
+\@ref(fig:travel-diary) shows an example of one activity from a survey diary.
+From the example, you can see the kinds of data that are available: where the 
+person traveled, which travel mode they used, and what was their reason for
+making the trip.
+
+```{r travel-diary, fig.cap="Example travel survey diary entry.", out.width='100%', echo = FALSE}
+knitr::include_graphics("images/travel_diary.png")
+```
+
+Not all travel surveys are filled in on forms; nowadays telephone interviews or
+mobile applications are more common (more on that below). But for decades, paper
+travel surveys were the basis of almost all transportation behavior science.
+
+Once the surveys are collected, the data is usually processed into several tables
+stored in different files or a database. 
+
+  - A **Households** table has one row for each household in the dataset, including
+  information about the number of people in the household, the number of vehicles,
+  and the household income. 
+  - A **Persons** table has one row for each person in the dataset --- including
+  which household they are a part of (to link with the households table) --- and
+  personal attributes like age, student or worker status. 
+  - A **Vehicles** table has one row for each vehicle owned by the households in
+  in the dataset, including attributes like model year, vehicle class, and fuel
+  efficiency.
+  - A **Trips** table has one row for each trip taken by each person in the dataset.
+  This table can be linked against the other tables if necessary, and contains
+  information like the trip purpose and many other elements collected with the form
+  in Figure \@ref(fig:travel-diary).
+  
+Tables \@ref(tab:show-nhts-hh) through \@ref(tab:show-nhts-trips) show
+data collected from one household in the 2017 National Household Travel Survey. 
+The household contains four people, two of whom are working adults in their late 
+thirties. (the other two are children, and the NHTS did not collect their trip
+data). The household has two vehicles, and on the survey travel day person 2
+appeared to make a few very long trips. It's impossible to know if this
+is a typical day for this person or not, but that's the data that was collected.
+
+```{r show-nhts-hh, echo = FALSE}
+nhts_households %>% filter(houseid == "30000082") %>%
+  select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
+  mutate_at(c("hhfaminc"), ~as_factor(., levels = "labels")) %>%
+  knitr::kable(caption = "NHTS Households File")
+```
+
+```{r show-nhts-persons, echo = FALSE}
+nhts_persons %>% filter(houseid == "30000082") %>%
+  select(houseid, personid, r_age, educ, r_sex) %>%
+  mutate_at(c("educ", "r_sex"), ~as_factor(., levels = "labels")) %>%
+  knitr::kable(caption = "NHTS Persons File")
+```
+
+```{r show-nhts-vehicles, echo = FALSE}
+nhts_vehicles %>% filter(houseid == "30000082") %>%
+  select(houseid, vehid, vehyear, make, model, fueltype, od_read) %>%
+  mutate_at(c("make", "model", "fueltype"), ~as_factor(., levels = "labels")) %>%
+  knitr::kable(caption = "NHTS Vehicles File")
+```
+
+```{r show-nhts-trips, echo = FALSE}
+nhts_trips %>% filter(houseid == "30000082") %>%
+  select(houseid, personid, strttime, endtime, trpmiles, trptrans, trippurp) %>%
+  mutate_at(c("trptrans", "trippurp"), ~as_factor(., levels = "labels")) %>%
+  knitr::kable(caption = "NHTS Trips File")
+```
+
+Note that that the households data in Table \@ref(tab:show-nhts-hh) contains a
+numeric column called `wthhfin`. This is a survey *weight*. Because it is impossible
+to sample everyone in a population, there needs to be a way to *expand* the survey
+to the population. What this number means is that the selected household carries
+the same *weight* in this survey as approximately 1100 households in the general
+population. Also note that not every household's weight will be equal; because
+some population groups have different survey response weights, some households
+will need to be weighted more heavily so that the survey reflects the general 
+population. Most software packages have functions that allow you to 
+calculate statistics or estimate models including weighted values. The code 
+chunk below shows how to calculate the average number of workers per household
+with and without weights in R; as you can see, omitting the weights leads
+to a substantial change in the survey analysis.
+
+```{r weighted-mean, echo = TRUE}
+# Average workers per household with no weights
+mean(nhts_households$wrkcount)
+# Average workers per household, weighted
+weighted.mean(nhts_households$wrkcount, nhts_households$wthhfin)
+```
+
+
+Travel survey methodology is changing rapidly as a result of mobile devices with
+location capabilities. First, most travel surveys are now administered through a
+mobile application: respondents are invited to install an app on their smartphone
+that tracks the respondent's position and occasionally asks questions about
+trip purpose or mode. This makes collecting and cleaning data considerably easier
+than traditional paper surveys, and it also lowers the response burden for the
+survey participants.  Another change that mobile data has brought to travel surveys
+is the introduction of large datasets of location information that planners can
+purchase directly from cellular providers or third-party providers. Though these
+data do not have all the information on demographics and preferences a survey 
+would provide, they provide a considerably larger and more detailed sample 
+on things like overall trip flows. As a result, it may be possible to collect
+surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
 SE Data
+
+Households
+
+Firms
 
 
 ### Highway Networks
@@ -83,6 +210,8 @@ Link capacity
 Free-flow speed
 
 Centroid connectors
+
+
 
 ### Matrices
 
@@ -96,11 +225,18 @@ OD matrices
 Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.
 
+### Continuous and Discrete Distributions
+
+
 ### Iterative Proportional Fitting
+
+Iterative Proportional Fitting
 
 ### Regression Analysis
 
 ### Numerical Optimization
+
+Let's say you have a function with a 
 
 ## Homework {-#hw-blocks}
 
@@ -108,7 +244,8 @@ quantitative techniques. In this section we will present some of these technique
 For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
 
 1. How does recreational transportation --- i.e., going for a bike ride --- fit into the
-theory of derived demand for travel?
+theory of derived demand for travel? Write a short paragraph explaining your thoughts
+based on what we covered in lecture and the text.
 
 1. Think about a recent transportation-related construction project you have
 seen in your community. Find an article in a local newspaper discussing the project.
