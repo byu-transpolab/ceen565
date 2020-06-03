@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 
-_bookdown_files/ceen565_cache/*
+_bookdown_files/*
+*.log

@@ -4,6 +4,7 @@
 knitr::opts_chunk$set(cache = TRUE)
 library(tidyverse)
 library(nhts2017)
+theme_set(theme_bw())
 ```
 
 This chapter contains concepts, definitions, and mathematical techniques that will
@@ -70,6 +71,9 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.
 
+## The Four-Step Process
+
+
 
 ## Travel Model Building Blocks
 
@@ -129,30 +133,34 @@ appeared to make a few very long trips. It's impossible to know if this
 is a typical day for this person or not, but that's the data that was collected.
 
 ```{r show-nhts-hh, echo = FALSE}
-nhts_households %>% filter(houseid == "30000082") %>%
-  select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
+nhts_households %>% 
   mutate_at(c("hhfaminc"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
   knitr::kable(caption = "NHTS Households File")
 ```
 
 ```{r show-nhts-persons, echo = FALSE}
-nhts_persons %>% filter(houseid == "30000082") %>%
-  select(houseid, personid, r_age, educ, r_sex) %>%
+nhts_persons %>% 
   mutate_at(c("educ", "r_sex"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, personid, r_age, educ, r_sex) %>%
   knitr::kable(caption = "NHTS Persons File")
 ```
 
 ```{r show-nhts-vehicles, echo = FALSE}
-nhts_vehicles %>% filter(houseid == "30000082") %>%
-  select(houseid, vehid, vehyear, make, model, fueltype, od_read) %>%
+nhts_vehicles %>% 
   mutate_at(c("make", "model", "fueltype"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, vehid, vehyear, make, model, fueltype, od_read) %>%
   knitr::kable(caption = "NHTS Vehicles File")
 ```
 
 ```{r show-nhts-trips, echo = FALSE}
-nhts_trips %>% filter(houseid == "30000082") %>%
-  select(houseid, personid, strttime, endtime, trpmiles, trptrans, trippurp) %>%
+nhts_trips %>% 
   mutate_at(c("trptrans", "trippurp"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, personid, strttime, endtime, trpmiles, trptrans, trippurp) %>%
   knitr::kable(caption = "NHTS Trips File")
 ```
 
@@ -227,12 +235,96 @@ quantitative techniques. In this section we will present some of these technique
 
 ### Continuous and Discrete Distributions
 
+In general, statistical variables can fall into one of two categories:
+
+  - *Continuous* variables can take any numeric value along some range
+  - *Discrete* variables can take some limited set of predetermined values
+
+A simplistic definition would be to say that continuous variables are numeric and
+discrete variables are non-numeric. A continuous variable has statistics such as 
+a *mean*, but these statistics do not make sense on discrete variables. In the
+NHTS trips dataset, we can compute a mean trip miles, but we cannot compute
+a mean trip purpose. Or we can't compute a mean that makes sense.
+
+```{r dc_mean, echo = TRUE, error=TRUE}
+# mean of continuous variable: trip length
+weighted.mean(nhts_trips$trpmiles, nhts_trips$wttrdfin)
+# mean of categorical variable: trip purpose
+weighted.mean(nhts_trips$trippurp, nhts_trips$wttrdfin)
+```
+
+What we can do, however, is we can print a summary table showing the number
+of observations that fit in each trip purpose category. Note that sometimes there
+will be a category devoted to data that is missing or otherwise invalid.
+
+```{r dc_categories, echo = TRUE}
+table(nhts_trips$trippurp)
+```
+
+Sometimes it is handy to split a continuous variable into categories so that you 
+can treat it as a discrete variable.
+
+```{r dc-cut, echo = TRUE}
+nhts_trips$miles_cat <- cut(nhts_trips$trpmiles, breaks = c(0, 10, 20, 30, 50, 100, Inf))
+table(nhts_trips$miles_cat)
+```
+
+
+When we visualize the distribution of a continuous variable, we might
+use a histogram or density plot, but with a discrete variable we would use 
+a bar chart.
+
+```{r dc-histogram, echo = TRUE, fig.cap="Visualizing a continuous distribution with a histogram.", warning=FALSE}
+ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
+  geom_histogram() + xlab("Trip Distance [Miles]") + ylab("Weighted Trips") +
+  scale_x_continuous(limits = c(0, 50))
+```
+
+```{r dc-barchart, echo = TRUE, fig.cap="Visualizing a discrete distribution with a bar chart.", warning=FALSE}
+ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"), 
+                       weight = wttrdfin)) +
+  geom_bar() + xlab("Trip Purpose") + ylab("Weighted Trips") 
+```
+
+
+To this point we've only looked at the distribution of one variable at a time.
+There are lots of cases where someone might want to consider the *joint* 
+distribution of two variables. This joint distribution tells you what is happening
+with one variable while the other variable changes. In a table like the one below,
+the margins of the table (the row and column sums) contain the single variable
+distribution. So sometimes we call these the *marginal* distributions.
+
+```{r dc-joint}
+table(nhts_trips$miles_cat, nhts_trips$trippurp)
+```
+
+We can visualize joint distributions as well, and sometimes the results are
+quite nice.
+
+```{r dc-joint-hist, echo = FALSE, warning = FALSE}
+ggplot(nhts_trips %>% 
+         mutate(trippurp =as_factor(trippurp, levels = "labels")) %>%
+         filter(trippurp != "Not ascertained"), 
+         aes(fill = trippurp, x = trpmiles, weight = wttrdfin)) +
+  geom_density(alpha = 0.5) + 
+  xlab("Trip Distance [log miles]") +  ylab("Density of Trips") +
+  scale_color_discrete("Trip Purpose") + scale_x_log10(limits = c(0.1, 100)) 
+```
+
+
 
 ### Iterative Proportional Fitting
 
 Iterative Proportional Fitting
 
 ### Regression Analysis
+
+We often want to know what will happen 
+
+```{r}
+
+```
+
 
 ### Numerical Optimization
 
