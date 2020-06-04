@@ -99,7 +99,7 @@ From the example, you can see the kinds of data that are available: where the
 person traveled, which travel mode they used, and what was their reason for
 making the trip.
 
-```{r travel-diary, fig.cap="Example travel survey diary entry.", out.width='100%', echo = FALSE}
+```{r travel-diary, fig.cap="Example travel survey diary entry.", out.width='70%', echo = FALSE}
 knitr::include_graphics("images/travel_diary.png")
 ```
 
@@ -202,6 +202,7 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
+A Travel Analysis Zone (TAZ) is 
 SE Data
 
 Households
