@@ -194,12 +194,13 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
-SE Data
+**SE Data**, or socioeconomic data, is a set of data about humans or groups of humans, specifically the activities and space used by humans, that include combined economic and sociological infromation. SE data can be broken down into several classes which include: demographics, housing, transportation, economics, and retailing.
 
-Households
+**Households** are a basic unit of analysis in many economic and statistical analyses. A household typically consists of one or more individuals who reside in the same dwelling. Individuals living in the same dwelling can make up a family or other group of individuals (i.e roomates).
 
-Firms
+**Firms** are another basic unit of analysis in many economic and statistical analyses. A firm is a profit-seeking person or entity that provides goods or services in exhange for monetary transactions. A firm can provide raw-resources, manufactured resources, other services, or be a place of employment. In some cases, a firm may be another household. 
 
+**Institutions** are similar to Firms, however, institutions are not profit-seeking. Institutions societies and organiations founded for a religious, educational, social, or similar purpose.
 
 ### Highway Networks
 
