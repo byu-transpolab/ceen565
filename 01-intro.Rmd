@@ -204,21 +204,20 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Highway Networks
 
-Functional Type
+**Functional Types** or **Functional Classes** are used to describe each road in a system, and it's importance to that system. The types include: freeway, principal arterial, minor arterial, major collector, minor collector, local street, and cul-de-sac. 
 
-Link capacity
+**Link capacity** is the maximum number of vehicles a *link*, or section of road, can optimally transport between two *nodes*. **Greenshields model**, which assumes a linear road capacity, can be used to help idealize link capacity.
 
-Free-flow speed
+**Free-flow speed**, or **FFS**, is a measure of the average speed of travel on an uncongested road. 
 
-Centroid connectors
-
+**Centroid connectors** are links that connect centroids to a network. The links used represent local streets in the zone.
 
 
 ### Matrices
 
-Skim matrices
+**Skim matrices**
 
-OD matrices
+**OD matrices**, or origin-destination matrices, 
 
 
 ## Statistical and Mathematical Techniques
