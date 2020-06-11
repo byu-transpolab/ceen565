@@ -202,31 +202,30 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
-A Travel Analysis Zone (TAZ) is 
-SE Data
+**SE Data**, or socioeconomic data, is a set of data about humans or groups of humans, specifically the activities and space used by humans, that include combined economic and sociological infromation. SE data can be broken down into several classes which include: demographics, housing, transportation, economics, and retailing.
 
-Households
+**Households** are a basic unit of analysis in many economic and statistical analyses. A household typically consists of one or more individuals who reside in the same dwelling. Individuals living in the same dwelling can make up a family or other group of individuals (i.e roomates).
 
-Firms
+**Firms** are another basic unit of analysis in many economic and statistical analyses. A firm is a profit-seeking person or entity that provides goods or services in exhange for monetary transactions. A firm can provide raw-resources, manufactured resources, other services, or be a place of employment. In some cases, a firm may be another household. 
 
+**Institutions** are similar to Firms, however, institutions are not profit-seeking. Institutions societies and organiations founded for a religious, educational, social, or similar purpose.
 
 ### Highway Networks
 
-Functional Type
+**Functional Types** or **Functional Classes** are used to describe each road in a system, and it's importance to that system. The types include: freeway, principal arterial, minor arterial, major collector, minor collector, local street, and cul-de-sac. 
 
-Link capacity
+**Link capacity** is the maximum number of vehicles a *link*, or section of road, can optimally transport between two *nodes*. **Greenshields model**, which assumes a linear road capacity, can be used to help idealize link capacity.
 
-Free-flow speed
+**Free-flow speed**, or **FFS**, is a measure of the average speed of travel on an uncongested road. 
 
-Centroid connectors
-
+**Centroid connectors** are links that connect centroids to a network. The links used represent local streets in the zone.
 
 
 ### Matrices
 
-Skim matrices
+**Skim matrices**, or skims, are matrices of impedance estimates between zones, used to estimate zone to zone travel demand. Impedance typically measures a travel time, distance, and travel costs. These measures can be combined to create generalized costs. Skims often distinguish between single occupancy and shared ride vehicles, though this ability is not always beneficial.
 
-OD matrices
+**OD matrices**, or origin-destination matrices, represent the number of trips from the origin *i* (row) to the destination *j* (column). The number in the corresponding cell *T_{ij}* is the total number of trips made, and represents the demand between two zones in a network. 
 
 
 ## Statistical and Mathematical Techniques
