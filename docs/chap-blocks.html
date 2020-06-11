@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Building Blocks | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Building Blocks | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-05-08" />
+<meta name="date" content="2020-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="chap-tripgen.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="chap-tripgen.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -61,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -133,17 +138,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="chap-blocks.html"><a href="chap-blocks.html"><i class="fa fa-check"></i><b>1</b> Building Blocks</a><ul>
 <li class="chapter" data-level="1.1" data-path="chap-blocks.html"><a href="chap-blocks.html#planning-for-human-systems"><i class="fa fa-check"></i><b>1.1</b> Planning for Human Systems</a></li>
-<li class="chapter" data-level="1.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.2</b> Travel Model Building Blocks</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="chap-blocks.html"><a href="chap-blocks.html#household-travel-surveys"><i class="fa fa-check"></i><b>1.2.1</b> Household Travel Surveys</a></li>
-<li class="chapter" data-level="1.2.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-analysis-zones"><i class="fa fa-check"></i><b>1.2.2</b> Travel Analysis Zones</a></li>
-<li class="chapter" data-level="1.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#highway-networks"><i class="fa fa-check"></i><b>1.2.3</b> Highway Networks</a></li>
-<li class="chapter" data-level="1.2.4" data-path="chap-blocks.html"><a href="chap-blocks.html#matrices"><i class="fa fa-check"></i><b>1.2.4</b> Matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-blocks.html"><a href="chap-blocks.html#the-four-step-process"><i class="fa fa-check"></i><b>1.2</b> The Four-Step Process</a></li>
+<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.3</b> Travel Model Building Blocks</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-blocks.html"><a href="chap-blocks.html#household-travel-surveys"><i class="fa fa-check"></i><b>1.3.1</b> Household Travel Surveys</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-analysis-zones"><i class="fa fa-check"></i><b>1.3.2</b> Travel Analysis Zones</a></li>
+<li class="chapter" data-level="1.3.3" data-path="chap-blocks.html"><a href="chap-blocks.html#highway-networks"><i class="fa fa-check"></i><b>1.3.3</b> Highway Networks</a></li>
+<li class="chapter" data-level="1.3.4" data-path="chap-blocks.html"><a href="chap-blocks.html#matrices"><i class="fa fa-check"></i><b>1.3.4</b> Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.3</b> Statistical and Mathematical Techniques</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="chap-blocks.html"><a href="chap-blocks.html#continuous-and-discrete-distributions"><i class="fa fa-check"></i><b>1.3.1</b> Continuous and Discrete Distributions</a></li>
-<li class="chapter" data-level="1.3.2" data-path="chap-blocks.html"><a href="chap-blocks.html#iterative-proportional-fitting"><i class="fa fa-check"></i><b>1.3.2</b> Iterative Proportional Fitting</a></li>
-<li class="chapter" data-level="1.3.3" data-path="chap-blocks.html"><a href="chap-blocks.html#regression-analysis"><i class="fa fa-check"></i><b>1.3.3</b> Regression Analysis</a></li>
-<li class="chapter" data-level="1.3.4" data-path="chap-blocks.html"><a href="chap-blocks.html#numerical-optimization"><i class="fa fa-check"></i><b>1.3.4</b> Numerical Optimization</a></li>
+<li class="chapter" data-level="1.4" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.4</b> Statistical and Mathematical Techniques</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-blocks.html"><a href="chap-blocks.html#continuous-and-discrete-distributions"><i class="fa fa-check"></i><b>1.4.1</b> Continuous and Discrete Distributions</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-blocks.html"><a href="chap-blocks.html#iterative-proportional-fitting"><i class="fa fa-check"></i><b>1.4.2</b> Iterative Proportional Fitting</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#regression-analysis"><i class="fa fa-check"></i><b>1.4.3</b> Regression Analysis</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chap-blocks.html"><a href="chap-blocks.html#numerical-optimization"><i class="fa fa-check"></i><b>1.4.4</b> Numerical Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#hw-blocks"><i class="fa fa-check"></i>Homework</a></li>
 </ul></li>
@@ -257,13 +263,16 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.</p>
 </div>
+<div id="the-four-step-process" class="section level2">
+<h2><span class="header-section-number">1.2</span> The Four-Step Process</h2>
+</div>
 <div id="travel-model-building-blocks" class="section level2">
-<h2><span class="header-section-number">1.2</span> Travel Model Building Blocks</h2>
+<h2><span class="header-section-number">1.3</span> Travel Model Building Blocks</h2>
 <p>In this section, we present some of the terms used in transportation planning
 and modeling, as well as some of the data objects used in constructing travel
 demand models.</p>
 <div id="household-travel-surveys" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Household Travel Surveys</h3>
+<h3><span class="header-section-number">1.3.1</span> Household Travel Surveys</h3>
 <p>Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in
 transit fare? And how can a modeler know if the model accurately reflects
@@ -280,7 +289,7 @@ From the example, you can see the kinds of data that are available: where the
 person traveled, which travel mode they used, and what was their reason for
 making the trip.</p>
 <div class="figure"><span id="fig:travel-diary"></span>
-<img src="images/travel_diary.png" alt="Example travel survey diary entry." width="100%" />
+<img src="images/travel_diary.png" alt="Example travel survey diary entry." width="70%" />
 <p class="caption">
 Figure 1.1: Example travel survey diary entry.
 </p>
@@ -536,11 +545,11 @@ calculate statistics or estimate models including weighted values. The code
 chunk below shows how to calculate the average number of workers per household
 with and without weights in R; as you can see, omitting the weights leads
 to a substantial change in the survey analysis.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Average workers per household with no weights</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">mean</span>(nhts_households<span class="op">$</span>wrkcount)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-blocks.html#cb1-1"></a><span class="co"># Average workers per household with no weights</span></span>
+<span id="cb1-2"><a href="chap-blocks.html#cb1-2"></a><span class="kw">mean</span>(nhts_households<span class="op">$</span>wrkcount)</span></code></pre></div>
 <pre><code>## [1] 0.9891438</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Average workers per household, weighted</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw">weighted.mean</span>(nhts_households<span class="op">$</span>wrkcount, nhts_households<span class="op">$</span>wthhfin)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-blocks.html#cb3-1"></a><span class="co"># Average workers per household, weighted</span></span>
+<span id="cb3-2"><a href="chap-blocks.html#cb3-2"></a><span class="kw">weighted.mean</span>(nhts_households<span class="op">$</span>wrkcount, nhts_households<span class="op">$</span>wthhfin)</span></code></pre></div>
 <pre><code>## [1] 1.173206</code></pre>
 <p>Travel survey methodology is changing rapidly as a result of mobile devices with
 location capabilities. First, most travel surveys are now administered through a
@@ -557,40 +566,262 @@ on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.</p>
 </div>
 <div id="travel-analysis-zones" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Travel Analysis Zones</h3>
-<p>SE Data</p>
-<p>Households</p>
-<p>Firms</p>
+<h3><span class="header-section-number">1.3.2</span> Travel Analysis Zones</h3>
+<p>Activities in travel demand models happen in <strong>Travel Analysis Zones</strong> (TAZs), and
+the model tries to represent trips between the TAZs. Because trips inside a TAZ
+— called intrazonal trips — are not included in the travel model, each TAZ should
+be sufficiently small such that these trips do not affect the models’ ability
+to forecast travel on roadways. The following rules are helpful when drawing
+TAZ’s:</p>
+<ul>
+<li>The TAZ should not stretch across major roadways</li>
+<li>The TAZ should contain principally one land use, though in some areas this
+is not possible.</li>
+<li>In areas with more dense population, the TAZ should be smaller.</li>
+</ul>
+<p>Each TAZ is associated with <strong>socioeconomic</strong> (SE) data, or information about
+the people, businesses, and other activities that are located in the TAZ.</p>
+<!-- Can you include a figure of TAZ layer in central Roanoke for illustration? -->
+<p><strong>Households</strong> are a basic unit of analysis in many economic and statistical
+analyses. A household typically consists of one or more <strong>persons</strong> who reside
+in the same dwelling. Individuals living in the same dwelling can make up a
+family or other group of individuals; that is, a group of roommates is
+considered a household. Not everyone lives in households, however; some people
+live in what are called group quarters: military barracks, college dormitories,
+monasteries, prisons, etc. Travel models need to handle these people as well, but
+in this class we will focus on people who live in households.</p>
+<p><strong>Firms</strong> are another basic unit of analysis in many economic and statistical
+analyses. A firm is a profit-seeking person or entity that provides goods or
+services in exchange for monetary transactions. A firm can provide raw resources,
+manufactured resources, other services, or be a place of employment. In some
+cases, a firm may be another household. Each firm will have an <em>industry</em> type.
+Examples of industry types include office, service, manufacturing, retail, etc.
+In many SE data files, firms are simply represented as the total number of
+jobs in a TAZ belonging to each industry. Other <strong>Institutions</strong> including
+academic, government, and non-profit entities will also be represented in the SE
+data in terms of their jobs.</p>
+<p>It is important to be precise in our definitions when put all of these different
+things into a single file. A typical SE table for a small region is given in
+Table <a href="chap-blocks.html#tab:setable">1.5</a>. Note the following relationships:</p>
+<ul>
+<li>Persons live in Households</li>
+<li>Workers are Persons who have a Job</li>
+<li>Firms have employees who work at a Jobs</li>
+</ul>
+<p>When we talk about “how many jobs” are in a TAZ, we mean “How many people do
+the firms located in that TAZ employ,” and not “how many people who live
+in that TAZ are workers.”</p>
+<table>
+<caption><span id="tab:setable">Table 1.5: </span>Example SE Table</caption>
+<thead>
+<tr class="header">
+<th align="right">taz</th>
+<th align="right">persons</th>
+<th align="right">hh</th>
+<th align="right">workers</th>
+<th align="right">retail</th>
+<th align="right">office</th>
+<th align="right">manufacturing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">32</td>
+<td align="right">23</td>
+<td align="right">10</td>
+<td align="right">120</td>
+<td align="right">65</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">43</td>
+<td align="right">22</td>
+<td align="right">16</td>
+<td align="right">141</td>
+<td align="right">91</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">49</td>
+<td align="right">25</td>
+<td align="right">22</td>
+<td align="right">130</td>
+<td align="right">73</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+
+<div class="rmdexample">
+<p>Alice lives with her husband in zone <span class="math inline">\(A\)</span> and works as an accountant in zone <span class="math inline">\(B\)</span>.
+Her husband does not currently work.
+Fill out the SE table from Table <a href="chap-blocks.html#tab:setable">1.5</a> with <em>just</em> this
+household’s information.</p>
+<p>Two persons live in one household with one worker in zone A. The firm Alice works at
+has an office job for her in Zone B.</p>
+<table>
+<thead>
+<tr class="header">
+<th>taz</th>
+<th>persons</th>
+<th>hh</th>
+<th>workers</th>
+<th>retail</th>
+<th>office</th>
+<th>manufacturing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
 </div>
 <div id="highway-networks" class="section level3">
-<h3><span class="header-section-number">1.2.3</span> Highway Networks</h3>
-<p>Functional Type</p>
-<p>Link capacity</p>
-<p>Free-flow speed</p>
-<p>Centroid connectors</p>
+<h3><span class="header-section-number">1.3.3</span> Highway Networks</h3>
+<p><strong>Nodes</strong> <strong>Centroids</strong> are special nodes that indicate where the activities
+of a TAZ are located on average.</p>
+<p><strong>Links</strong> <strong>Centroid connectors</strong> are special links that connect centroids to a network.</p>
+<p><strong>Functional Types</strong> or <strong>Functional Classes</strong> are used to describe each road in
+a system, and its importance to that system. The types include: freeway,
+principal arterial, minor arterial, major collector, minor collector, local
+street, and cul-de-sac.</p>
+<!-- Can you include a bulleted list describing in more detail what these
+facilities are like? Maybe even a figure of a few of them would be helpful. -->
+<p>Streets of a functional class below collector are almost never included in
+travel models, unless they provide essential connectivity between other roads.
+Entire neighborhoods of local streets may be represented by just a few centroid
+connectors.</p>
+<p><strong>Free-flow speed</strong>, or <strong>FFS</strong>, is the speed vehicles travel when the road
+is empty.</p>
+<p><strong>Link capacity</strong> is the maximum number of vehicles a <em>link</em>, or section of
+road, can optimally transport between two <em>nodes</em>. The capacity is a function
+of functional type, lanes, free-flow speed, area type, etc.</p>
+<!-- Can you include a figure of a highway network's nodes and links with functional
+class and speed shown in some way? Maybe overlaying this on a map would be
+helpful to show the limited nature of the network. -->
 </div>
 <div id="matrices" class="section level3">
-<h3><span class="header-section-number">1.2.4</span> Matrices</h3>
-<p>Skim matrices</p>
-<p>OD matrices</p>
+<h3><span class="header-section-number">1.3.4</span> Matrices</h3>
+<p><strong>Skim matrices</strong>, or skims, are matrices of impedance estimates between zones,
+used to estimate zone to zone travel demand. Impedance typically measures a
+travel time, distance, and travel costs. These measures can be combined to
+create generalized costs. Skims often distinguish between single occupancy and
+shared ride vehicles, though this ability is not always beneficial.</p>
+<p><strong>OD matrices</strong>, or origin-destination matrices, represent the number of trips
+from the origin <em>i</em> (row) to the destination <em>j</em> (column). The number in the
+corresponding cell <em>T_{ij}</em> is the total number of trips made, and represents
+the demand between two zones in a network.</p>
 </div>
 </div>
 <div id="statistical-and-mathematical-techniques" class="section level2">
-<h2><span class="header-section-number">1.3</span> Statistical and Mathematical Techniques</h2>
+<h2><span class="header-section-number">1.4</span> Statistical and Mathematical Techniques</h2>
 <p>Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.</p>
 <div id="continuous-and-discrete-distributions" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Continuous and Discrete Distributions</h3>
+<h3><span class="header-section-number">1.4.1</span> Continuous and Discrete Distributions</h3>
+<p>In general, statistical variables can fall into one of two categories:</p>
+<ul>
+<li><em>Continuous</em> variables can take any numeric value along some range</li>
+<li><em>Discrete</em> variables can take some limited set of predetermined values</li>
+</ul>
+<p>A simplistic definition would be to say that continuous variables are numeric and
+discrete variables are non-numeric. A continuous variable has statistics such as
+a <em>mean</em>, but these statistics do not make sense on discrete variables. In the
+NHTS trips dataset, we can compute a mean trip miles, but we cannot compute
+a mean trip purpose. Or we can’t compute a mean that makes sense.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chap-blocks.html#cb5-1"></a><span class="co"># mean of continuous variable: trip length</span></span>
+<span id="cb5-2"><a href="chap-blocks.html#cb5-2"></a><span class="kw">weighted.mean</span>(nhts_trips<span class="op">$</span>trpmiles, nhts_trips<span class="op">$</span>wttrdfin)</span></code></pre></div>
+<pre><code>## [1] 10.69119</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chap-blocks.html#cb7-1"></a><span class="co"># mean of categorical variable: trip purpose</span></span>
+<span id="cb7-2"><a href="chap-blocks.html#cb7-2"></a><span class="kw">weighted.mean</span>(nhts_trips<span class="op">$</span>trippurp, nhts_trips<span class="op">$</span>wttrdfin)</span></code></pre></div>
+<pre><code>## Error in x * w: non-numeric argument to binary operator</code></pre>
+<p>What we can do, however, is we can print a summary table showing the number
+of observations that fit in each trip purpose category. Note that sometimes there
+will be a category devoted to data that is missing or otherwise invalid.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chap-blocks.html#cb9-1"></a><span class="kw">table</span>(nhts_trips<span class="op">$</span>trippurp)</span></code></pre></div>
+<pre><code>## 
+##       -9      HBO   HBSHOP HBSOCREC      HBW      NHB 
+##       32   190022   195188   110235   117368   310727</code></pre>
+<p>Sometimes it is handy to split a continuous variable into categories so that you
+can treat it as a discrete variable.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chap-blocks.html#cb11-1"></a>nhts_trips<span class="op">$</span>miles_cat &lt;-<span class="st"> </span><span class="kw">cut</span>(nhts_trips<span class="op">$</span>trpmiles, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="ot">Inf</span>))</span>
+<span id="cb11-2"><a href="chap-blocks.html#cb11-2"></a><span class="kw">table</span>(nhts_trips<span class="op">$</span>miles_cat)</span></code></pre></div>
+<pre><code>## 
+##    (0,10]   (10,20]   (20,30]   (30,50]  (50,100] (100,Inf] 
+##    719812    113383     38724     25064     14388     11060</code></pre>
+<p>When we visualize the distribution of a continuous variable, we might
+use a histogram or density plot, but with a discrete variable we would use
+a bar chart.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chap-blocks.html#cb13-1"></a><span class="kw">ggplot</span>(nhts_trips, <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles, <span class="dt">weight =</span> wttrdfin)) <span class="op">+</span></span>
+<span id="cb13-2"><a href="chap-blocks.html#cb13-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Trip Distance [Miles]&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-3"><a href="chap-blocks.html#cb13-3"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure"><span id="fig:dc-histogram"></span>
+<img src="ceen565_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
+<p class="caption">
+Figure 1.2: Visualizing a continuous distribution with a histogram.
+</p>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-blocks.html#cb15-1"></a><span class="kw">ggplot</span>(nhts_trips, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as_factor</span>(trippurp, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>), </span>
+<span id="cb15-2"><a href="chap-blocks.html#cb15-2"></a>                       <span class="dt">weight =</span> wttrdfin)) <span class="op">+</span></span>
+<span id="cb15-3"><a href="chap-blocks.html#cb15-3"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Trip Purpose&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) </span></code></pre></div>
+<div class="figure"><span id="fig:dc-barchart"></span>
+<img src="ceen565_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
+<p class="caption">
+Figure 1.3: Visualizing a discrete distribution with a bar chart.
+</p>
+</div>
+<p>To this point we’ve only looked at the distribution of one variable at a time.
+There are lots of cases where someone might want to consider the <em>joint</em>
+distribution of two variables. This joint distribution tells you what is happening
+with one variable while the other variable changes. In a table like the one below,
+the margins of the table (the row and column sums) contain the single variable
+distribution. So sometimes we call these the <em>marginal</em> distributions.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-blocks.html#cb16-1"></a><span class="kw">table</span>(nhts_trips<span class="op">$</span>miles_cat, nhts_trips<span class="op">$</span>trippurp)</span></code></pre></div>
+<pre><code>##            
+##                 -9    HBO HBSHOP HBSOCREC    HBW    NHB
+##   (0,10]        23 156315 162602    84980  67162 248730
+##   (10,20]        6  20856  19881    13054  28018  31568
+##   (20,30]        1   5635   5469     4361  12087  11171
+##   (30,50]        0   3592   3427     3267   7117   7661
+##   (50,100]       2   1943   2150     2504   2332   5457
+##   (100,Inf]      0   1231   1634     1844    597   5754</code></pre>
+<p>We can visualize joint distributions as well, and sometimes the results are
+quite nice.</p>
+<p><img src="ceen565_files/figure-html/dc-joint-hist-1.png" width="672" /></p>
 </div>
 <div id="iterative-proportional-fitting" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> Iterative Proportional Fitting</h3>
+<h3><span class="header-section-number">1.4.2</span> Iterative Proportional Fitting</h3>
 <p>Iterative Proportional Fitting</p>
 </div>
 <div id="regression-analysis" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Regression Analysis</h3>
+<h3><span class="header-section-number">1.4.3</span> Regression Analysis</h3>
+<p>We often want to know what will happen</p>
 </div>
 <div id="numerical-optimization" class="section level3">
-<h3><span class="header-section-number">1.3.4</span> Numerical Optimization</h3>
+<h3><span class="header-section-number">1.4.4</span> Numerical Optimization</h3>
 <p>Let’s say you have a function with a</p>
 </div>
 </div>
@@ -648,7 +879,7 @@ is the worst-performing major facility?</p></li>
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Like a Metropolitan Planning Organization (MPO).<a href="chap-blocks.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Like a Metropolitan Planning Organization (MPO).<a href="chap-blocks.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -662,11 +893,13 @@ is the worst-performing major facility?</p></li>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -674,12 +907,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -694,6 +926,10 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["ceen565.pdf", "ceen565.epub"],
 "toc": {
 "collapse": "subsection"
@@ -702,6 +938,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

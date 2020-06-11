@@ -202,30 +202,129 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
-**SE Data**, or socioeconomic data, is a set of data about humans or groups of humans, specifically the activities and space used by humans, that include combined economic and sociological infromation. SE data can be broken down into several classes which include: demographics, housing, transportation, economics, and retailing.
+Activities in travel demand models happen in **Travel Analysis Zones** (TAZs), and
+the model tries to represent trips between the TAZs. Because trips inside a TAZ 
+--- called intrazonal trips --- are not included in the travel model, each TAZ should
+be sufficiently small such that these trips do not affect the models' ability 
+to forecast travel on roadways.  The following rules are helpful when drawing
+TAZ's:
 
-**Households** are a basic unit of analysis in many economic and statistical analyses. A household typically consists of one or more individuals who reside in the same dwelling. Individuals living in the same dwelling can make up a family or other group of individuals (i.e roomates).
+   - The TAZ should not stretch across major roadways
+   - The TAZ should contain principally one land use, though in some areas this
+   is not possible.
+   - In areas with more dense population, the TAZ should be smaller.
 
-**Firms** are another basic unit of analysis in many economic and statistical analyses. A firm is a profit-seeking person or entity that provides goods or services in exhange for monetary transactions. A firm can provide raw-resources, manufactured resources, other services, or be a place of employment. In some cases, a firm may be another household. 
+Each TAZ is associated with **socioeconomic** (SE)  data, or information about
+the people, businesses, and other activities that are located in the TAZ. 
 
-**Institutions** are similar to Firms, however, institutions are not profit-seeking. Institutions societies and organiations founded for a religious, educational, social, or similar purpose.
+<!-- Can you include a figure of TAZ layer in central Roanoke for illustration? -->
+
+**Households** are a basic unit of analysis in many economic and statistical
+analyses. A household typically consists of one or more **persons** who reside
+in the same dwelling. Individuals living in the same dwelling can make up a
+family or other group of individuals; that is, a group of roommates is 
+considered a household. Not everyone lives in households, however; some people 
+live in what are called group quarters: military barracks, college dormitories,
+monasteries, prisons, etc. Travel models need to handle these people as well, but
+in this class we will focus on people who live in households.
+
+**Firms** are another basic unit of analysis in many economic and statistical
+analyses. A firm is a profit-seeking person or entity that provides goods or
+services in exchange for monetary transactions. A firm can provide raw resources,
+manufactured resources, other services, or be a place of employment. In some
+cases, a firm may be another household. Each firm will have an *industry* type. 
+Examples of industry types include office, service, manufacturing, retail, etc.
+In many SE data files, firms are simply represented as the total number of 
+jobs in a TAZ belonging to each industry.  Other **Institutions** including
+academic, government, and non-profit entities will also be represented in the SE
+data in terms of their jobs.
+
+It is important to be precise in our definitions when put all of these different
+things into a single file. A typical SE table for a small region is given in
+Table \@ref(tab:setable). Note the following relationships:
+
+  - Persons live in Households
+  - Workers are Persons who have a Job
+  - Firms have employees who work at a Jobs 
+  
+When we talk about "how many jobs" are in a TAZ, we mean "How many people do
+the firms located in that TAZ employ," and not "how many people who live
+in that TAZ are workers."
+
+```{r setable, echo = FALSE}
+se_nrow <- 3
+tibble(
+  taz = 1:se_nrow, persons = sample(30:50, se_nrow), 
+  hh = round(persons * rnorm(se_nrow, 0.8, 0.3)),
+  workers = round(persons * rnorm(se_nrow, 0.4, 0.1)),
+  retail = sample(100:150, se_nrow), office = sample(50:100, se_nrow),
+  manufacturing = c(2, 11, 0)
+) %>% knitr::kable(caption = "Example SE Table")
+```
+
+
+```{block2, sedata, type = "rmdexample"}
+Alice lives with her husband in zone $A$ and works as an accountant in zone $B$.
+Her husband does not currently work.
+Fill out the SE table from Table \@ref(tab:setable) with *just* this 
+household's information.
+
+Two persons live in one household with one worker in zone A. The firm Alice works at 
+has an office job for her in Zone B.
+
+| taz | persons | hh         | workers | retail | office | manufacturing |
+|-----|---------|------------|---------|--------|--------|---------------|
+| A   |     2   |         1  |        1|        |        |               |
+| B   |         |            |         |        |       1|               |
+
+```
+
 
 ### Highway Networks
 
-**Functional Types** or **Functional Classes** are used to describe each road in a system, and it's importance to that system. The types include: freeway, principal arterial, minor arterial, major collector, minor collector, local street, and cul-de-sac. 
+**Nodes** **Centroids** are special nodes that indicate where the activities
+of a TAZ are located on average. 
 
-**Link capacity** is the maximum number of vehicles a *link*, or section of road, can optimally transport between two *nodes*. **Greenshields model**, which assumes a linear road capacity, can be used to help idealize link capacity.
+**Links** **Centroid connectors** are special links that connect centroids to a network. 
 
-**Free-flow speed**, or **FFS**, is a measure of the average speed of travel on an uncongested road. 
+**Functional Types** or **Functional Classes** are used to describe each road in
+a system, and its importance to that system. The types include: freeway,
+principal arterial, minor arterial, major collector, minor collector, local
+street, and cul-de-sac. 
 
-**Centroid connectors** are links that connect centroids to a network. The links used represent local streets in the zone.
 
+<!-- Can you include a bulleted list describing in more detail what these
+facilities are like? Maybe even a figure of a few of them would be helpful. -->
+
+Streets of a functional class below collector are almost never included in 
+travel models, unless they provide essential connectivity between other roads. 
+Entire neighborhoods of local streets may be represented by just a few centroid
+connectors.
+
+**Free-flow speed**, or **FFS**, is the speed vehicles travel when the road
+is empty. 
+
+
+**Link capacity** is the maximum number of vehicles a *link*, or section of
+road, can optimally transport between two *nodes*.  The capacity is a function
+of functional type, lanes, free-flow speed, area type, etc.
+
+<!-- Can you include a figure of a highway network's nodes and links with functional
+class and speed shown in some way? Maybe overlaying this on a map would be
+helpful to show the limited nature of the network. -->
 
 ### Matrices
 
-**Skim matrices**, or skims, are matrices of impedance estimates between zones, used to estimate zone to zone travel demand. Impedance typically measures a travel time, distance, and travel costs. These measures can be combined to create generalized costs. Skims often distinguish between single occupancy and shared ride vehicles, though this ability is not always beneficial.
+**Skim matrices**, or skims, are matrices of impedance estimates between zones,
+used to estimate zone to zone travel demand. Impedance typically measures a
+travel time, distance, and travel costs. These measures can be combined to
+create generalized costs. Skims often distinguish between single occupancy and
+shared ride vehicles, though this ability is not always beneficial.
 
-**OD matrices**, or origin-destination matrices, represent the number of trips from the origin *i* (row) to the destination *j* (column). The number in the corresponding cell *T_{ij}* is the total number of trips made, and represents the demand between two zones in a network. 
+**OD matrices**, or origin-destination matrices, represent the number of trips
+from the origin *i* (row) to the destination *j* (column). The number in the
+corresponding cell *T_{ij}* is the total number of trips made, and represents
+the demand between two zones in a network.
 
 
 ## Statistical and Mathematical Techniques
