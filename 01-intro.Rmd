@@ -215,9 +215,9 @@ surveys less frequently, or to reduce survey sample sizes.
 
 ### Matrices
 
-**Skim matrices**
+**Skim matrices**, or skims, are matrices of impedance estimates between zones, used to estimate zone to zone travel demand. Impedance typically measures a travel time, distance, and travel costs. These measures can be combined to create generalized costs. Skims often distinguish between single occupancy and shared ride vehicles, though this ability is not always beneficial.
 
-**OD matrices**, or origin-destination matrices, 
+**OD matrices**, or origin-destination matrices, represent the number of trips from the origin *i* (row) to the destination *j* (column). The number in the corresponding cell *T_{ij}* is the total number of trips made, and represents the demand between two zones in a network. 
 
 
 ## Statistical and Mathematical Techniques
