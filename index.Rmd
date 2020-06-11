@@ -20,6 +20,10 @@ library(mlogit)
 
 # Foreword {-#syllabus}
 
+```{r fig.align='center', out.width="50%", echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
+knitr::include_graphics('images/cover.jpg')
+```
+
 This book contains course notes and assignments for a senior / graduate class in
 transportation planning and elementary travel modeling. A description for this course
 is:
@@ -64,3 +68,4 @@ The vector art in the textbook uses icons from FontAwesome and the Noun Project
 distributed under creative commons licenses. Specific attributions are below:
 
   - training wheels by Marco Fleseri from the Noun Project
+  - Cover image: TRAX by Ashton Bingham on Unsplash
