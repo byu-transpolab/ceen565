@@ -70,8 +70,8 @@ package you will want for the problems in the book is the `nhts2017` package
 on the BYU Transportation GitHub account.
 
 ```{r github-install, eval = FALSE, echo = TRUE}
-install.packages("devtools") # tools for installing development packages
-devtools::install_github("gregmacfarlane/nhts2017")
+install.packages("remotes") # tools for installing development packages
+remotes::install_github("byu-transpolab/nhts2017")
 ```
 
 You only need to **install** a package once on your computer. But every time you 
