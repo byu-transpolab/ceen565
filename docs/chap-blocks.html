@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-06-11" />
+<meta name="date" content="2020-06-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="B.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>B.4.2</b> Modifying and Summarizing Tables</a></li>
 <li class="chapter" data-level="B.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>B.4.3</b> Mutate, Summarize, and Group</a></li>
 </ul></li>
-<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot</code></a></li>
+<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot2</code></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -654,49 +654,6 @@ in that TAZ are workers.”</p>
 </tr>
 </tbody>
 </table>
-
-<div class="rmdexample">
-<p>Alice lives with her husband in zone <span class="math inline">\(A\)</span> and works as an accountant in zone <span class="math inline">\(B\)</span>.
-Her husband does not currently work.
-Fill out the SE table from Table <a href="chap-blocks.html#tab:setable">1.5</a> with <em>just</em> this
-household’s information.</p>
-<p>Two persons live in one household with one worker in zone A. The firm Alice works at
-has an office job for her in Zone B.</p>
-<table>
-<thead>
-<tr class="header">
-<th>taz</th>
-<th>persons</th>
-<th>hh</th>
-<th>workers</th>
-<th>retail</th>
-<th>office</th>
-<th>manufacturing</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>B</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-
 </div>
 <div id="highway-networks" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Highway Networks</h3>
@@ -709,6 +666,21 @@ principal arterial, minor arterial, major collector, minor collector, local
 street, and cul-de-sac.</p>
 <!-- Can you include a bulleted list describing in more detail what these
 facilities are like? Maybe even a figure of a few of them would be helpful. -->
+<ul>
+<li><p>Freeways are provided almost exclusively to enhance mobility for through traffic.
+Access to freeways is provided only at specific grade-separated interhcanges,
+with no direct access to the freeway from adjacent land except by way of those
+interachanges.</p></li>
+<li><p>Major and minor arterials primary function is to provide mobility of through
+traffic. However, arterials also connect to both collectors and local roads and
+streets and many arteirals provide direct access to adjacent development.</p></li>
+<li><p>Major and minor collectors connect arterials to local roads and provide access
+to adjacent development. Mobility for through traffic is less important.</p></li>
+<li><p>Local streets exist primarily to serve adjacent development. Mobility for
+thorough traffic is not important.</p></li>
+<li><p>Cul-de-sacs only serve adjacent development.</p>
+<p>*See <span class="citation">(<em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> <a href="#ref-2018aashto" role="doc-biblioref">2018</a>)</span> for more information.</p></li>
+</ul>
 <p>Streets of a functional class below collector are almost never included in
 travel models, unless they provide essential connectivity between other roads.
 Entire neighborhoods of local streets may be represented by just a few centroid
@@ -799,7 +771,6 @@ distribution of two variables. This joint distribution tells you what is happeni
 with one variable while the other variable changes. In a table like the one below,
 the margins of the table (the row and column sums) contain the single variable
 distribution. So sometimes we call these the <em>marginal</em> distributions.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-blocks.html#cb16-1"></a><span class="kw">table</span>(nhts_trips<span class="op">$</span>miles_cat, nhts_trips<span class="op">$</span>trippurp)</span></code></pre></div>
 <pre><code>##            
 ##                 -9    HBO HBSHOP HBSOCREC    HBW    NHB
 ##   (0,10]        23 156315 162602    84980  67162 248730
@@ -876,6 +847,12 @@ is the worst-performing major facility?</p></li>
 
 </div>
 </div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-2018aashto">
+<p><em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> 2018. The Green Book. American Association of State Highway; Transportation Officials. <a href="https://books.google.com/books?id=MWHBDwAAQBAJ">https://books.google.com/books?id=MWHBDwAAQBAJ</a>.</p>
+</div>
+</div>
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -938,20 +915,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

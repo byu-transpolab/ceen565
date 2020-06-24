@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A Demonstration Model | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A Demonstration Model | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-05-08" />
+<meta name="date" content="2020-06-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chap-process.html">
-<link rel="next" href="app-rstudio.html">
+<link rel="prev" href="chap-process.html"/>
+<link rel="next" href="app-rstudio.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -50,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -61,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -133,17 +138,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1" data-path="chap-blocks.html"><a href="chap-blocks.html"><i class="fa fa-check"></i><b>1</b> Building Blocks</a><ul>
 <li class="chapter" data-level="1.1" data-path="chap-blocks.html"><a href="chap-blocks.html#planning-for-human-systems"><i class="fa fa-check"></i><b>1.1</b> Planning for Human Systems</a></li>
-<li class="chapter" data-level="1.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.2</b> Travel Model Building Blocks</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="chap-blocks.html"><a href="chap-blocks.html#household-travel-surveys"><i class="fa fa-check"></i><b>1.2.1</b> Household Travel Surveys</a></li>
-<li class="chapter" data-level="1.2.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-analysis-zones"><i class="fa fa-check"></i><b>1.2.2</b> Travel Analysis Zones</a></li>
-<li class="chapter" data-level="1.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#highway-networks"><i class="fa fa-check"></i><b>1.2.3</b> Highway Networks</a></li>
-<li class="chapter" data-level="1.2.4" data-path="chap-blocks.html"><a href="chap-blocks.html#matrices"><i class="fa fa-check"></i><b>1.2.4</b> Matrices</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-blocks.html"><a href="chap-blocks.html#the-four-step-process"><i class="fa fa-check"></i><b>1.2</b> The Four-Step Process</a></li>
+<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.3</b> Travel Model Building Blocks</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="chap-blocks.html"><a href="chap-blocks.html#household-travel-surveys"><i class="fa fa-check"></i><b>1.3.1</b> Household Travel Surveys</a></li>
+<li class="chapter" data-level="1.3.2" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-analysis-zones"><i class="fa fa-check"></i><b>1.3.2</b> Travel Analysis Zones</a></li>
+<li class="chapter" data-level="1.3.3" data-path="chap-blocks.html"><a href="chap-blocks.html#highway-networks"><i class="fa fa-check"></i><b>1.3.3</b> Highway Networks</a></li>
+<li class="chapter" data-level="1.3.4" data-path="chap-blocks.html"><a href="chap-blocks.html#matrices"><i class="fa fa-check"></i><b>1.3.4</b> Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.3</b> Statistical and Mathematical Techniques</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="chap-blocks.html"><a href="chap-blocks.html#continuous-and-discrete-distributions"><i class="fa fa-check"></i><b>1.3.1</b> Continuous and Discrete Distributions</a></li>
-<li class="chapter" data-level="1.3.2" data-path="chap-blocks.html"><a href="chap-blocks.html#iterative-proportional-fitting"><i class="fa fa-check"></i><b>1.3.2</b> Iterative Proportional Fitting</a></li>
-<li class="chapter" data-level="1.3.3" data-path="chap-blocks.html"><a href="chap-blocks.html#regression-analysis"><i class="fa fa-check"></i><b>1.3.3</b> Regression Analysis</a></li>
-<li class="chapter" data-level="1.3.4" data-path="chap-blocks.html"><a href="chap-blocks.html#numerical-optimization"><i class="fa fa-check"></i><b>1.3.4</b> Numerical Optimization</a></li>
+<li class="chapter" data-level="1.4" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.4</b> Statistical and Mathematical Techniques</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap-blocks.html"><a href="chap-blocks.html#continuous-and-discrete-distributions"><i class="fa fa-check"></i><b>1.4.1</b> Continuous and Discrete Distributions</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chap-blocks.html"><a href="chap-blocks.html#iterative-proportional-fitting"><i class="fa fa-check"></i><b>1.4.2</b> Iterative Proportional Fitting</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#regression-analysis"><i class="fa fa-check"></i><b>1.4.3</b> Regression Analysis</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chap-blocks.html"><a href="chap-blocks.html#numerical-optimization"><i class="fa fa-check"></i><b>1.4.4</b> Numerical Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#hw-blocks"><i class="fa fa-check"></i>Homework</a></li>
 </ul></li>
@@ -175,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="B.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>B.4.2</b> Modifying and Summarizing Tables</a></li>
 <li class="chapter" data-level="B.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>B.4.3</b> Mutate, Summarize, and Group</a></li>
 </ul></li>
-<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot</code></a></li>
+<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot2</code></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -230,11 +236,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -242,12 +250,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -259,6 +266,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

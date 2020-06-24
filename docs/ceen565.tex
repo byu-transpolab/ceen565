@@ -1,35 +1,46 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Urban Transportation Planning},
-            pdfauthor={Gregory Macfarlane, PhD, PE},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Urban Transportation Planning},
+  pdfauthor={Gregory Macfarlane, PhD, PE},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -71,6 +82,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -80,53 +99,21 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Urban Transportation Planning}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{Gregory Macfarlane, PhD, PE}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2020-05-08}
-
 \usepackage{booktabs}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Urban Transportation Planning}
+\author{Gregory Macfarlane, PhD, PE}
+\date{2020-06-24}
 
 \begin{document}
 \maketitle
@@ -201,6 +188,8 @@ distributed under creative commons licenses. Specific attributions are below:
 \tightlist
 \item
   training wheels by Marco Fleseri from the Noun Project
+\item
+  Cover image: TRAX by Ashton Bingham on Unsplash
 \end{itemize}
 
 \hypertarget{chap-blocks}{%
@@ -271,6 +260,9 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.
 
+\hypertarget{the-four-step-process}{%
+\section{The Four-Step Process}\label{the-four-step-process}}
+
 \hypertarget{travel-model-building-blocks}{%
 \section{Travel Model Building Blocks}\label{travel-model-building-blocks}}
 
@@ -299,7 +291,7 @@ person traveled, which travel mode they used, and what was their reason for
 making the trip.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{images/travel_diary} \caption{Example travel survey diary entry.}\label{fig:travel-diary}
+\includegraphics[width=0.7\linewidth]{images/travel_diary} \caption{Example travel survey diary entry.}\label{fig:travel-diary}
 \end{figure}
 
 Not all travel surveys are filled in on forms; nowadays telephone interviews or
@@ -469,29 +461,142 @@ surveys less frequently, or to reduce survey sample sizes.
 \hypertarget{travel-analysis-zones}{%
 \subsection{Travel Analysis Zones}\label{travel-analysis-zones}}
 
-SE Data
+Activities in travel demand models happen in \textbf{Travel Analysis Zones} (TAZs), and
+the model tries to represent trips between the TAZs. Because trips inside a TAZ
+--- called intrazonal trips --- are not included in the travel model, each TAZ should
+be sufficiently small such that these trips do not affect the models' ability
+to forecast travel on roadways. The following rules are helpful when drawing
+TAZ's:
 
-Households
+\begin{itemize}
+\tightlist
+\item
+  The TAZ should not stretch across major roadways
+\item
+  The TAZ should contain principally one land use, though in some areas this
+  is not possible.
+\item
+  In areas with more dense population, the TAZ should be smaller.
+\end{itemize}
 
-Firms
+Each TAZ is associated with \textbf{socioeconomic} (SE) data, or information about
+the people, businesses, and other activities that are located in the TAZ.
+
+\textbf{Households} are a basic unit of analysis in many economic and statistical
+analyses. A household typically consists of one or more \textbf{persons} who reside
+in the same dwelling. Individuals living in the same dwelling can make up a
+family or other group of individuals; that is, a group of roommates is
+considered a household. Not everyone lives in households, however; some people
+live in what are called group quarters: military barracks, college dormitories,
+monasteries, prisons, etc. Travel models need to handle these people as well, but
+in this class we will focus on people who live in households.
+
+\textbf{Firms} are another basic unit of analysis in many economic and statistical
+analyses. A firm is a profit-seeking person or entity that provides goods or
+services in exchange for monetary transactions. A firm can provide raw resources,
+manufactured resources, other services, or be a place of employment. In some
+cases, a firm may be another household. Each firm will have an \emph{industry} type.
+Examples of industry types include office, service, manufacturing, retail, etc.
+In many SE data files, firms are simply represented as the total number of
+jobs in a TAZ belonging to each industry. Other \textbf{Institutions} including
+academic, government, and non-profit entities will also be represented in the SE
+data in terms of their jobs.
+
+It is important to be precise in our definitions when put all of these different
+things into a single file. A typical SE table for a small region is given in
+Table \ref{tab:setable}. Note the following relationships:
+
+\begin{itemize}
+\tightlist
+\item
+  Persons live in Households
+\item
+  Workers are Persons who have a Job
+\item
+  Firms have employees who work at a Jobs
+\end{itemize}
+
+When we talk about ``how many jobs'' are in a TAZ, we mean ``How many people do
+the firms located in that TAZ employ,'' and not ``how many people who live
+in that TAZ are workers.''
+
+\begin{table}
+
+\caption{\label{tab:setable}Example SE Table}
+\centering
+\begin{tabular}[t]{r|r|r|r|r|r|r}
+\hline
+taz & persons & hh & workers & retail & office & manufacturing\\
+\hline
+1 & 32 & 37 & 9 & 111 & 73 & 2\\
+\hline
+2 & 36 & 36 & 16 & 132 & 54 & 11\\
+\hline
+3 & 47 & 42 & 15 & 138 & 60 & 0\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{highway-networks}{%
 \subsection{Highway Networks}\label{highway-networks}}
 
-Functional Type
+\textbf{Nodes} \textbf{Centroids} are special nodes that indicate where the activities
+of a TAZ are located on average.
 
-Link capacity
+\textbf{Links} \textbf{Centroid connectors} are special links that connect centroids to a network.
 
-Free-flow speed
+\textbf{Functional Types} or \textbf{Functional Classes} are used to describe each road in
+a system, and its importance to that system. The types include: freeway,
+principal arterial, minor arterial, major collector, minor collector, local
+street, and cul-de-sac.
 
-Centroid connectors
+\begin{itemize}
+\item
+  Freeways are provided almost exclusively to enhance mobility for through traffic.
+  Access to freeways is provided only at specific grade-separated interhcanges,
+  with no direct access to the freeway from adjacent land except by way of those
+  interachanges.
+\item
+  Major and minor arterials primary function is to provide mobility of through
+  traffic. However, arterials also connect to both collectors and local roads and
+  streets and many arteirals provide direct access to adjacent development.
+\item
+  Major and minor collectors connect arterials to local roads and provide access
+  to adjacent development. Mobility for through traffic is less important.
+\item
+  Local streets exist primarily to serve adjacent development. Mobility for
+  thorough traffic is not important.
+\item
+  Cul-de-sacs only serve adjacent development.
+
+  *See \citeyearpar{2018aashto} for more information.
+\end{itemize}
+
+Streets of a functional class below collector are almost never included in
+travel models, unless they provide essential connectivity between other roads.
+Entire neighborhoods of local streets may be represented by just a few centroid
+connectors.
+
+\textbf{Free-flow speed}, or \textbf{FFS}, is the speed vehicles travel when the road
+is empty.
+
+\textbf{Link capacity} is the maximum number of vehicles a \emph{link}, or section of
+road, can optimally transport between two \emph{nodes}. The capacity is a function
+of functional type, lanes, free-flow speed, area type, etc.
 
 \hypertarget{matrices}{%
 \subsection{Matrices}\label{matrices}}
 
-Skim matrices
+\textbf{Skim matrices}, or skims, are matrices of impedance estimates between zones,
+used to estimate zone to zone travel demand. Impedance typically measures a
+travel time, distance, and travel costs. These measures can be combined to
+create generalized costs. Skims often distinguish between single occupancy and
+shared ride vehicles, though this ability is not always beneficial.
 
-OD matrices
+\textbf{OD matrices}, or origin-destination matrices, represent the number of trips
+from the origin \emph{i} (row) to the destination \emph{j} (column). The number in the
+corresponding cell \emph{T\_\{ij\}} is the total number of trips made, and represents
+the demand between two zones in a network.
 
 \hypertarget{statistical-and-mathematical-techniques}{%
 \section{Statistical and Mathematical Techniques}\label{statistical-and-mathematical-techniques}}
@@ -502,6 +607,135 @@ quantitative techniques. In this section we will present some of these technique
 \hypertarget{continuous-and-discrete-distributions}{%
 \subsection{Continuous and Discrete Distributions}\label{continuous-and-discrete-distributions}}
 
+In general, statistical variables can fall into one of two categories:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Continuous} variables can take any numeric value along some range
+\item
+  \emph{Discrete} variables can take some limited set of predetermined values
+\end{itemize}
+
+A simplistic definition would be to say that continuous variables are numeric and
+discrete variables are non-numeric. A continuous variable has statistics such as
+a \emph{mean}, but these statistics do not make sense on discrete variables. In the
+NHTS trips dataset, we can compute a mean trip miles, but we cannot compute
+a mean trip purpose. Or we can't compute a mean that makes sense.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# mean of continuous variable: trip length}
+\KeywordTok{weighted.mean}\NormalTok{(nhts_trips}\OperatorTok{$}\NormalTok{trpmiles, nhts_trips}\OperatorTok{$}\NormalTok{wttrdfin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10.69119
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# mean of categorical variable: trip purpose}
+\KeywordTok{weighted.mean}\NormalTok{(nhts_trips}\OperatorTok{$}\NormalTok{trippurp, nhts_trips}\OperatorTok{$}\NormalTok{wttrdfin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in x * w: non-numeric argument to binary operator
+\end{verbatim}
+
+What we can do, however, is we can print a summary table showing the number
+of observations that fit in each trip purpose category. Note that sometimes there
+will be a category devoted to data that is missing or otherwise invalid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(nhts_trips}\OperatorTok{$}\NormalTok{trippurp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##       -9      HBO   HBSHOP HBSOCREC      HBW      NHB 
+##       32   190022   195188   110235   117368   310727
+\end{verbatim}
+
+Sometimes it is handy to split a continuous variable into categories so that you
+can treat it as a discrete variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nhts_trips}\OperatorTok{$}\NormalTok{miles_cat <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(nhts_trips}\OperatorTok{$}\NormalTok{trpmiles, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{100}\NormalTok{, }\OtherTok{Inf}\NormalTok{))}
+\KeywordTok{table}\NormalTok{(nhts_trips}\OperatorTok{$}\NormalTok{miles_cat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    (0,10]   (10,20]   (20,30]   (30,50]  (50,100] (100,Inf] 
+##    719812    113383     38724     25064     14388     11060
+\end{verbatim}
+
+When we visualize the distribution of a continuous variable, we might
+use a histogram or density plot, but with a discrete variable we would use
+a bar chart.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(nhts_trips, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trpmiles, }\DataTypeTok{weight =}\NormalTok{ wttrdfin)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Trip Distance [Miles]"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Weighted Trips"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{ceen565_files/figure-latex/dc-histogram-1.pdf}
+\caption{\label{fig:dc-histogram}Visualizing a continuous distribution with a histogram.}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(nhts_trips, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as_factor}\NormalTok{(trippurp, }\DataTypeTok{levels =} \StringTok{"labels"}\NormalTok{), }
+                       \DataTypeTok{weight =}\NormalTok{ wttrdfin)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Trip Purpose"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Weighted Trips"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{ceen565_files/figure-latex/dc-barchart-1.pdf}
+\caption{\label{fig:dc-barchart}Visualizing a discrete distribution with a bar chart.}
+\end{figure}
+
+To this point we've only looked at the distribution of one variable at a time.
+There are lots of cases where someone might want to consider the \emph{joint}
+distribution of two variables. This joint distribution tells you what is happening
+with one variable while the other variable changes. In a table like the one below,
+the margins of the table (the row and column sums) contain the single variable
+distribution. So sometimes we call these the \emph{marginal} distributions.
+
+\begin{verbatim}
+##            
+##                 -9    HBO HBSHOP HBSOCREC    HBW    NHB
+##   (0,10]        23 156315 162602    84980  67162 248730
+##   (10,20]        6  20856  19881    13054  28018  31568
+##   (20,30]        1   5635   5469     4361  12087  11171
+##   (30,50]        0   3592   3427     3267   7117   7661
+##   (50,100]       2   1943   2150     2504   2332   5457
+##   (100,Inf]      0   1231   1634     1844    597   5754
+\end{verbatim}
+
+We can visualize joint distributions as well, and sometimes the results are
+quite nice.
+
+\includegraphics{ceen565_files/figure-latex/dc-joint-hist-1.pdf}
+
 \hypertarget{iterative-proportional-fitting}{%
 \subsection{Iterative Proportional Fitting}\label{iterative-proportional-fitting}}
 
@@ -509,6 +743,8 @@ Iterative Proportional Fitting
 
 \hypertarget{regression-analysis}{%
 \subsection{Regression Analysis}\label{regression-analysis}}
+
+We often want to know what will happen
 
 \hypertarget{numerical-optimization}{%
 \subsection{Numerical Optimization}\label{numerical-optimization}}
@@ -681,11 +917,11 @@ and the RStudio interface all systems is very similar with minor differences.
 \section{RStudio Orientation}\label{rstudio-orientation}}
 
 The video below gives a very basic introduction to RStudio.
+There is also a very useful
+\href{https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet}{cheat sheet}
+for working with RStudio on the Rstudio website.
 
 \href{https://www.youtube.com/embed/c3xv8wOIj-g}{\includegraphics{ceen565_files/figure-latex/orient-video-1.pdf}}
-
-There is also a very useful \href{https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet}{cheat sheet}
-for working with RStudio on the Rstudio website.
 
 \hypertarget{r-packages}{%
 \section{R Packages}\label{r-packages}}
@@ -699,20 +935,28 @@ is to use the \texttt{install.packages()} function in the console. The problems
 in this book are solved with two additional packages\footnote{\texttt{tidyverse} is actually a collection
   of very useful packages, and many R users just load them all at once.}:
 
-RStudio also contains an interface to install and update packages.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{) }\CommentTok{# a suite of tools for data manipulation}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"mlogit"}\NormalTok{) }\CommentTok{# discrete choice modeling}
+\end{Highlighting}
+\end{Shaded}
+
+RStudio also contains a GUI interface to install and update packages.
 
 Sometimes you want to use a package that has not yet been pushed to CRAN, the
 international repository of ``approved'' R packages. This may be because the package
 is in development, or for one reason or another does not meet CRAN's standards
 for completeness, etc. Oftentimes, the package has been made available on GitHub.
-You can install a package directly from GitHub with the \texttt{devtools} library. One
+You can install a package directly from GitHub with the \texttt{remotes} library. One
 package you will want for the problems in the book is the \texttt{nhts2017} package
-on the BYU Transportation GitHub account.
+on the BYU Transportation GitHub account. This package contains datasets from the 2017
+\href{https://nhts.ornl.gov/}{National Household Travel Survey}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{# tools for installing development packages}
-\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"gregmacfarlane/nhts2017"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{) }\CommentTok{# tools for installing development packages}
+\NormalTok{remotes}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"byu-transpolab/nhts2017"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -764,6 +1008,14 @@ x & y\\
 2 & red\\
 \hline
 \end{tabular}
+
+You can also use a function from a package without loading the library if you
+use the \texttt{::} operator, like you did in the \texttt{remotes::install\_github()} command
+earlier. This is handy if you only want to use one function from a package, or
+if you have two functions from different packages with the same name. For example,
+when you loaded the \texttt{tidyverse} package, R told you that \texttt{dplyr::filter()} would
+mask \texttt{stats::filter()}. So if for some reason you wanted to use the \texttt{filter} function
+from the \texttt{stats} package, you would need to use \texttt{stats::filter()}.
 
 \hypertarget{working-with-tables}{%
 \section{Working with Tables}\label{working-with-tables}}
@@ -1119,10 +1371,160 @@ But some people report very long trips! You might want to filter your data more
 carefully for real analyses.
 \end{quote}
 
-\hypertarget{graphics-with-ggplot}{%
-\section{\texorpdfstring{Graphics with \texttt{ggplot}}{Graphics with ggplot}}\label{graphics-with-ggplot}}
+\hypertarget{graphics-with-ggplot2}{%
+\section{\texorpdfstring{Graphics with \texttt{ggplot2}}{Graphics with ggplot2}}\label{graphics-with-ggplot2}}
 
-\bibliography{book.bib}
+The \texttt{ggplot2} package included in the \texttt{tidyverse} is a very powerful graphics
+engine with a relatively easy-to-learn grammar. In fact, the \texttt{gg} stands for
+``grammar of graphics'' as it implements the grammar defined by
+\citet{wilkinson2012grammar}.
 
+The basic structure of a \texttt{ggplot2} call is constructed as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(data, }\KeywordTok{aes}\NormalTok{(data aesthetics like x and y coordinates, fill color, etc.)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_}\NormalTok{(geometry style like point, bar, or histogram) }\OperatorTok{+}
+\StringTok{  }\NormalTok{other things like theme, color, and labels}
+\end{Highlighting}
+\end{Shaded}
+
+For instance, we can create a histogram of trip lengths in the NHTS by giving
+the \texttt{x} aesthetic as the \texttt{trpmiles} column in the \texttt{mytrips} dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mytrips, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trpmiles)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+\end{verbatim}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-histogram-1.pdf}
+
+This ends up not being very informative because some trips are very long. We
+could filter out the long trips within the data argument (Note that we still have
+the \texttt{-9} values from the missing information).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mytrips }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(trpmiles }\OperatorTok{<}\StringTok{ }\DecValTok{50}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trpmiles)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-histogram1-1.pdf}
+
+If we wanted to see the difference between lengths of different trip purposes,
+we could add a color aesthetic to the plot. By default this stacks the two
+categories on top of each other.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mytrips }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(trpmiles }\OperatorTok{<}\StringTok{ }\DecValTok{50}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trpmiles, }\DataTypeTok{fill =}\NormalTok{ trippurp)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-histogram2-1.pdf}
+
+You could also show this with a statistical density (the integral of a density
+function is 1). Note that the \texttt{alpha} statement for fill opacity is not included
+as an aesthetic, because it doesn't vary based on any data elements in the way that
+the \texttt{x} and \texttt{fill} variables do.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(mytrips }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(trpmiles }\OperatorTok{<}\StringTok{ }\DecValTok{50}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trpmiles, }\DataTypeTok{fill =}\NormalTok{ trippurp)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-histogram3-1.pdf}
+
+\texttt{ggplot2} also excels at building statistical analysis on top of visualization.
+For example, we can see the odometer reading for cars still on the road in
+2017 by make.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# sample 15k vehicles built after 1980 with 0 to 500k miles}
+\NormalTok{vehicles <-}\StringTok{ }\NormalTok{nhts_vehicles }\OperatorTok{%>%}
+\StringTok{  }\CommentTok{# convert numeric make to its labeled name, and then group into manufacturers}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{make =} \KeywordTok{as_factor}\NormalTok{(make, }\DataTypeTok{levels =} \StringTok{"labels"}\NormalTok{),}
+    \DataTypeTok{vehtype =} \KeywordTok{as_factor}\NormalTok{(vehtype, }\DataTypeTok{levels =} \StringTok{"labels"}\NormalTok{),}
+    \DataTypeTok{make =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Toyota"}\NormalTok{, }\StringTok{"Lexus"}\NormalTok{, }\StringTok{"Subaru"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Toyota"}\NormalTok{,}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Ford"}\NormalTok{, }\StringTok{"Lincoln"}\NormalTok{, }\StringTok{"Mercury"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Ford"}\NormalTok{,}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Chevrolet"}\NormalTok{, }\StringTok{"GMC"}\NormalTok{, }\StringTok{"Pontiac"}\NormalTok{, }\StringTok{"Buick"}\NormalTok{, }\StringTok{"Cadillac"}\NormalTok{, }\StringTok{"Saturn"}\NormalTok{) }\OperatorTok{~}\StringTok{ "GM"}\NormalTok{,}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Volkswagen"}\NormalTok{, }\StringTok{"Audi"}\NormalTok{, }\StringTok{"Porsche"}\NormalTok{) }\OperatorTok{~}\StringTok{ "VW"}\NormalTok{,}
+      \KeywordTok{grepl}\NormalTok{(}\StringTok{"Jeep"}\NormalTok{, make) }\OperatorTok{|}\StringTok{ }\KeywordTok{grepl}\NormalTok{(}\StringTok{"Chrysler"}\NormalTok{, make) }\OperatorTok{|}\StringTok{ }\NormalTok{make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Ram"}\NormalTok{, }\StringTok{"Dodge"}\NormalTok{, }\StringTok{"Plymouth"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Chrysler"}\NormalTok{,}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Honda"}\NormalTok{, }\StringTok{"Acura"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Honda"}\NormalTok{,}
+\NormalTok{      make }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Nissan/Datsun"}\NormalTok{, }\StringTok{"Infiniti"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Nissan"}\NormalTok{,}
+      \OtherTok{TRUE} \OperatorTok{~}\StringTok{ "Other"} \CommentTok{# all other makes}
+\NormalTok{    ) ,}
+    \DataTypeTok{vehtype =} \KeywordTok{case_when}\NormalTok{(}
+      \KeywordTok{grepl}\NormalTok{(}\StringTok{"Car"}\NormalTok{, vehtype) }\OperatorTok{~}\StringTok{ "Car"}\NormalTok{,}
+      \KeywordTok{grepl}\NormalTok{(}\StringTok{"Van"}\NormalTok{, vehtype) }\OperatorTok{~}\StringTok{ "Van"}\NormalTok{,}
+      \KeywordTok{grepl}\NormalTok{(}\StringTok{"SUV"}\NormalTok{, vehtype) }\OperatorTok{~}\StringTok{ "SUV"}\NormalTok{,}
+      \KeywordTok{grepl}\NormalTok{(}\StringTok{"Pickup"}\NormalTok{, vehtype) }\OperatorTok{~}\StringTok{ "Pickup"}\NormalTok{,}
+      \OtherTok{TRUE} \OperatorTok{~}\StringTok{ "Other"}\NormalTok{,}
+\NormalTok{    )}
+\NormalTok{  ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(vehtype }\OperatorTok{!=}\StringTok{ "Other"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(vehyear }\OperatorTok{>}\StringTok{ }\DecValTok{1980}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(od_read }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{, od_read }\OperatorTok{<}\StringTok{ }\DecValTok{500000}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{sample_n}\NormalTok{(}\DecValTok{15000}\NormalTok{) }
+  
+\KeywordTok{ggplot}\NormalTok{(vehicles, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ vehyear, }\DataTypeTok{y =}\NormalTok{ od_read, }\DataTypeTok{color =}\NormalTok{ make)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-vehicles-1.pdf}
+
+This is pretty unreadable. But we can add a few things to the figure to make it a little bit
+easier to understand, like smooth average lines and point transparency.
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-vehicles1-1.pdf}
+
+Let's break this out by vehicle type.
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-vehicles2-1.pdf}
+
+And let's clean it up a little bit. This is a figure that you could put in a
+published journal article or thesis, if it showed something you cared to show.
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{ceen565_files/figure-latex/ggplot2-vehicles3-1.pdf}
+
+  \bibliography{book.bib}
 
 \end{document}
