@@ -296,6 +296,21 @@ street, and cul-de-sac.
 <!-- Can you include a bulleted list describing in more detail what these
 facilities are like? Maybe even a figure of a few of them would be helpful. -->
 
+  - Freeways are provided almost exclusively to enhance mobility for through traffic.
+    Access to freeways is provided only at specific grade-separated interhcanges,
+    with no direct access to the freeway from adjacent land except by way of those 
+    interachanges.
+  - Major and minor arterials primary function is to provide mobility of through 
+    traffic. However, arterials also connect to both collectors and local roads and
+    streets and many arteirals provide direct access to adjacent development. 
+  - Major and minor collectors connect arterials to local roads and provide access
+    to adjacent development. Mobility for through traffic is less important. 
+  - Local streets exist primarily to serve adjacent development. Mobility for 
+    thorough traffic is not important.
+  - Cul-de-sacs only serve adjacent development. 
+  
+    *See -@2018aashto for more information.
+
 Streets of a functional class below collector are almost never included in 
 travel models, unless they provide essential connectivity between other roads. 
 Entire neighborhoods of local streets may be represented by just a few centroid
