@@ -35,13 +35,14 @@ and the RStudio interface all systems is very similar with minor differences.
 
 ## RStudio Orientation
 The video below gives a very basic introduction to RStudio.
+There is also a very useful 
+[cheat sheet](https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet) 
+for working with RStudio on the Rstudio website.
 
 ```{r orient-video, echo = FALSE}
 knitr::include_url("https://www.youtube.com/embed/c3xv8wOIj-g")
 ```
 
- There is also a very useful [cheat sheet](https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet) 
-for working with RStudio on the Rstudio website.
 
 ## R Packages
 
@@ -54,20 +55,21 @@ is to use the `install.packages()` function in the console. The problems
 in this book are solved with two additional packages^[`tidyverse` is actually a collection
 of very useful packages, and many R users just load them all at once.]:
 
-```{r neededpackages, eval = FALSE}
+```{r neededpackages, eval = FALSE, echo=TRUE}
 install.packages("tidyverse") # a suite of tools for data manipulation
 install.packages("mlogit") # discrete choice modeling
 ```
 
-RStudio also contains an interface to install and update packages.
+RStudio also contains a GUI interface to install and update packages.
 
 Sometimes you want to use a package that has not yet been pushed to CRAN, the
 international repository of "approved" R packages. This may be because the package
 is in development, or for one reason or another does not meet CRAN's standards
 for completeness, etc. Oftentimes, the package has been made available on GitHub.
-You can install a package directly from GitHub with the `devtools` library. One
+You can install a package directly from GitHub with the `remotes` library. One
 package you will want for the problems in the book is the `nhts2017` package
-on the BYU Transportation GitHub account.
+on the BYU Transportation GitHub account. This package contains datasets from the 2017
+[National Household Travel Survey](https://nhts.ornl.gov/).
 
 ```{r github-install, eval = FALSE, echo = TRUE}
 install.packages("remotes") # tools for installing development packages
@@ -96,6 +98,14 @@ to make pretty tables is part of the `knitr` package.
 library(knitr)
 kable(tibble(x = 1:2, y = c("blue", "red")))
 ```
+
+You can also use a function from a package without loading the library if you 
+use the `::` operator, like you did in the `remotes::install_github()` command
+earlier. This is handy if you only want to use one function from a package, or 
+if you have two functions from different packages with the same name. For example, 
+when you loaded the `tidyverse` package, R told you that `dplyr::filter()` would
+mask `stats::filter()`. So if for some reason you wanted to use the `filter` function
+from the `stats` package, you would need to use `stats::filter()`.
 
 ## Working with Tables
 
