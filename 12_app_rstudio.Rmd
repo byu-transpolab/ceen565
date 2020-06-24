@@ -71,7 +71,7 @@ on the BYU Transportation GitHub account.
 
 ```{r github-install, eval = FALSE, echo = TRUE}
 install.packages("devtools") # tools for installing development packages
-devtools::install_github("gregmacfarlane/nhts2017")
+devtools::install_github("byu-transpolab/nhts2017")
 ```
 
 You only need to **install** a package once on your computer. But every time you 
