@@ -240,4 +240,122 @@ mytrips %>%
 But some people report very long trips! You might want to filter your data more
 carefully for real analyses.
 
-## Graphics with `ggplot`
+## Graphics with `ggplot2`
+
+The `ggplot2` package included in the `tidyverse` is a very powerful graphics
+engine with a relatively easy-to-learn grammar. In fact, the `gg` stands for 
+"grammar of graphics" as it implements the grammar defined by 
+@wilkinson2012grammar.
+
+The basic structure of a `ggplot2` call is constructed as follows:
+
+```{r ggplot2-example, echo = TRUE, eval = FALSE}
+ggplot(data, aes(data aesthetics like x and y coordinates, fill color, etc.)) +
+  geom_(geometry style like point, bar, or histogram) +
+  other things like theme, color, and labels
+```
+
+For instance, we can create a histogram of trip lengths in the NHTS by giving 
+the `x` aesthetic as the `trpmiles` column in the `mytrips` dataset.
+
+```{r ggplot2-histogram, echo = TRUE}
+ggplot(mytrips, aes(x = trpmiles)) + 
+  geom_histogram()
+```
+
+This ends up not being very informative because some trips are very long. We 
+could filter out the long trips within the data argument (Note that we still have
+the `-9` values from the missing information). 
+
+```{r ggplot2-histogram1, echo = TRUE}
+ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles)) + 
+  geom_histogram()
+```
+
+If we wanted to see the difference between lengths of different trip purposes,
+we could add a color aesthetic to the plot. By default this stacks the two 
+categories on top of each other. 
+
+```{r ggplot2-histogram2, echo = TRUE}
+ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = trippurp)) + 
+  geom_histogram()
+```
+
+You could also show this with a statistical density (the integral of a density
+function is 1). Note that the `alpha` statement for fill opacity is not included
+as an aesthetic, because it doesn't vary based on any data elements in the way that
+the `x` and `fill` variables do.
+
+```{r ggplot2-histogram3, echo = TRUE}
+ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = trippurp)) + 
+  geom_density(alpha = 0.5)
+```
+
+`ggplot2` also excels at building statistical analysis on top of visualization.
+For example, we can see the odometer reading for cars still on the road in 
+2017 by make.
+
+```{r ggplot2-vehicles, echo = TRUE}
+# sample 15k vehicles built after 1980 with 0 to 500k miles
+vehicles <- nhts_vehicles %>%
+  # convert numeric make to its labeled name, and then group into manufacturers
+  mutate(
+    make = as_factor(make, levels = "labels"),
+    vehtype = as_factor(vehtype, levels = "labels"),
+    make = case_when(
+      make %in% c("Toyota", "Lexus", "Subaru") ~ "Toyota",
+      make %in% c("Ford", "Lincoln", "Mercury") ~ "Ford",
+      make %in% c("Chevrolet", "GMC", "Pontiac", "Buick", "Cadillac", "Saturn") ~ "GM",
+      make %in% c("Volkswagen", "Audi", "Porsche") ~ "VW",
+      grepl("Jeep", make) | grepl("Chrysler", make) | make %in% c("Ram", "Dodge", "Plymouth") ~ "Chrysler",
+      make %in% c("Honda", "Acura") ~ "Honda",
+      make %in% c("Nissan/Datsun", "Infiniti") ~ "Nissan",
+      TRUE ~ "Other" # all other makes
+    ) ,
+    vehtype = case_when(
+      grepl("Car", vehtype) ~ "Car",
+      grepl("Van", vehtype) ~ "Van",
+      grepl("SUV", vehtype) ~ "SUV",
+      grepl("Pickup", vehtype) ~ "Pickup",
+      TRUE ~ "Other",
+    )
+  ) %>%
+  filter(vehtype != "Other") %>%
+  filter(vehyear > 1980) %>%
+  filter(od_read > 0, od_read < 500000) %>%
+  sample_n(15000) 
+  
+ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
+  geom_point()
+```
+
+This is pretty unreadable. But we can add a few things to the figure to make it a little bit
+easier to understand, like smooth average lines and point transparency. 
+
+```{r ggplot2-vehicles1}
+ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
+  geom_point(alpha = 0.5) + 
+  stat_smooth(method = "loess")
+```
+
+Let's break this out by vehicle type.
+
+```{r ggplot2-vehicles2}
+ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
+  geom_point(alpha = 0.5) + 
+  stat_smooth(method = "loess") + 
+  facet_wrap(~vehtype)
+```
+
+And let's clean it up a little bit. This is a figure that you could put in a
+published journal article or thesis, if it showed something you cared to show.
+
+```{r ggplot2-vehicles3}
+ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
+  geom_point(alpha = 0.5) + 
+  scale_color_discrete("Manufacturer") + 
+  stat_smooth(method = "loess") + 
+  facet_wrap(~vehtype) +
+  xlab("Vehicle Model Year") + ylab("Odometer Reading") +
+  theme_bw()
+```
