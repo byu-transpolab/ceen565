@@ -252,9 +252,9 @@ packages make it easier to read manipulate, and vizualize data; to estimate
 statistical models; or to communicate results.</p>
 <p>There are a number of ways to install additional packages. The most straightforward
 is to use the <code>install.packages()</code> function in the console. The problems
-in this book are solved with two additional packages<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="app-rstudio.html#cb17-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co"># a suite of tools for data manipulation</span></span>
-<span id="cb17-2"><a href="app-rstudio.html#cb17-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;mlogit&quot;</span>) <span class="co"># discrete choice modeling</span></span></code></pre></div>
+in this book are solved with two additional packages<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="app-rstudio.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>) <span class="co"># a suite of tools for data manipulation</span></span>
+<span id="cb1-2"><a href="app-rstudio.html#cb1-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;mlogit&quot;</span>) <span class="co"># discrete choice modeling</span></span></code></pre></div>
 <p>RStudio also contains a GUI interface to install and update packages.</p>
 <p>Sometimes you want to use a package that has not yet been pushed to CRAN, the
 international repository of “approved” R packages. This may be because the package
@@ -264,37 +264,28 @@ You can install a package directly from GitHub with the <code>remotes</code> lib
 package you will want for the problems in the book is the <code>nhts2017</code> package
 on the BYU Transportation GitHub account. This package contains datasets from the 2017
 <a href="https://nhts.ornl.gov/">National Household Travel Survey</a>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="app-rstudio.html#cb18-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>) <span class="co"># tools for installing development packages</span></span>
-<span id="cb18-2"><a href="app-rstudio.html#cb18-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;byu-transpolab/nhts2017&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="app-rstudio.html#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>) <span class="co"># tools for installing development packages</span></span>
+<span id="cb2-2"><a href="app-rstudio.html#cb2-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;byu-transpolab/nhts2017&quot;</span>)</span></code></pre></div>
 <p>You only need to <strong>install</strong> a package once on your computer. But every time you
 want to <strong>use</strong> a function in a package, you need to load the package with the
 <code>library()</code> function. To load the <code>tidyverse</code> packages, for instance,</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="app-rstudio.html#cb19-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="app-rstudio.html#cb3-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2.9000     ✓ purrr   0.3.4     
+## ✓ tibble  3.0.1          ✓ dplyr   0.8.5     
+## ✓ tidyr   1.1.0          ✓ stringr 1.4.0     
+## ✓ readr   1.3.1          ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>If you get errors when you run the command above, it means that for some reason
 you did not install the package correctly. And if you ever get an error like</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="app-rstudio.html#cb20-1"></a><span class="kw">kable</span>(<span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)))</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">x</th>
-<th align="left">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">blue</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">red</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="app-rstudio.html#cb7-1"></a><span class="kw">kable</span>(<span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)))</span></code></pre></div>
+<pre><code>## Error in kable(tibble(x = 1:2, y = c(&quot;blue&quot;, &quot;red&quot;))): could not find function &quot;kable&quot;</code></pre>
 <p>It often means you didn’t load the library. In this case, the <code>kable()</code> function
 to make pretty tables is part of the <code>knitr</code> package.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="app-rstudio.html#cb21-1"></a><span class="kw">library</span>(knitr)</span>
-<span id="cb21-2"><a href="app-rstudio.html#cb21-2"></a><span class="kw">kable</span>(<span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="app-rstudio.html#cb9-1"></a><span class="kw">library</span>(knitr)</span>
+<span id="cb9-2"><a href="app-rstudio.html#cb9-2"></a><span class="kw">kable</span>(<span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -330,7 +321,7 @@ is formatted in columns of variables and rows of observations.</p>
 <p>Tabular data is often stored in a comma-separated values <code>.csv</code> file. To read a
 data file like this in R, you can use the <code>read_csv()</code> function included in
 <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="app-rstudio.html#cb22-1"></a>trips &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/demo_trips.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="app-rstudio.html#cb10-1"></a>trips &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/demo_trips.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   houseid = col_double(),
@@ -338,7 +329,7 @@ data file like this in R, you can use the <code>read_csv()</code> function inclu
 ##   trpmiles = col_double(),
 ##   trippurp = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="app-rstudio.html#cb24-1"></a><span class="kw">print</span>(trips)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="app-rstudio.html#cb12-1"></a><span class="kw">print</span>(trips)</span></code></pre></div>
 <pre><code>## # A tibble: 924 x 4
 ##     houseid personid trpmiles trippurp
 ##       &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   
@@ -357,8 +348,8 @@ data file like this in R, you can use the <code>read_csv()</code> function inclu
 we want to keep ID values as characters, even if they are numeric (this preserves
 leading <code>0</code> values, etc.). We can tell <code>read_csv()</code> what types we expect with
 the <code>col_types</code> argument.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="app-rstudio.html#cb26-1"></a>trips &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/demo_trips.csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">list</span>(<span class="dt">houseid =</span> <span class="kw">col_character</span>()))</span>
-<span id="cb26-2"><a href="app-rstudio.html#cb26-2"></a><span class="kw">print</span>(trips)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="app-rstudio.html#cb14-1"></a>trips &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/demo_trips.csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">list</span>(<span class="dt">houseid =</span> <span class="kw">col_character</span>()))</span>
+<span id="cb14-2"><a href="app-rstudio.html#cb14-2"></a><span class="kw">print</span>(trips)</span></code></pre></div>
 <pre><code>## # A tibble: 924 x 4
 ##    houseid  personid trpmiles trippurp
 ##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   
@@ -380,42 +371,40 @@ the <code>col_types</code> argument.</p>
 <p>In much of this section, we will work with the <code>nhts_trips</code> dataset of trips
 from the 2017 National Household Travel Survey in the <code>nhts2017</code> package you
 installed from GitHub above.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="app-rstudio.html#cb28-1"></a><span class="kw">library</span>(nhts2017)</span>
-<span id="cb28-2"><a href="app-rstudio.html#cb28-2"></a>trips &lt;-<span class="st"> </span>nhts_trips</span>
-<span id="cb28-3"><a href="app-rstudio.html#cb28-3"></a>trips</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="app-rstudio.html#cb16-1"></a><span class="kw">library</span>(nhts2017)</span>
+<span id="cb16-2"><a href="app-rstudio.html#cb16-2"></a>trips &lt;-<span class="st"> </span>nhts_trips</span>
+<span id="cb16-3"><a href="app-rstudio.html#cb16-3"></a>trips</span></code></pre></div>
 <pre><code>## # A tibble: 923,572 x 62
-##    houseid personid tdtrpnum strttime            endtime            
-##    &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             
-##  1 300000… 01              1 2017-10-10 10:00:00 2017-10-10 10:15:00
-##  2 300000… 01              2 2017-10-10 15:10:00 2017-10-10 15:30:00
-##  3 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00
-##  4 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00
-##  5 300000… 03              1 2017-10-10 08:45:00 2017-10-10 09:00:00
-##  6 300000… 03              2 2017-10-10 14:30:00 2017-10-10 14:45:00
-##  7 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00
-##  8 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00
-##  9 300000… 01              1 2017-10-10 05:50:00 2017-10-10 06:05:00
-## 10 300000… 01              2 2017-10-10 07:00:00 2017-10-10 07:15:00
-## # … with 923,562 more rows, and 57 more variables: trvlcmin &lt;dbl+lbl&gt;,
-## #   trpmiles &lt;dbl+lbl&gt;, trptrans &lt;chr+lbl&gt;, trpaccmp &lt;dbl+lbl&gt;,
-## #   trphhacc &lt;dbl+lbl&gt;, vehid &lt;chr+lbl&gt;, trwaittm &lt;dbl+lbl&gt;,
-## #   numtrans &lt;dbl+lbl&gt;, tracctm &lt;dbl+lbl&gt;, drop_prk &lt;chr+lbl&gt;,
-## #   tregrtm &lt;dbl+lbl&gt;, whodrove &lt;chr+lbl&gt;, whyfrom &lt;chr+lbl&gt;,
-## #   loop_trip &lt;chr+lbl&gt;, trphhveh &lt;chr+lbl&gt;, hhmemdrv &lt;chr+lbl&gt;,
-## #   hh_ontd &lt;dbl+lbl&gt;, nonhhcnt &lt;dbl+lbl&gt;, numontrp &lt;dbl+lbl&gt;,
-## #   psgr_flg &lt;chr+lbl&gt;, pubtrans &lt;chr+lbl&gt;, trippurp &lt;chr+lbl&gt;,
-## #   dweltime &lt;dbl+lbl&gt;, tdwknd &lt;chr+lbl&gt;, vmt_mile &lt;dbl+lbl&gt;,
-## #   drvr_flg &lt;chr+lbl&gt;, whytrp1s &lt;chr+lbl&gt;, ontd_p1 &lt;chr+lbl&gt;,
-## #   ontd_p2 &lt;chr+lbl&gt;, ontd_p3 &lt;chr+lbl&gt;, ontd_p4 &lt;chr+lbl&gt;,
-## #   ontd_p5 &lt;chr+lbl&gt;, ontd_p6 &lt;chr+lbl&gt;, ontd_p7 &lt;chr+lbl&gt;,
-## #   ontd_p8 &lt;chr+lbl&gt;, ontd_p9 &lt;chr+lbl&gt;, ontd_p10 &lt;chr+lbl&gt;,
-## #   ontd_p11 &lt;chr+lbl&gt;, ontd_p12 &lt;chr+lbl&gt;, ontd_p13 &lt;chr+lbl&gt;,
-## #   tdcaseid &lt;chr&gt;, tracc_wlk &lt;chr+lbl&gt;, tracc_pov &lt;chr+lbl&gt;,
-## #   tracc_bus &lt;chr+lbl&gt;, tracc_crl &lt;chr+lbl&gt;, tracc_sub &lt;chr+lbl&gt;,
-## #   tracc_oth &lt;chr+lbl&gt;, tregr_wlk &lt;chr+lbl&gt;, tregr_pov &lt;chr+lbl&gt;,
-## #   tregr_bus &lt;chr+lbl&gt;, tregr_crl &lt;chr+lbl&gt;, tregr_sub &lt;chr+lbl&gt;,
-## #   tregr_oth &lt;chr+lbl&gt;, whyto &lt;chr+lbl&gt;, gasprice &lt;chr&gt;, wttrdfin &lt;dbl&gt;,
-## #   whytrp90 &lt;chr+lbl&gt;</code></pre>
+##    houseid personid tdtrpnum strttime            endtime             trvlcmin
+##    &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;              &lt;dbl+lb&gt;
+##  1 300000… 01              1 2017-10-10 10:00:00 2017-10-10 10:15:00       15
+##  2 300000… 01              2 2017-10-10 15:10:00 2017-10-10 15:30:00       20
+##  3 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00      120
+##  4 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00      150
+##  5 300000… 03              1 2017-10-10 08:45:00 2017-10-10 09:00:00       15
+##  6 300000… 03              2 2017-10-10 14:30:00 2017-10-10 14:45:00       15
+##  7 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00       15
+##  8 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00       10
+##  9 300000… 01              1 2017-10-10 05:50:00 2017-10-10 06:05:00       15
+## 10 300000… 01              2 2017-10-10 07:00:00 2017-10-10 07:15:00       15
+## # … with 923,562 more rows, and 56 more variables: trpmiles &lt;dbl+lbl&gt;,
+## #   trptrans &lt;chr+lbl&gt;, trpaccmp &lt;dbl+lbl&gt;, trphhacc &lt;dbl+lbl&gt;,
+## #   vehid &lt;chr+lbl&gt;, trwaittm &lt;dbl+lbl&gt;, numtrans &lt;dbl+lbl&gt;, tracctm &lt;dbl+lbl&gt;,
+## #   drop_prk &lt;chr+lbl&gt;, tregrtm &lt;dbl+lbl&gt;, whodrove &lt;chr+lbl&gt;,
+## #   whyfrom &lt;chr+lbl&gt;, loop_trip &lt;chr+lbl&gt;, trphhveh &lt;chr+lbl&gt;,
+## #   hhmemdrv &lt;chr+lbl&gt;, hh_ontd &lt;dbl+lbl&gt;, nonhhcnt &lt;dbl+lbl&gt;,
+## #   numontrp &lt;dbl+lbl&gt;, psgr_flg &lt;chr+lbl&gt;, pubtrans &lt;chr+lbl&gt;,
+## #   trippurp &lt;chr+lbl&gt;, dweltime &lt;dbl+lbl&gt;, tdwknd &lt;chr+lbl&gt;,
+## #   vmt_mile &lt;dbl+lbl&gt;, drvr_flg &lt;chr+lbl&gt;, whytrp1s &lt;chr+lbl&gt;,
+## #   ontd_p1 &lt;chr+lbl&gt;, ontd_p2 &lt;chr+lbl&gt;, ontd_p3 &lt;chr+lbl&gt;, ontd_p4 &lt;chr+lbl&gt;,
+## #   ontd_p5 &lt;chr+lbl&gt;, ontd_p6 &lt;chr+lbl&gt;, ontd_p7 &lt;chr+lbl&gt;, ontd_p8 &lt;chr+lbl&gt;,
+## #   ontd_p9 &lt;chr+lbl&gt;, ontd_p10 &lt;chr+lbl&gt;, ontd_p11 &lt;chr+lbl&gt;,
+## #   ontd_p12 &lt;chr+lbl&gt;, ontd_p13 &lt;chr+lbl&gt;, tdcaseid &lt;chr&gt;,
+## #   tracc_wlk &lt;chr+lbl&gt;, tracc_pov &lt;chr+lbl&gt;, tracc_bus &lt;chr+lbl&gt;,
+## #   tracc_crl &lt;chr+lbl&gt;, tracc_sub &lt;chr+lbl&gt;, tracc_oth &lt;chr+lbl&gt;,
+## #   tregr_wlk &lt;chr+lbl&gt;, tregr_pov &lt;chr+lbl&gt;, tregr_bus &lt;chr+lbl&gt;,
+## #   tregr_crl &lt;chr+lbl&gt;, tregr_sub &lt;chr+lbl&gt;, tregr_oth &lt;chr+lbl&gt;,
+## #   whyto &lt;chr+lbl&gt;, gasprice &lt;chr&gt;, wttrdfin &lt;dbl&gt;, whytrp90 &lt;chr+lbl&gt;</code></pre>
 <div id="select-filter-and-chains" class="section level4">
 <h4><span class="header-section-number">B.4.2.1</span> Select, Filter, and Chains</h4>
 <p>This table is pretty overwhelming. But there are two functions that can help
@@ -426,58 +415,53 @@ us pare it down:</p>
 </ul>
 <p>Let’s practice this by selecting our <code>trips</code> dataset to only include the id
 columns, the trip length, and the trip purpose.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="app-rstudio.html#cb30-1"></a><span class="kw">select</span>(trips, houseid, personid, trpmiles, trippurp)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="app-rstudio.html#cb18-1"></a><span class="kw">select</span>(trips, houseid, personid, trpmiles, trippurp)</span></code></pre></div>
 <pre><code>## # A tibble: 923,572 x 4
-##    houseid  personid  trpmiles trippurp                                    
-##    &lt;chr&gt;    &lt;chr&gt;    &lt;dbl+lbl&gt; &lt;chr+lbl&gt;                                   
-##  1 30000007 01            5.24 HBO [Home-based trip (other)]               
-##  2 30000007 01            5.15 HBO [Home-based trip (other)]               
-##  3 30000007 02           84.0  HBW [Home-based trip (work)]                
-##  4 30000007 02           81.6  HBW [Home-based trip (work)]                
-##  5 30000007 03            2.25 HBO [Home-based trip (other)]               
-##  6 30000007 03            2.24 HBO [Home-based trip (other)]               
-##  7 30000008 01            8.02 HBW [Home-based trip (work)]                
-##  8 30000008 01            8.02 HBW [Home-based trip (work)]                
-##  9 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreatio…
-## 10 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreatio…
+##    houseid  personid  trpmiles trippurp                                        
+##    &lt;chr&gt;    &lt;chr&gt;    &lt;dbl+lbl&gt; &lt;chr+lbl&gt;                                       
+##  1 30000007 01            5.24 HBO [Home-based trip (other)]                   
+##  2 30000007 01            5.15 HBO [Home-based trip (other)]                   
+##  3 30000007 02           84.0  HBW [Home-based trip (work)]                    
+##  4 30000007 02           81.6  HBW [Home-based trip (work)]                    
+##  5 30000007 03            2.25 HBO [Home-based trip (other)]                   
+##  6 30000007 03            2.24 HBO [Home-based trip (other)]                   
+##  7 30000008 01            8.02 HBW [Home-based trip (work)]                    
+##  8 30000008 01            8.02 HBW [Home-based trip (work)]                    
+##  9 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreational)]
+## 10 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreational)]
 ## # … with 923,562 more rows</code></pre>
 <p>Let’s also practice filtering the <code>trips</code> dataset to only include trips
 of the purpose “HBO” (home-based other). Notice how the number of rows
 in the table trips is much smaller.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="app-rstudio.html#cb32-1"></a><span class="kw">filter</span>(trips, trippurp <span class="op">==</span><span class="st"> &quot;HBW&quot;</span>) <span class="co"># use double equals as comparison</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="app-rstudio.html#cb20-1"></a><span class="kw">filter</span>(trips, trippurp <span class="op">==</span><span class="st"> &quot;HBW&quot;</span>) <span class="co"># use double equals as comparison</span></span></code></pre></div>
 <pre><code>## # A tibble: 117,368 x 62
-##    houseid personid tdtrpnum strttime            endtime            
-##    &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             
-##  1 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00
-##  2 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00
-##  3 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00
-##  4 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00
-##  5 300000… 01              5 2017-10-10 09:00:00 2017-10-10 09:20:00
-##  6 300000… 01              7 2017-10-10 15:30:00 2017-10-10 16:05:00
-##  7 300000… 01              1 2017-10-10 08:00:00 2017-10-10 08:20:00
-##  8 300000… 01              2 2017-10-10 18:00:00 2017-10-10 20:00:00
-##  9 300000… 02              3 2017-10-10 09:00:00 2017-10-10 11:00:00
-## 10 300000… 02              4 2017-10-10 18:30:00 2017-10-10 20:30:00
-## # … with 117,358 more rows, and 57 more variables: trvlcmin &lt;dbl+lbl&gt;,
-## #   trpmiles &lt;dbl+lbl&gt;, trptrans &lt;chr+lbl&gt;, trpaccmp &lt;dbl+lbl&gt;,
-## #   trphhacc &lt;dbl+lbl&gt;, vehid &lt;chr+lbl&gt;, trwaittm &lt;dbl+lbl&gt;,
-## #   numtrans &lt;dbl+lbl&gt;, tracctm &lt;dbl+lbl&gt;, drop_prk &lt;chr+lbl&gt;,
-## #   tregrtm &lt;dbl+lbl&gt;, whodrove &lt;chr+lbl&gt;, whyfrom &lt;chr+lbl&gt;,
-## #   loop_trip &lt;chr+lbl&gt;, trphhveh &lt;chr+lbl&gt;, hhmemdrv &lt;chr+lbl&gt;,
-## #   hh_ontd &lt;dbl+lbl&gt;, nonhhcnt &lt;dbl+lbl&gt;, numontrp &lt;dbl+lbl&gt;,
-## #   psgr_flg &lt;chr+lbl&gt;, pubtrans &lt;chr+lbl&gt;, trippurp &lt;chr+lbl&gt;,
-## #   dweltime &lt;dbl+lbl&gt;, tdwknd &lt;chr+lbl&gt;, vmt_mile &lt;dbl+lbl&gt;,
-## #   drvr_flg &lt;chr+lbl&gt;, whytrp1s &lt;chr+lbl&gt;, ontd_p1 &lt;chr+lbl&gt;,
-## #   ontd_p2 &lt;chr+lbl&gt;, ontd_p3 &lt;chr+lbl&gt;, ontd_p4 &lt;chr+lbl&gt;,
-## #   ontd_p5 &lt;chr+lbl&gt;, ontd_p6 &lt;chr+lbl&gt;, ontd_p7 &lt;chr+lbl&gt;,
-## #   ontd_p8 &lt;chr+lbl&gt;, ontd_p9 &lt;chr+lbl&gt;, ontd_p10 &lt;chr+lbl&gt;,
-## #   ontd_p11 &lt;chr+lbl&gt;, ontd_p12 &lt;chr+lbl&gt;, ontd_p13 &lt;chr+lbl&gt;,
-## #   tdcaseid &lt;chr&gt;, tracc_wlk &lt;chr+lbl&gt;, tracc_pov &lt;chr+lbl&gt;,
-## #   tracc_bus &lt;chr+lbl&gt;, tracc_crl &lt;chr+lbl&gt;, tracc_sub &lt;chr+lbl&gt;,
-## #   tracc_oth &lt;chr+lbl&gt;, tregr_wlk &lt;chr+lbl&gt;, tregr_pov &lt;chr+lbl&gt;,
-## #   tregr_bus &lt;chr+lbl&gt;, tregr_crl &lt;chr+lbl&gt;, tregr_sub &lt;chr+lbl&gt;,
-## #   tregr_oth &lt;chr+lbl&gt;, whyto &lt;chr+lbl&gt;, gasprice &lt;chr&gt;, wttrdfin &lt;dbl&gt;,
-## #   whytrp90 &lt;chr+lbl&gt;</code></pre>
+##    houseid personid tdtrpnum strttime            endtime             trvlcmin
+##    &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;                 &lt;dbl&gt;
+##  1 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00      120
+##  2 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00      150
+##  3 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00       15
+##  4 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00       10
+##  5 300000… 01              5 2017-10-10 09:00:00 2017-10-10 09:20:00       20
+##  6 300000… 01              7 2017-10-10 15:30:00 2017-10-10 16:05:00       35
+##  7 300000… 01              1 2017-10-10 08:00:00 2017-10-10 08:20:00       20
+##  8 300000… 01              2 2017-10-10 18:00:00 2017-10-10 20:00:00      120
+##  9 300000… 02              3 2017-10-10 09:00:00 2017-10-10 11:00:00      120
+## 10 300000… 02              4 2017-10-10 18:30:00 2017-10-10 20:30:00      120
+## # … with 117,358 more rows, and 56 more variables: trpmiles &lt;dbl&gt;,
+## #   trptrans &lt;chr&gt;, trpaccmp &lt;dbl&gt;, trphhacc &lt;dbl&gt;, vehid &lt;chr&gt;,
+## #   trwaittm &lt;dbl&gt;, numtrans &lt;dbl&gt;, tracctm &lt;dbl&gt;, drop_prk &lt;chr&gt;,
+## #   tregrtm &lt;dbl&gt;, whodrove &lt;chr&gt;, whyfrom &lt;chr&gt;, loop_trip &lt;chr&gt;,
+## #   trphhveh &lt;chr&gt;, hhmemdrv &lt;chr&gt;, hh_ontd &lt;dbl&gt;, nonhhcnt &lt;dbl&gt;,
+## #   numontrp &lt;dbl&gt;, psgr_flg &lt;chr&gt;, pubtrans &lt;chr&gt;, trippurp &lt;chr&gt;,
+## #   dweltime &lt;dbl&gt;, tdwknd &lt;chr&gt;, vmt_mile &lt;dbl&gt;, drvr_flg &lt;chr&gt;,
+## #   whytrp1s &lt;chr&gt;, ontd_p1 &lt;chr&gt;, ontd_p2 &lt;chr&gt;, ontd_p3 &lt;chr&gt;, ontd_p4 &lt;chr&gt;,
+## #   ontd_p5 &lt;chr&gt;, ontd_p6 &lt;chr&gt;, ontd_p7 &lt;chr&gt;, ontd_p8 &lt;chr&gt;, ontd_p9 &lt;chr&gt;,
+## #   ontd_p10 &lt;chr&gt;, ontd_p11 &lt;chr&gt;, ontd_p12 &lt;chr&gt;, ontd_p13 &lt;chr&gt;,
+## #   tdcaseid &lt;chr&gt;, tracc_wlk &lt;chr&gt;, tracc_pov &lt;chr&gt;, tracc_bus &lt;chr&gt;,
+## #   tracc_crl &lt;chr&gt;, tracc_sub &lt;chr&gt;, tracc_oth &lt;chr&gt;, tregr_wlk &lt;chr&gt;,
+## #   tregr_pov &lt;chr&gt;, tregr_bus &lt;chr&gt;, tregr_crl &lt;chr&gt;, tregr_sub &lt;chr&gt;,
+## #   tregr_oth &lt;chr&gt;, whyto &lt;chr&gt;, gasprice &lt;chr&gt;, wttrdfin &lt;dbl&gt;,
+## #   whytrp90 &lt;chr&gt;</code></pre>
 <p>One <strong><em>extremely</em></strong> useful feature of the <code>tidyverse</code> functions is the chain
 operator, <code>%&gt;%</code>. This operator basically does the opposite of the assigment
 operator <code>&lt;-</code>. While assignment says “take the thing on the right and put it in
@@ -485,31 +469,31 @@ the thing on the left,” chain says “take the thing on the left and pass it a
 the first argument of the function on the right.” What this means in practice is
 we can chain R commands together. So we can do the <code>select</code> <em>and</em> the <code>filter</code>
 statements in sequence,</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="app-rstudio.html#cb34-1"></a>trips <span class="op">%&gt;%</span></span>
-<span id="cb34-2"><a href="app-rstudio.html#cb34-2"></a><span class="st">  </span><span class="kw">select</span>(houseid, personid, trpmiles, trippurp) <span class="op">%&gt;%</span></span>
-<span id="cb34-3"><a href="app-rstudio.html#cb34-3"></a><span class="st">  </span><span class="kw">filter</span>(trippurp <span class="op">==</span><span class="st"> &quot;HBW&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="app-rstudio.html#cb22-1"></a>trips <span class="op">%&gt;%</span></span>
+<span id="cb22-2"><a href="app-rstudio.html#cb22-2"></a><span class="st">  </span><span class="kw">select</span>(houseid, personid, trpmiles, trippurp) <span class="op">%&gt;%</span></span>
+<span id="cb22-3"><a href="app-rstudio.html#cb22-3"></a><span class="st">  </span><span class="kw">filter</span>(trippurp <span class="op">==</span><span class="st"> &quot;HBW&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 117,368 x 4
-##    houseid  personid  trpmiles trippurp                    
-##    &lt;chr&gt;    &lt;chr&gt;    &lt;dbl+lbl&gt; &lt;chr+lbl&gt;                   
-##  1 30000007 02           84.0  HBW [Home-based trip (work)]
-##  2 30000007 02           81.6  HBW [Home-based trip (work)]
-##  3 30000008 01            8.02 HBW [Home-based trip (work)]
-##  4 30000008 01            8.02 HBW [Home-based trip (work)]
-##  5 30000012 01            4.29 HBW [Home-based trip (work)]
-##  6 30000012 01            6.82 HBW [Home-based trip (work)]
-##  7 30000039 01           11.5  HBW [Home-based trip (work)]
-##  8 30000041 01           73.7  HBW [Home-based trip (work)]
-##  9 30000041 02           77.9  HBW [Home-based trip (work)]
-## 10 30000041 02           77.8  HBW [Home-based trip (work)]
+##    houseid  personid trpmiles trippurp
+##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   
+##  1 30000007 02          84.0  HBW     
+##  2 30000007 02          81.6  HBW     
+##  3 30000008 01           8.02 HBW     
+##  4 30000008 01           8.02 HBW     
+##  5 30000012 01           4.29 HBW     
+##  6 30000012 01           6.82 HBW     
+##  7 30000039 01          11.5  HBW     
+##  8 30000041 01          73.7  HBW     
+##  9 30000041 02          77.9  HBW     
+## 10 30000041 02          77.8  HBW     
 ## # … with 117,358 more rows</code></pre>
 <p>Notice that we didn’t have to tell the <code>select</code> and <code>filter</code> functions the
 name of the table we were selecting or filtering. The <code>%&gt;%</code> chain operator did
 that for us.</p>
 <p>Once we have the table we want, we can assign it to a new object called <code>mytrips</code>
 In this case, let’s get <code>HBO</code> and <code>HBW</code> trips.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="app-rstudio.html#cb36-1"></a>mytrips &lt;-<span class="st"> </span>trips <span class="op">%&gt;%</span></span>
-<span id="cb36-2"><a href="app-rstudio.html#cb36-2"></a><span class="st">  </span><span class="kw">select</span>(houseid, personid, trpmiles, trippurp) <span class="op">%&gt;%</span></span>
-<span id="cb36-3"><a href="app-rstudio.html#cb36-3"></a><span class="st">  </span><span class="kw">filter</span>(trippurp <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;HBW&quot;</span>, <span class="st">&quot;HBO&quot;</span>)) <span class="co"># use %in% for multiple comparisons.</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="app-rstudio.html#cb24-1"></a>mytrips &lt;-<span class="st"> </span>trips <span class="op">%&gt;%</span></span>
+<span id="cb24-2"><a href="app-rstudio.html#cb24-2"></a><span class="st">  </span><span class="kw">select</span>(houseid, personid, trpmiles, trippurp) <span class="op">%&gt;%</span></span>
+<span id="cb24-3"><a href="app-rstudio.html#cb24-3"></a><span class="st">  </span><span class="kw">filter</span>(trippurp <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;HBW&quot;</span>, <span class="st">&quot;HBO&quot;</span>)) <span class="co"># use %in% for multiple comparisons.</span></span></code></pre></div>
 </div>
 </div>
 <div id="app-mutate" class="section level3">
@@ -517,53 +501,53 @@ In this case, let’s get <code>HBO</code> and <code>HBW</code> trips.</p>
 <p>Sometimes we want to calculate a new column in a table, or recompute an
 existing column. We can do that with the <code>mutate</code> function, and we can
 put more than one calculation in a single <code>mutate</code> statement.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="app-rstudio.html#cb37-1"></a>mytrips <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="app-rstudio.html#cb37-2"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb37-3"><a href="app-rstudio.html#cb37-3"></a>    <span class="dt">tripkm =</span> trpmiles <span class="op">*</span><span class="st"> </span><span class="fl">1.60934</span>, <span class="co"># convert miles to km.</span></span>
-<span id="cb37-4"><a href="app-rstudio.html#cb37-4"></a>    <span class="dt">longtrip =</span> <span class="kw">ifelse</span>(tripkm <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>) <span class="co"># is trip longer than 50 km?</span></span>
-<span id="cb37-5"><a href="app-rstudio.html#cb37-5"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="app-rstudio.html#cb25-1"></a>mytrips <span class="op">%&gt;%</span></span>
+<span id="cb25-2"><a href="app-rstudio.html#cb25-2"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb25-3"><a href="app-rstudio.html#cb25-3"></a>    <span class="dt">tripkm =</span> trpmiles <span class="op">*</span><span class="st"> </span><span class="fl">1.60934</span>, <span class="co"># convert miles to km.</span></span>
+<span id="cb25-4"><a href="app-rstudio.html#cb25-4"></a>    <span class="dt">longtrip =</span> <span class="kw">ifelse</span>(tripkm <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>) <span class="co"># is trip longer than 50 km?</span></span>
+<span id="cb25-5"><a href="app-rstudio.html#cb25-5"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 307,390 x 6
-##    houseid  personid  trpmiles trippurp                     tripkm longtrip
-##    &lt;chr&gt;    &lt;chr&gt;    &lt;dbl+lbl&gt; &lt;chr+lbl&gt;                  &lt;dbl+lb&gt; &lt;lgl&gt;   
-##  1 30000007 01            5.24 HBO [Home-based trip (oth…     8.44 FALSE   
-##  2 30000007 01            5.15 HBO [Home-based trip (oth…     8.29 FALSE   
-##  3 30000007 02           84.0  HBW [Home-based trip (wor…   135.   TRUE    
-##  4 30000007 02           81.6  HBW [Home-based trip (wor…   131.   TRUE    
-##  5 30000007 03            2.25 HBO [Home-based trip (oth…     3.62 FALSE   
-##  6 30000007 03            2.24 HBO [Home-based trip (oth…     3.61 FALSE   
-##  7 30000008 01            8.02 HBW [Home-based trip (wor…    12.9  FALSE   
-##  8 30000008 01            8.02 HBW [Home-based trip (wor…    12.9  FALSE   
-##  9 30000012 01            4.29 HBW [Home-based trip (wor…     6.91 FALSE   
-## 10 30000012 01            6.82 HBW [Home-based trip (wor…    11.0  FALSE   
+##    houseid  personid trpmiles trippurp tripkm longtrip
+##    &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;lgl&gt;   
+##  1 30000007 01           5.24 HBO        8.44 FALSE   
+##  2 30000007 01           5.15 HBO        8.29 FALSE   
+##  3 30000007 02          84.0  HBW      135.   TRUE    
+##  4 30000007 02          81.6  HBW      131.   TRUE    
+##  5 30000007 03           2.25 HBO        3.62 FALSE   
+##  6 30000007 03           2.24 HBO        3.61 FALSE   
+##  7 30000008 01           8.02 HBW       12.9  FALSE   
+##  8 30000008 01           8.02 HBW       12.9  FALSE   
+##  9 30000012 01           4.29 HBW        6.91 FALSE   
+## 10 30000012 01           6.82 HBW       11.0  FALSE   
 ## # … with 307,380 more rows</code></pre>
 <p>Other times we want to calculate summary statistics like means.
 For this we can use the <code>summarize()</code> function.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="app-rstudio.html#cb39-1"></a>mytrips <span class="op">%&gt;%</span></span>
-<span id="cb39-2"><a href="app-rstudio.html#cb39-2"></a><span class="st">  </span><span class="kw">summarize</span>(</span>
-<span id="cb39-3"><a href="app-rstudio.html#cb39-3"></a>    <span class="dt">mean_trip =</span> <span class="kw">mean</span>(trpmiles),</span>
-<span id="cb39-4"><a href="app-rstudio.html#cb39-4"></a>    <span class="dt">sd_trip =</span> <span class="kw">sd</span>(trpmiles),</span>
-<span id="cb39-5"><a href="app-rstudio.html#cb39-5"></a>    <span class="dt">max_trip =</span> <span class="kw">max</span>(trpmiles),</span>
-<span id="cb39-6"><a href="app-rstudio.html#cb39-6"></a>    <span class="dt">min_trip =</span> <span class="kw">min</span>(trpmiles)</span>
-<span id="cb39-7"><a href="app-rstudio.html#cb39-7"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="app-rstudio.html#cb27-1"></a>mytrips <span class="op">%&gt;%</span></span>
+<span id="cb27-2"><a href="app-rstudio.html#cb27-2"></a><span class="st">  </span><span class="kw">summarize</span>(</span>
+<span id="cb27-3"><a href="app-rstudio.html#cb27-3"></a>    <span class="dt">mean_trip =</span> <span class="kw">mean</span>(trpmiles),</span>
+<span id="cb27-4"><a href="app-rstudio.html#cb27-4"></a>    <span class="dt">sd_trip =</span> <span class="kw">sd</span>(trpmiles),</span>
+<span id="cb27-5"><a href="app-rstudio.html#cb27-5"></a>    <span class="dt">max_trip =</span> <span class="kw">max</span>(trpmiles),</span>
+<span id="cb27-6"><a href="app-rstudio.html#cb27-6"></a>    <span class="dt">min_trip =</span> <span class="kw">min</span>(trpmiles)</span>
+<span id="cb27-7"><a href="app-rstudio.html#cb27-7"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##   mean_trip sd_trip max_trip min_trip
 ##       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
 ## 1      9.81    32.1    5699.       -9</code></pre>
 <p>Finally, we sometimes want to calculate summary statistics for different groups.
 We can tell <code>tidyverse</code> to group our tables with the <code>group_by()</code> function.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="app-rstudio.html#cb41-1"></a>mytrips <span class="op">%&gt;%</span></span>
-<span id="cb41-2"><a href="app-rstudio.html#cb41-2"></a><span class="st">  </span><span class="kw">group_by</span>(trippurp) <span class="op">%&gt;%</span></span>
-<span id="cb41-3"><a href="app-rstudio.html#cb41-3"></a><span class="st">  </span><span class="kw">summarize</span>(</span>
-<span id="cb41-4"><a href="app-rstudio.html#cb41-4"></a>    <span class="dt">mean_trip =</span> <span class="kw">mean</span>(trpmiles),</span>
-<span id="cb41-5"><a href="app-rstudio.html#cb41-5"></a>    <span class="dt">sd_trip =</span> <span class="kw">sd</span>(trpmiles),</span>
-<span id="cb41-6"><a href="app-rstudio.html#cb41-6"></a>    <span class="dt">max_trip =</span> <span class="kw">max</span>(trpmiles),</span>
-<span id="cb41-7"><a href="app-rstudio.html#cb41-7"></a>    <span class="dt">min_trip =</span> <span class="kw">min</span>(trpmiles)</span>
-<span id="cb41-8"><a href="app-rstudio.html#cb41-8"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="app-rstudio.html#cb29-1"></a>mytrips <span class="op">%&gt;%</span></span>
+<span id="cb29-2"><a href="app-rstudio.html#cb29-2"></a><span class="st">  </span><span class="kw">group_by</span>(trippurp) <span class="op">%&gt;%</span></span>
+<span id="cb29-3"><a href="app-rstudio.html#cb29-3"></a><span class="st">  </span><span class="kw">summarize</span>(</span>
+<span id="cb29-4"><a href="app-rstudio.html#cb29-4"></a>    <span class="dt">mean_trip =</span> <span class="kw">mean</span>(trpmiles),</span>
+<span id="cb29-5"><a href="app-rstudio.html#cb29-5"></a>    <span class="dt">sd_trip =</span> <span class="kw">sd</span>(trpmiles),</span>
+<span id="cb29-6"><a href="app-rstudio.html#cb29-6"></a>    <span class="dt">max_trip =</span> <span class="kw">max</span>(trpmiles),</span>
+<span id="cb29-7"><a href="app-rstudio.html#cb29-7"></a>    <span class="dt">min_trip =</span> <span class="kw">min</span>(trpmiles)</span>
+<span id="cb29-8"><a href="app-rstudio.html#cb29-8"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
-##   trippurp                      mean_trip sd_trip max_trip min_trip
-## * &lt;chr+lbl&gt;                         &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 HBO [Home-based trip (other)]      7.73    32.0    5699.       -9
-## 2 HBW [Home-based trip (work)]      13.2     31.9    2927.       -9</code></pre>
+##   trippurp mean_trip sd_trip max_trip min_trip
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 HBO           7.73    32.0    5699.       -9
+## 2 HBW          13.2     31.9    2927.       -9</code></pre>
 <blockquote>
 <p>As you might expect, work trips are on average longer than other kinds of trips.
 But some people report very long trips! You might want to filter your data more
@@ -578,95 +562,105 @@ engine with a relatively easy-to-learn grammar. In fact, the <code>gg</code> sta
 “grammar of graphics” as it implements the grammar defined by
 <span class="citation">Wilkinson (<a href="#ref-wilkinson2012grammar" role="doc-biblioref">2012</a>)</span>.</p>
 <p>The basic structure of a <code>ggplot2</code> call is constructed as follows:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="app-rstudio.html#cb43-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(data aesthetics like x and y coordinates, fill color, etc.)) <span class="op">+</span></span>
-<span id="cb43-2"><a href="app-rstudio.html#cb43-2"></a><span class="st">  </span><span class="kw">geom_</span>(geometry style like point, bar, or histogram) <span class="op">+</span></span>
-<span id="cb43-3"><a href="app-rstudio.html#cb43-3"></a><span class="st">  </span>other things like theme, color, and labels</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="app-rstudio.html#cb31-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(data aesthetics like x and y coordinates, fill color, etc.)) <span class="op">+</span></span>
+<span id="cb31-2"><a href="app-rstudio.html#cb31-2"></a><span class="st">  </span><span class="kw">geom_</span>(geometry style like point, bar, or histogram) <span class="op">+</span></span>
+<span id="cb31-3"><a href="app-rstudio.html#cb31-3"></a><span class="st">  </span>other things like theme, color, and labels</span></code></pre></div>
 <p>For instance, we can create a histogram of trip lengths in the NHTS by giving
 the <code>x</code> aesthetic as the <code>trpmiles</code> column in the <code>mytrips</code> dataset.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="app-rstudio.html#cb44-1"></a><span class="kw">ggplot</span>(mytrips, <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb44-2"><a href="app-rstudio.html#cb44-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
-<pre><code>## Don&#39;t know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="app-rstudio.html#cb32-1"></a><span class="kw">ggplot</span>(mytrips, <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb32-2"><a href="app-rstudio.html#cb32-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-histogram-1.png" width="672" /></p>
 <p>This ends up not being very informative because some trips are very long. We
 could filter out the long trips within the data argument (Note that we still have
 the <code>-9</code> values from the missing information).</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="app-rstudio.html#cb47-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb47-2"><a href="app-rstudio.html#cb47-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="app-rstudio.html#cb34-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb34-2"><a href="app-rstudio.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-histogram1-1.png" width="672" /></p>
 <p>If we wanted to see the difference between lengths of different trip purposes,
 we could add a color aesthetic to the plot. By default this stacks the two
 categories on top of each other.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="app-rstudio.html#cb49-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles, <span class="dt">fill =</span> trippurp)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb49-2"><a href="app-rstudio.html#cb49-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="app-rstudio.html#cb36-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles, <span class="dt">fill =</span> trippurp)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb36-2"><a href="app-rstudio.html#cb36-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-histogram2-1.png" width="672" /></p>
 <p>You could also show this with a statistical density (the integral of a density
 function is 1). Note that the <code>alpha</code> statement for fill opacity is not included
 as an aesthetic, because it doesn’t vary based on any data elements in the way that
 the <code>x</code> and <code>fill</code> variables do.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="app-rstudio.html#cb51-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles, <span class="dt">fill =</span> trippurp)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-2"><a href="app-rstudio.html#cb51-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="app-rstudio.html#cb38-1"></a><span class="kw">ggplot</span>(mytrips <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(trpmiles <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>), <span class="kw">aes</span>(<span class="dt">x =</span> trpmiles, <span class="dt">fill =</span> trippurp)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb38-2"><a href="app-rstudio.html#cb38-2"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="ceen565_files/figure-html/ggplot2-histogram3-1.png" width="672" /></p>
 <p><code>ggplot2</code> also excels at building statistical analysis on top of visualization.
 For example, we can see the odometer reading for cars still on the road in
 2017 by make.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="app-rstudio.html#cb52-1"></a><span class="co"># sample 15k vehicles built after 1980 with 0 to 500k miles</span></span>
-<span id="cb52-2"><a href="app-rstudio.html#cb52-2"></a>vehicles &lt;-<span class="st"> </span>nhts_vehicles <span class="op">%&gt;%</span></span>
-<span id="cb52-3"><a href="app-rstudio.html#cb52-3"></a><span class="st">  </span><span class="co"># convert numeric make to its labeled name, and then group into manufacturers</span></span>
-<span id="cb52-4"><a href="app-rstudio.html#cb52-4"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb52-5"><a href="app-rstudio.html#cb52-5"></a>    <span class="dt">make =</span> <span class="kw">as_factor</span>(make, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>),</span>
-<span id="cb52-6"><a href="app-rstudio.html#cb52-6"></a>    <span class="dt">vehtype =</span> <span class="kw">as_factor</span>(vehtype, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>),</span>
-<span id="cb52-7"><a href="app-rstudio.html#cb52-7"></a>    <span class="dt">make =</span> <span class="kw">case_when</span>(</span>
-<span id="cb52-8"><a href="app-rstudio.html#cb52-8"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Toyota&quot;</span>, <span class="st">&quot;Lexus&quot;</span>, <span class="st">&quot;Subaru&quot;</span>) <span class="op">~</span><span class="st"> &quot;Toyota&quot;</span>,</span>
-<span id="cb52-9"><a href="app-rstudio.html#cb52-9"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ford&quot;</span>, <span class="st">&quot;Lincoln&quot;</span>, <span class="st">&quot;Mercury&quot;</span>) <span class="op">~</span><span class="st"> &quot;Ford&quot;</span>,</span>
-<span id="cb52-10"><a href="app-rstudio.html#cb52-10"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Chevrolet&quot;</span>, <span class="st">&quot;GMC&quot;</span>, <span class="st">&quot;Pontiac&quot;</span>, <span class="st">&quot;Buick&quot;</span>, <span class="st">&quot;Cadillac&quot;</span>, <span class="st">&quot;Saturn&quot;</span>) <span class="op">~</span><span class="st"> &quot;GM&quot;</span>,</span>
-<span id="cb52-11"><a href="app-rstudio.html#cb52-11"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Volkswagen&quot;</span>, <span class="st">&quot;Audi&quot;</span>, <span class="st">&quot;Porsche&quot;</span>) <span class="op">~</span><span class="st"> &quot;VW&quot;</span>,</span>
-<span id="cb52-12"><a href="app-rstudio.html#cb52-12"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Jeep&quot;</span>, make) <span class="op">|</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&quot;Chrysler&quot;</span>, make) <span class="op">|</span><span class="st"> </span>make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ram&quot;</span>, <span class="st">&quot;Dodge&quot;</span>, <span class="st">&quot;Plymouth&quot;</span>) <span class="op">~</span><span class="st"> &quot;Chrysler&quot;</span>,</span>
-<span id="cb52-13"><a href="app-rstudio.html#cb52-13"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Honda&quot;</span>, <span class="st">&quot;Acura&quot;</span>) <span class="op">~</span><span class="st"> &quot;Honda&quot;</span>,</span>
-<span id="cb52-14"><a href="app-rstudio.html#cb52-14"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Nissan/Datsun&quot;</span>, <span class="st">&quot;Infiniti&quot;</span>) <span class="op">~</span><span class="st"> &quot;Nissan&quot;</span>,</span>
-<span id="cb52-15"><a href="app-rstudio.html#cb52-15"></a>      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span> <span class="co"># all other makes</span></span>
-<span id="cb52-16"><a href="app-rstudio.html#cb52-16"></a>    ) ,</span>
-<span id="cb52-17"><a href="app-rstudio.html#cb52-17"></a>    <span class="dt">vehtype =</span> <span class="kw">case_when</span>(</span>
-<span id="cb52-18"><a href="app-rstudio.html#cb52-18"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Car&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Car&quot;</span>,</span>
-<span id="cb52-19"><a href="app-rstudio.html#cb52-19"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Van&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Van&quot;</span>,</span>
-<span id="cb52-20"><a href="app-rstudio.html#cb52-20"></a>      <span class="kw">grepl</span>(<span class="st">&quot;SUV&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;SUV&quot;</span>,</span>
-<span id="cb52-21"><a href="app-rstudio.html#cb52-21"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Pickup&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Pickup&quot;</span>,</span>
-<span id="cb52-22"><a href="app-rstudio.html#cb52-22"></a>      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>,</span>
-<span id="cb52-23"><a href="app-rstudio.html#cb52-23"></a>    )</span>
-<span id="cb52-24"><a href="app-rstudio.html#cb52-24"></a>  ) <span class="op">%&gt;%</span></span>
-<span id="cb52-25"><a href="app-rstudio.html#cb52-25"></a><span class="st">  </span><span class="kw">filter</span>(vehtype <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb52-26"><a href="app-rstudio.html#cb52-26"></a><span class="st">  </span><span class="kw">filter</span>(vehyear <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span></span>
-<span id="cb52-27"><a href="app-rstudio.html#cb52-27"></a><span class="st">  </span><span class="kw">filter</span>(od_read <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, od_read <span class="op">&lt;</span><span class="st"> </span><span class="dv">500000</span>) <span class="op">%&gt;%</span></span>
-<span id="cb52-28"><a href="app-rstudio.html#cb52-28"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">15000</span>) </span>
-<span id="cb52-29"><a href="app-rstudio.html#cb52-29"></a>  </span>
-<span id="cb52-30"><a href="app-rstudio.html#cb52-30"></a><span class="kw">ggplot</span>(vehicles, <span class="kw">aes</span>(<span class="dt">x =</span> vehyear, <span class="dt">y =</span> od_read, <span class="dt">color =</span> make)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb52-31"><a href="app-rstudio.html#cb52-31"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="app-rstudio.html#cb39-1"></a><span class="kw">set.seed</span>(<span class="dv">15</span>) <span class="co"># so that we pull the same random records each time</span></span>
+<span id="cb39-2"><a href="app-rstudio.html#cb39-2"></a><span class="co"># sample 15k vehicles built after 1980 with 0 to 500k miles</span></span>
+<span id="cb39-3"><a href="app-rstudio.html#cb39-3"></a>vehicles &lt;-<span class="st"> </span>nhts_vehicles <span class="op">%&gt;%</span></span>
+<span id="cb39-4"><a href="app-rstudio.html#cb39-4"></a><span class="st">  </span><span class="co"># convert numeric make to its labeled name, and then group into manufacturers</span></span>
+<span id="cb39-5"><a href="app-rstudio.html#cb39-5"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
+<span id="cb39-6"><a href="app-rstudio.html#cb39-6"></a>    <span class="dt">make =</span> <span class="kw">as_factor</span>(make, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>),</span>
+<span id="cb39-7"><a href="app-rstudio.html#cb39-7"></a>    <span class="dt">vehtype =</span> <span class="kw">as_factor</span>(vehtype, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>),</span>
+<span id="cb39-8"><a href="app-rstudio.html#cb39-8"></a>    <span class="dt">make =</span> <span class="kw">case_when</span>(</span>
+<span id="cb39-9"><a href="app-rstudio.html#cb39-9"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Toyota&quot;</span>, <span class="st">&quot;Lexus&quot;</span>, <span class="st">&quot;Subaru&quot;</span>) <span class="op">~</span><span class="st"> &quot;Toyota&quot;</span>,</span>
+<span id="cb39-10"><a href="app-rstudio.html#cb39-10"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ford&quot;</span>, <span class="st">&quot;Lincoln&quot;</span>, <span class="st">&quot;Mercury&quot;</span>) <span class="op">~</span><span class="st"> &quot;Ford&quot;</span>,</span>
+<span id="cb39-11"><a href="app-rstudio.html#cb39-11"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Chevrolet&quot;</span>, <span class="st">&quot;GMC&quot;</span>, <span class="st">&quot;Pontiac&quot;</span>, <span class="st">&quot;Buick&quot;</span>, <span class="st">&quot;Cadillac&quot;</span>, <span class="st">&quot;Saturn&quot;</span>) <span class="op">~</span><span class="st"> &quot;GM&quot;</span>,</span>
+<span id="cb39-12"><a href="app-rstudio.html#cb39-12"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Volkswagen&quot;</span>, <span class="st">&quot;Audi&quot;</span>, <span class="st">&quot;Porsche&quot;</span>) <span class="op">~</span><span class="st"> &quot;VW&quot;</span>,</span>
+<span id="cb39-13"><a href="app-rstudio.html#cb39-13"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Jeep&quot;</span>, make) <span class="op">|</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&quot;Chrysler&quot;</span>, make) <span class="op">|</span><span class="st"> </span>make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Ram&quot;</span>, <span class="st">&quot;Dodge&quot;</span>, <span class="st">&quot;Plymouth&quot;</span>) <span class="op">~</span><span class="st"> &quot;Chrysler&quot;</span>,</span>
+<span id="cb39-14"><a href="app-rstudio.html#cb39-14"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Honda&quot;</span>, <span class="st">&quot;Acura&quot;</span>) <span class="op">~</span><span class="st"> &quot;Honda&quot;</span>,</span>
+<span id="cb39-15"><a href="app-rstudio.html#cb39-15"></a>      make <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Nissan/Datsun&quot;</span>, <span class="st">&quot;Infiniti&quot;</span>) <span class="op">~</span><span class="st"> &quot;Nissan&quot;</span>,</span>
+<span id="cb39-16"><a href="app-rstudio.html#cb39-16"></a>      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span> <span class="co"># all other makes</span></span>
+<span id="cb39-17"><a href="app-rstudio.html#cb39-17"></a>    ) ,</span>
+<span id="cb39-18"><a href="app-rstudio.html#cb39-18"></a>    <span class="dt">vehtype =</span> <span class="kw">case_when</span>(</span>
+<span id="cb39-19"><a href="app-rstudio.html#cb39-19"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Car&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Car&quot;</span>,</span>
+<span id="cb39-20"><a href="app-rstudio.html#cb39-20"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Van&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Van&quot;</span>,</span>
+<span id="cb39-21"><a href="app-rstudio.html#cb39-21"></a>      <span class="kw">grepl</span>(<span class="st">&quot;SUV&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;SUV&quot;</span>,</span>
+<span id="cb39-22"><a href="app-rstudio.html#cb39-22"></a>      <span class="kw">grepl</span>(<span class="st">&quot;Pickup&quot;</span>, vehtype) <span class="op">~</span><span class="st"> &quot;Pickup&quot;</span>,</span>
+<span id="cb39-23"><a href="app-rstudio.html#cb39-23"></a>      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>,</span>
+<span id="cb39-24"><a href="app-rstudio.html#cb39-24"></a>    )</span>
+<span id="cb39-25"><a href="app-rstudio.html#cb39-25"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb39-26"><a href="app-rstudio.html#cb39-26"></a><span class="st">  </span><span class="kw">filter</span>(vehtype <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb39-27"><a href="app-rstudio.html#cb39-27"></a><span class="st">  </span><span class="kw">filter</span>(vehyear <span class="op">&gt;</span><span class="st"> </span><span class="dv">1980</span>) <span class="op">%&gt;%</span></span>
+<span id="cb39-28"><a href="app-rstudio.html#cb39-28"></a><span class="st">  </span><span class="kw">filter</span>(od_read <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, od_read <span class="op">&lt;</span><span class="st"> </span><span class="dv">500000</span>) <span class="op">%&gt;%</span></span>
+<span id="cb39-29"><a href="app-rstudio.html#cb39-29"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">15000</span>) </span>
+<span id="cb39-30"><a href="app-rstudio.html#cb39-30"></a>  </span>
+<span id="cb39-31"><a href="app-rstudio.html#cb39-31"></a><span class="kw">ggplot</span>(vehicles, <span class="kw">aes</span>(<span class="dt">x =</span> vehyear, <span class="dt">y =</span> od_read, <span class="dt">color =</span> make)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb39-32"><a href="app-rstudio.html#cb39-32"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="ceen565_files/figure-html/ggplot2-vehicles-1.png" width="672" /></p>
 <p>This is pretty unreadable. But we can add a few things to the figure to make it a little bit
 easier to understand, like smooth average lines and point transparency.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="app-rstudio.html#cb40-1"></a><span class="kw">ggplot</span>(vehicles, <span class="kw">aes</span>(<span class="dt">x =</span> vehyear, <span class="dt">y =</span> od_read, <span class="dt">color =</span> make)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb40-2"><a href="app-rstudio.html#cb40-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb40-3"><a href="app-rstudio.html#cb40-3"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-vehicles1-1.png" width="672" /></p>
 <p>Let’s break this out by vehicle type.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="app-rstudio.html#cb42-1"></a><span class="kw">ggplot</span>(vehicles, <span class="kw">aes</span>(<span class="dt">x =</span> vehyear, <span class="dt">y =</span> od_read, <span class="dt">color =</span> make)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb42-2"><a href="app-rstudio.html#cb42-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb42-3"><a href="app-rstudio.html#cb42-3"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb42-4"><a href="app-rstudio.html#cb42-4"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>vehtype)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-vehicles2-1.png" width="672" /></p>
 <p>And let’s clean it up a little bit. This is a figure that you could put in a
 published journal article or thesis, if it showed something you cared to show.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="app-rstudio.html#cb44-1"></a><span class="kw">ggplot</span>(vehicles, <span class="kw">aes</span>(<span class="dt">x =</span> vehyear, <span class="dt">y =</span> od_read, <span class="dt">color =</span> make)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb44-2"><a href="app-rstudio.html#cb44-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb44-3"><a href="app-rstudio.html#cb44-3"></a><span class="st">  </span><span class="kw">scale_color_discrete</span>(<span class="st">&quot;Manufacturer&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb44-4"><a href="app-rstudio.html#cb44-4"></a><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb44-5"><a href="app-rstudio.html#cb44-5"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>vehtype) <span class="op">+</span></span>
+<span id="cb44-6"><a href="app-rstudio.html#cb44-6"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Vehicle Model Year&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Odometer Reading&quot;</span>) <span class="op">+</span></span>
+<span id="cb44-7"><a href="app-rstudio.html#cb44-7"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="ceen565_files/figure-html/ggplot2-vehicles3-1.png" width="672" /></p>
 
 <div id="refs" class="references">
-<div>
-<p><em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> 2018. The Green Book. American Association of State Highway; Transportation Officials. <a href="https://books.google.com/books?id=MWHBDwAAQBAJ">https://books.google.com/books?id=MWHBDwAAQBAJ</a>.</p>
-</div>
 <div>
 <p>Wilkinson, Leland. 2012. “The Grammar of Graphics.” In <em>Handbook of Computational Statistics</em>, 375–414. Springer.</p>
 </div>
 </div>
 </div>
 </div>
-
 
 
 
@@ -682,9 +676,9 @@ published journal article or thesis, if it showed something you cared to show.</
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p><code>tidyverse</code> is actually a collection
-of very useful packages, and many R users just load them all at once.<a href="app-rstudio.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="1">
+<li id="fn1"><p><code>tidyverse</code> is actually a collection
+of very useful packages, and many R users just load them all at once.<a href="app-rstudio.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

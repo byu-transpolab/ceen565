@@ -296,6 +296,7 @@ For example, we can see the odometer reading for cars still on the road in
 2017 by make.
 
 ```{r ggplot2-vehicles, echo = TRUE}
+set.seed(15) # so that we pull the same random records each time
 # sample 15k vehicles built after 1980 with 0 to 500k miles
 vehicles <- nhts_vehicles %>%
   # convert numeric make to its labeled name, and then group into manufacturers
@@ -332,7 +333,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 This is pretty unreadable. But we can add a few things to the figure to make it a little bit
 easier to understand, like smooth average lines and point transparency. 
 
-```{r ggplot2-vehicles1}
+```{r ggplot2-vehicles1, echo = TRUE}
 ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
   geom_point(alpha = 0.5) + 
   stat_smooth(method = "loess")
@@ -340,7 +341,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 
 Let's break this out by vehicle type.
 
-```{r ggplot2-vehicles2}
+```{r ggplot2-vehicles2, echo = TRUE}
 ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
   geom_point(alpha = 0.5) + 
   stat_smooth(method = "loess") + 
@@ -350,7 +351,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 And let's clean it up a little bit. This is a figure that you could put in a
 published journal article or thesis, if it showed something you cared to show.
 
-```{r ggplot2-vehicles3}
+```{r ggplot2-vehicles3, echo = TRUE}
 ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
   geom_point(alpha = 0.5) + 
   scale_color_discrete("Manufacturer") + 
