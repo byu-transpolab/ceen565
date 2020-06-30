@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-06-24" />
+<meta name="date" content="2020-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,6 +265,27 @@ integrity and competence as you provide information to their representatives.</p
 </div>
 <div id="the-four-step-process" class="section level2">
 <h2><span class="header-section-number">1.2</span> The Four-Step Process</h2>
+<p>Transportation planning often involves a Four-Step Model (FSM), which is a
+a traditional method used by transportation planners. An FSM consists
+of the following steps:</p>
+<ul>
+<li><strong>Trip Generation</strong>, which seeks to estimate <em>how</em> many trips are generated,
+or start in a specific Travel Analysis Zone (TAZ). Trip generation does this by
+using economic data about the type and amount of development in the zone. If a
+zone has a high number of residential buildings, it is assumed that more productions
+originate in that zone than would in a zone of commercial or retail buildings.</li>
+<li><strong>Trip Distribution</strong> seeks to estimate <em>where</em> generated trips go. Origins and
+destinations are matched in this step. These completed trips can occur within the
+same zone, or be inter-zonal.</li>
+<li><strong>Mode Choice</strong> considers a number of factors to estimate what <em>modes</em> individuals
+or groups will take. Some of the data that can be used include: travel time,
+wait time, cost, and accessibility.</li>
+<li><strong>Trip Assignment</strong> seeks to determine the route that users choose between
+origin and destination. The route is chosen based on a combined analysis of data,
+including travel time, cost, mode choice, and origin and destination location.</li>
+</ul>
+<p>When the four steps are combined together, an FSM is capable of generating reliable
+estimates for a given traffic volume on a given network.</p>
 </div>
 <div id="travel-model-building-blocks" class="section level2">
 <h2><span class="header-section-number">1.3</span> Travel Model Building Blocks</h2>
@@ -581,7 +602,12 @@ is not possible.</li>
 </ul>
 <p>Each TAZ is associated with <strong>socioeconomic</strong> (SE) data, or information about
 the people, businesses, and other activities that are located in the TAZ.</p>
-<!-- Can you include a figure of TAZ layer in central Roanoke for illustration? -->
+<div class="figure"><span id="fig:RoanokeTAZ"></span>
+<img src="images/RoanokeTAZ.png" alt="Travel Analysis Zones in Central Roanoke." width="100%" />
+<p class="caption">
+Figure 1.2: Travel Analysis Zones in Central Roanoke.
+</p>
+</div>
 <p><strong>Households</strong> are a basic unit of analysis in many economic and statistical
 analyses. A household typically consists of one or more <strong>persons</strong> who reside
 in the same dwelling. Individuals living in the same dwelling can make up a
@@ -627,33 +653,76 @@ in that TAZ are workers.”</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">32</td>
-<td align="right">23</td>
-<td align="right">10</td>
-<td align="right">120</td>
-<td align="right">65</td>
+<td align="right">43</td>
+<td align="right">53</td>
+<td align="right">22</td>
+<td align="right">139</td>
+<td align="right">78</td>
 <td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">43</td>
-<td align="right">22</td>
-<td align="right">16</td>
-<td align="right">141</td>
-<td align="right">91</td>
+<td align="right">46</td>
+<td align="right">42</td>
+<td align="right">17</td>
+<td align="right">149</td>
+<td align="right">67</td>
 <td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">49</td>
-<td align="right">25</td>
-<td align="right">22</td>
-<td align="right">130</td>
-<td align="right">73</td>
+<td align="right">38</td>
+<td align="right">17</td>
+<td align="right">13</td>
+<td align="right">116</td>
+<td align="right">98</td>
 <td align="right">0</td>
 </tr>
 </tbody>
 </table>
+
+<div class="rmdexample">
+<p>Alice lives with her husband in zone <span class="math inline">\(A\)</span> and works as an accountant in zone <span class="math inline">\(B\)</span>.
+Her husband does not currently work.
+Fill out the SE table from Table <a href="chap-blocks.html#tab:setable">1.5</a> with <em>just</em> this
+household’s information.</p>
+<p>Two persons live in one household with one worker in zone A. The firm Alice works at
+has an office job for her in Zone B.</p>
+<table>
+<thead>
+<tr class="header">
+<th>taz</th>
+<th>persons</th>
+<th>hh</th>
+<th>workers</th>
+<th>retail</th>
+<th>office</th>
+<th>manufacturing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
 </div>
 <div id="highway-networks" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Highway Networks</h3>
@@ -681,6 +750,12 @@ thorough traffic is not important.</p></li>
 <li><p>Cul-de-sacs only serve adjacent development.</p>
 <p>*See <span class="citation">(<em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> <a href="#ref-2018aashto" role="doc-biblioref">2018</a>)</span> for more information.</p></li>
 </ul>
+<div class="figure"><span id="fig:UDOTFunctionalClasses"></span>
+<img src="images/UDOT_Functional_Classes.png" alt="UDOT Functional Classes." width="100%" />
+<p class="caption">
+Figure 1.3: UDOT Functional Classes.
+</p>
+</div>
 <p>Streets of a functional class below collector are almost never included in
 travel models, unless they provide essential connectivity between other roads.
 Entire neighborhoods of local streets may be represented by just a few centroid
@@ -753,7 +828,7 @@ a bar chart.</p>
 <div class="figure"><span id="fig:dc-histogram"></span>
 <img src="ceen565_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
 <p class="caption">
-Figure 1.2: Visualizing a continuous distribution with a histogram.
+Figure 1.4: Visualizing a continuous distribution with a histogram.
 </p>
 </div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-blocks.html#cb15-1"></a><span class="kw">ggplot</span>(nhts_trips, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as_factor</span>(trippurp, <span class="dt">levels =</span> <span class="st">&quot;labels&quot;</span>), </span>
@@ -762,7 +837,7 @@ Figure 1.2: Visualizing a continuous distribution with a histogram.
 <div class="figure"><span id="fig:dc-barchart"></span>
 <img src="ceen565_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
 <p class="caption">
-Figure 1.3: Visualizing a discrete distribution with a bar chart.
+Figure 1.5: Visualizing a discrete distribution with a bar chart.
 </p>
 </div>
 <p>To this point we’ve only looked at the distribution of one variable at a time.
@@ -771,6 +846,7 @@ distribution of two variables. This joint distribution tells you what is happeni
 with one variable while the other variable changes. In a table like the one below,
 the margins of the table (the row and column sums) contain the single variable
 distribution. So sometimes we call these the <em>marginal</em> distributions.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-blocks.html#cb16-1"></a><span class="kw">table</span>(nhts_trips<span class="op">$</span>miles_cat, nhts_trips<span class="op">$</span>trippurp)</span></code></pre></div>
 <pre><code>##            
 ##                 -9    HBO HBSHOP HBSOCREC    HBW    NHB
 ##   (0,10]        23 156315 162602    84980  67162 248730
@@ -915,6 +991,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

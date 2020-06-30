@@ -73,7 +73,27 @@ integrity and competence as you provide information to their representatives.
 
 ## The Four-Step Process
 
+Transportation planning often involves a Four-Step Model (FSM), which is a
+a traditional method used by transportation planners. An FSM consists 
+of the following steps:
 
+ - **Trip Generation**, which seeks to estimate *how* many trips are generated,
+  or start in a specific Travel Analysis Zone (TAZ). Trip generation does this by
+  using economic data about the type and amount of development in the zone. If a 
+  zone has a high number of residential buildings, it is assumed that more productions
+  originate in that zone than would in a zone of commercial or retail buildings.
+ - **Trip Distribution** seeks to estimate *where* generated trips go. Origins and 
+  destinations are matched in this step. These completed trips can occur within the
+  same zone, or be inter-zonal.
+ - **Mode Choice** considers a number of factors to estimate what *modes* individuals
+  or groups will take. Some of the data that can be used include: travel time,
+  wait time, cost, and accessibility.
+ - **Trip Assignment** seeks to determine the route that users choose between
+  origin and destination. The route is chosen based on a combined analysis of data,
+  including travel time, cost, mode choice, and origin and destination location.
+
+When the four steps are combined together, an FSM is capable of generating reliable
+estimates for a given traffic volume on a given network.
 
 ## Travel Model Building Blocks
 
@@ -219,6 +239,10 @@ the people, businesses, and other activities that are located in the TAZ.
 
 <!-- Can you include a figure of TAZ layer in central Roanoke for illustration? -->
 
+```{r RoanokeTAZ, fig.cap="Travel Analysis Zones in Central Roanoke.", out.width='100%', echo = FALSE}
+knitr::include_graphics("images/RoanokeTAZ.png")
+```
+
 **Households** are a basic unit of analysis in many economic and statistical
 analyses. A household typically consists of one or more **persons** who reside
 in the same dwelling. Individuals living in the same dwelling can make up a
@@ -310,6 +334,10 @@ facilities are like? Maybe even a figure of a few of them would be helpful. -->
   - Cul-de-sacs only serve adjacent development. 
   
     *See -@2018aashto for more information.
+    
+```{r UDOT_Functional_Classes, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
+knitr::include_graphics("images/UDOT_Functional_Classes.png")
+```
 
 Streets of a functional class below collector are almost never included in 
 travel models, unless they provide essential connectivity between other roads. 
