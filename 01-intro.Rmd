@@ -237,8 +237,6 @@ TAZ's:
 Each TAZ is associated with **socioeconomic** (SE)  data, or information about
 the people, businesses, and other activities that are located in the TAZ. 
 
-<!-- Can you include a figure of TAZ layer in central Roanoke for illustration? -->
-
 ```{r RoanokeTAZ, fig.cap="Travel Analysis Zones in Central Roanoke.", out.width='100%', echo = FALSE}
 knitr::include_graphics("images/RoanokeTAZ.png")
 ```
@@ -335,7 +333,7 @@ facilities are like? Maybe even a figure of a few of them would be helpful. -->
   
     *See -@2018aashto for more information.
     
-```{r UDOT_Functional_Classes, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
+```{r UDOTFunctionalClasses, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
 knitr::include_graphics("images/UDOT_Functional_Classes.png")
 ```
 
