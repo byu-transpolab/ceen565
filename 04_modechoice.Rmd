@@ -1,1 +1,28 @@
 # Mode and Destination Choice {#chap-modechoice}
+
+
+
+## Homework {-#hw-modechoice}
+
+1. Calculate the Utility at <sub>ij</sub>, Probability at <sub>ij</sub>, the Trips at <sub>ij</sub>, and the Logsum at <sub>i</sub> using the following information:
+
+$$Utility = \begin{vmatrix}-0.866 & -0.985 & -0.5\\
+-0.985 & -0.866 & -0.707\\-0.866 & -0.625 & -0.333
+\end{vmatrix}$$
+
+$$Impedance = \begin{vmatrix}240 & 720 & 1920\\
+1170 & 0 & 240\\0 & 480 & 1950
+\end{vmatrix}$$
+
+$$Productions = \begin{vmatrix}-0.866 & -0.985 & -0.5\\
+-0.985 & -0.866 & -0.707
+\end{vmatrix}$$
+
+
+
+
+|   n|  Attractions | 
+|:---:|:---:|
+| 1 | 125 |
+| 2 | 180 |
+| 3 | 210 |
