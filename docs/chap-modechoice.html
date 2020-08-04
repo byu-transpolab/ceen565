@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-08-03" />
+<meta name="date" content="2020-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,21 +146,47 @@
 <div id="hw-modechoice" class="section level2 unnumbered">
 <h2>Homework</h2>
 <ol style="list-style-type: decimal">
-<li>Calculate the Utility at <sub>ij</sub>, Probability at <sub>ij</sub>, the Trips at <sub>ij</sub>, and the Logsum at <sub>i</sub> using the following information:</li>
+<li>Calculate the Non-motorized Travel Time, Auto Utility, Non-motorized Utility, Auto Probability, Non-motorized Probability, and the Mode Choice Logsum using the following information:</li>
 </ol>
-<p><span class="math display">\[Utility = \begin{vmatrix}-0.866 &amp; -0.985 &amp; -0.5\\
--0.985 &amp; -0.866 &amp; -0.707\\-0.866 &amp; -0.625 &amp; -0.333
+<div align="center">
+<p><span class="math inline">\(\beta\)</span><sub>1</sub> = -0.025,
+<span class="math inline">\(\beta\)</span><sub>2</sub> = -0.06257,
+<span class="math inline">\(\alpha\)</span><sub>1</sub> = 1,
+<span class="math inline">\(\alpha\)</span><sub>2</sub> = -1.2258</p>
+<p><span class="math display">\[Highway Time = \begin{vmatrix}0.77 &amp; 1.55 &amp; 21.60\\
+1.55 &amp; 0.77 &amp; 20.51\\22.02 &amp; 20.93 &amp; 1.21
 \end{vmatrix}\]</span></p>
-<p><span class="math display">\[Impedance = \begin{vmatrix}240 &amp; 720 &amp; 1920\\
-1170 &amp; 0 &amp; 240\\0 &amp; 480 &amp; 1950
+<p><span class="math display">\[ Highway Distance = \begin{vmatrix}0 &amp; 0.72 &amp; 12.87\\
+0.72 &amp; 0 &amp; 12.49\\12.82 &amp; 12.44 &amp; 0
 \end{vmatrix}\]</span></p>
-<p><span class="math display">\[Productions = \begin{vmatrix}-0.866 &amp; -0.985 &amp; -0.5\\
--0.985 &amp; -0.866 &amp; -0.707
-\end{vmatrix}\]</span></p>
-<p>|n|Attractions|
-|1|125|
-|2|180|
-|3|210|</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the Utility, Probability, Trips, and Destination Choice Logsum. Check your answer to make sure the rowsum of the Trips is equal to the productions for each row. The Mode Choice Logsum found in Question 1 should be used as the impedance. Use the following information:</li>
+</ol>
+<div align="center">
+<p><span class="math inline">\(\beta\)</span><sub>2</sub> = 1.1657,
+<span class="math inline">\(\alpha\)</span><sub>s</sub> = Attractions</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">n</th>
+<th align="center">Productions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.6</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">1.8</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">1.3</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr class="header">
