@@ -73,8 +73,8 @@ integrity and competence as you provide information to their representatives.
 
 ## The Four-Step Process
 
-Transportation planning often involves a Four-Step Model (FSM), which is a
-a traditional method used by transportation planners. An FSM consists 
+Transportation planning often involves a four-step travel model, which is a
+a traditional method used by transportation planners. A four-step model consists 
 of the following steps:
 
  - **Trip Generation**, which seeks to estimate *how* many trips are generated,
@@ -92,8 +92,7 @@ of the following steps:
   origin and destination. The route is chosen based on a combined analysis of data,
   including travel time, cost, mode choice, and origin and destination location.
 
-When the four steps are combined together, an FSM is capable of generating reliable
-estimates for a given traffic volume on a given network.
+
 
 ## Travel Model Building Blocks
 
@@ -328,7 +327,7 @@ facilities are like? Maybe even a figure of a few of them would be helpful. -->
   - Major and minor collectors connect arterials to local roads and provide access
     to adjacent development. Mobility for through traffic is less important. 
   - Local streets exist primarily to serve adjacent development. Mobility for 
-    thorough traffic is not important.
+    through traffic is not important.
   - Cul-de-sacs only serve adjacent development. 
   
     *See -@2018aashto for more information.
@@ -356,16 +355,19 @@ helpful to show the limited nature of the network. -->
 
 ### Matrices
 
-**Skim matrices**, or skims, are matrices of impedance estimates between zones,
-used to estimate zone to zone travel demand. Impedance typically measures a
-travel time, distance, and travel costs. These measures can be combined to
-create generalized costs. Skims often distinguish between single occupancy and
-shared ride vehicles, though this ability is not always beneficial.
+Matrices represent between zones. Convention has us call the origin zones $i$ 
+in the rows and and the destination zones $j$ in the columns. Matrices in travel
+models are always symmetrical. There are two kinds of information we typically
+represent with matrices: costs and flows.
 
-**OD matrices**, or origin-destination matrices, represent the number of trips
-from the origin *i* (row) to the destination *j* (column). The number in the
-corresponding cell *T_{ij}* is the total number of trips made, and represents
-the demand between two zones in a network.
+- **Cost matrices**, or skims, are matrices where the cells contain estimates 
+of travel time or cost. They are called *skims* because they are the results 
+of *skimming* a network to find the shortest path between each pair of TAZ 
+centroids.
+
+- **Flow matrices**, represent flows of people or vehicles from each origin to
+each destination. The number in the corresponding cell $T_{ij}$ is the total
+number of trips made, and represents the demand between two zones in a network.
 
 
 ## Statistical and Mathematical Techniques
