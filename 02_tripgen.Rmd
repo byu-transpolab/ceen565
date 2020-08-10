@@ -1,10 +1,179 @@
 # Trip Generation {#chap-tripgen}
 
+The details of the Trip Generation models are given in section 4.4 of *NCHRP 716*
+and in the course notes. In this unit we will use data from both the NHTS 
+and from the Puget Sound Regional Council (PSRC).
 
 ## Trip Production
+
+The trip production model is a cross-classification model. What this means
+is that we will classify households into different bins based on their 
+household size, income, vehicle ownership, etc. We will then calculate the
+average number of trips made by households in each group.
+
+We will need to get the data for households and trips. Use the records for
+households in MSA size `02`, that completed the survey on a weekday, and then
+filter the trips to include only those records. We can also select only the data
+columns that have the information we will use to classify the model.  We might
+need to create some or modify variables that we need to use to cross-classify;
+for instance we should cap the household size category at 4 people and the 
+vehicles at 3.
+
+```{r tp_load, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(nhts2017)
+
+hh <- nhts_households %>% 
+  # filter to MSA size 2, travel on weekday
+  filter(msasize == "02", !travday %in% c("01", "07")) %>%
+  # select the columns we care about.
+  select(houseid, wthhfin, hhsize, hhvehcnt, numadlt, hhfaminc, wrkcount) %>%
+  mutate(
+    hhsize = ifelse(hhsize > 4, 4, hhsize),
+    hhvehcnt = ifelse(hhvehcnt > 3, 3, hhvehcnt)
+  )
+hh
+```
+
+The next step is we need to calculate how many trips the members of each
+household in the data took. To do this, we can use `summarise` to count the number of
+trip rows for each household. Then, we can `pivot_wider` to spread the trips
+out by purpose.
+
+```{r tp_trip}
+trips <- nhts_trips %>% 
+  # filter to households in the data
+  filter(houseid %in% hh$houseid) %>%
+  group_by(houseid, trippurp) %>%
+  # count up how many trips each household took
+  summarise(trips = n()) %>%
+  # "spread" the data, filling zero if no trips were taken
+  pivot_wider(id_cols = houseid, names_from = trippurp, 
+              values_from = trips, values_fill = 0)
+trips
+```
+
+Now, we will `join` the trips data frame to the households data frame so that
+everything is in one place. Note that when we do this, there will be some households
+that never made any trips; we need to change their trip counts from `NA` to `0`.
+
+
+```{r tp_hh_file}
+# function to change NA to 0
+nato0 <- function(x) {ifelse(is.na(x), 0, x)}
+
+tripprod <- hh %>% 
+  # join tables by id field
+  left_join(trips, by = "houseid") %>%
+  # change all NA values in columns from the trips data to 0.a
+  mutate_at(vars(names(trips)), nato0)
+tripprod
+```
+
+Now we can count up the number of trips by grouping the variables we care 
+about and taking the average. For instance, we can get the average HBO trip rate
+for households by size and vehicle count. Remember to weight!
+
+```{r hbo_tripprod}
+hbo_tripprod <- tripprod %>%
+  group_by(hhsize, hhvehcnt) %>%
+  summarise(
+    n = n(), # number of households in category
+    HBO = weighted.mean(HBO, wthhfin), # average HBO trips per hh
+  )
+hbo_tripprod
+```
+
 
 
 ## Trip Attraction
 
 
-## Homework {-#hw-tripgen}
+
+## Homework
+
+1. Calculate the trip rates for each purpose by household size, and by income
+group. Do the rates make sense? Why or why not? 
+
+1. Calculate the trip rates by the number of household workers and the
+vehicle availability. Do the rates make sense? Why or why not?
+
+1. Calculate the *variance* or *standard deviation* in work trip rates by
+household size / vehicles and by number of workers / vehicles. Which
+classification should be used for work trips?
+
+1.  Calculate the number of households in each classification (size /
+vehicles), (workers / vehicles). What information does this give you about the
+estimated trip rates?
+
+1. Estimate trip rate attraction models for all the trip purposes.
+Present models with only significant or influential factors (try a few different
+specifications until you are satisfied with your models' performance)
+
+1. Explain your attraction rate models; do the rates make sense? Which
+models have the best fit in terms of $R^2$ value? Why?
+
+1. Remove the intercept from your model estimations. In R, you can do
+this by adding a `-1` to the formula, as in `lm(y ~ x - 1)`. Do the rates
+change? By how much? Should you keep the intercept in or remove it?
+
+## Lab 
+
+In this lab you will implement and calibrate trip generation rates for the RVTPO
+model.
+
+
+### Trip Production
+
+The trip production rates are stored in the `params/trip_prod/` folder, with a
+dbf file for each trip purpose in the model. We are going to calibrate the
+following trip purposes:
+
+  - `HBW`: cross-classification model of workers and vehicles available
+  - `HBO`: cross-classification model of household persons and vehicles available
+  - `HBShop`: cross-classification model of household persons and vehicles available
+  
+The household travel survey for the RVTPO region reported the following total
+weighted trips in these trip purposes:
+
+| Purpose    |   Weighted Survey Trips   |
+|:-----------|--------------------------:|
+|HBW         |          118,653          |
+|HBO         |          267,987          |
+|HBShop      |          129,614          |
+
+Begin by running the RVTPO model through the Trip Generation
+submodel. The trip productions for each trip purpose are recorded in
+`Base/outputs/HH_PROD.dbf`. Using this file, run a create a report that
+sums the trips produced in each of these three purposes. Compare the totals
+in the bare model with the weighted survey targets.
+
+Replace the bare model rates with rates you estimated from the PSRC travel survey
+during your homework assignment. Run your tabulation report again, and compare 
+the total productions to the regional targets.
+
+Adjust the trip rates so that they replicate the regional survey targets within
+an acceptable margin of error. Ensure that the comparative relationship between
+the trip rates is maintained (i.e. households with more workers must make more
+work trips).
+
+### Trip Attraction
+
+The trip attraction rates enter into the destination choice model, but it is
+helpful to compare the total forecasted attractions using the rates you
+estimated. Apply the rates to the zonal socioeconomic data file and calculate
+the total number of attracted trips for each of the three purposes. Adjust the
+rates so that the total attractions for your three estimated purposes match the
+regional totals.
+
+### Report
+
+Prepare a technical report describing the process by which you estimated
+household trip production and attraction rates, and calibrated the trip rates to
+reproduce regional totals. Calculate the margin of error for *all* purposes (not
+just the purposes you calibrated). Discuss how well the calibrated trip
+generation models replicates the survey targets, and justify your residual
+error. Use formatted tables to display results instead of screenshots of output.
+
+You will be graded on the overall readability, flow, formatting and grammar in
+addition to how clearly you articulate the process of your work.
