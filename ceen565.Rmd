@@ -1,3 +1,66 @@
+--- 
+title: "Urban Transportation Planning"
+author: "Gregory Macfarlane, PhD, PE"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "These are notes and assignments related to the *Urban Transportation Planning*  class at BYU."
+---
+
+# Foreword {-#syllabus}
+
+Placeholder
+
+
+### Acknowledgements {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Building Blocks {#chap-blocks}
+
+Placeholder
+
+
+## Planning for Human Systems
+## The Four-Step Process
+## Travel Model Building Blocks
+### Household Travel Surveys
+### Travel Analysis Zones
+### Highway Networks
+### Matrices
+## Statistical and Mathematical Techniques
+### Continuous and Discrete Distributions
+### Iterative Proportional Fitting
+### Regression Analysis
+### Numerical Optimization
+## Homework {-#hw-blocks}
+
+<!--chapter:end:01-intro.Rmd-->
+
+
+# Trip Generation {#chap-tripgen}
+
+Placeholder
+
+
+## Trip Production
+## Trip Attraction
+## Homework
+## Lab 
+### Trip Production
+### Trip Attraction
+### Report
+
+<!--chapter:end:02_tripgen.Rmd-->
+
+# Trip Distribution {#chap-distribution}
+
+<!--chapter:end:03_distribution.Rmd-->
+
 ```{r setup, include=FALSE, cache=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 library(tidyverse)
@@ -301,3 +364,47 @@ Your lab report should describe the trip distribution and mode choice models;
 include discussions of the coefficients and your process to calibrate the mode
 and distance constants. Provide results of the calibration including observed and 
 modeled trip length frequency distributions.
+
+<!--chapter:end:04_modechoice.Rmd-->
+
+# Network Assignment and Validation {#chap-assignment}
+
+<!--chapter:end:05_assignment.Rmd-->
+
+# The Planning Process {#chap-process}
+
+<!--chapter:end:06_process.Rmd-->
+
+
+# (APPENDIX) Appendix {-} 
+
+Placeholder
+
+
+## Running the Model
+## Files and Reports
+## Cube Tips and Tricks
+### Shortest Paths
+### Working with Matrices
+### Writing Custom Scripts
+
+<!--chapter:end:11_app_demomodel.Rmd-->
+
+
+# R and RStudio Help {#app-rstudio}
+
+Placeholder
+
+
+## Installing
+## RStudio Orientation
+## R Packages
+## Working with Tables
+### Reading Data
+### Modifying and Summarizing Tables
+#### Select, Filter, and Chains
+### Mutate, Summarize, and Group {#app-mutate}
+## Graphics with `ggplot2`
+
+<!--chapter:end:12_app_rstudio.Rmd-->
+
