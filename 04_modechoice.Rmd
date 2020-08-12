@@ -47,7 +47,7 @@ $\alpha$<sub>2</sub> = Attractions
 | 2 | 180 |
 | 3 | 210 |
 
-For this week's assignment, you will use data from the 2000 Bay Area Travel
+Now, for this week's assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial logit models that predict mode choice for work
 trips. The data is available on T-Square attached to this assignment. The data
 are listed as `WorkTrips.Rdata`. We will also need to load the 
@@ -118,7 +118,9 @@ statistic is reported by the `summary()` command? Why is this important?
 Question 2: Estimate a model with just the total travel time
 (`TVTT`) and the cost of the trip (`COST`). These two parameter estimates will
 allow you to calculate the value of time for the sample population as 
+
 $$VOT = \frac{60\hat{\beta}_{TVTT}}{100 \hat{\beta}_{COST}}$$ 
+
 Report the value of time you calculate. Is this reasonable?
 
 Question 3: Estimate a model with the out-of-vehicle travel

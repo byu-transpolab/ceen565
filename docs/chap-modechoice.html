@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-08-04" />
+<meta name="date" content="2020-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -92,34 +156,46 @@
 <li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#hw-tripgen"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#homework"><i class="fa fa-check"></i><b>2.3</b> Homework</a></li>
+<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab"><i class="fa fa-check"></i><b>2.4</b> Lab</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.4.1</b> Trip Production</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.4.2</b> Trip Attraction</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="4.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#lab-1"><i class="fa fa-check"></i><b>4.1</b> Lab</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mode-choice-calibration"><i class="fa fa-check"></i><b>4.1.1</b> Mode Choice Calibration</a></li>
+<li class="chapter" data-level="4.1.2" data-path="chap-modechoice.html"><a href="chap-modechoice.html#destination-choice-calibration"><i class="fa fa-check"></i><b>4.1.2</b> Destination Choice Calibration</a></li>
+<li class="chapter" data-level="4.1.3" data-path="chap-modechoice.html"><a href="chap-modechoice.html#report-1"><i class="fa fa-check"></i><b>4.1.3</b> Report</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chap-assignment.html"><a href="chap-assignment.html"><i class="fa fa-check"></i><b>5</b> Network Assignment and Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-assignment.html"><a href="chap-assignment.html"><i class="fa fa-check"></i><b>5</b> Network Assignment and Validation</a><ul>
+<li class="chapter" data-level="" data-path="chap-assignment.html"><a href="chap-assignment.html#hw-assignment"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="5.1" data-path="chap-assignment.html"><a href="chap-assignment.html#laboratory-assignment"><i class="fa fa-check"></i><b>5.1</b> Laboratory Assignment</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="chap-process.html"><a href="chap-process.html"><i class="fa fa-check"></i><b>6</b> The Planning Process</a></li>
-<li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="app-demomodel.html"><a href="app-demomodel.html"><i class="fa fa-check"></i><b>A</b> Demonstration Model</a><ul>
-<li class="chapter" data-level="A.1" data-path="app-demomodel.html"><a href="app-demomodel.html#running-the-model"><i class="fa fa-check"></i><b>A.1</b> Running the Model</a></li>
-<li class="chapter" data-level="A.2" data-path="app-demomodel.html"><a href="app-demomodel.html#files-and-reports"><i class="fa fa-check"></i><b>A.2</b> Files and Reports</a></li>
-<li class="chapter" data-level="A.3" data-path="app-demomodel.html"><a href="app-demomodel.html#cube-tips-and-tricks"><i class="fa fa-check"></i><b>A.3</b> Cube Tips and Tricks</a><ul>
-<li class="chapter" data-level="A.3.1" data-path="app-demomodel.html"><a href="app-demomodel.html#shortest-paths"><i class="fa fa-check"></i><b>A.3.1</b> Shortest Paths</a></li>
-<li class="chapter" data-level="A.3.2" data-path="app-demomodel.html"><a href="app-demomodel.html#working-with-matrices"><i class="fa fa-check"></i><b>A.3.2</b> Working with Matrices</a></li>
-<li class="chapter" data-level="A.3.3" data-path="app-demomodel.html"><a href="app-demomodel.html#writing-custom-scripts"><i class="fa fa-check"></i><b>A.3.3</b> Writing Custom Scripts</a></li>
+<li class="appendix"><span><b>Appendix</b></span><ul>
+<li class="chapter" data-level="1" data-path="chap-process.html"><a href="chap-process.html#running-the-model"><i class="fa fa-check"></i><b>1</b> Running the Model</a></li>
+<li class="chapter" data-level="2" data-path="chap-process.html"><a href="chap-process.html#files-and-reports"><i class="fa fa-check"></i><b>2</b> Files and Reports</a></li>
+<li class="chapter" data-level="3" data-path="chap-process.html"><a href="chap-process.html#cube-tips-and-tricks"><i class="fa fa-check"></i><b>3</b> Cube Tips and Tricks</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap-process.html"><a href="chap-process.html#shortest-paths"><i class="fa fa-check"></i><b>3.1</b> Shortest Paths</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-process.html"><a href="chap-process.html#working-with-matrices"><i class="fa fa-check"></i><b>3.2</b> Working with Matrices</a></li>
+<li class="chapter" data-level="3.3" data-path="chap-process.html"><a href="chap-process.html#writing-custom-scripts"><i class="fa fa-check"></i><b>3.3</b> Writing Custom Scripts</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>B</b> R and RStudio Help</a><ul>
-<li class="chapter" data-level="B.1" data-path="app-rstudio.html"><a href="app-rstudio.html#installing"><i class="fa fa-check"></i><b>B.1</b> Installing</a></li>
-<li class="chapter" data-level="B.2" data-path="app-rstudio.html"><a href="app-rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>B.2</b> RStudio Orientation</a></li>
-<li class="chapter" data-level="B.3" data-path="app-rstudio.html"><a href="app-rstudio.html#r-packages"><i class="fa fa-check"></i><b>B.3</b> R Packages</a></li>
-<li class="chapter" data-level="B.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>B.4</b> Working with Tables</a><ul>
-<li class="chapter" data-level="B.4.1" data-path="app-rstudio.html"><a href="app-rstudio.html#reading-data"><i class="fa fa-check"></i><b>B.4.1</b> Reading Data</a></li>
-<li class="chapter" data-level="B.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>B.4.2</b> Modifying and Summarizing Tables</a></li>
-<li class="chapter" data-level="B.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>B.4.3</b> Mutate, Summarize, and Group</a></li>
+<li class="chapter" data-level="A" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>A</b> R and RStudio Help</a><ul>
+<li class="chapter" data-level="A.1" data-path="app-rstudio.html"><a href="app-rstudio.html#installing"><i class="fa fa-check"></i><b>A.1</b> Installing</a></li>
+<li class="chapter" data-level="A.2" data-path="app-rstudio.html"><a href="app-rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>A.2</b> RStudio Orientation</a></li>
+<li class="chapter" data-level="A.3" data-path="app-rstudio.html"><a href="app-rstudio.html#r-packages"><i class="fa fa-check"></i><b>A.3</b> R Packages</a></li>
+<li class="chapter" data-level="A.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>A.4</b> Working with Tables</a><ul>
+<li class="chapter" data-level="A.4.1" data-path="app-rstudio.html"><a href="app-rstudio.html#reading-data"><i class="fa fa-check"></i><b>A.4.1</b> Reading Data</a></li>
+<li class="chapter" data-level="A.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>A.4.2</b> Modifying and Summarizing Tables</a></li>
+<li class="chapter" data-level="A.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>A.4.3</b> Mutate, Summarize, and Group</a></li>
 </ul></li>
-<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="A.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>A.5</b> Graphics with <code>ggplot2</code></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -145,6 +221,8 @@
 <h1><span class="header-section-number">Chapter 4</span> Mode and Destination Choice</h1>
 <div id="hw-modechoice" class="section level2 unnumbered">
 <h2>Homework</h2>
+<p>Let’s first start with a couple of practice problems before using data to estimate
+multinomial logit models.</p>
 <ol style="list-style-type: decimal">
 <li>Calculate the Non-motorized Travel Time, Auto Utility, Non-motorized Utility, Auto Probability, Non-motorized Probability, and the Mode Choice Logsum using the following information:</li>
 </ol>
@@ -164,7 +242,7 @@
 </ol>
 <div align="center">
 <p><span class="math inline">\(\beta\)</span><sub>2</sub> = 1.1657,
-<span class="math inline">\(\alpha\)</span><sub>s</sub> = Attractions</p>
+<span class="math inline">\(\alpha\)</span><sub>2</sub> = Attractions</p>
 <table>
 <thead>
 <tr class="header">
@@ -209,8 +287,779 @@
 </tr>
 </tbody>
 </table>
+<p>Now, for this week’s assignment, you will use data from the 2000 Bay Area Travel
+Survey to estimate multinomial logit models that predict mode choice for work
+trips. The data is available on T-Square attached to this assignment. The data
+are listed as <code>WorkTrips.Rdata</code>. We will also need to load the
+<code>mlogit</code> library package, which contains the tools necessary to estimate
+multinomial logit models.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-modechoice.html#cb1-1"></a><span class="kw">library</span>(mlogit)</span></code></pre></div>
+<pre><code>## Loading required package: dfidx</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dfidx&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chap-modechoice.html#cb5-1"></a><span class="kw">load</span>(<span class="st">&quot;data/WorkTrips.Rdata&quot;</span>)</span></code></pre></div>
+<p>Because multinomial logit models are so different from other models, we need to
+use a special function to coerce the data into a form the model software can
+use. To do this, there needs to be a unique <code>IDFIELD</code> identification
+variable. Also, we should change the alternatives from their number to the name
+of the mode.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="chap-modechoice.html#cb6-1"></a><span class="co"># Make new id field</span></span>
+<span id="cb6-2"><a href="chap-modechoice.html#cb6-2"></a>worktrips<span class="op">$</span>IDFIELD &lt;-<span class="st"> </span><span class="kw">paste</span>(worktrips<span class="op">$</span>HHID, worktrips<span class="op">$</span>PERID, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb6-3"><a href="chap-modechoice.html#cb6-3"></a></span>
+<span id="cb6-4"><a href="chap-modechoice.html#cb6-4"></a><span class="co"># Name alternatives</span></span>
+<span id="cb6-5"><a href="chap-modechoice.html#cb6-5"></a>alternatives &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot; Drive Alone&quot;</span>, <span class="st">&quot; Share 2&quot;</span>, <span class="st">&quot; Share 3+&quot;</span>, <span class="st">&quot; Transit&quot;</span>, </span>
+<span id="cb6-6"><a href="chap-modechoice.html#cb6-6"></a>    <span class="st">&quot; Bike&quot;</span>, <span class="st">&quot; Walk&quot;</span>)</span>
+<span id="cb6-7"><a href="chap-modechoice.html#cb6-7"></a>worktrips<span class="op">$</span>ALTNUM &lt;-<span class="st"> </span><span class="kw">factor</span>(worktrips<span class="op">$</span>ALTNUM, <span class="dt">labels =</span> alternatives)</span>
+<span id="cb6-8"><a href="chap-modechoice.html#cb6-8"></a></span>
+<span id="cb6-9"><a href="chap-modechoice.html#cb6-9"></a><span class="co"># make mlogit data frame</span></span>
+<span id="cb6-10"><a href="chap-modechoice.html#cb6-10"></a>logitdata &lt;-<span class="st"> </span><span class="kw">mlogit.data</span>(worktrips, <span class="dt">choice=</span> <span class="st">&quot;CHOSEN&quot;</span>, <span class="dt">alt.var =</span> <span class="st">&quot;ALTNUM&quot;</span>,</span>
+<span id="cb6-11"><a href="chap-modechoice.html#cb6-11"></a>        <span class="dt">chid.var =</span> <span class="st">&quot;IDFIELD&quot;</span>, <span class="dt">shape =</span> <span class="st">&quot;long&quot;</span>)</span>
+<span id="cb6-12"><a href="chap-modechoice.html#cb6-12"></a></span>
+<span id="cb6-13"><a href="chap-modechoice.html#cb6-13"></a><span class="kw">head</span>(logitdata[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## ~~~~~~~
+##  first 12 observations out of 22033 
+## ~~~~~~~
+##    HHID PERID CASE       ALTNUM NUMALTS CHOSEN  IVTT  OVTT       idx
+## 1   100     2   54  Drive Alone       4   TRUE 13.42  4.50 100-:lone
+## 2   100     2   54      Share 2       4  FALSE 18.42  4.50 100-:re 2
+## 3   100     2   54     Share 3+       4  FALSE 20.42  4.50 100-:e 3+
+## 4   100     2   54      Transit       4  FALSE 15.97 44.68 100-:nsit
+## 5  1000     1  553      Share 2       4  FALSE 27.54 10.00 1000:re 2
+## 6  1000     1  553     Share 3+       4  FALSE 14.54 10.00 1000:e 3+
+## 7  1000     1  553      Transit       4   TRUE 21.08 22.40 1000:nsit
+## 8  1000     1  553         Bike       4  FALSE 43.90 10.00 1000:Bike
+## 9  1005     1  554  Drive Alone       4   TRUE 17.20  4.50 1005:lone
+## 10 1005     1  554      Share 2       4  FALSE 22.20  4.50 1005:re 2
+## 11 1005     1  554     Share 3+       4  FALSE 24.20  4.50 1005:e 3+
+## 12 1005     1  554      Transit       4  FALSE 29.73 39.92 1005:nsit
+## 
+## ~~~ indexes ~~~~
+##      chid          alt
+## 1   100-2  Drive Alone
+## 2   100-2      Share 2
+## 3   100-2     Share 3+
+## 4   100-2      Transit
+## 5  1000-1      Share 2
+## 6  1000-1     Share 3+
+## 7  1000-1      Transit
+## 8  1000-1         Bike
+## 9  1005-1  Drive Alone
+## 10 1005-1      Share 2
+## 11 1005-1     Share 3+
+## 12 1005-1      Transit
+## indexes:  1, 2</code></pre>
+<p>Now that your data is cleaned and formatted, you can estimate multinomial logit
+models. To do this, use the `<code>mlogit()</code> function, in a manner sort of like
+you would use the <code>lm()</code> command. One thing to look out for:
+the difference
+between generic and alternative-specific variables.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+- <em>Generic Variables</em>: These are coefficients with a single estimated
+parameter. That is, the <span class="math inline">\(\hat{\beta}\)</span> coefficient for these variables has the
+same value in the utility equation for every alternative. These estimates come
+from variables that vary naturally across the alternatives, like the cost of
+travel.
+- <em>Alternative-Specific Variables</em>: This type of coefficient has a unique
+estimate for each alternative. That is, <span class="math inline">\(\hat{\beta}_{DA}\)</span> is different from
+<span class="math inline">\(\hat{\beta}_{Walk}\)</span>. This type of estimate comes from variables that are
+constant across alternatives, like the distance of the trip.</p>
+<p>To specify the model, we use the following construction.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="chap-modechoice.html#cb8-1"></a>fit.mnl &lt;-<span class="st"> </span><span class="kw">mlogit</span> ( CHOICE <span class="op">~</span><span class="st"> </span>Generic <span class="op">|</span><span class="st"> </span>Alt.Specific, <span class="dt">data =</span> logitdata )</span></code></pre></div>
+<p>To examine the model output, the standard <code>summary()</code> command will produce a
+coefficients table and key test statistics. The the <code>texreg</code> package will
+produce convenient model comparison tables that can be included in a report or
+pasted into Excel for further formatting. For your homework, please include a
+model comparison table rather than a print out of each model summary.</p>
+<p>Question 1: Calculate the likelihood of a model with no covariates
+(equal-shares) and a model with constants only (market shares). Estimate a model
+with only the travel time, and calculate the McFadden pseudo-<span class="math inline">\(R^2\)</span> statistic
+with respect to the equal shares model and the market shares model. Which
+statistic is reported by the <code>summary()</code> command? Why is this important?</p>
+<p>Question 2: Estimate a model with just the total travel time
+(<code>TVTT</code>) and the cost of the trip (<code>COST</code>). These two parameter estimates will
+allow you to calculate the value of time for the sample population as</p>
+<p><span class="math display">\[VOT = \frac{60\hat{\beta}_{TVTT}}{100 \hat{\beta}_{COST}}\]</span></p>
+<p>Report the value of time you calculate. Is this reasonable?</p>
+<p>Question 3: Estimate a model with the out-of-vehicle travel
+time (<code>OVTT</code>), and the in-vehicle travel time (<code>IVTT</code>). What is the
+ratio of these parameters? What does this tell you about how people feel waiting
+for the bus?</p>
+<p>Question 4: Estimate a model with the residential population density
+(<code>RSPOPDEN</code>) and the workplace employment density (<code>WKEMPDEN</code>), controlling for
+the affordability of the trip (<code>COSTINC</code>). Does land use at the origin or the
+destination of the trip affect the mode choice problem more? Is it different
+by mode?</p>
+<p>Question 5: Estimate a nested logit model including cost, travel time,
+out-of-vehicle travel time, and workplace employment density. Group car
+alternatives into one nest, and non-car alternatives into another. Constrain the
+nesting parameter to a single value (<code>un.nest.el = TRUE</code>). What is the estimated
+value of the nesting parameter? What are the implications of this parameter
+value for across-nest substitution?</p>
+<p>Question 6: Estimate another nested logit model with the same nests, but this
+time segment the data on income; include households making less than $50k/year
+in one segment and households making at least $50k in the other. Add vehicles
+per worker as a covariate (<code>VEHBYWRK</code>). Comment on how the two segments respond
+to the different covariates. Which matters more to which group?</p>
+<p>Question 7. Of the models you estimated, which is the preferred in terms of model
+likelihood? What about in terms of behavioral sensitivity?</p>
+<p>Hint: A tool to compare models is the <code>screenreg()</code> function in <code>library(texreg)</code>.</p>
+</div>
+<div id="lab-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Lab</h2>
+<p>In practice, small-sample surveys have a difficult time generating estimates of
+choice parameters that are both precise and rational. As a result, it is
+common to assert choice coefficients that have worked well in comparable
+cities and then calibrate the mode-specific constants and distance decay
+parameters to match your targets. In this lab you will calibrate the mode choice
+models and the destination choice models for the following trip purposes:</p>
+<ul>
+<li>Home-based Work</li>
+<li>Home-based Other</li>
+<li>Home-based Shopping</li>
+</ul>
+<p>In the Roanoke mode choice model, HBO and HBShopping get combined for mode choice.
+So you will calibrate three purposes in the destination choice model, but only
+two in the mode choice model.</p>
+<p>Even though trip distribution comes first in the standard four-step process, we
+end up using the mode choice logsums mode choice to inform destination choice.
+Mathematically they happen simultaneously, but in the model it goes</p>
+<pre><code>skims &gt; mode choice logsums &gt; destination choice &gt; mode choice</code></pre>
+<p>As a result you will need to calibrate the models iteratively: first adjust the
+mode choice constants, then the distance decay parameter, then mode choice,
+etc., until you are satisfied that the model meets the targets.</p>
+<div id="mode-choice-calibration" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Mode Choice Calibration</h3>
+<p>The coefficients are found in the <code>./Params/mc/MC_Coefficients.csv</code> file. Record
+the coefficients in a table in your lab report accompanying a description of the
+purpose of each coefficient and any notable values. These coefficients are
+fixed; they should not change as part of this exercise.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="chap-modechoice.html#cb10-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb10-2"><a href="chap-modechoice.html#cb10-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `;N` = col_double(),
+##   Name = col_character(),
+##   HBW = col_double(),
+##   HBO = col_double(),
+##   NHB = col_double(),
+##   HBSC = col_double()
+## )</code></pre>
+<table style="width:85%;">
+<colgroup>
+<col width="6%" />
+<col width="16%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">;N</th>
+<th align="center">Name</th>
+<th align="center">HBW</th>
+<th align="center">HBO</th>
+<th align="center">NHB</th>
+<th align="center">HBSC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">CIVTT</td>
+<td align="center">-0.025</td>
+<td align="center">-0.015</td>
+<td align="center">-0.02</td>
+<td align="center">-0.015</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">CSWAIT</td>
+<td align="center">-0.05625</td>
+<td align="center">-0.03375</td>
+<td align="center">-0.045</td>
+<td align="center">-0.03375</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">CLWAIT</td>
+<td align="center">-0.025</td>
+<td align="center">-0.015</td>
+<td align="center">-0.02</td>
+<td align="center">-0.015</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">CXWAIT</td>
+<td align="center">-0.0625</td>
+<td align="center">-0.0375</td>
+<td align="center">-0.05</td>
+<td align="center">-0.0375</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">CCOST</td>
+<td align="center">-0.00158</td>
+<td align="center">-0.00237</td>
+<td align="center">-0.00253</td>
+<td align="center">-0.18</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">CDRIVE</td>
+<td align="center">-0.05625</td>
+<td align="center">-0.03375</td>
+<td align="center">-0.045</td>
+<td align="center">-0.03375</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">CTERML</td>
+<td align="center">-0.0625</td>
+<td align="center">-0.0375</td>
+<td align="center">-0.05</td>
+<td align="center">-0.0625</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">CWALK</td>
+<td align="center">-0.0625</td>
+<td align="center">-0.0375</td>
+<td align="center">-0.05</td>
+<td align="center">-0.0375</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">CWALK1</td>
+<td align="center">-0.0625</td>
+<td align="center">-0.0375</td>
+<td align="center">-0.05</td>
+<td align="center">-0.0375</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">CWALK2</td>
+<td align="center">-0.09375</td>
+<td align="center">-0.05625</td>
+<td align="center">-0.075</td>
+<td align="center">-0.05625</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">CBIKE1</td>
+<td align="center">-0.0625</td>
+<td align="center">-0.0375</td>
+<td align="center">-0.05</td>
+<td align="center">-0.0375</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">CBIKE2</td>
+<td align="center">-0.09375</td>
+<td align="center">-0.05625</td>
+<td align="center">-0.075</td>
+<td align="center">-0.05625</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">DWalkBIKE</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">NC1</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">NC2</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">NC3</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td align="center">17</td>
+<td align="center">CBD</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">NXFER</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">19</td>
+<td align="center">AUTOCOST</td>
+<td align="center">13.6</td>
+<td align="center">13.6</td>
+<td align="center">13.6</td>
+<td align="center">13.6</td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">SHAREFAC</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<p>The mode-specific constants are in a separate file, <code>./Params/mc/MC_Constants.csv</code>.
+The reference alternative in the choice model is Drive Alone, and the alternatives
+with their nesting structure are:</p>
+<pre><code>Trips
+|-- Auto
+|   |--Drive
+|   |--Share
+|
+|-- Transit
+|   |--Local
+|   |--Premium
+|
+|-- Non-motorized</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chap-modechoice.html#cb13-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb13-2"><a href="chap-modechoice.html#cb13-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `;N` = col_double(),
+##   Name = col_character(),
+##   HBW = col_double(),
+##   HBO = col_double(),
+##   NHB = col_double(),
+##   HBSC = col_double()
+## )</code></pre>
+<table style="width:75%;">
+<colgroup>
+<col width="6%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">;N</th>
+<th align="center">Name</th>
+<th align="center">HBW</th>
+<th align="center">HBO</th>
+<th align="center">NHB</th>
+<th align="center">HBSC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">K_SR</td>
+<td align="center">-1.17</td>
+<td align="center">0.0164</td>
+<td align="center">-0.0336</td>
+<td align="center">-1.169</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">K_TRN</td>
+<td align="center">-0.3903</td>
+<td align="center">-1.981</td>
+<td align="center">-2.271</td>
+<td align="center">0.3261</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">K_NMOT</td>
+<td align="center">-1.226</td>
+<td align="center">-0.3834</td>
+<td align="center">-0.8655</td>
+<td align="center">-1.25</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">K_PREM</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">NA</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>There is currently no premium service in the model, so changing its constant
+will not result in more people taking it. But the structure for it exists, if the
+MPO wants to look at some future transit options.</p>
+<p>For initial values for the alternative-specific constants, you can use
+parameters you estimated in the homework. After you run the destination choice
+model and adjust its calibration (see below), run the mode choice model and look
+at the mode choice report. Calculate new alternative specific constants using the
+bias adjustment formula,</p>
+<p><span class="math display">\[\alpha_{n+1} = \alpha_n + \log(A_j / S_j) \]</span></p>
+<p>Where <span class="math inline">\(A_j\)</span> is the population share (target) and <span class="math inline">\(S_j\)</span> is the model share.
+The population shares (targets) are given below.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-modechoice.html#cb15-1"></a><span class="co"># Population shares (targets)</span></span>
+<span id="cb15-2"><a href="chap-modechoice.html#cb15-2"></a><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb15-3"><a href="chap-modechoice.html#cb15-3"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Mode</th>
+<th align="right">HBW</th>
+<th align="right">HBO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Drive Alone</td>
+<td align="right">87.5</td>
+<td align="right">44.1</td>
+</tr>
+<tr class="even">
+<td align="left">Share</td>
+<td align="right">8.4</td>
+<td align="right">45.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Local Bus</td>
+<td align="right">2.7</td>
+<td align="right">0.5</td>
+</tr>
+<tr class="even">
+<td align="left">Premium</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Non-motorized</td>
+<td align="right">1.4</td>
+<td align="right">9.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="destination-choice-calibration" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Destination Choice Calibration</h3>
+<p>A destination choice model has three basic components:</p>
+<ul>
+<li>A size term: these are the trip attraction rates</li>
+<li>An impedance term: this is the mode choice logsum</li>
+<li>Calibration constants</li>
+</ul>
+<p>Return to your trip generation lab where you estimated and adjusted attraction
+rates for different land uses. These attraction rates are the size terms of the
+destination choice model; replace the dummy rates in the model with your
+estimated rates.</p>
+<p>The coefficient on the logsum term should match the nesting parameter in the
+mode choice model. This link is what allows for a simultaneous mode and
+destination choice.</p>
+<p>Instead of alternative-specific constants, a destination choice model includes
+calibration constants based on distance-decay functions. By adjusting these
+parameters, we can make the modeled trip length frequency distribution match the
+observed distribution. The roanoke model has three basic versions that can be combined
+(but really don’t need to be)</p>
+<ul>
+<li>A distance polynomial (<span class="math inline">\(\beta_d d + \beta_{d2} d^2 + \beta_{d3} d^3\)</span>)</li>
+<li>A logarithmic decay function (<span class="math inline">\(\beta_d \log(d)\)</span>)</li>
+<li>A set of bins for trips within specific mile ranges, 0-1, 1-2, etc.</li>
+</ul>
+<p>There is also an intrazonal constant, which we can leave alone for this lab.
+Remember that most of the work should be done by the logsum and the size term,
+and that the constants shouldn’t generally violate basic travel behavior theory.
+These constants are really just here to nudge the distribution in one direction
+or another.</p>
+<p>The table and figure below show the observed trip length frequency distributions
+for the purposes you need to calibrate. An Excel file with the values is on
+LearningSuite.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-modechoice.html#cb16-1"></a>tlfd &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
+<span id="cb16-2"><a href="chap-modechoice.html#cb16-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tlfd)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">HIGH</th>
+<th align="right">MID</th>
+<th align="right">LOW</th>
+<th align="right">HBW</th>
+<th align="right">HBO</th>
+<th align="right">HBSH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.5</td>
+<td align="right">0</td>
+<td align="right">3.9039039</td>
+<td align="right">19.6131359</td>
+<td align="right">13.9606519</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.5</td>
+<td align="right">1</td>
+<td align="right">5.0050050</td>
+<td align="right">7.9734108</td>
+<td align="right">10.0849391</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2.5</td>
+<td align="right">2</td>
+<td align="right">8.3083083</td>
+<td align="right">11.9601161</td>
+<td align="right">23.5531056</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3.5</td>
+<td align="right">3</td>
+<td align="right">10.0100100</td>
+<td align="right">12.9567925</td>
+<td align="right">13.8690052</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">4.5</td>
+<td align="right">4</td>
+<td align="right">10.3103103</td>
+<td align="right">8.9700871</td>
+<td align="right">8.5542211</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">5.5</td>
+<td align="right">5</td>
+<td align="right">9.0090090</td>
+<td align="right">6.9767344</td>
+<td align="right">7.1484507</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">6.5</td>
+<td align="right">6</td>
+<td align="right">13.0130130</td>
+<td align="right">7.5098897</td>
+<td align="right">6.7094465</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">7.5</td>
+<td align="right">7</td>
+<td align="right">9.5095095</td>
+<td align="right">4.7840465</td>
+<td align="right">4.3326161</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">8.5</td>
+<td align="right">8</td>
+<td align="right">7.6076076</td>
+<td align="right">5.0830494</td>
+<td align="right">2.8884107</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">9.5</td>
+<td align="right">9</td>
+<td align="right">5.8058058</td>
+<td align="right">4.9833817</td>
+<td align="right">3.0809714</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">10.5</td>
+<td align="right">10</td>
+<td align="right">4.2042042</td>
+<td align="right">4.0863730</td>
+<td align="right">2.4070089</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">11.5</td>
+<td align="right">11</td>
+<td align="right">2.0020020</td>
+<td align="right">1.7940174</td>
+<td align="right">0.4464608</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">12.5</td>
+<td align="right">12</td>
+<td align="right">1.9019019</td>
+<td align="right">1.8936851</td>
+<td align="right">2.2144482</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">13.5</td>
+<td align="right">13</td>
+<td align="right">3.0030030</td>
+<td align="right">0.3986705</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">14.5</td>
+<td align="right">14</td>
+<td align="right">1.9019019</td>
+<td align="right">0.6976734</td>
+<td align="right">0.3851214</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">15.5</td>
+<td align="right">15</td>
+<td align="right">0.5005005</td>
+<td align="right">0.0996676</td>
+<td align="right">0.1093873</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">16.5</td>
+<td align="right">16</td>
+<td align="right">1.0010010</td>
+<td align="right">0.0897009</td>
+<td align="right">0.0772576</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">17.5</td>
+<td align="right">17</td>
+<td align="right">0.3003003</td>
+<td align="right">0.0797341</td>
+<td align="right">0.0590860</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">18.5</td>
+<td align="right">18</td>
+<td align="right">0.8008008</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0402657</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">19.5</td>
+<td align="right">19</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0498338</td>
+<td align="right">0.0304333</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="right">20.5</td>
+<td align="right">20</td>
+<td align="right">1.0010010</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0210982</td>
+</tr>
+<tr class="even">
+<td align="right">22</td>
+<td align="right">21.5</td>
+<td align="right">21</td>
+<td align="right">0.9009009</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0276142</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chap-modechoice.html#cb17-1"></a><span class="kw">ggplot</span>(tlfd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(purpose, share, HBW<span class="op">:</span>HBSH), </span>
+<span id="cb17-2"><a href="chap-modechoice.html#cb17-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> LOW, <span class="dt">y =</span> share, <span class="dt">color =</span> purpose)) <span class="op">+</span></span>
+<span id="cb17-3"><a href="chap-modechoice.html#cb17-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb17-4"><a href="chap-modechoice.html#cb17-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
+<p><img src="ceen565_files/figure-html/tfld-plot-1.png" width="672" /></p>
+<p>The modeled TLFD for each purpose can be had on the model home screen as an
+output of the trip distribution model. Calculate the error between your observed
+and modeled TLFD. Determine which calibration curve you will use (you may decide
+to use different curves for different purposes). Find the coefficients of the
+curve that will compensate for the error in the model.</p>
+<p>Re-run the destination choice model with your new coefficients, run the mode choice
+model, and adjust the coefficients over there.</p>
+</div>
+<div id="report-1" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Report</h3>
+<p>Your lab report should describe the trip distribution and mode choice models;
+include discussions of the coefficients and your process to calibrate the mode
+and distance constants. Provide results of the calibration including observed and
+modeled trip length frequency distributions.</p>
 
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This can be
+confusing for many students; just remember that the difference between generic
+and alternative-specific is in the coefficients, not the variables.<a href="chap-modechoice.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
