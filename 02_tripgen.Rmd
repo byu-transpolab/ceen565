@@ -88,6 +88,57 @@ hbo_tripprod
 
 ## Trip Attraction
 
+Trip attraction models estimate how many trips will be attracted to a particular
+zone. This is a function of how many jobs of different kinds are in a zone, in
+addition to other elements of a zone. Trip attraction models are often a linear
+regression model.
+
+The NHTS cannot be used to estimate trip attraction models because we do not 
+know how many trips went to each TAZ; we only see the household side of the
+survey. So we will use a file that I have prepared from the Puget Sound Regional 
+Council (PSRC, Seattle) household travel survey. This file is available [on Box](https://byu.box.com/shared/static/7ci8vomip719bdno7xl5ftjj940dausm.csv). You
+can download it and read it directly into an R session with the `read_csv()` function,
+
+```{r load_attractions}
+psrc_attractions <- read_csv("https://byu.box.com/shared/static/7ci8vomip719bdno7xl5ftjj940dausm.csv")
+
+psrc_attractions
+```
+
+This file has, for every tract in the Seattle metro region, how many trips were
+attracted to the tract by purpose as well as the households and jobs by type in
+that tract. Let's look at the relationship between HBW trips and total
+employment:
+
+```{r totemp-hbw}
+ggplot(psrc_attractions, aes(x = totemp, y = HBW)) + 
+  geom_point() + stat_smooth(method = "lm")
+```
+
+We can estimate a linear regression model with the `lm` function. In this function
+we specify the model as `y ~ x + ...`.
+
+```{r lm-totemp-hbw}
+lm_hbw_totemp <- lm(HBW ~ totemp, data = psrc_attractions)
+summary(lm_hbw_totemp)
+```
+
+Let's estimate a more complex for HBO trips with many predictors.
+
+```{r hbo_rates}
+hbo_rates <- lm(HBO ~ tothh + retl + manu + offi + gved + othr, 
+                data = psrc_attractions)
+summary(hbo_rates)
+```
+
+The $R^2$ statistic is not particularly good, but it really never will be with
+this kind of data. More important is the relationship with the residuals. It's
+also not very good; there are a few outliers and quite a bit of
+heteroskedasticity. But there may be things we can try to make it better.
+
+```{r fitted}
+plot(hbo_rates, which = 1)
+```
 
 
 ## Homework
@@ -95,8 +146,8 @@ hbo_tripprod
 1. Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not? 
 
-1. Calculate the trip rates by the number of household workers and the
-vehicle availability. Do the rates make sense? Why or why not?
+1. Calculate the trip rates for each purpose by the number of household workers
+and the vehicle availability. Do the rates make sense? Why or why not?
 
 1. Calculate the *variance* or *standard deviation* in work trip rates by
 household size / vehicles and by number of workers / vehicles. Which
@@ -144,18 +195,30 @@ weighted trips in these trip purposes:
 
 Begin by running the RVTPO model through the Trip Generation
 submodel. The trip productions for each trip purpose are recorded in
-`Base/outputs/HH_PROD.dbf`. Using this file, run a create a report that
-sums the trips produced in each of these three purposes. Compare the totals
-in the bare model with the weighted survey targets.
+`Base/outputs/HH_PROD.dbf`. Using this file, create a report that sums the trips
+produced in each of these three purposes. You can read this file in R using
+the `read.dbf()` function in the `foreign` library, and then sum all columns in
+this table using the `summarize_all` function.
 
-Replace the bare model rates with rates you estimated from the PSRC travel survey
-during your homework assignment. Run your tabulation report again, and compare 
-the total productions to the regional targets.
+```{r hhprod}
+# read roanoke household trip productions
+rvtpo_productions <- foreign::read.dbf("data/HH_PROD.DBF") %>%
+  as_tibble()
+# show first 10 rows
+rvtpo_productions
+rvtpo_productions %>%
+  summarize_all( sum )
+```
+
+Obviously the bare model is not very close to the targets. Replace the bare
+model rates with rates you estimated from the NHTS during your homework
+assignment. Run your tabulation report again, and compare the total productions
+to the regional targets.
 
 Adjust the trip rates so that they replicate the regional survey targets within
 an acceptable margin of error. Ensure that the comparative relationship between
-the trip rates is maintained (i.e. households with more workers must make more
-work trips).
+the trip rates is maintained (i.e. households with more workers must make at
+least as many work trips).
 
 ### Trip Attraction
 
