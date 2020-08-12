@@ -1,10 +1,12 @@
+
+# Mode and Destination Choice {#chap-modechoice}
+
 ```{r setup, include=FALSE, cache=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 library(tidyverse)
 library(readxl)
-```
 
-# Mode and Destination Choice {#chap-modechoice}
+```
 
 
 
@@ -13,7 +15,9 @@ library(readxl)
 Let's first start with a couple of practice problems before using data to estimate
 multinomial logit models.
 
-1. Calculate the Non-motorized Travel Time, Auto Utility, Non-motorized Utility, Auto Probability, Non-motorized Probability, and the Mode Choice Logsum using the following information:
+1. Calculate the Non-motorized Travel Time, Auto Utility, Non-motorized Utility,
+Auto Probability, Non-motorized Probability, and the Mode Choice Logsum using
+the following information:
 
 <div align="center">$\beta$<sub>1</sub> = -0.025,
 $\beta$<sub>2</sub> = -0.06257,
@@ -49,45 +53,32 @@ $\alpha$<sub>2</sub> = Attractions
 
 For this week's assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial logit models that predict mode choice for work
-trips. The data is available on T-Square attached to this assignment. The data
-are listed as `WorkTrips.Rdata`. We will also need to load the 
+trips. The data is available on [on Box](https://byu.box.com/shared/static/px4v9aycpy7f399fsng2oz4w74tfwgbh.rds). The data
+are listed as `worktrips_logitdata.rds`. We will also need to load the 
 `mlogit` library package, which contains the tools necessary to estimate
 multinomial logit models.
 
 ```{r worktrips}
 library(mlogit)
-load("data/WorkTrips.Rdata")
+worktrips <- read_rds("data/worktrips_logitdata.rds")
 ```
 
-Because multinomial logit models are so different from other models, we need to
-use a special function to coerce the data into a form the model software can
-use. To do this, there needs to be a unique `IDFIELD` identification
-variable. Also, we should change the alternatives from their number to the name
-of the mode.
+Because multinomial logit models are so different from other models, 
+the data are stored in a special type of data frame. You can see the first several
+rows of this data below; Person 1 in household 2 has five alternatives, and they
+chose to drive alone. Person 3 chose to take transit.
 
 ```{r logitdata}
-# Make new id field
-worktrips$IDFIELD <- paste(worktrips$HHID, worktrips$PERID, sep = "-")
-
-# Name alternatives
-alternatives <- c(" Drive Alone", " Share 2", " Share 3+", " Transit", 
-  	" Bike", " Walk")
-worktrips$ALTNUM <- factor(worktrips$ALTNUM, labels = alternatives)
-
-# make mlogit data frame
-logitdata <- mlogit.data(worktrips, choice= "CHOSEN", alt.var = "ALTNUM",
-		chid.var = "IDFIELD", shape = "long")
-
-head(logitdata[,1:8], n=12)
+head(worktrips[,1:8], n=12)
 ```
 
 Now that your data is cleaned and formatted, you can estimate multinomial logit
-models.  To do this, use the ``mlogit()` function, in a manner sort of like
-you would use the `lm()` command. One thing to look out for: 
-the difference
-between generic and alternative-specific variables.^[This can be
-confusing for many students; just remember that the difference between generic
-and alternative-specific is in the coefficients, not the variables.]
+models.  To do this, use the ``mlogit()` function, in a manner sort of like you
+would use the `lm()` command. One thing to look out for: the difference between
+generic and alternative-specific variables.^[This can be confusing for many
+students; just remember that the difference between generic and
+alternative-specific is in the coefficients, not the variables.]
+
   - *Generic Variables*: These are coefficients with a single estimated
 	parameter. That is, the $\hat{\beta}$ coefficient for these variables has the
 	same value in the utility equation for every alternative. These estimates come
@@ -189,7 +180,6 @@ fixed; they should not change as part of this exercise.
 ```{r coeff.table}
 read_csv("data/rvtpo_data/MC_Coefficients.csv") %>%
   pander::pander()
-
 ```
 
 The mode-specific constants are in a separate file, `./Params/mc/MC_Constants.csv`.
