@@ -1,5 +1,10 @@
 # R and RStudio Help {#app-rstudio}
 
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(warning = FALSE, error = TRUE)
+```
+
+
 R is a powerful, open-source statistical programming language used by both
 professional and academic data scientists. It is among the computer languages
 most suited to modern data science, and is growing rapidly in its user base and
@@ -258,7 +263,7 @@ ggplot(data, aes(data aesthetics like x and y coordinates, fill color, etc.)) +
 For instance, we can create a histogram of trip lengths in the NHTS by giving 
 the `x` aesthetic as the `trpmiles` column in the `mytrips` dataset.
 
-```{r ggplot2-histogram, echo = TRUE}
+```{r ggplot2-histogram, echo = TRUE, warning = FALSE}
 ggplot(mytrips, aes(x = trpmiles)) + 
   geom_histogram()
 ```
@@ -267,7 +272,7 @@ This ends up not being very informative because some trips are very long. We
 could filter out the long trips within the data argument (Note that we still have
 the `-9` values from the missing information). 
 
-```{r ggplot2-histogram1, echo = TRUE}
+```{r ggplot2-histogram1, echo = TRUE, warning = FALSE}
 ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles)) + 
   geom_histogram()
 ```
@@ -276,8 +281,8 @@ If we wanted to see the difference between lengths of different trip purposes,
 we could add a color aesthetic to the plot. By default this stacks the two 
 categories on top of each other. 
 
-```{r ggplot2-histogram2, echo = TRUE}
-ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = trippurp)) + 
+```{r ggplot2-histogram2, echo = TRUE, warning = FALSE}
+ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippurp))) + 
   geom_histogram()
 ```
 
@@ -287,7 +292,7 @@ as an aesthetic, because it doesn't vary based on any data elements in the way t
 the `x` and `fill` variables do.
 
 ```{r ggplot2-histogram3, echo = TRUE}
-ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = trippurp)) + 
+ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippurp))) + 
   geom_density(alpha = 0.5)
 ```
 
