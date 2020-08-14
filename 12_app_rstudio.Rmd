@@ -32,7 +32,7 @@ There are two pieces of software you should install:
   and contains a few additional helper applications. Install the most recent
   stable release for your operating system.
   - **RStudio** [https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/) is an integrated application that makes using R considerably easier
-  with text completion, file managment, and some GUI features.
+  with text completion, file management, and some GUI features.
 
 Both software are available for Windows, MacOS, and Linux. The videos and screenshots
 of the application I post will use MacOS; the R code for all systems is the same,
