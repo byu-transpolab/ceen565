@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-08-13" />
+<meta name="date" content="2020-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -115,25 +179,26 @@
 <li class="chapter" data-level="5.1" data-path="chap-assignment.html"><a href="chap-assignment.html#laboratory-assignment"><i class="fa fa-check"></i><b>5.1</b> Laboratory Assignment</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="chap-process.html"><a href="chap-process.html"><i class="fa fa-check"></i><b>6</b> The Planning Process</a></li>
-<li class="appendix"><span><b>Appendix</b></span><ul>
-<li class="chapter" data-level="1" data-path="chap-process.html"><a href="chap-process.html#running-the-model"><i class="fa fa-check"></i><b>1</b> Running the Model</a></li>
-<li class="chapter" data-level="2" data-path="chap-process.html"><a href="chap-process.html#files-and-reports"><i class="fa fa-check"></i><b>2</b> Files and Reports</a></li>
-<li class="chapter" data-level="3" data-path="chap-process.html"><a href="chap-process.html#cube-tips-and-tricks"><i class="fa fa-check"></i><b>3</b> Cube Tips and Tricks</a><ul>
-<li class="chapter" data-level="3.1" data-path="chap-process.html"><a href="chap-process.html#shortest-paths"><i class="fa fa-check"></i><b>3.1</b> Shortest Paths</a></li>
-<li class="chapter" data-level="3.2" data-path="chap-process.html"><a href="chap-process.html#working-with-matrices"><i class="fa fa-check"></i><b>3.2</b> Working with Matrices</a></li>
-<li class="chapter" data-level="3.3" data-path="chap-process.html"><a href="chap-process.html#writing-custom-scripts"><i class="fa fa-check"></i><b>3.3</b> Writing Custom Scripts</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="app-demomodel.html"><a href="app-demomodel.html"><i class="fa fa-check"></i><b>A</b> Demonstration Model</a><ul>
+<li class="chapter" data-level="A.1" data-path="app-demomodel.html"><a href="app-demomodel.html#running-the-model"><i class="fa fa-check"></i><b>A.1</b> Running the Model</a></li>
+<li class="chapter" data-level="A.2" data-path="app-demomodel.html"><a href="app-demomodel.html#files-and-reports"><i class="fa fa-check"></i><b>A.2</b> Files and Reports</a></li>
+<li class="chapter" data-level="A.3" data-path="app-demomodel.html"><a href="app-demomodel.html#cube-tips-and-tricks"><i class="fa fa-check"></i><b>A.3</b> Cube Tips and Tricks</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="app-demomodel.html"><a href="app-demomodel.html#shortest-paths"><i class="fa fa-check"></i><b>A.3.1</b> Shortest Paths</a></li>
+<li class="chapter" data-level="A.3.2" data-path="app-demomodel.html"><a href="app-demomodel.html#working-with-matrices"><i class="fa fa-check"></i><b>A.3.2</b> Working with Matrices</a></li>
+<li class="chapter" data-level="A.3.3" data-path="app-demomodel.html"><a href="app-demomodel.html#writing-custom-scripts"><i class="fa fa-check"></i><b>A.3.3</b> Writing Custom Scripts</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="A" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>A</b> R and RStudio Help</a><ul>
-<li class="chapter" data-level="A.1" data-path="app-rstudio.html"><a href="app-rstudio.html#installing"><i class="fa fa-check"></i><b>A.1</b> Installing</a></li>
-<li class="chapter" data-level="A.2" data-path="app-rstudio.html"><a href="app-rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>A.2</b> RStudio Orientation</a></li>
-<li class="chapter" data-level="A.3" data-path="app-rstudio.html"><a href="app-rstudio.html#r-packages"><i class="fa fa-check"></i><b>A.3</b> R Packages</a></li>
-<li class="chapter" data-level="A.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>A.4</b> Working with Tables</a><ul>
-<li class="chapter" data-level="A.4.1" data-path="app-rstudio.html"><a href="app-rstudio.html#reading-data"><i class="fa fa-check"></i><b>A.4.1</b> Reading Data</a></li>
-<li class="chapter" data-level="A.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>A.4.2</b> Modifying and Summarizing Tables</a></li>
-<li class="chapter" data-level="A.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>A.4.3</b> Mutate, Summarize, and Group</a></li>
+<li class="chapter" data-level="B" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>B</b> R and RStudio Help</a><ul>
+<li class="chapter" data-level="B.1" data-path="app-rstudio.html"><a href="app-rstudio.html#installing"><i class="fa fa-check"></i><b>B.1</b> Installing</a></li>
+<li class="chapter" data-level="B.2" data-path="app-rstudio.html"><a href="app-rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>B.2</b> RStudio Orientation</a></li>
+<li class="chapter" data-level="B.3" data-path="app-rstudio.html"><a href="app-rstudio.html#r-packages"><i class="fa fa-check"></i><b>B.3</b> R Packages</a></li>
+<li class="chapter" data-level="B.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>B.4</b> Working with Tables</a><ul>
+<li class="chapter" data-level="B.4.1" data-path="app-rstudio.html"><a href="app-rstudio.html#reading-data"><i class="fa fa-check"></i><b>B.4.1</b> Reading Data</a></li>
+<li class="chapter" data-level="B.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>B.4.2</b> Modifying and Summarizing Tables</a></li>
+<li class="chapter" data-level="B.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>B.4.3</b> Mutate, Summarize, and Group</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>A.5</b> Graphics with <code>ggplot2</code></a></li>
+<li class="chapter" data-level="B.5" data-path="app-rstudio.html"><a href="app-rstudio.html#graphics-with-ggplot2"><i class="fa fa-check"></i><b>B.5</b> Graphics with <code>ggplot2</code></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -162,7 +227,7 @@
 <div align = "center">
 <img src="images/03_networkgraph.png" title="fig:" width="400" alt="Simple Distribution Graph" />
 <div align = "left">
-<p>The figure above<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> presents a simple three zone
+<p>The figure above<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> presents a simple three zone
 system, the link travel times for this system (for internal trips, <span class="math inline">\(t_{ii}=2\)</span>
 globally), and the zonal productions and attractions. Assume a gravity model of
 the form.</p>
@@ -219,10 +284,10 @@ reasonable?</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>This problem is adapted with permission from
+<ol start="2">
+<li id="fn2"><p>This problem is adapted with permission from
 <em>Urban Transportation Planning: Second Edition</em> by Michael D. Meyer and
-Eric J. Miller.<a href="chap-distribution.html#fnref1" class="footnote-back">↩︎</a></p></li>
+Eric J. Miller.<a href="chap-distribution.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

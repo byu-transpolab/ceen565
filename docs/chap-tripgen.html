@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-08-13" />
+<meta name="date" content="2020-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,7 +163,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a></li>
+<li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a><ul>
+<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
 <li class="chapter" data-level="4.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#lab-1"><i class="fa fa-check"></i><b>4.1</b> Lab</a><ul>
@@ -278,13 +280,6 @@ out by purpose.</p>
 <span id="cb20-9"><a href="chap-tripgen.html#cb20-9"></a>              <span class="dt">values_from =</span> trips, <span class="dt">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;houseid&#39; (override with `.groups` argument)</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-tripgen.html#cb22-1"></a>trips</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
 <pre><code>## # A tibble: 9,518 x 7
 ## # Groups:   houseid [9,518]
 ##    houseid    HBO HBSHOP   NHB HBSOCREC   HBW  `-9`
@@ -303,22 +298,15 @@ out by purpose.</p>
 <p>Now, we will <code>join</code> the trips data frame to the households data frame so that
 everything is in one place. Note that when we do this, there will be some households
 that never made any trips; we need to change their trip counts from <code>NA</code> to <code>0</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chap-tripgen.html#cb25-1"></a><span class="co"># function to change NA to 0</span></span>
-<span id="cb25-2"><a href="chap-tripgen.html#cb25-2"></a>nato0 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">ifelse</span>(<span class="kw">is.na</span>(x), <span class="dv">0</span>, x)}</span>
-<span id="cb25-3"><a href="chap-tripgen.html#cb25-3"></a></span>
-<span id="cb25-4"><a href="chap-tripgen.html#cb25-4"></a>tripprod &lt;-<span class="st"> </span>hh <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-5"><a href="chap-tripgen.html#cb25-5"></a><span class="st">  </span><span class="co"># join tables by id field</span></span>
-<span id="cb25-6"><a href="chap-tripgen.html#cb25-6"></a><span class="st">  </span><span class="kw">left_join</span>(trips, <span class="dt">by =</span> <span class="st">&quot;houseid&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb25-7"><a href="chap-tripgen.html#cb25-7"></a><span class="st">  </span><span class="co"># change all NA values in columns from the trips data to 0.a</span></span>
-<span id="cb25-8"><a href="chap-tripgen.html#cb25-8"></a><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="kw">names</span>(trips)), nato0)</span>
-<span id="cb25-9"><a href="chap-tripgen.html#cb25-9"></a>tripprod</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-tripgen.html#cb24-1"></a><span class="co"># function to change NA to 0</span></span>
+<span id="cb24-2"><a href="chap-tripgen.html#cb24-2"></a>nato0 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">ifelse</span>(<span class="kw">is.na</span>(x), <span class="dv">0</span>, x)}</span>
+<span id="cb24-3"><a href="chap-tripgen.html#cb24-3"></a></span>
+<span id="cb24-4"><a href="chap-tripgen.html#cb24-4"></a>tripprod &lt;-<span class="st"> </span>hh <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb24-5"><a href="chap-tripgen.html#cb24-5"></a><span class="st">  </span><span class="co"># join tables by id field</span></span>
+<span id="cb24-6"><a href="chap-tripgen.html#cb24-6"></a><span class="st">  </span><span class="kw">left_join</span>(trips, <span class="dt">by =</span> <span class="st">&quot;houseid&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb24-7"><a href="chap-tripgen.html#cb24-7"></a><span class="st">  </span><span class="co"># change all NA values in columns from the trips data to 0.a</span></span>
+<span id="cb24-8"><a href="chap-tripgen.html#cb24-8"></a><span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="kw">names</span>(trips)), nato0)</span>
+<span id="cb24-9"><a href="chap-tripgen.html#cb24-9"></a>tripprod</span></code></pre></div>
 <pre><code>## # A tibble: 10,381 x 13
 ##    houseid wthhfin hhsize hhvehcnt numadlt hhfaminc wrkcount   HBO HBSHOP   NHB
 ##    &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr+lb&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -337,21 +325,14 @@ that never made any trips; we need to change their trip counts from <code>NA</co
 <p>Now we can count up the number of trips by grouping the variables we care
 about and taking the average. For instance, we can get the average HBO trip rate
 for households by size and vehicle count. Remember to weight!</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-tripgen.html#cb28-1"></a>hbo_tripprod &lt;-<span class="st"> </span>tripprod <span class="op">%&gt;%</span></span>
-<span id="cb28-2"><a href="chap-tripgen.html#cb28-2"></a><span class="st">  </span><span class="kw">group_by</span>(hhsize, hhvehcnt) <span class="op">%&gt;%</span></span>
-<span id="cb28-3"><a href="chap-tripgen.html#cb28-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
-<span id="cb28-4"><a href="chap-tripgen.html#cb28-4"></a>    <span class="dt">n =</span> <span class="kw">n</span>(), <span class="co"># number of households in category</span></span>
-<span id="cb28-5"><a href="chap-tripgen.html#cb28-5"></a>    <span class="dt">HBO =</span> <span class="kw">weighted.mean</span>(HBO, wthhfin), <span class="co"># average HBO trips per hh</span></span>
-<span id="cb28-6"><a href="chap-tripgen.html#cb28-6"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chap-tripgen.html#cb26-1"></a>hbo_tripprod &lt;-<span class="st"> </span>tripprod <span class="op">%&gt;%</span></span>
+<span id="cb26-2"><a href="chap-tripgen.html#cb26-2"></a><span class="st">  </span><span class="kw">group_by</span>(hhsize, hhvehcnt) <span class="op">%&gt;%</span></span>
+<span id="cb26-3"><a href="chap-tripgen.html#cb26-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb26-4"><a href="chap-tripgen.html#cb26-4"></a>    <span class="dt">n =</span> <span class="kw">n</span>(), <span class="co"># number of households in category</span></span>
+<span id="cb26-5"><a href="chap-tripgen.html#cb26-5"></a>    <span class="dt">HBO =</span> <span class="kw">weighted.mean</span>(HBO, wthhfin), <span class="co"># average HBO trips per hh</span></span>
+<span id="cb26-6"><a href="chap-tripgen.html#cb26-6"></a>  )</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;hhsize&#39; (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-tripgen.html#cb30-1"></a>hbo_tripprod</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-tripgen.html#cb28-1"></a>hbo_tripprod</span></code></pre></div>
 <pre><code>## # A tibble: 16 x 4
 ## # Groups:   hhsize [4]
 ##    hhsize hhvehcnt     n   HBO
@@ -384,7 +365,7 @@ know how many trips went to each TAZ; we only see the household side of the
 survey. So we will use a file that I have prepared from the Puget Sound Regional
 Council (PSRC, Seattle) household travel survey. This file is available <a href="https://byu.box.com/shared/static/7ci8vomip719bdno7xl5ftjj940dausm.csv">on Box</a>. You
 can download it and read it directly into an R session with the <code>read_csv()</code> function,</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chap-tripgen.html#cb33-1"></a>psrc_attractions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/7ci8vomip719bdno7xl5ftjj940dausm.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-tripgen.html#cb30-1"></a>psrc_attractions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/7ci8vomip719bdno7xl5ftjj940dausm.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   attr_tract = col_double(),
@@ -400,14 +381,7 @@ can download it and read it directly into an R session with the <code>read_csv()
 ##   othr = col_double(),
 ##   totemp = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="chap-tripgen.html#cb35-1"></a>psrc_attractions</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-tripgen.html#cb32-1"></a>psrc_attractions</span></code></pre></div>
 <pre><code>## # A tibble: 643 x 12
 ##    attr_tract    HBO HBShop    HBW    NHB tothh  retl  manu  offi  gved  othr
 ##         &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -426,16 +400,16 @@ can download it and read it directly into an R session with the <code>read_csv()
 attracted to the tract by purpose as well as the households and jobs by type in
 that tract. Let’s look at the relationship between HBW trips and total
 employment:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-tripgen.html#cb38-1"></a><span class="kw">ggplot</span>(psrc_attractions, <span class="kw">aes</span>(<span class="dt">x =</span> totemp, <span class="dt">y =</span> HBW)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb38-2"><a href="chap-tripgen.html#cb38-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chap-tripgen.html#cb34-1"></a><span class="kw">ggplot</span>(psrc_attractions, <span class="kw">aes</span>(<span class="dt">x =</span> totemp, <span class="dt">y =</span> HBW)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb34-2"><a href="chap-tripgen.html#cb34-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
 <p><img src="02_tripgen_files/figure-html/totemp-hbw-1.png" width="672" /></p>
 <p>We can estimate a linear regression model with the <code>lm</code> function. In this function
 we specify the model as <code>y ~ x + ...</code>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-tripgen.html#cb42-1"></a>lm_hbw_totemp &lt;-<span class="st"> </span><span class="kw">lm</span>(HBW <span class="op">~</span><span class="st"> </span>totemp, <span class="dt">data =</span> psrc_attractions)</span>
-<span id="cb42-2"><a href="chap-tripgen.html#cb42-2"></a><span class="kw">summary</span>(lm_hbw_totemp)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-tripgen.html#cb38-1"></a>lm_hbw_totemp &lt;-<span class="st"> </span><span class="kw">lm</span>(HBW <span class="op">~</span><span class="st"> </span>totemp, <span class="dt">data =</span> psrc_attractions)</span>
+<span id="cb38-2"><a href="chap-tripgen.html#cb38-2"></a><span class="kw">summary</span>(lm_hbw_totemp)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = HBW ~ totemp, data = psrc_attractions)
@@ -456,9 +430,9 @@ we specify the model as <code>y ~ x + ...</code>.</p>
 ## Multiple R-squared:  0.4392, Adjusted R-squared:  0.4383 
 ## F-statistic: 501.2 on 1 and 640 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Let’s estimate a more complex for HBO trips with many predictors.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chap-tripgen.html#cb44-1"></a>hbo_rates &lt;-<span class="st"> </span><span class="kw">lm</span>(HBO <span class="op">~</span><span class="st"> </span>tothh <span class="op">+</span><span class="st"> </span>retl <span class="op">+</span><span class="st"> </span>manu <span class="op">+</span><span class="st"> </span>offi <span class="op">+</span><span class="st"> </span>gved <span class="op">+</span><span class="st"> </span>othr, </span>
-<span id="cb44-2"><a href="chap-tripgen.html#cb44-2"></a>                <span class="dt">data =</span> psrc_attractions)</span>
-<span id="cb44-3"><a href="chap-tripgen.html#cb44-3"></a><span class="kw">summary</span>(hbo_rates)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-tripgen.html#cb40-1"></a>hbo_rates &lt;-<span class="st"> </span><span class="kw">lm</span>(HBO <span class="op">~</span><span class="st"> </span>tothh <span class="op">+</span><span class="st"> </span>retl <span class="op">+</span><span class="st"> </span>manu <span class="op">+</span><span class="st"> </span>offi <span class="op">+</span><span class="st"> </span>gved <span class="op">+</span><span class="st"> </span>othr, </span>
+<span id="cb40-2"><a href="chap-tripgen.html#cb40-2"></a>                <span class="dt">data =</span> psrc_attractions)</span>
+<span id="cb40-3"><a href="chap-tripgen.html#cb40-3"></a><span class="kw">summary</span>(hbo_rates)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = HBO ~ tothh + retl + manu + offi + gved + othr, 
@@ -488,7 +462,7 @@ we specify the model as <code>y ~ x + ...</code>.</p>
 this kind of data. More important is the relationship with the residuals. It’s
 also not very good; there are a few outliers and quite a bit of
 heteroskedasticity. But there may be things we can try to make it better.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chap-tripgen.html#cb46-1"></a><span class="kw">plot</span>(hbo_rates, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-tripgen.html#cb42-1"></a><span class="kw">plot</span>(hbo_rates, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="02_tripgen_files/figure-html/fitted-1.png" width="672" /></p>
 </div>
 <div id="homework" class="section level2">
@@ -558,18 +532,11 @@ submodel. The trip productions for each trip purpose are recorded in
 produced in each of these three purposes. You can read this file in R using
 the <code>read.dbf()</code> function in the <code>foreign</code> library, and then sum all columns in
 this table using the <code>summarize_all</code> function.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chap-tripgen.html#cb47-1"></a><span class="co"># read roanoke household trip productions</span></span>
-<span id="cb47-2"><a href="chap-tripgen.html#cb47-2"></a>rvtpo_productions &lt;-<span class="st"> </span>foreign<span class="op">::</span><span class="kw">read.dbf</span>(<span class="st">&quot;data/HH_PROD.DBF&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb47-3"><a href="chap-tripgen.html#cb47-3"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span>
-<span id="cb47-4"><a href="chap-tripgen.html#cb47-4"></a><span class="co"># show first 10 rows</span></span>
-<span id="cb47-5"><a href="chap-tripgen.html#cb47-5"></a>rvtpo_productions</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chap-tripgen.html#cb43-1"></a><span class="co"># read roanoke household trip productions</span></span>
+<span id="cb43-2"><a href="chap-tripgen.html#cb43-2"></a>rvtpo_productions &lt;-<span class="st"> </span>foreign<span class="op">::</span><span class="kw">read.dbf</span>(<span class="st">&quot;data/HH_PROD.DBF&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb43-3"><a href="chap-tripgen.html#cb43-3"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span>
+<span id="cb43-4"><a href="chap-tripgen.html#cb43-4"></a><span class="co"># show first 10 rows</span></span>
+<span id="cb43-5"><a href="chap-tripgen.html#cb43-5"></a>rvtpo_productions</span></code></pre></div>
 <pre><code>## # A tibble: 267 x 7
 ##      TAZ  HBWP NHBWP  HBOP HBSCP HBSHP NHBOP
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -584,15 +551,8 @@ this table using the <code>summarize_all</code> function.</p>
 ##  9     9  82.2  46.9  82.2  46.5  82.2 159. 
 ## 10    10 177.  101.  177.  100.  177.  343. 
 ## # … with 257 more rows</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="chap-tripgen.html#cb50-1"></a>rvtpo_productions <span class="op">%&gt;%</span></span>
-<span id="cb50-2"><a href="chap-tripgen.html#cb50-2"></a><span class="st">  </span><span class="kw">summarize_all</span>( sum )</span></code></pre></div>
-<pre><code>## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chap-tripgen.html#cb45-1"></a>rvtpo_productions <span class="op">%&gt;%</span></span>
+<span id="cb45-2"><a href="chap-tripgen.html#cb45-2"></a><span class="st">  </span><span class="kw">summarize_all</span>( sum )</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 7
 ##     TAZ   HBWP  NHBWP   HBOP  HBSCP  HBSHP  NHBOP
 ##   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
