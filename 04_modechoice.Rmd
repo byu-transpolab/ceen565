@@ -51,6 +51,8 @@ $\alpha$<sub>2</sub> = Attractions
 | 2 | 180 |
 | 3 | 210 |
 
+<div align = "left">
+
 Now, for this week's assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial logit models that predict mode choice for work
 trips. The data is available on [on Box](https://byu.box.com/shared/static/px4v9aycpy7f399fsng2oz4w74tfwgbh.rds). The data
@@ -73,7 +75,7 @@ head(worktrips[,1:8], n=12)
 ```
 
 Now that your data is cleaned and formatted, you can estimate multinomial logit
-models.  To do this, use the ``mlogit()` function, in a manner sort of like you
+models.  To do this, use the `mlogit()` function, in a manner sort of like you
 would use the `lm()` command. One thing to look out for: the difference between
 generic and alternative-specific variables.^[This can be confusing for many
 students; just remember that the difference between generic and
@@ -142,6 +144,7 @@ Question 7. Of the models you estimated, which is the preferred in terms of mode
 likelihood? What about in terms of behavioral sensitivity?
 
 Hint: A tool to compare models is the `screenreg()` function in `library(texreg)`.
+<div align = "left">
 
 ## Lab
 
