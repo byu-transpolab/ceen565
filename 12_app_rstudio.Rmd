@@ -81,6 +81,11 @@ install.packages("remotes") # tools for installing development packages
 remotes::install_github("byu-transpolab/nhts2017")
 ```
 
+```{r nhts-video, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/ULQAbpmPBhk")
+```
+
+
 You only need to **install** a package once on your computer. But every time you 
 want to **use** a function in a package, you need to load the package with the
 `library()` function. To load the `tidyverse` packages, for instance, 
