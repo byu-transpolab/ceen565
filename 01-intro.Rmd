@@ -71,153 +71,112 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.
 
-## The Four-Step Process
+## The Four-Step Transportation Planning Process
 
-Transportation planning often involves a four-step travel model, which is a
-a traditional method used by transportation planners. A four-step model consists 
-of the following steps:
+How can you know what might happen in the future? And how might that change based
+on decisions that you make today? This basic question is at the heart of 
+transportation planning:
 
- - **Trip Generation**, which seeks to estimate *how* many trips are generated,
-  or start in a specific Travel Analysis Zone (TAZ). Trip generation does this by
-  using economic data about the type and amount of development in the zone. If a 
-  zone has a high number of residential buildings, it is assumed that more productions
-  originate in that zone than would in a zone of commercial or retail buildings.
- - **Trip Distribution** seeks to estimate *where* generated trips go. Origins and 
-  destinations are matched in this step. These completed trips can occur within the
-  same zone, or be inter-zonal.
- - **Mode Choice** considers a number of factors to estimate what *modes* individuals
-  or groups will take. Some of the data that can be used include: travel time,
-  wait time, cost, and accessibility.
- - **Trip Assignment** seeks to determine the route that users choose between
-  origin and destination. The route is chosen based on a combined analysis of data,
-  including travel time, cost, mode choice, and origin and destination location.
+  - What might traffic look like if we build nothing and population still grows?
+  - Can we build less if we change land development patterns?
+  - How many people will use this new transit line?
+  
+In many fields --- including politics, meteorology, economics, etc. ---
+professionals who seek answers to questions like this do so with the help of a 
+**model**. A model is a mathematical representation of a real-world system. 
+In any model, there are things that need to vary (called inputs), things that
+can be estimated or calibrated (called parameters), and results (called outputs). 
+There are also things that are held fixed. The specific mathematical structure
+of the model, and which things get included and which things are excluded or
+abstracted away, determine what the model should and should not be used for.
 
+For example, we might try to predict something with a linear model, 
+\begin{equation}
+  y = \alpha + \beta x + \varepsilon
+  (\#eq:basic-model)
+\end{equation}
+In this case $y$ is the output, $x$ is the input, the 
+$\beta$ parameter defines how the input influences the outcomes, $\alpha$ is a
+fixed value, and $\varepsilon$ accounts for the random influence of all the 
+factors we did not include. We could add more $\beta$ and $x$ terms to 
+include more factors in the model. We could also change the mathematical format
+of the model to represent different types of outcomes, or chain several smaller
+models together to represent more complex relationships. If we wanted to see what 
+might happen if $x$ changed, we could put in a new value into this equation 
+and the output result $y$ might be a plausible prediction. The plausibility of
+the output is a function of how well the mathematical model actually represents
+the reality of the system.
 
+In this class you will learn the details of the *travel demand modeling process*, 
+which is a chain of many models, each with different inputs and outputs. A
+travel demand model on the whole has two basic inputs:
+
+ - Socioeconomic data representing where people live and work and go to school and
+ do other things.
+ - Transportation network data representing the roads and transit services and
+ other methods people use to get between their activities.
+ 
+The basic outputs of a travel demand model are transportation volumes and levels
+of service. There are many ways to design and build travel demand models, but
+the traditional way most regions in the United States approach travel demand models
+is through a **four step**, trip-based^[The primary alternative to the four-step method is called an "activity-based" method. Activity-based models can be significantly more complex to construct and use, but they are based more concretely in human behavior. Whether they actually result in better decisions by transportation planning agencies is an open question.] process. The four steps are:
+
+ 1. Trip Generation
+ 2. Trip Distribution
+ 3. Mode Choice
+ 4. Route Assignment
+ 
+A *trip generation* model determines how many trips are produced in each *zone*
+(neighborhood), and how many trips are attracted to each zone. The inputs to
+this model is the socioeconomic data in each zone. Mathematically, trip generation
+can be represented as 
+\begin{equation}
+  P_i = f(SE_i), A_j = f(SE_j)
+  (\#eq:tripgen)
+\end{equation}
+where $i$ and $j$ are the production and destination zone indexes.
+
+A *trip distribution* model seeks to pair the productions and attractions in the
+zones based on the travel costs $c$ between the two zones. Mathematically, trip
+distribution can be represented as
+\begin{equation}
+  T_{ij} = f(P_i, A_j, c_{ij})
+  (\#eq:tripdist)
+\end{equation}
+
+A *mode choice* model estimates how many of the trips from $i$ to $j$ will happen
+on each available mode $k$, based on the travel time by each mode and other 
+attributes of the origin and destination zones. Mathematically,
+\begin{equation}
+  T_{ijk} = f(T_{ij}, c_{ijk}, SE_{i,j}) 
+  (\#eq:modechoice)
+\end{equation}
+
+A *route assignment* model determines the specific routes that the trips going
+between $i$ and $j$ take. This allows us to estimate the volume of level of 
+service on each highway link and transit system $l$. Mathematically,
+\begin{equation}
+  LOS_l, V_l = f(T_{ijk}, c_{ijk})
+  (\#eq:modechoice)
+\end{equation}
+
+On the whole, the travel demand model can be represented mathematically as a 
+single function where the output transportation volumes and levels of service
+are a function of the input socioeconomic information and travel costs.
+
+\begin{equation}
+  LOS_l, V_l = \mathcal{F}(SE_{i,j}, c_{ij})
+  (\#eq:tdm)
+\end{equation}
+
+The details of each of these models will be the topic for the next several 
+chapters.
 
 ## Travel Model Building Blocks
 
 In this section, we present some of the terms used in transportation planning
 and modeling, as well as some of the data objects used in constructing travel
 demand models.
-
-### Household Travel Surveys
-Travel demand models try to represent individual behavior. How many trips
-does the average household make per day? How do people respond to changes in 
-transit fare? And how can a modeler know if the model accurately reflects 
-total traffic?
-
-Household travel surveys are a critical component of much travel modeling
-practice and research, and are a primary way to answer some of these questions.
-In a travel survey, a regional planning 
-agency^[Like a Metropolitan Planning Organization (MPO).] will recruit households
-to participate in the survey. Often there is some kind of reward to encourage
-participation, like a gift card or raffle. Once recruited, household members
-fill out a diary of their activities on an assigned day; Figure
-\@ref(fig:travel-diary) shows an example of one activity from a survey diary.
-From the example, you can see the kinds of data that are available: where the 
-person traveled, which travel mode they used, and what was their reason for
-making the trip.
-
-```{r travel-diary, fig.cap="Example travel survey diary entry.", out.width='70%', echo = FALSE}
-knitr::include_graphics("images/travel_diary.png")
-```
-
-Not all travel surveys are filled in on forms; nowadays telephone interviews or
-mobile applications are more common (more on that below). But for decades, paper
-travel surveys were the basis of almost all transportation behavior science.
-
-Once the surveys are collected, the data is usually processed into several tables
-stored in different files or a database. 
-
-  - A **Households** table has one row for each household in the dataset, including
-  information about the number of people in the household, the number of vehicles,
-  and the household income. 
-  - A **Persons** table has one row for each person in the dataset --- including
-  which household they are a part of (to link with the households table) --- and
-  personal attributes like age, student or worker status. 
-  - A **Vehicles** table has one row for each vehicle owned by the households in
-  in the dataset, including attributes like model year, vehicle class, and fuel
-  efficiency.
-  - A **Trips** table has one row for each trip taken by each person in the dataset.
-  This table can be linked against the other tables if necessary, and contains
-  information like the trip purpose and many other elements collected with the form
-  in Figure \@ref(fig:travel-diary).
-  
-Tables \@ref(tab:show-nhts-hh) through \@ref(tab:show-nhts-trips) show
-data collected from one household in the 2017 National Household Travel Survey. 
-The household contains four people, two of whom are working adults in their late 
-thirties. (the other two are children, and the NHTS did not collect their trip
-data). The household has two vehicles, and on the survey travel day person 2
-appeared to make a few very long trips. It's impossible to know if this
-is a typical day for this person or not, but that's the data that was collected.
-
-```{r show-nhts-hh, echo = FALSE}
-nhts_households %>% 
-  mutate_at(c("hhfaminc"), ~as_factor(., levels = "labels")) %>%
-  filter(houseid == "30000082") %>%
-  select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
-  knitr::kable(caption = "NHTS Households File")
-```
-
-```{r show-nhts-persons, echo = FALSE}
-nhts_persons %>% 
-  mutate_at(c("educ", "r_sex"), ~as_factor(., levels = "labels")) %>%
-  filter(houseid == "30000082") %>%
-  select(houseid, personid, r_age, educ, r_sex) %>%
-  knitr::kable(caption = "NHTS Persons File")
-```
-
-```{r show-nhts-vehicles, echo = FALSE}
-nhts_vehicles %>% 
-  mutate_at(c("make", "model", "fueltype"), ~as_factor(., levels = "labels")) %>%
-  filter(houseid == "30000082") %>%
-  select(houseid, vehid, vehyear, make, model, fueltype, od_read) %>%
-  knitr::kable(caption = "NHTS Vehicles File")
-```
-
-```{r show-nhts-trips, echo = FALSE}
-nhts_trips %>% 
-  mutate_at(c("trptrans", "trippurp"), ~as_factor(., levels = "labels")) %>%
-  filter(houseid == "30000082") %>%
-  select(houseid, personid, strttime, endtime, trpmiles, trptrans, trippurp) %>%
-  knitr::kable(caption = "NHTS Trips File")
-```
-
-Note that that the households data in Table \@ref(tab:show-nhts-hh) contains a
-numeric column called `wthhfin`. This is a survey *weight*. Because it is impossible
-to sample everyone in a population, there needs to be a way to *expand* the survey
-to the population. What this number means is that the selected household carries
-the same *weight* in this survey as approximately 1100 households in the general
-population. Also note that not every household's weight will be equal; because
-some population groups have different survey response weights, some households
-will need to be weighted more heavily so that the survey reflects the general 
-population. Most software packages have functions that allow you to 
-calculate statistics or estimate models including weighted values. The code 
-chunk below shows how to calculate the average number of workers per household
-with and without weights in R; as you can see, omitting the weights leads
-to a substantial change in the survey analysis.
-
-```{r weighted-mean, echo = TRUE}
-# Average workers per household with no weights
-mean(nhts_households$wrkcount)
-# Average workers per household, weighted
-weighted.mean(nhts_households$wrkcount, nhts_households$wthhfin)
-```
-
-
-Travel survey methodology is changing rapidly as a result of mobile devices with
-location capabilities. First, most travel surveys are now administered through a
-mobile application: respondents are invited to install an app on their smartphone
-that tracks the respondent's position and occasionally asks questions about
-trip purpose or mode. This makes collecting and cleaning data considerably easier
-than traditional paper surveys, and it also lowers the response burden for the
-survey participants.  Another change that mobile data has brought to travel surveys
-is the introduction of large datasets of location information that planners can
-purchase directly from cellular providers or third-party providers. Though these
-data do not have all the information on demographics and preferences a survey 
-would provide, they provide a considerably larger and more detailed sample 
-on things like overall trip flows. As a result, it may be possible to collect
-surveys less frequently, or to reduce survey sample sizes.
 
 ### Travel Analysis Zones
 
@@ -368,6 +327,127 @@ centroids.
 - **Flow matrices**, represent flows of people or vehicles from each origin to
 each destination. The number in the corresponding cell $T_{ij}$ is the total
 number of trips made, and represents the demand between two zones in a network.
+
+
+### Household Travel Surveys
+Travel demand models try to represent individual behavior. How many trips
+does the average household make per day? How do people respond to changes in 
+transit fare? And how can a modeler know if the model accurately reflects 
+total traffic?
+
+Household travel surveys are a critical component of much travel modeling
+practice and research, and are a primary way to answer some of these questions.
+In a travel survey, a regional planning 
+agency^[Like a Metropolitan Planning Organization (MPO).] will recruit households
+to participate in the survey. Often there is some kind of reward to encourage
+participation, like a gift card or raffle. Once recruited, household members
+fill out a diary of their activities on an assigned day; Figure
+\@ref(fig:travel-diary) shows an example of one activity from a survey diary.
+From the example, you can see the kinds of data that are available: where the 
+person traveled, which travel mode they used, and what was their reason for
+making the trip.
+
+```{r travel-diary, fig.cap="Example travel survey diary entry.", out.width='70%', echo = FALSE}
+knitr::include_graphics("images/travel_diary.png")
+```
+
+Not all travel surveys are filled in on forms; nowadays telephone interviews or
+mobile applications are more common (more on that below). But for decades, paper
+travel surveys were the basis of almost all transportation behavior science.
+
+Once the surveys are collected, the data is usually processed into several tables
+stored in different files or a database. 
+
+  - A **Households** table has one row for each household in the dataset, including
+  information about the number of people in the household, the number of vehicles,
+  and the household income. 
+  - A **Persons** table has one row for each person in the dataset --- including
+  which household they are a part of (to link with the households table) --- and
+  personal attributes like age, student or worker status. 
+  - A **Vehicles** table has one row for each vehicle owned by the households in
+  in the dataset, including attributes like model year, vehicle class, and fuel
+  efficiency.
+  - A **Trips** table has one row for each trip taken by each person in the dataset.
+  This table can be linked against the other tables if necessary, and contains
+  information like the trip purpose and many other elements collected with the form
+  in Figure \@ref(fig:travel-diary).
+  
+Tables \@ref(tab:show-nhts-hh) through \@ref(tab:show-nhts-trips) show
+data collected from one household in the 2017 National Household Travel Survey. 
+The household contains four people, two of whom are working adults in their late 
+thirties. (the other two are children, and the NHTS did not collect their trip
+data). The household has two vehicles, and on the survey travel day person 2
+appeared to make a few very long trips. It's impossible to know if this
+is a typical day for this person or not, but that's the data that was collected.
+
+```{r show-nhts-hh, echo = FALSE}
+nhts_households %>% 
+  mutate_at(c("hhfaminc"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
+  knitr::kable(caption = "NHTS Households File")
+```
+
+```{r show-nhts-persons, echo = FALSE}
+nhts_persons %>% 
+  mutate_at(c("educ", "r_sex"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, personid, r_age, educ, r_sex) %>%
+  knitr::kable(caption = "NHTS Persons File")
+```
+
+```{r show-nhts-vehicles, echo = FALSE}
+nhts_vehicles %>% 
+  mutate_at(c("make", "model", "fueltype"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, vehid, vehyear, make, model, fueltype, od_read) %>%
+  knitr::kable(caption = "NHTS Vehicles File")
+```
+
+```{r show-nhts-trips, echo = FALSE}
+nhts_trips %>% 
+  mutate_at(c("trptrans", "trippurp"), ~as_factor(., levels = "labels")) %>%
+  filter(houseid == "30000082") %>%
+  select(houseid, personid, strttime, endtime, trpmiles, trptrans, trippurp) %>%
+  knitr::kable(caption = "NHTS Trips File")
+```
+
+Note that that the households data in Table \@ref(tab:show-nhts-hh) contains a
+numeric column called `wthhfin`. This is a survey *weight*. Because it is impossible
+to sample everyone in a population, there needs to be a way to *expand* the survey
+to the population. What this number means is that the selected household carries
+the same *weight* in this survey as approximately 1100 households in the general
+population. Also note that not every household's weight will be equal; because
+some population groups have different survey response weights, some households
+will need to be weighted more heavily so that the survey reflects the general 
+population. Most software packages have functions that allow you to 
+calculate statistics or estimate models including weighted values. The code 
+chunk below shows how to calculate the average number of workers per household
+with and without weights in R; as you can see, omitting the weights leads
+to a substantial change in the survey analysis.
+
+```{r weighted-mean, echo = TRUE}
+# Average workers per household with no weights
+mean(nhts_households$wrkcount)
+# Average workers per household, weighted
+weighted.mean(nhts_households$wrkcount, nhts_households$wthhfin)
+```
+
+
+Travel survey methodology is changing rapidly as a result of mobile devices with
+location capabilities. First, most travel surveys are now administered through a
+mobile application: respondents are invited to install an app on their smartphone
+that tracks the respondent's position and occasionally asks questions about
+trip purpose or mode. This makes collecting and cleaning data considerably easier
+than traditional paper surveys, and it also lowers the response burden for the
+survey participants.  Another change that mobile data has brought to travel surveys
+is the introduction of large datasets of location information that planners can
+purchase directly from cellular providers or third-party providers. Though these
+data do not have all the information on demographics and preferences a survey 
+would provide, they provide a considerably larger and more detailed sample 
+on things like overall trip flows. As a result, it may be possible to collect
+surveys less frequently, or to reduce survey sample sizes.
+
 
 
 ## Statistical and Mathematical Techniques
