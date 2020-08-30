@@ -178,14 +178,20 @@ In this section, we present some of the terms used in transportation planning
 and modeling, as well as some of the data objects used in constructing travel
 demand models.
 
-### Travel Analysis Zones
 
-Activities in travel demand models happen in **Travel Analysis Zones** (TAZs), and
-the model tries to represent trips between the TAZs. Because trips inside a TAZ 
---- called intrazonal trips --- are not included in the travel model, each TAZ should
-be sufficiently small such that these trips do not affect the models' ability 
-to forecast travel on roadways.  The following rules are helpful when drawing
-TAZ's:
+### Travel Analysis Zones and SE Data
+
+The "people" in a model conduct *activities*: work, school, recreation, and
+other activities. Because travel is a derived demand, the purpose of travel is to 
+move between these activities. So a travel model needs a way to represent where
+the households, persons, jobs, and activities are located in space.
+
+Activities in travel demand models happen in **Travel Analysis Zones** (TAZs). 
+The model tries to represent trips between the TAZs. Because trips inside a
+TAZ --- called intrazonal trips --- are not included in the travel model, each
+TAZ should be sufficiently small such that these trips do not affect the models'
+ability to forecast travel on roadways.  The following rules are helpful when
+drawing TAZ's:
 
    - The TAZ should not stretch across major roadways
    - The TAZ should contain principally one land use, though in some areas this
@@ -194,11 +200,6 @@ TAZ's:
 
 Each TAZ is associated with **socioeconomic** (SE)  data, or information about
 the people, businesses, and other activities that are located in the TAZ. 
-
-```{r RoanokeTAZ, fig.cap="Travel Analysis Zones in Central Roanoke.", out.width='100%', echo = FALSE}
-knitr::include_graphics("images/RoanokeTAZ.png")
-```
-
 **Households** are a basic unit of analysis in many economic and statistical
 analyses. A household typically consists of one or more **persons** who reside
 in the same dwelling. Individuals living in the same dwelling can make up a
@@ -207,6 +208,16 @@ considered a household. Not everyone lives in households, however; some people
 live in what are called group quarters: military barracks, college dormitories,
 monasteries, prisons, etc. Travel models need to handle these people as well, but
 in this class we will focus on people who live in households.
+
+Households in travel models are often grouped into a classification scheme
+based on the number of people in the household, the number of children, the number
+of vehicles, etc. Households of different classifications will have different
+behavior in the rest of the model.
+
+::::{.rmdthink}
+Your lab activity for this unit will walk you through specifying a
+household classification model.
+::::
 
 **Firms** are another basic unit of analysis in many economic and statistical
 analyses. A firm is a profit-seeking person or entity that provides goods or
@@ -220,13 +231,17 @@ academic, government, and non-profit entities will also be represented in the SE
 data in terms of their jobs.
 
 It is important to be precise in our definitions when put all of these different
-things into a single file. A typical SE table for a small region is given in
-Table \@ref(tab:setable). Note the following relationships:
+items into an analysis. A typical socioeconomic data table for a small region is
+given in Table \@ref(tab:setable). Note the following relationships:
 
   - Persons live in Households
   - Workers are Persons who have a Job
   - Firms have employees who work at a Jobs 
-  
+
+```{r RoanokeTAZ, fig.cap="Travel Analysis Zones in Central Roanoke.", out.width='100%', echo = FALSE}
+knitr::include_graphics("images/RoanokeTAZ.png")
+```
+
 When we talk about "how many jobs" are in a TAZ, we mean "How many people do
 the firms located in that TAZ employ," and not "how many people who live
 in that TAZ are workers."
@@ -243,7 +258,7 @@ tibble(
 ```
 
 
-```{block2, sedata, type = "rmdexample"}
+::::{.rmdexample}
 Alice lives with her husband in zone $A$ and works as an accountant in zone $B$.
 Her husband does not currently work.
 Fill out the SE table from Table \@ref(tab:setable) with *just* this 
@@ -257,79 +272,111 @@ has an office job for her in Zone B.
 | A   |     2   |         1  |        1|        |        |               |
 | B   |         |            |         |        |       1|               |
 
-```
+::::
 
 
-### Highway Networks
+### Transportation Networks 
 
-**Nodes** **Centroids** are special nodes that indicate where the activities
-of a TAZ are located on average. 
+The purpose of a travel model is to understand how people are likely to use
+transportation infrastructure, so there has to be a way to represent 
+roadway and transit systems. We do this with a 
+*network*^[Sometimes called a *graph* in mathematics.]. A network consists of
+two basic data structures: **Nodes** and **Links**
 
-**Links** **Centroid connectors** are special links that connect centroids to a network. 
+Nodes are points in space. In a highway network, almost all nodes represent 
+intersections between different roads. Some important nodes represent the 
+**TAZ Centroids**, or the points where the households and jobs in the travel
+model are located.
 
-**Functional Types** or **Functional Classes** are used to describe each road in
-a system, and its importance to that system. The types include: freeway,
-principal arterial, minor arterial, major collector, minor collector, local
-street, and cul-de-sac. 
+Links connect nodes, and represent roads. Links have many different attributes
+describing the characteristics of the roadway they represent. The two most 
+important link attributes are the link's *speed* and *capacity*, because they
+provide the travel costs ($c_{ij}$ above) to the various steps of the model. But
+these attributes might not always be known at the outset, so instead we use
+attributes of the roadway that influence capacity and speed, and then calculate 
+these other values.
 
+**Functional Type** or **Functional Class** describes the relative
+role each road plays in the transportation system [@2018aashto]. Every street
+fills a role on a spectrum from mobility on one end to accessibility on the other: 
+roads that are good at moving high volumes of vehicles are usually not good at 
+providing access to homes and businesses. Common functional types include:
 
-<!-- Can you include a bulleted list describing in more detail what these
-facilities are like? Maybe even a figure of a few of them would be helpful. -->
-
-  - Freeways are provided almost exclusively to enhance mobility for through traffic.
-    Access to freeways is provided only at specific grade-separated interhcanges,
+  - *Freeways* are provided almost exclusively to enhance mobility for through traffic.
+    Access to freeways is provided only at specific grade-separated interchanges,
     with no direct access to the freeway from adjacent land except by way of those 
-    interachanges.
-  - Major and minor arterials primary function is to provide mobility of through 
+    interchanges.
+  - The primary function of major and minor *arterials* is to provide mobility of through 
     traffic. However, arterials also connect to both collectors and local roads and
-    streets and many arteirals provide direct access to adjacent development. 
-  - Major and minor collectors connect arterials to local roads and provide access
+    streets and many arterials provide direct access to adjacent development. 
+  - Major and minor *collectors* connect arterials to local roads and provide access
     to adjacent development. Mobility for through traffic is less important. 
-  - Local streets exist primarily to serve adjacent development. Mobility for 
-    through traffic is not important.
-  - Cul-de-sacs only serve adjacent development. 
+  - *Local streets* exist primarily to serve adjacent development. Mobility for 
+    through traffic is not important, or even desired.
   
-    *See -@2018aashto for more information.
-    
-```{r UDOTFunctionalClasses, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
+Figure \@ref(fig:udot_classes) shows roads in Provo and Orem classified by this
+scheme. Streets of a functional class below collector are almost never included
+in travel models, unless they provide essential connectivity between other
+roads. Entire neighborhoods of local streets may be represented by just a
+handful of special links called *centroid connectors*.
+
+```{r udot_classes, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
 knitr::include_graphics("images/UDOT_Functional_Classes.png")
 ```
 
-Streets of a functional class below collector are almost never included in 
-travel models, unless they provide essential connectivity between other roads. 
-Entire neighborhoods of local streets may be represented by just a few centroid
-connectors.
+::::{.rmdthink}
+Why are local roads not included in travel models?
+::::
 
-**Free-flow speed**, or **FFS**, is the speed vehicles travel when the road
-is empty. 
+**Free-flow speed** is the speed vehicles travel when the road is empty.
+Historically, travel modelers would use formulas in the Highway Capacity Manual
+to estimate the free-flow speed for roadways, or assert a basic calculation like
+5 miles per hour over the speed limit. More recently, modelers use the speeds 
+reported from GPS devices in the middle of the night to establish free-flow 
+speeds.
 
+The number of **lanes** on a road is fairly self-explanatory, but it plays a 
+major role in the road's capacity.
 
-**Link capacity** is the maximum number of vehicles a *link*, or section of
-road, can optimally transport between two *nodes*.  The capacity is a function
-of functional type, lanes, free-flow speed, area type, etc.
+Roads located in different **area types** -- urban, suburban, and rural -- 
+operate differently from each other. Sometimes travel models will assert this 
+value, but more recent models will calculate the area type for each link
+based on the density of the surrounding TAZs. 
 
-<!-- Can you include a figure of a highway network's nodes and links with functional
-class and speed shown in some way? Maybe overlaying this on a map would be
-helpful to show the limited nature of the network. -->
+Link **capacity** is the maximum number of vehicles a can optimally transport
+between two nodes.  The capacity is a function of functional type, lanes,
+free-flow speed, area type, etc. Usually travel models will calculate the
+capacity based on the given values for other roadway characteristics, but
+sometimes there are ways to override this feature, i.e., if engineers have
+developed specific capacity estimates for a new project.
+
+**Centroid connectors** are special links that connect centroids to a network. 
+These are different from other links in that they usually don't have a capacity
+or a speed (they don't represent real roads).
 
 ### Matrices
 
-Matrices represent between zones. Convention has us call the origin zones $i$ 
-in the rows and and the destination zones $j$ in the columns. Matrices in travel
-models are always symmetrical. There are two kinds of information we typically
-represent with matrices: costs and flows.
+Travel models need to represent travel times, costs, and flows between zones.
+Models store this data in **matrices**, special data structures developed for 
+this purpose. Each matrix is a square table where the rows $i$ represent origin
+zones and the columns $j$ represent the destination zones. Each cell represents
+something about the relationship between the two zones.
 
-- **Cost matrices**, or skims, are matrices where the cells contain estimates 
-of travel time or cost. They are called *skims* because they are the results 
-of *skimming* a network to find the shortest path between each pair of TAZ 
-centroids.
+There are two kinds of information we typically
+represent with matrices:
 
-- **Flow matrices**, represent flows of people or vehicles from each origin to
-each destination. The number in the corresponding cell $T_{ij}$ is the total
-number of trips made, and represents the demand between two zones in a network.
+  - **Cost matrices**, or skims, are matrices where the cells contain estimates of
+  travel time or cost. They are called *skims* because they are the results of
+  *skimming* a network to find the shortest path between each pair of TAZ
+  centroids.
+
+  - **Flow matrices**, represent flows of people or vehicles from each origin to
+  each destination. The number in the corresponding cell $T_{ij}$ is the total
+  number of trips made, and represents the demand between two zones in a network.
 
 
-### Household Travel Surveys
+## Household Travel Surveys and Population Data
+
 Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in 
 transit fare? And how can a modeler know if the model accurately reflects 
@@ -449,11 +496,13 @@ on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.
 
 
-
 ## Statistical and Mathematical Techniques
 
 Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.
+Many of the data tables are in the `nhts2017` package. To install this package, 
+follow the directions in the [Appendix](#app-rstudio).
+
 
 ### Continuous and Discrete Distributions
 
@@ -535,7 +584,7 @@ ggplot(nhts_trips %>%
 
 
 
-### Iterative Proportional Fitting
+### Iterative Proportional Fitting {#ipf}
 
 Iterative Proportional Fitting
 
