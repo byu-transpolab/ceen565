@@ -3,6 +3,7 @@
 ```{r setup-blocks, include = FALSE}
 knitr::opts_chunk$set(cache = TRUE)
 library(tidyverse)
+library(tidycensus)
 library(nhts2017)
 theme_set(theme_bw())
 ```
@@ -606,24 +607,6 @@ Let's say you have a function with a
 > Some of these questions require a completed run of the demonstration model.
 For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
 
-1. How does recreational transportation --- i.e., going for a bike ride --- fit into the
-theory of derived demand for travel? Write a short paragraph explaining your thoughts
-based on what we covered in lecture and the text.
-
-1. Think about a recent transportation-related construction project you have
-seen in your community. Find an article in a local newspaper discussing the project.
-Why was the project built (or why is it being built)? Who supports the project?
-Does anyone oppose the project? Write a short paragraph including a link and 
-citation to the article.
-
-1. Download the [rmove](https://rmove.rsginc.com/) mobile application, and log 
-in with the password given you by the instructor. Track your daily activies and
-trips for *three days*. You may include at most one weekend day. Write a short
-summary of your activities, including:
-
-    - How many trips you took each day
-    - The mode split of all your trips
-
 1. With the TAZ layer and socioeconomic data in the demonstration model, make a
 set of choropleth maps showing: total households; household density; total jobs;
 job density; density of manufacturing vs office vs retail employment. Compare
@@ -648,9 +631,208 @@ middle of the night?
 traveled by facility type. What percent of the region's VMT occurs on freeways?
 What percent of the region's lane-miles are freeways? 
 
-1. Open the output highway network. Create a map of the 
-highway links showing PM period level of service based on the volume to capacity
-ratios in the table below. How would you characterize traffic in Roanoke? Which
-is the worst-performing major facility?
+1. Open the output highway network. Create a map of the highway links showing PM
+period level of service based on the volume to capacity ratios in the table
+below. How would you characterize traffic in Roanoke? Which is the
+worst-performing major facility?
 
+
+## Lab {-#lab-blocks}
+
+Demographers for the Commonwealth of Virginia --- like those in other
+states --- forecast a certain number of residents, households, and jobs for
+many years into the future. But this data alone is not sufficient: We believe 
+that larger households will make more trips than smaller households.
+But we only know how many households and persons there are, and not how many
+households of each different size. 
+
+::::{.rmdthink}
+For example, let's say that we know there are three households in a zone and nine 
+persons. Does that mean that there are three 3-person households? Or two one-person
+households and one 7-person household? The number and types of trips generated 
+by these two different scenarios could be very different.
+::::
+
+A *household classification* model turns these raw counts of households and 
+persons into distributions of households by size, number of workers, etc. The
+Roanoke classification model works in two steps:
+
+  - The model makes a guess at the distribution by multiplying the average
+  persons, vehicles, or workers per household in a zone by a marginal distribution 
+  determined from Census tables.
+  - The model then adjusts this initial guess (using [IPF](#ipf)) so that the
+  joint distribution of households matches what is currently there.
+ 
+The version of the Roanoke model you have installed contains a classification
+model, but the marginal and joint distribution tables the model uses contain
+nonsense. Your task for this lab is to correct the values in these tables so
+that the model will calculate reasonable estimates of the current and future
+population.
+
+
+### Marginal Distributions {-}
+
+The United States Census Bureau attempts to count every person in the United
+States every ten years. It also surveys a 1% sample of the population each year
+for additional statistical questions (in a program called the American Community
+Survey), like income and vehicle ownership. In order to protect respondent's
+privacy, Census makes different types of information available at different
+geographic levels. For every Census tract in the country, we can get these 
+marginal distribution tables:
+
+  - Number of households by household size
+  - Number of households by workers per household 
+  - Number of households by vehicles available.
+  
+Using these data, we can calculate how the average distribution of 
+households changes based on the average household size in the tract. Figure 
+\@ref(fig:hh-marginal) shows precisely this distribution, using a cubic
+polynomial to fit the average distribution. Each set of four points represents
+one census tract; for instance, the lowest average household size is in tract
+`51770001100` with 1.37 persons per household on average. This tract shows
+71% of its households having 1 member, 25% having 2, and about 2 percent each
+of 3 and 4+ person households.
+
+```{r hh-marginal, fig.cap="Distribution of households by size, based on average households size.", echo = FALSE, message=FALSE, warning=FALSE}
+counties <- list("Roanoke City" = "770", "Roanoke County" = "161", 
+                 "Salem City" = "775")
+
+hh_size <- get_acs(year = 2017,
+  geography = "tract", state = "Virginia", county = counties, 
+  variables = c(str_c("B08202", sprintf("%03d", c(1, 6, 9, 13, 18)), sep = "_"), 
+                "B25008_001")) # also get total population
+
+hh_size_distribution <- hh_size %>% # what data are we working with?
+  # The `variable` column is a little hard to work with, so we split it into two
+  # columns: "B08202_006" --> "B08202" and "6"
+  separate(variable, c("table", "variable"), sep = "_", convert = TRUE) %>%
+  # Now we create a new column called size that has the value of the 
+  # group if it's a count of households in a category. We also create values
+  # to indicate if its a count of the total households in the zone, or if
+  # it's the median income.
+  mutate(
+    size = case_when(
+      table == "B25008" ~ "totpop",
+      table == "B08202" & variable == 1 ~ "tothh", # value 1 is the total
+      variable == 6 ~ "1", 
+      variable == 9 ~ "2", 
+      variable == 13 ~ "3", 
+      variable == 18 ~ "4+", 
+      TRUE ~ as.character(NA)
+    )
+  ) %>%
+  # Collapse the income groups summing up all the estimate values by block group.
+  # Because there # is only one "total" or "median", the sum is just that value
+  group_by(geoid = GEOID, size) %>%
+  summarize(estimate = sum(estimate)) %>%
+  # Spread all the values, and then regather the income group levels so that
+  # `average` and `total` become their own columns
+  spread(size, estimate) %>%
+  # calculate the average household size
+  mutate(average = totpop / tothh) %>%
+  gather(size, count, `1`:`4+`) %>%
+  # arrange by geoid so that you can see things a little better
+  arrange(geoid) %>%
+  filter(tothh > 0) %>%
+  # calculate the percent of households in each income group
+  mutate(percent = count / tothh)
+
+# Declare the data table and which columns make up which plot aesthetics
+ggplot(hh_size_distribution, aes(x = average, y = percent, color = size)) +
+  geom_point() + # plot the points, scatter plot of x = median income and y = percent
+  stat_smooth(formula = y ~ poly(x, 3), method = "lm") + # add average group lines and uncertainty band
+  scale_color_discrete("Household size") +
+  theme_bw() +
+  xlab("Average Household Size") +
+  ylab("Proportion of households of given size")
+```
+
+
+For the most part the distributions make sense, with a few exceptions. It makes
+sense that the proportion of 1-person households decreases with average size,
+and that the proportion of 4-person households increases. Each of these curves
+turns in a weird direction at the end; however, the wide margin on the
+distribution means that we're not really confident about where the actual
+proportion is. We'll need to do some manual adjusting to these curves.
+
+I have provided you with initial marginal distribution curves for the three
+marginal distributions of interest. These files are available 
+[on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
+starting values are shown graphically in Figure \@ref(fig:raw-marginals).
+
+```{r raw-marginals, "Raw marginal distribution curves from Roanoke region.", echo = FALSE, message=FALSE, warning=FALSE}
+list(
+  "Household Size" = read_csv("data/raw_size.csv"),
+  "Workers per Household" = read_csv("data/raw_work.csv"),
+  "Vehicles per Household" = read_csv("data/raw_vehicles.csv")
+) %>%
+  bind_rows(.id = "Marginal") %>%
+  pivot_longer(cols = `1`:`0`, names_to = "Size", 
+               values_to = "Proportion") %>%
+  ggplot(aes(x = average, y = Proportion, color = Size)) + 
+  geom_line() + facet_wrap(~Marginal, scales = "free_x") + 
+  scale_y_continuous(limits = c(0:1))
+```
+
+Rules you need to follow when adjusting the curves:
+
+  1. If the average household size is one, then 100% of households must have
+  one person. The same rule applies to zero workers and zero vehicles.
+  1. If the average household size is four, there will still be some households
+  with only one, two, or three people. This is because the `4` category really
+  contains all households with *four or more* members.
+  1. The total proportions across all four marginal curves at each $x$ value
+  must sum to 1.
+  
+The Roanoke household classification model is built into the Trip Generation 
+model. The marginal and joint classification curves are stored in the
+`params/classification` folder. Each file is a `.dbf` with the following format:
+
+  - `hh_size_lookup.dbf`: `[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]`
+  - `hh_workers_lookup.dbf`: `[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]`
+  - `hh_vehicles_lookup.dbf`: `[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]`
+
+Run the bare model through to trip generation. You can run a single module by
+double-clicking on its application icon (the yellow box), and then selecting
+`Run Current Group Only` in the "Run Application" dialog. Open the classified
+socioeconomic data file (`se_classified_2012A.dbf`) and run a tabulation report
+counting up the number of households in each district in the following three 
+categories:
+
+  - `W3V0` Households with three or more workers and no vehicles.
+  - `W0V3` Households with no workers and three or more vehicles. 
+  - `P2V2` Households with two people and two vehicles.
+
+In your report, comment on this initial distribution of households. Do they
+make sense based on what you saw in the joint distribution of household sizes,
+workers, and vehicles above?
+
+Replace the files in the `params/classification` folder with the distributions
+you created above. Recreate the tabulation report you previously created. Do 
+these numbers make more sense?
+
+
+### Joint Distribution {-}
+
+In the section above we created curves to get the marginal distribution of
+household size, vehicles, and workers based on the average in a zone. In order to
+make sure that the joint distribution is correct, we will use IPF with a joint
+table as the seed. Census does not independently publish 3-dimensional tables,
+but the Census Transportation Planning Package (CTPP) is a partnership between 
+AASHTO and the Census Bureau and it publishes key tables not available in other
+places. For our seed you'll need to obtain CTPP table `A112305` for the counties
+in Virginia in our area.
+
+
+
+
+
+### Report {-}
+
+Write a lab report describing the household classification model you have
+developed. Describe how you developed your marginal disaggregation curves,
+including any assertions you employed in smoothing the curves. Include plots of
+each curve. Describe how you determined the number of iterations of IPF to run
+in your model. Compare the distribution of housheolds by classification category
+to the joint distribution you obtained from the CTPP.
 

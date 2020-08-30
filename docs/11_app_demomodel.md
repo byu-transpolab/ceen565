@@ -28,16 +28,23 @@ drive will not have enough space for multiple runs of the model.
 final folder, i.e., `C:\folder\folder\rvtpo_bare`. If there are any spaces your 
 model will crash.
 
-![Home Folder](images/00_home_folder.png)
+<div class="figure">
+<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="838" />
+<p class="caption">(\#fig:rvtpo-dir)RVTPO model home folder</p>
+</div>
 
-You'll explore more of these files in the future, including later in this
-assignment. Double-click on the `roanoke.cat` Cube catalog file. This will open
+
+Double-click on the `roanoke.cat` Cube catalog file. This will open
 the model application interface in Cube. On this interface you can see the steps
 the model will execute, as well as access the input / output files for each
 step. Some steps actually contain several sub-steps, and double-clicking the
 yellow step box will expand that application.
 
-![RVTPO model application interface](images/00_cube_home.png)
+<div class="figure">
+<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="1693" />
+<p class="caption">(\#fig:app-interface)RVTPO model application interface</p>
+</div>
+
 
 Run the base scenario of the model by pushing the large blue "Run"
 button in the upper left-hand corner of the Cube application. A window 
@@ -48,7 +55,7 @@ will take many hours. Generally model run time increases with the square of the
 zones.] Complete instructions are included in the model user's guide (in the
 `usersguide/` folder). 
 
-I have also made a YouTube video showing how to do this. Note that the video
+I have also made a YouTube video showing these steps. Note that the video
 shows you getting the model from Canvas; get it from [Box](https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x).
 
 [![](11_app_demomodel_files/figure-epub3/initial-run-video-1.png)](https://www.youtube.com/embed/88HAaQLVpJk)<!-- -->
@@ -57,7 +64,22 @@ shows you getting the model from Canvas; get it from [Box](https://byu.box.com/s
 
 ## Files and Reports
 
-## Cube Tips and Tricks
+
+## Network and Zone Maps
+
+You can use Cube to create maps of network and zone data that you can use for
+debugging and analysis. You can also include these graphics in reports and 
+presentations. For example, Figure \@ref(fig:network-factypes) shows the network
+links by facility type. The video below shows how to do this.
+
+<div class="figure">
+<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="977" />
+<p class="caption">(\#fig:network-factypes)Facility types in the Roanoke region.</p>
+</div>
+
+
+[![](11_app_demomodel_files/figure-epub3/netchoro-video-1.png)](https://www.youtube.com/embed/wvyhKXyZVbM)<!-- -->
+
 
 ### Shortest Paths
 

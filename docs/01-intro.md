@@ -66,28 +66,106 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.
 
-## The Four-Step Process
+## The Four-Step Transportation Planning Process
 
-Transportation planning often involves a four-step travel model, which is a
-a traditional method used by transportation planners. A four-step model consists 
-of the following steps:
+How can you know what might happen in the future? And how might that change based
+on decisions that you make today? This basic question is at the heart of 
+transportation planning:
 
- - **Trip Generation**, which seeks to estimate *how* many trips are generated,
-  or start in a specific Travel Analysis Zone (TAZ). Trip generation does this by
-  using economic data about the type and amount of development in the zone. If a 
-  zone has a high number of residential buildings, it is assumed that more productions
-  originate in that zone than would in a zone of commercial or retail buildings.
- - **Trip Distribution** seeks to estimate *where* generated trips go. Origins and 
-  destinations are matched in this step. These completed trips can occur within the
-  same zone, or be inter-zonal.
- - **Mode Choice** considers a number of factors to estimate what *modes* individuals
-  or groups will take. Some of the data that can be used include: travel time,
-  wait time, cost, and accessibility.
- - **Trip Assignment** seeks to determine the route that users choose between
-  origin and destination. The route is chosen based on a combined analysis of data,
-  including travel time, cost, mode choice, and origin and destination location.
+  - What might traffic look like if we build nothing and population still grows?
+  - Can we build less if we change land development patterns?
+  - How many people will use this new transit line?
+  
+In many fields --- including politics, meteorology, economics, etc. ---
+professionals who seek answers to questions like this do so with the help of a 
+**model**. A model is a mathematical representation of a real-world system. 
+In any model, there are things that need to vary (called inputs), things that
+can be estimated or calibrated (called parameters), and results (called outputs). 
+There are also things that are held fixed. The specific mathematical structure
+of the model, and which things get included and which things are excluded or
+abstracted away, determine what the model should and should not be used for.
 
+For example, we might try to predict something with a linear model, 
+\begin{equation}
+  y = \alpha + \beta x + \varepsilon
+  (\#eq:basic-model)
+\end{equation}
+In this case $y$ is the output, $x$ is the input, the 
+$\beta$ parameter defines how the input influences the outcomes, $\alpha$ is a
+fixed value, and $\varepsilon$ accounts for the random influence of all the 
+factors we did not include. We could add more $\beta$ and $x$ terms to 
+include more factors in the model. We could also change the mathematical format
+of the model to represent different types of outcomes, or chain several smaller
+models together to represent more complex relationships. If we wanted to see what 
+might happen if $x$ changed, we could put in a new value into this equation 
+and the output result $y$ might be a plausible prediction. The plausibility of
+the output is a function of how well the mathematical model actually represents
+the reality of the system.
 
+In this class you will learn the details of the *travel demand modeling process*, 
+which is a chain of many models, each with different inputs and outputs. A
+travel demand model on the whole has two basic inputs:
+
+ - Socioeconomic data representing where people live and work and go to school and
+ do other things.
+ - Transportation network data representing the roads and transit services and
+ other methods people use to get between their activities.
+ 
+The basic outputs of a travel demand model are transportation volumes and levels
+of service. There are many ways to design and build travel demand models, but
+the traditional way most regions in the United States approach travel demand models
+is through a **four step**, trip-based^[The primary alternative to the four-step method is called an "activity-based" method. Activity-based models can be significantly more complex to construct and use, but they are based more concretely in human behavior. Whether they actually result in better decisions by transportation planning agencies is an open question.] process. The four steps are:
+
+ 1. Trip Generation
+ 2. Trip Distribution
+ 3. Mode Choice
+ 4. Route Assignment
+ 
+A *trip generation* model determines how many trips are produced in each *zone*
+(neighborhood), and how many trips are attracted to each zone. The inputs to
+this model is the socioeconomic data in each zone. Mathematically, trip generation
+can be represented as 
+\begin{equation}
+  P_i = f(SE_i), A_j = f(SE_j)
+  (\#eq:tripgen)
+\end{equation}
+where $i$ and $j$ are the production and destination zone indexes.
+
+A *trip distribution* model seeks to pair the productions and attractions in the
+zones based on the travel costs $c$ between the two zones. Mathematically, trip
+distribution can be represented as
+\begin{equation}
+  T_{ij} = f(P_i, A_j, c_{ij})
+  (\#eq:tripdist)
+\end{equation}
+
+A *mode choice* model estimates how many of the trips from $i$ to $j$ will happen
+on each available mode $k$, based on the travel time by each mode and other 
+attributes of the origin and destination zones. Mathematically,
+\begin{equation}
+  T_{ijk} = f(T_{ij}, c_{ijk}, SE_{i,j}) 
+  (\#eq:modechoice)
+\end{equation}
+
+A *route assignment* model determines the specific routes that the trips going
+between $i$ and $j$ take. This allows us to estimate the volume of level of 
+service on each highway link and transit system $l$. Mathematically,
+\begin{equation}
+  LOS_l, V_l = f(T_{ijk}, c_{ijk})
+  (\#eq:modechoice)
+\end{equation}
+
+On the whole, the travel demand model can be represented mathematically as a 
+single function where the output transportation volumes and levels of service
+are a function of the input socioeconomic information and travel costs.
+
+\begin{equation}
+  LOS_l, V_l = \mathcal{F}(SE_{i,j}, c_{ij})
+  (\#eq:tdm)
+\end{equation}
+
+The details of each of these models will be the topic for the next several 
+chapters.
 
 ## Travel Model Building Blocks
 
@@ -95,7 +173,205 @@ In this section, we present some of the terms used in transportation planning
 and modeling, as well as some of the data objects used in constructing travel
 demand models.
 
-### Household Travel Surveys
+
+### Travel Analysis Zones and SE Data
+
+The "people" in a model conduct *activities*: work, school, recreation, and
+other activities. Because travel is a derived demand, the purpose of travel is to 
+move between these activities. So a travel model needs a way to represent where
+the households, persons, jobs, and activities are located in space.
+
+Activities in travel demand models happen in **Travel Analysis Zones** (TAZs). 
+The model tries to represent trips between the TAZs. Because trips inside a
+TAZ --- called intrazonal trips --- are not included in the travel model, each
+TAZ should be sufficiently small such that these trips do not affect the models'
+ability to forecast travel on roadways.  The following rules are helpful when
+drawing TAZ's:
+
+   - The TAZ should not stretch across major roadways
+   - The TAZ should contain principally one land use, though in some areas this
+   is not possible.
+   - In areas with more dense population, the TAZ should be smaller.
+
+Each TAZ is associated with **socioeconomic** (SE)  data, or information about
+the people, businesses, and other activities that are located in the TAZ. 
+**Households** are a basic unit of analysis in many economic and statistical
+analyses. A household typically consists of one or more **persons** who reside
+in the same dwelling. Individuals living in the same dwelling can make up a
+family or other group of individuals; that is, a group of roommates is 
+considered a household. Not everyone lives in households, however; some people 
+live in what are called group quarters: military barracks, college dormitories,
+monasteries, prisons, etc. Travel models need to handle these people as well, but
+in this class we will focus on people who live in households.
+
+Households in travel models are often grouped into a classification scheme
+based on the number of people in the household, the number of children, the number
+of vehicles, etc. Households of different classifications will have different
+behavior in the rest of the model.
+
+::::{.rmdthink}
+Your lab activity for this unit will walk you through specifying a
+household classification model.
+::::
+
+**Firms** are another basic unit of analysis in many economic and statistical
+analyses. A firm is a profit-seeking person or entity that provides goods or
+services in exchange for monetary transactions. A firm can provide raw resources,
+manufactured resources, other services, or be a place of employment. In some
+cases, a firm may be another household. Each firm will have an *industry* type. 
+Examples of industry types include office, service, manufacturing, retail, etc.
+In many SE data files, firms are simply represented as the total number of 
+jobs in a TAZ belonging to each industry.  Other **Institutions** including
+academic, government, and non-profit entities will also be represented in the SE
+data in terms of their jobs.
+
+It is important to be precise in our definitions when put all of these different
+items into an analysis. A typical socioeconomic data table for a small region is
+given in Table \@ref(tab:setable). Note the following relationships:
+
+  - Persons live in Households
+  - Workers are Persons who have a Job
+  - Firms have employees who work at a Jobs 
+
+<div class="figure">
+<img src="images/RoanokeTAZ.png" alt="Travel Analysis Zones in Central Roanoke." width="100%" />
+<p class="caption">(\#fig:RoanokeTAZ)Travel Analysis Zones in Central Roanoke.</p>
+</div>
+
+When we talk about "how many jobs" are in a TAZ, we mean "How many people do
+the firms located in that TAZ employ," and not "how many people who live
+in that TAZ are workers."
+
+
+Table: (\#tab:setable)Example SE Table
+
+ taz   persons   hh   workers   retail   office   manufacturing
+----  --------  ---  --------  -------  -------  --------------
+   1        32   24        18      131       86               2
+   2        40   32        24      138       71              11
+   3        37   46        18      121       58               0
+
+
+::::{.rmdexample}
+Alice lives with her husband in zone $A$ and works as an accountant in zone $B$.
+Her husband does not currently work.
+Fill out the SE table from Table \@ref(tab:setable) with *just* this 
+household's information.
+
+Two persons live in one household with one worker in zone A. The firm Alice works at 
+has an office job for her in Zone B.
+
+| taz | persons | hh         | workers | retail | office | manufacturing |
+|-----|---------|------------|---------|--------|--------|---------------|
+| A   |     2   |         1  |        1|        |        |               |
+| B   |         |            |         |        |       1|               |
+
+::::
+
+
+### Transportation Networks 
+
+The purpose of a travel model is to understand how people are likely to use
+transportation infrastructure, so there has to be a way to represent 
+roadway and transit systems. We do this with a 
+*network*^[Sometimes called a *graph* in mathematics.]. A network consists of
+two basic data structures: **Nodes** and **Links**
+
+Nodes are points in space. In a highway network, almost all nodes represent 
+intersections between different roads. Some important nodes represent the 
+**TAZ Centroids**, or the points where the households and jobs in the travel
+model are located.
+
+Links connect nodes, and represent roads. Links have many different attributes
+describing the characteristics of the roadway they represent. The two most 
+important link attributes are the link's *speed* and *capacity*, because they
+provide the travel costs ($c_{ij}$ above) to the various steps of the model. But
+these attributes might not always be known at the outset, so instead we use
+attributes of the roadway that influence capacity and speed, and then calculate 
+these other values.
+
+**Functional Type** or **Functional Class** describes the relative
+role each road plays in the transportation system [@2018aashto]. Every street
+fills a role on a spectrum from mobility on one end to accessibility on the other: 
+roads that are good at moving high volumes of vehicles are usually not good at 
+providing access to homes and businesses. Common functional types include:
+
+  - *Freeways* are provided almost exclusively to enhance mobility for through traffic.
+    Access to freeways is provided only at specific grade-separated interchanges,
+    with no direct access to the freeway from adjacent land except by way of those 
+    interchanges.
+  - The primary function of major and minor *arterials* is to provide mobility of through 
+    traffic. However, arterials also connect to both collectors and local roads and
+    streets and many arterials provide direct access to adjacent development. 
+  - Major and minor *collectors* connect arterials to local roads and provide access
+    to adjacent development. Mobility for through traffic is less important. 
+  - *Local streets* exist primarily to serve adjacent development. Mobility for 
+    through traffic is not important, or even desired.
+  
+Figure \@ref(fig:udot_classes) shows roads in Provo and Orem classified by this
+scheme. Streets of a functional class below collector are almost never included
+in travel models, unless they provide essential connectivity between other
+roads. Entire neighborhoods of local streets may be represented by just a
+handful of special links called *centroid connectors*.
+
+<div class="figure">
+<img src="images/UDOT_Functional_Classes.png" alt="UDOT Functional Classes." width="100%" />
+<p class="caption">(\#fig:udot_classes)UDOT Functional Classes.</p>
+</div>
+
+::::{.rmdthink}
+Why are local roads not included in travel models?
+::::
+
+**Free-flow speed** is the speed vehicles travel when the road is empty.
+Historically, travel modelers would use formulas in the Highway Capacity Manual
+to estimate the free-flow speed for roadways, or assert a basic calculation like
+5 miles per hour over the speed limit. More recently, modelers use the speeds 
+reported from GPS devices in the middle of the night to establish free-flow 
+speeds.
+
+The number of **lanes** on a road is fairly self-explanatory, but it plays a 
+major role in the road's capacity.
+
+Roads located in different **area types** -- urban, suburban, and rural -- 
+operate differently from each other. Sometimes travel models will assert this 
+value, but more recent models will calculate the area type for each link
+based on the density of the surrounding TAZs. 
+
+Link **capacity** is the maximum number of vehicles a can optimally transport
+between two nodes.  The capacity is a function of functional type, lanes,
+free-flow speed, area type, etc. Usually travel models will calculate the
+capacity based on the given values for other roadway characteristics, but
+sometimes there are ways to override this feature, i.e., if engineers have
+developed specific capacity estimates for a new project.
+
+**Centroid connectors** are special links that connect centroids to a network. 
+These are different from other links in that they usually don't have a capacity
+or a speed (they don't represent real roads).
+
+### Matrices
+
+Travel models need to represent travel times, costs, and flows between zones.
+Models store this data in **matrices**, special data structures developed for 
+this purpose. Each matrix is a square table where the rows $i$ represent origin
+zones and the columns $j$ represent the destination zones. Each cell represents
+something about the relationship between the two zones.
+
+There are two kinds of information we typically
+represent with matrices:
+
+  - **Cost matrices**, or skims, are matrices where the cells contain estimates of
+  travel time or cost. They are called *skims* because they are the results of
+  *skimming* a network to find the shortest path between each pair of TAZ
+  centroids.
+
+  - **Flow matrices**, represent flows of people or vehicles from each origin to
+  each destination. The number in the corresponding cell $T_{ij}$ is the total
+  number of trips made, and represents the demand between two zones in a network.
+
+
+## Household Travel Surveys and Population Data
+
 Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in 
 transit fare? And how can a modeler know if the model accurately reflects 
@@ -236,159 +512,14 @@ would provide, they provide a considerably larger and more detailed sample
 on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.
 
-### Travel Analysis Zones
-
-Activities in travel demand models happen in **Travel Analysis Zones** (TAZs), and
-the model tries to represent trips between the TAZs. Because trips inside a TAZ 
---- called intrazonal trips --- are not included in the travel model, each TAZ should
-be sufficiently small such that these trips do not affect the models' ability 
-to forecast travel on roadways.  The following rules are helpful when drawing
-TAZ's:
-
-   - The TAZ should not stretch across major roadways
-   - The TAZ should contain principally one land use, though in some areas this
-   is not possible.
-   - In areas with more dense population, the TAZ should be smaller.
-
-Each TAZ is associated with **socioeconomic** (SE)  data, or information about
-the people, businesses, and other activities that are located in the TAZ. 
-
-<div class="figure">
-<img src="images/RoanokeTAZ.png" alt="Travel Analysis Zones in Central Roanoke." width="100%" />
-<p class="caption">(\#fig:RoanokeTAZ)Travel Analysis Zones in Central Roanoke.</p>
-</div>
-
-**Households** are a basic unit of analysis in many economic and statistical
-analyses. A household typically consists of one or more **persons** who reside
-in the same dwelling. Individuals living in the same dwelling can make up a
-family or other group of individuals; that is, a group of roommates is 
-considered a household. Not everyone lives in households, however; some people 
-live in what are called group quarters: military barracks, college dormitories,
-monasteries, prisons, etc. Travel models need to handle these people as well, but
-in this class we will focus on people who live in households.
-
-**Firms** are another basic unit of analysis in many economic and statistical
-analyses. A firm is a profit-seeking person or entity that provides goods or
-services in exchange for monetary transactions. A firm can provide raw resources,
-manufactured resources, other services, or be a place of employment. In some
-cases, a firm may be another household. Each firm will have an *industry* type. 
-Examples of industry types include office, service, manufacturing, retail, etc.
-In many SE data files, firms are simply represented as the total number of 
-jobs in a TAZ belonging to each industry.  Other **Institutions** including
-academic, government, and non-profit entities will also be represented in the SE
-data in terms of their jobs.
-
-It is important to be precise in our definitions when put all of these different
-things into a single file. A typical SE table for a small region is given in
-Table \@ref(tab:setable). Note the following relationships:
-
-  - Persons live in Households
-  - Workers are Persons who have a Job
-  - Firms have employees who work at a Jobs 
-  
-When we talk about "how many jobs" are in a TAZ, we mean "How many people do
-the firms located in that TAZ employ," and not "how many people who live
-in that TAZ are workers."
-
-
-Table: (\#tab:setable)Example SE Table
-
- taz   persons   hh   workers   retail   office   manufacturing
-----  --------  ---  --------  -------  -------  --------------
-   1        32   24        18      131       86               2
-   2        40   32        24      138       71              11
-   3        37   46        18      121       58               0
-
-
-\BeginKnitrBlock{rmdexample}<div class="rmdexample">Alice lives with her husband in zone $A$ and works as an accountant in zone $B$.
-Her husband does not currently work.
-Fill out the SE table from Table \@ref(tab:setable) with *just* this 
-household's information.
-
-Two persons live in one household with one worker in zone A. The firm Alice works at 
-has an office job for her in Zone B.
-
-| taz | persons | hh         | workers | retail | office | manufacturing |
-|-----|---------|------------|---------|--------|--------|---------------|
-| A   |     2   |         1  |        1|        |        |               |
-| B   |         |            |         |        |       1|               |
-</div>\EndKnitrBlock{rmdexample}
-
-
-### Highway Networks
-
-**Nodes** **Centroids** are special nodes that indicate where the activities
-of a TAZ are located on average. 
-
-**Links** **Centroid connectors** are special links that connect centroids to a network. 
-
-**Functional Types** or **Functional Classes** are used to describe each road in
-a system, and its importance to that system. The types include: freeway,
-principal arterial, minor arterial, major collector, minor collector, local
-street, and cul-de-sac. 
-
-
-<!-- Can you include a bulleted list describing in more detail what these
-facilities are like? Maybe even a figure of a few of them would be helpful. -->
-
-  - Freeways are provided almost exclusively to enhance mobility for through traffic.
-    Access to freeways is provided only at specific grade-separated interhcanges,
-    with no direct access to the freeway from adjacent land except by way of those 
-    interachanges.
-  - Major and minor arterials primary function is to provide mobility of through 
-    traffic. However, arterials also connect to both collectors and local roads and
-    streets and many arteirals provide direct access to adjacent development. 
-  - Major and minor collectors connect arterials to local roads and provide access
-    to adjacent development. Mobility for through traffic is less important. 
-  - Local streets exist primarily to serve adjacent development. Mobility for 
-    through traffic is not important.
-  - Cul-de-sacs only serve adjacent development. 
-  
-    *See -@2018aashto for more information.
-    
-<div class="figure">
-<img src="images/UDOT_Functional_Classes.png" alt="UDOT Functional Classes." width="100%" />
-<p class="caption">(\#fig:UDOTFunctionalClasses)UDOT Functional Classes.</p>
-</div>
-
-Streets of a functional class below collector are almost never included in 
-travel models, unless they provide essential connectivity between other roads. 
-Entire neighborhoods of local streets may be represented by just a few centroid
-connectors.
-
-**Free-flow speed**, or **FFS**, is the speed vehicles travel when the road
-is empty. 
-
-
-**Link capacity** is the maximum number of vehicles a *link*, or section of
-road, can optimally transport between two *nodes*.  The capacity is a function
-of functional type, lanes, free-flow speed, area type, etc.
-
-<!-- Can you include a figure of a highway network's nodes and links with functional
-class and speed shown in some way? Maybe overlaying this on a map would be
-helpful to show the limited nature of the network. -->
-
-### Matrices
-
-Matrices represent between zones. Convention has us call the origin zones $i$ 
-in the rows and and the destination zones $j$ in the columns. Matrices in travel
-models are always symmetrical. There are two kinds of information we typically
-represent with matrices: costs and flows.
-
-- **Cost matrices**, or skims, are matrices where the cells contain estimates 
-of travel time or cost. They are called *skims* because they are the results 
-of *skimming* a network to find the shortest path between each pair of TAZ 
-centroids.
-
-- **Flow matrices**, represent flows of people or vehicles from each origin to
-each destination. The number in the corresponding cell $T_{ij}$ is the total
-number of trips made, and represents the demand between two zones in a network.
-
 
 ## Statistical and Mathematical Techniques
 
 Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.
+Many of the data tables are in the `nhts2017` package. To install this package, 
+follow the directions in the [Appendix](#app-rstudio).
+
 
 ### Continuous and Discrete Distributions
 
@@ -516,7 +647,7 @@ quite nice.
 
 
 
-### Iterative Proportional Fitting
+### Iterative Proportional Fitting {#ipf}
 
 Iterative Proportional Fitting
 
@@ -535,24 +666,6 @@ Let's say you have a function with a
 
 > Some of these questions require a completed run of the demonstration model.
 For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
-
-1. How does recreational transportation --- i.e., going for a bike ride --- fit into the
-theory of derived demand for travel? Write a short paragraph explaining your thoughts
-based on what we covered in lecture and the text.
-
-1. Think about a recent transportation-related construction project you have
-seen in your community. Find an article in a local newspaper discussing the project.
-Why was the project built (or why is it being built)? Who supports the project?
-Does anyone oppose the project? Write a short paragraph including a link and 
-citation to the article.
-
-1. Download the [rmove](https://rmove.rsginc.com/) mobile application, and log 
-in with the password given you by the instructor. Track your daily activies and
-trips for *three days*. You may include at most one weekend day. Write a short
-summary of your activities, including:
-
-    - How many trips you took each day
-    - The mode split of all your trips
 
 1. With the TAZ layer and socioeconomic data in the demonstration model, make a
 set of choropleth maps showing: total households; household density; total jobs;
@@ -578,9 +691,147 @@ middle of the night?
 traveled by facility type. What percent of the region's VMT occurs on freeways?
 What percent of the region's lane-miles are freeways? 
 
-1. Open the output highway network. Create a map of the 
-highway links showing PM period level of service based on the volume to capacity
-ratios in the table below. How would you characterize traffic in Roanoke? Which
-is the worst-performing major facility?
+1. Open the output highway network. Create a map of the highway links showing PM
+period level of service based on the volume to capacity ratios in the table
+below. How would you characterize traffic in Roanoke? Which is the
+worst-performing major facility?
 
+
+## Lab {-#lab-blocks}
+
+Demographers for the Commonwealth of Virginia --- like those in other
+states --- forecast a certain number of residents, households, and jobs for
+many years into the future. But this data alone is not sufficient: We believe 
+that larger households will make more trips than smaller households.
+But we only know how many households and persons there are, and not how many
+households of each different size. 
+
+::::{.rmdthink}
+For example, let's say that we know there are three households in a zone and nine 
+persons. Does that mean that there are three 3-person households? Or two one-person
+households and one 7-person household? The number and types of trips generated 
+by these two different scenarios could be very different.
+::::
+
+A *household classification* model turns these raw counts of households and 
+persons into distributions of households by size, number of workers, etc. The
+Roanoke classification model works in two steps:
+
+  - The model makes a guess at the distribution by multiplying the average
+  persons, vehicles, or workers per household in a zone by a marginal distribution 
+  determined from Census tables.
+  - The model then adjusts this initial guess (using [IPF](#ipf)) so that the
+  joint distribution of households matches what is currently there.
+ 
+The version of the Roanoke model you have installed contains a classification
+model, but the marginal and joint distribution tables the model uses contain
+nonsense. Your task for this lab is to correct the values in these tables so
+that the model will calculate reasonable estimates of the current and future
+population.
+
+
+### Marginal Distributions {-}
+
+The United States Census Bureau attempts to count every person in the United
+States every ten years. It also surveys a 1% sample of the population each year
+for additional statistical questions (in a program called the American Community
+Survey), like income and vehicle ownership. In order to protect respondent's
+privacy, Census makes different types of information available at different
+geographic levels. For every Census tract in the country, we can get these 
+marginal distribution tables:
+
+  - Number of households by household size
+  - Number of households by workers per household 
+  - Number of households by vehicles available.
+  
+Using these data, we can calculate how the average distribution of 
+households changes based on the average household size in the tract. Figure 
+\@ref(fig:hh-marginal) shows precisely this distribution, using a cubic
+polynomial to fit the average distribution. Each set of four points represents
+one census tract; for instance, the lowest average household size is in tract
+`51770001100` with 1.37 persons per household on average. This tract shows
+71% of its households having 1 member, 25% having 2, and about 2 percent each
+of 3 and 4+ person households.
+
+<div class="figure">
+<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
+<p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
+</div>
+
+
+For the most part the distributions make sense, with a few exceptions. It makes
+sense that the proportion of 1-person households decreases with average size,
+and that the proportion of 4-person households increases. Each of these curves
+turns in a weird direction at the end; however, the wide margin on the
+distribution means that we're not really confident about where the actual
+proportion is. We'll need to do some manual adjusting to these curves.
+
+I have provided you with initial marginal distribution curves for the three
+marginal distributions of interest. These files are available 
+[on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
+starting values are shown graphically in Figure \@ref(fig:raw-marginals).
+
+![](01-intro_files/figure-epub3/raw-marginals, "Raw marginal distribution curves from Roanoke region."-1.png)<!-- -->
+
+Rules you need to follow when adjusting the curves:
+
+  1. If the average household size is one, then 100% of households must have
+  one person. The same rule applies to zero workers and zero vehicles.
+  1. If the average household size is four, there will still be some households
+  with only one, two, or three people. This is because the `4` category really
+  contains all households with *four or more* members.
+  1. The total proportions across all four marginal curves at each $x$ value
+  must sum to 1.
+  
+The Roanoke household classification model is built into the Trip Generation 
+model. The marginal and joint classification curves are stored in the
+`params/classification` folder. Each file is a `.dbf` with the following format:
+
+  - `hh_size_lookup.dbf`: `[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]`
+  - `hh_workers_lookup.dbf`: `[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]`
+  - `hh_vehicles_lookup.dbf`: `[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]`
+
+Run the bare model through to trip generation. You can run a single module by
+double-clicking on its application icon (the yellow box), and then selecting
+`Run Current Group Only` in the "Run Application" dialog. Open the classified
+socioeconomic data file (`se_classified_2012A.dbf`) and run a tabulation report
+counting up the number of households in each district in the following three 
+categories:
+
+  - `W3V0` Households with three or more workers and no vehicles.
+  - `W0V3` Households with no workers and three or more vehicles. 
+  - `P2V2` Households with two people and two vehicles.
+
+In your report, comment on this initial distribution of households. Do they
+make sense based on what you saw in the joint distribution of household sizes,
+workers, and vehicles above?
+
+Replace the files in the `params/classification` folder with the distributions
+you created above. Recreate the tabulation report you previously created. Do 
+these numbers make more sense?
+
+
+### Joint Distribution {-}
+
+In the section above we created curves to get the marginal distribution of
+household size, vehicles, and workers based on the average in a zone. In order to
+make sure that the joint distribution is correct, we will use IPF with a joint
+table as the seed. Census does not independently publish 3-dimensional tables,
+but the Census Transportation Planning Package (CTPP) is a partnership between 
+AASHTO and the Census Bureau and it publishes key tables not available in other
+places. For our seed you'll need to obtain CTPP table `A112305` for the counties
+in Virginia in our area.
+
+
+
+
+
+### Report {-}
+
+Write a lab report describing the household classification model you have
+developed. Describe how you developed your marginal disaggregation curves,
+including any assertions you employed in smoothing the curves. Include plots of
+each curve. Describe how you determined the number of iterations of IPF to run
+in your model. Compare the distribution of housheolds by classification category
+to the joint distribution you obtained from the CTPP.
 
