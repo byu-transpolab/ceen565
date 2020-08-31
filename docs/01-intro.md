@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        32   24        18      131       86               2
-   2        40   32        24      138       71              11
-   3        37   46        18      121       58               0
+   1        48   46        28      139       55               2
+   2        47   31        21      118       53              11
+   3        35   32        12      132       86               0
 
 
 ::::{.rmdexample}
@@ -308,7 +308,7 @@ providing access to homes and businesses. Common functional types include:
   - *Local streets* exist primarily to serve adjacent development. Mobility for 
     through traffic is not important, or even desired.
   
-Figure \@ref(fig:udot_classes) shows roads in Provo and Orem classified by this
+Figure \@ref(fig:udot-classes) shows roads in Provo and Orem classified by this
 scheme. Streets of a functional class below collector are almost never included
 in travel models, unless they provide essential connectivity between other
 roads. Entire neighborhoods of local streets may be represented by just a
@@ -316,7 +316,7 @@ handful of special links called *centroid connectors*.
 
 <div class="figure">
 <img src="images/UDOT_Functional_Classes.png" alt="UDOT Functional Classes." width="100%" />
-<p class="caption">(\#fig:udot_classes)UDOT Functional Classes.</p>
+<p class="caption">(\#fig:udot-classes)UDOT Functional Classes.</p>
 </div>
 
 ::::{.rmdthink}
@@ -600,7 +600,7 @@ ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram."  />
+<img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
 <p class="caption">(\#fig:dc-histogram)Visualizing a continuous distribution with a histogram.</p>
 </div>
 
@@ -612,7 +612,7 @@ ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"),
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart."  />
+<img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
 <p class="caption">(\#fig:dc-barchart)Visualizing a discrete distribution with a bar chart.</p>
 </div>
 
@@ -643,7 +643,7 @@ table(nhts_trips$miles_cat, nhts_trips$trippurp)
 We can visualize joint distributions as well, and sometimes the results are
 quite nice.
 
-![](01-intro_files/figure-epub3/dc-joint-hist-1.png)<!-- -->
+<img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" />
 
 
 
@@ -754,7 +754,7 @@ one census tract; for instance, the lowest average household size is in tract
 of 3 and 4+ person households.
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
+<img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
 <p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
 </div>
 
@@ -771,7 +771,7 @@ marginal distributions of interest. These files are available
 [on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
-![](01-intro_files/figure-epub3/raw-marginals, "Raw marginal distribution curves from Roanoke region."-1.png)<!-- -->
+<img src="01-intro_files/figure-html/raw-marginals, "Raw marginal distribution curves from Roanoke region."-1.png" width="672" />
 
 Rules you need to follow when adjusting the curves:
 

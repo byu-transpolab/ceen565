@@ -315,13 +315,13 @@ providing access to homes and businesses. Common functional types include:
   - *Local streets* exist primarily to serve adjacent development. Mobility for 
     through traffic is not important, or even desired.
   
-Figure \@ref(fig:udot_classes) shows roads in Provo and Orem classified by this
+Figure \@ref(fig:udot-classes) shows roads in Provo and Orem classified by this
 scheme. Streets of a functional class below collector are almost never included
 in travel models, unless they provide essential connectivity between other
 roads. Entire neighborhoods of local streets may be represented by just a
 handful of special links called *centroid connectors*.
 
-```{r udot_classes, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
+```{r udot-classes, fig.cap="UDOT Functional Classes.", out.width='100%', echo = FALSE}
 knitr::include_graphics("images/UDOT_Functional_Classes.png")
 ```
 
