@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-08-29" />
+<meta name="date" content="2020-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,7 +250,7 @@ destination? Or why didn’t some people just stay home in the first place?</p>
 <p>Transportation planning therefore must be concerned with both the supply of
 infrastructure and the demand for travel. For the most part, economists consider
 travel a <strong>derived demand</strong>, which means people only go to the hassle of
-travelling somewhere if they have some other reason to be there. No one
+traveling somewhere if they have some other reason to be there. No one
 typically just drives around (with the possible exception of teenagers on a
 weekend night); they are going to work, or school, or a social engagement, or
 <em>something</em>.</p>
@@ -262,7 +262,7 @@ makes in an average day. Technological developments like teleconferencing and
 smartphone-enabled ridehailing could generate different trends. At the same
 time, populations in most regions continue to grow. <strong>Planning</strong> for future
 transportation infrastructure is difficult because of the uncertainty of the
-future, but it is necessary to keep economies rolling and preseve or improve
+future, but it is necessary to keep economies rolling and preserve or improve
 quality of life.</p>
 <p>In the United States and most societies with some democratic process,
 <strong>decisions</strong> about what transportation facilities to build, which policies to
@@ -1026,9 +1026,7 @@ employment centers.</p></li>
 <li><p>With the highway network layer in the demonstration model, create maps
 showing: link functional type; link free flow speed; and link hourly capacity.
 Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
-Identify the major freeways and principal arterials in the model region. <em>Note</em>:
-you will need to run the demonstration model through the network setup step to
-calculate the capacities and append them to the link.</p></li>
+Identify the major freeways and principal arterials in the model region.</p></li>
 <li><p>Find the shortest free-flow speed path along the network between two zones.
 Find the shortest distance path between the same two zones. Are the paths the
 same? Do the paths match what an online mapping service shows for a trip in the
@@ -1041,6 +1039,47 @@ period level of service based on the volume to capacity ratios in the table
 below. How would you characterize traffic in Roanoke? Which is the
 worst-performing major facility?</p></li>
 </ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">LOS</th>
+<th align="left">V/C</th>
+<th align="left">Color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A | &lt; 0</td>
+<td align="left">&lt; 0.35 | Blue |</td>
+<td align="left">Blue</td>
+</tr>
+<tr class="even">
+<td align="left">B | 0.3</td>
+<td align="left">0.35 - 0.54</td>
+<td align="left">Light Blue</td>
+</tr>
+<tr class="odd">
+<td align="left">C | 0.5</td>
+<td align="left">0.55 - 0.77</td>
+<td align="left">Green</td>
+</tr>
+<tr class="even">
+<td align="left">D | 0.7</td>
+<td align="left">0.78 - 0.93 | Yell</td>
+<td align="left">Yellow</td>
+</tr>
+<tr class="odd">
+<td align="left">E | 0.9</td>
+<td align="left">0.94 - 0.99</td>
+<td align="left">Orange</td>
+</tr>
+<tr class="even">
+<td align="left">F | $</td>
+<td align="left"><span class="math inline">\(\geq\)</span> 1.00</td>
+<td align="left">Red</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="lab-blocks" class="section level2 unnumbered">
 <h2>Lab</h2>
@@ -1108,8 +1147,13 @@ proportion is. We’ll need to do some manual adjusting to these curves.</p>
 <p>I have provided you with initial marginal distribution curves for the three
 marginal distributions of interest. These files are available
 <a href="https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg">on Box</a>, and the
-starting values are shown graphically in Figure <a href="#fig:raw-marginals"><strong>??</strong></a>.</p>
-<p>&lt;img src=“01-intro_files/figure-html/raw-marginals,”Raw marginal distribution curves from Roanoke region.“-1.png” width=“672” /&gt;</p>
+starting values are shown graphically in Figure <a href="chap-blocks.html#fig:raw-marginals">1.7</a>.</p>
+<div class="figure"><span id="fig:raw-marginals"></span>
+<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
+<p class="caption">
+Figure 1.7: Raw marginal distribution curves from Roanoke region.
+</p>
+</div>
 <p>Rules you need to follow when adjusting the curves:</p>
 <ol style="list-style-type: decimal">
 <li>If the average household size is one, then 100% of households must have
@@ -1120,51 +1164,288 @@ contains all households with <em>four or more</em> members.</li>
 <li>The total proportions across all four marginal curves at each <span class="math inline">\(x\)</span> value
 must sum to 1.</li>
 </ol>
-<p>The Roanoke household classification model is built into the Trip Generation
-model. The marginal and joint classification curves are stored in the
-<code>params/classification</code> folder. Each file is a <code>.dbf</code> with the following format:</p>
-<ul>
-<li><code>hh_size_lookup.dbf</code>: <code>[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]</code></li>
-<li><code>hh_workers_lookup.dbf</code>: <code>[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]</code></li>
-<li><code>hh_vehicles_lookup.dbf</code>: <code>[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]</code></li>
-</ul>
-<p>Run the bare model through to trip generation. You can run a single module by
-double-clicking on its application icon (the yellow box), and then selecting
-<code>Run Current Group Only</code> in the “Run Application” dialog. Open the classified
-socioeconomic data file (<code>se_classified_2012A.dbf</code>) and run a tabulation report
-counting up the number of households in each district in the following three
-categories:</p>
-<ul>
-<li><code>W3V0</code> Households with three or more workers and no vehicles.</li>
-<li><code>W0V3</code> Households with no workers and three or more vehicles.</li>
-<li><code>P2V2</code> Households with two people and two vehicles.</li>
-</ul>
-<p>In your report, comment on this initial distribution of households. Do they
-make sense based on what you saw in the joint distribution of household sizes,
-workers, and vehicles above?</p>
-<p>Replace the files in the <code>params/classification</code> folder with the distributions
-you created above. Recreate the tabulation report you previously created. Do
-these numbers make more sense?</p>
 </div>
 <div id="joint-distribution" class="section level3 unnumbered">
 <h3>Joint Distribution</h3>
 <p>In the section above we created curves to get the marginal distribution of
 household size, vehicles, and workers based on the average in a zone. In order to
-make sure that the joint distribution is correct, we will use IPF with a joint
-table as the seed. Census does not independently publish 3-dimensional tables,
-but the Census Transportation Planning Package (CTPP) is a partnership between
-AASHTO and the Census Bureau and it publishes key tables not available in other
-places. For our seed you’ll need to obtain CTPP table <code>A112305</code> for the counties
-in Virginia in our area.</p>
+make sure that the joint distribution of all of these variables is correct, we
+will use IPF with a joint table as the seed. Census does not independently
+publish 3-dimensional tables, but the Census Transportation Planning Package
+(CTPP) is a partnership between AASHTO and the Census Bureau and it publishes
+key tables not available in other places.</p>
+<p>The CTPP data is available
+<a href="http://data5.ctpp.transportation.org/ctpp1216">through the AASHTO website</a>,
+or by searching “CTPP”. Find table <code>A112305</code> for the residence counties where
+your group members are from. What do you see in this table? What makes sense
+and what does not?</p>
+<p>I have already gathered the data and done some preliminary preparation for
+you to compute the shares that belong in the household seed file. Run the
+code below in an R session (with the <code>tidyverse</code> library loaded) to calculate
+the necessary shares. Follow along with the code to understand what is happening.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chap-blocks.html#cb18-1"></a>raw_counts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv&quot;</span>) </span></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   RESIDENCE = col_character(),
+##   persons = col_character(),
+##   workers = col_character(),
+##   vehicles = col_character(),
+##   output = col_character(),
+##   count = col_number()
+## )</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chap-blocks.html#cb20-1"></a>joint_distribution &lt;-<span class="st"> </span>raw_counts <span class="op">%&gt;%</span></span>
+<span id="cb20-2"><a href="chap-blocks.html#cb20-2"></a><span class="st">  </span><span class="co"># the data contain both &quot;estimates&quot; and &quot;margin of error&quot;. We only want to</span></span>
+<span id="cb20-3"><a href="chap-blocks.html#cb20-3"></a><span class="st">  </span><span class="co"># keep the estimates rows.</span></span>
+<span id="cb20-4"><a href="chap-blocks.html#cb20-4"></a><span class="st">  </span><span class="kw">filter</span>(output <span class="op">==</span><span class="st"> &quot;Estimate&quot;</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb20-5"><a href="chap-blocks.html#cb20-5"></a><span class="st">  </span></span>
+<span id="cb20-6"><a href="chap-blocks.html#cb20-6"></a><span class="st">  </span><span class="co"># The data records size as text, with `0 workers`. We want to extract the</span></span>
+<span id="cb20-7"><a href="chap-blocks.html#cb20-7"></a><span class="st">  </span><span class="co"># numeric information from these fields. This line of code says, for the variables</span></span>
+<span id="cb20-8"><a href="chap-blocks.html#cb20-8"></a><span class="st">  </span><span class="co"># persons, workers, and vehicles, take all non-numeric characters and replace</span></span>
+<span id="cb20-9"><a href="chap-blocks.html#cb20-9"></a><span class="st">  </span><span class="co"># them with nothing. It looks like gibberish, but it came from lots of Stack</span></span>
+<span id="cb20-10"><a href="chap-blocks.html#cb20-10"></a><span class="st">  </span><span class="co"># Overflow searching. I can&#39;t come up with this stuff from thin air, you know.</span></span>
+<span id="cb20-11"><a href="chap-blocks.html#cb20-11"></a><span class="st">  </span><span class="kw">mutate_at</span>(</span>
+<span id="cb20-12"><a href="chap-blocks.html#cb20-12"></a>    <span class="kw">c</span>(<span class="st">&quot;persons&quot;</span>, <span class="st">&quot;workers&quot;</span>, <span class="st">&quot;vehicles&quot;</span>), </span>
+<span id="cb20-13"><a href="chap-blocks.html#cb20-13"></a>    <span class="cf">function</span>(x) {<span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;([0-9]+).*$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, x))}</span>
+<span id="cb20-14"><a href="chap-blocks.html#cb20-14"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb20-15"><a href="chap-blocks.html#cb20-15"></a><span class="st">  </span></span>
+<span id="cb20-16"><a href="chap-blocks.html#cb20-16"></a><span class="st">  </span><span class="co"># the rows that say &quot;total households&quot; get turned to NA by the above process, and we</span></span>
+<span id="cb20-17"><a href="chap-blocks.html#cb20-17"></a><span class="st">  </span><span class="co"># don&#39;t want to keep those in anyways.</span></span>
+<span id="cb20-18"><a href="chap-blocks.html#cb20-18"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(persons), <span class="op">!</span><span class="kw">is.na</span>(workers), <span class="op">!</span><span class="kw">is.na</span>(vehicles)) <span class="op">%&gt;%</span></span>
+<span id="cb20-19"><a href="chap-blocks.html#cb20-19"></a><span class="st">  </span></span>
+<span id="cb20-20"><a href="chap-blocks.html#cb20-20"></a><span class="st">  </span><span class="co"># the roanoke model only includes households with 3+ workers, not 4+. So if a</span></span>
+<span id="cb20-21"><a href="chap-blocks.html#cb20-21"></a><span class="st">  </span><span class="co"># row is for more than 3 workers, we group it as 3</span></span>
+<span id="cb20-22"><a href="chap-blocks.html#cb20-22"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">workers =</span> <span class="kw">ifelse</span>(workers <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>, workers)) <span class="op">%&gt;%</span></span>
+<span id="cb20-23"><a href="chap-blocks.html#cb20-23"></a><span class="st">  </span></span>
+<span id="cb20-24"><a href="chap-blocks.html#cb20-24"></a><span class="st">  </span><span class="co"># but this creates a problem where we now have multiple rows with</span></span>
+<span id="cb20-25"><a href="chap-blocks.html#cb20-25"></a><span class="st">  </span><span class="co"># 3 workers. So we need to group and add up.</span></span>
+<span id="cb20-26"><a href="chap-blocks.html#cb20-26"></a><span class="st">  </span><span class="kw">group_by</span>(persons, workers, vehicles) <span class="op">%&gt;%</span></span>
+<span id="cb20-27"><a href="chap-blocks.html#cb20-27"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">sum</span>(count)) <span class="op">%&gt;%</span></span>
+<span id="cb20-28"><a href="chap-blocks.html#cb20-28"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
+<span id="cb20-29"><a href="chap-blocks.html#cb20-29"></a><span class="st">  </span></span>
+<span id="cb20-30"><a href="chap-blocks.html#cb20-30"></a><span class="st">  </span><span class="co"># Finally, we want to turn the numbers into a share. So we divde the</span></span>
+<span id="cb20-31"><a href="chap-blocks.html#cb20-31"></a><span class="st">  </span><span class="co"># counts by the total count in the whole table.</span></span>
+<span id="cb20-32"><a href="chap-blocks.html#cb20-32"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count))</span></code></pre></div>
+<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
+<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
+<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;persons&#39;, &#39;workers&#39; (override with `.groups` argument)</code></pre>
+<p>Now we can see the joint distribution of size, workers, and vehicles.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chap-blocks.html#cb25-1"></a>joint_distribution <span class="op">%&gt;%</span></span>
+<span id="cb25-2"><a href="chap-blocks.html#cb25-2"></a><span class="st">  </span><span class="kw">group_by</span>(persons) <span class="op">%&gt;%</span></span>
+<span id="cb25-3"><a href="chap-blocks.html#cb25-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>count) <span class="op">%&gt;%</span></span>
+<span id="cb25-4"><a href="chap-blocks.html#cb25-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> vehicles, <span class="dt">values_from =</span> share, <span class="dt">names_prefix =</span> <span class="st">&quot;vehicles &quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb25-5"><a href="chap-blocks.html#cb25-5"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">persons</th>
+<th align="right">workers</th>
+<th align="right">vehicles 0</th>
+<th align="right">vehicles 1</th>
+<th align="right">vehicles 2</th>
+<th align="right">vehicles 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0.0424577</td>
+<td align="right">0.0937149</td>
+<td align="right">0.0193590</td>
+<td align="right">0.0040148</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.0129243</td>
+<td align="right">0.1195635</td>
+<td align="right">0.0273885</td>
+<td align="right">0.0073146</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0.0079746</td>
+<td align="right">0.0269485</td>
+<td align="right">0.0441076</td>
+<td align="right">0.0211739</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0.0088545</td>
+<td align="right">0.0369580</td>
+<td align="right">0.0531271</td>
+<td align="right">0.0283235</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">0.0019249</td>
+<td align="right">0.0120993</td>
+<td align="right">0.0742460</td>
+<td align="right">0.0378930</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0.0031348</td>
+<td align="right">0.0067096</td>
+<td align="right">0.0040148</td>
+<td align="right">0.0029698</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">0.0041248</td>
+<td align="right">0.0192490</td>
+<td align="right">0.0178740</td>
+<td align="right">0.0114394</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">0.0008250</td>
+<td align="right">0.0051697</td>
+<td align="right">0.0323383</td>
+<td align="right">0.0255736</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">0.0002750</td>
+<td align="right">0.0005500</td>
+<td align="right">0.0038498</td>
+<td align="right">0.0146842</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0.0015949</td>
+<td align="right">0.0033548</td>
+<td align="right">0.0010999</td>
+<td align="right">0.0024749</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">0.0025299</td>
+<td align="right">0.0140792</td>
+<td align="right">0.0231537</td>
+<td align="right">0.0153992</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">0.0015399</td>
+<td align="right">0.0087445</td>
+<td align="right">0.0382779</td>
+<td align="right">0.0257936</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">0.0001540</td>
+<td align="right">0.0021999</td>
+<td align="right">0.0027499</td>
+<td align="right">0.0237037</td>
+</tr>
+</tbody>
+</table>
+<p>This table serves as the seed for the IPF process in the household classification
+Save this data table as a DBF file that you can put into the model at
+<code>params/classification/hh_seed.dbf</code>. The <code>write.dbf()</code> function is part of the
+<code>foreign</code> library.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chap-blocks.html#cb26-1"></a><span class="kw">as.data.frame</span>(joint_distribution) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb26-2"><a href="chap-blocks.html#cb26-2"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_seed.dbf&quot;</span>)</span></code></pre></div>
 </div>
 <div id="report" class="section level3 unnumbered">
 <h3>Report</h3>
+<p>For your homework, you should have a complete run of the uncalibrated, “bare”
+RVTPO model. Open the “Trip Generation” submodule by double-clicking on the
+yellow box labeled <code>Trip Generation</code>. This submodule has two steps: the
+household classification model and the trip productions model. You can run
+just this step of the model (and not the entire travel model) by clicking the
+“Run Application” button in the top-left of the Cube window and then selecting the
+“Run current group only” option in the dialog.</p>
+<p>Open the classified socioeconomic data file that is an input to the trip
+productions step (the file is named <code>se_classified_2012A.dbf</code>), and make
+a tabulation report counting up the number of households in each district in the
+following three categories:</p>
+<ul>
+<li><code>W3V0</code> Households with three or more workers and no vehicles.</li>
+<li><code>W0V3</code> Households with no workers and three or more vehicles.</li>
+<li><code>P2V2</code> Households with two people and two vehicles.</li>
+</ul>
+<p>The marginal classification curves and the joint distribution seed table are
+stored in the <code>params/classification</code> folder. Each file is a <code>.dbf</code> with the
+following format:</p>
+<ul>
+<li><code>hh_size_lookup.dbf</code>: <code>[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]</code></li>
+<li><code>hh_workers_lookup.dbf</code>: <code>[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]</code></li>
+<li><code>hh_vehicles_lookup.dbf</code>: <code>[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]</code></li>
+<li><code>hh_seed.dbf</code>: <code>[WORKERS, PERSONS, VEHICLES, SHARE]</code></li>
+</ul>
+<p>Open these files in Cube, and observe that the data contained them is nonsense.
+Replace the files in the <code>params/classification</code> folder with the distributions
+you created above, including the marginal distribution curves you calibrated by
+hand and the household seed you constructed from CTPP. Run the trip generation
+submodule again, and recreate the tabulation report you previously created. Do
+these numbers make more sense?</p>
+<div class="rmdexample">
+<p>You can edit the DBF files in Cube by hand; its copy-paste feature is not what
+you would expect from a software program in 2020 (or 2005). A more efficient
+way might be to use the <code>write.dbf()</code> function in R.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chap-blocks.html#cb27-1"></a><span class="co"># read the file you edited; there is also a readxl() function for excel</span></span>
+<span id="cb27-2"><a href="chap-blocks.html#cb27-2"></a><span class="co"># spreadsheets</span></span>
+<span id="cb27-3"><a href="chap-blocks.html#cb27-3"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/raw_size.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb27-4"><a href="chap-blocks.html#cb27-4"></a><span class="st">  </span><span class="co"># need to make sure the names on the columns match what Cube is expecting to</span></span>
+<span id="cb27-5"><a href="chap-blocks.html#cb27-5"></a><span class="st">  </span><span class="co"># get; you&#39;ll need to change this for the workers and vehicles</span></span>
+<span id="cb27-6"><a href="chap-blocks.html#cb27-6"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">AVG =</span> average, <span class="dt">PERSONS_1 =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">PERSONS_2 =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>,</span>
+<span id="cb27-7"><a href="chap-blocks.html#cb27-7"></a>         <span class="st">`</span><span class="dt">PERSONS_3</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">3</span><span class="st">`</span>, <span class="dt">PERSONS_4 =</span> <span class="st">`</span><span class="dt">4</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb27-8"><a href="chap-blocks.html#cb27-8"></a><span class="st">  </span><span class="co"># read_csv makes a modern data frame called a `tibble`. The old DBF function</span></span>
+<span id="cb27-9"><a href="chap-blocks.html#cb27-9"></a><span class="st">  </span><span class="co"># has no idea what do to with this. So we need to convert the tibble to an</span></span>
+<span id="cb27-10"><a href="chap-blocks.html#cb27-10"></a><span class="st">  </span><span class="co"># old-fashioned `data.frame`</span></span>
+<span id="cb27-11"><a href="chap-blocks.html#cb27-11"></a><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></span>
+<span id="cb27-12"><a href="chap-blocks.html#cb27-12"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_size_lookup.dbf&quot;</span>)</span></code></pre></div>
+</div>
+<p>The classification model incorporates a zone-level IPF process executed in R; the
+script for this process is in <code>R/classification.R</code>. Open the script and find
+the place where the maximum IPF iterations are set. Change this parameter to 50,
+save the R file, and and re-run both the model and your tabulation report.
+Change it again to 100 and note the execution time and any changes in the
+tabulation report. How many iterations should you run?</p>
 <p>Write a lab report describing the household classification model you have
 developed. Describe how you developed your marginal disaggregation curves,
-including any assertions you employed in smoothing the curves. Include plots of
-each curve. Describe how you determined the number of iterations of IPF to run
-in your model. Compare the distribution of housheolds by classification category
-to the joint distribution you obtained from the CTPP.</p>
+including any assertions you employed in smoothing /adjusting the curves.
+Include plots of each curve. Describe how you determined the number of
+iterations of IPF to run in your model. Compare the distribution of households
+by classification category to the joint distribution you obtained from the CTPP.</p>
 
 </div>
 </div>

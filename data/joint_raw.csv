@@ -1,0 +1,901 @@
+RESIDENCE,persons,workers,vehicles,output,count
+"Roanoke County, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Estimate,"38,320"
+"Roanoke County, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Margin of Error,388
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",0 vehicles,Estimate,"1,750"
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",0 vehicles,Margin of Error,242
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",1 vehicle,Estimate,"11,205"
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",1 vehicle,Margin of Error,592
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",2 vehicles,Estimate,"14,480"
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",2 vehicles,Margin of Error,647
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Estimate,"10,885"
+"Roanoke County, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Margin of Error,501
+"Roanoke County, Virginia",Total households,0 workers,"Total, vehicles available",Estimate,"10,730"
+"Roanoke County, Virginia",Total households,0 workers,"Total, vehicles available",Margin of Error,464
+"Roanoke County, Virginia",Total households,0 workers,0 vehicles,Estimate,"1,175"
+"Roanoke County, Virginia",Total households,0 workers,0 vehicles,Margin of Error,196
+"Roanoke County, Virginia",Total households,0 workers,1 vehicle,Estimate,"4,620"
+"Roanoke County, Virginia",Total households,0 workers,1 vehicle,Margin of Error,432
+"Roanoke County, Virginia",Total households,0 workers,2 vehicles,Estimate,"3,245"
+"Roanoke County, Virginia",Total households,0 workers,2 vehicles,Margin of Error,317
+"Roanoke County, Virginia",Total households,0 workers,3-or-more vehicles,Estimate,"1,690"
+"Roanoke County, Virginia",Total households,0 workers,3-or-more vehicles,Margin of Error,253
+"Roanoke County, Virginia",Total households,1 worker,"Total, vehicles available",Estimate,"14,575"
+"Roanoke County, Virginia",Total households,1 worker,"Total, vehicles available",Margin of Error,626
+"Roanoke County, Virginia",Total households,1 worker,0 vehicles,Estimate,475
+"Roanoke County, Virginia",Total households,1 worker,0 vehicles,Margin of Error,143
+"Roanoke County, Virginia",Total households,1 worker,1 vehicle,Estimate,"5,955"
+"Roanoke County, Virginia",Total households,1 worker,1 vehicle,Margin of Error,510
+"Roanoke County, Virginia",Total households,1 worker,2 vehicles,Estimate,"5,075"
+"Roanoke County, Virginia",Total households,1 worker,2 vehicles,Margin of Error,406
+"Roanoke County, Virginia",Total households,1 worker,3-or-more vehicles,Estimate,"3,065"
+"Roanoke County, Virginia",Total households,1 worker,3-or-more vehicles,Margin of Error,330
+"Roanoke County, Virginia",Total households,2 workers,"Total, vehicles available",Estimate,"10,910"
+"Roanoke County, Virginia",Total households,2 workers,"Total, vehicles available",Margin of Error,549
+"Roanoke County, Virginia",Total households,2 workers,0 vehicles,Estimate,90
+"Roanoke County, Virginia",Total households,2 workers,0 vehicles,Margin of Error,64
+"Roanoke County, Virginia",Total households,2 workers,1 vehicle,Estimate,570
+"Roanoke County, Virginia",Total households,2 workers,1 vehicle,Margin of Error,183
+"Roanoke County, Virginia",Total households,2 workers,2 vehicles,Estimate,"5,885"
+"Roanoke County, Virginia",Total households,2 workers,2 vehicles,Margin of Error,436
+"Roanoke County, Virginia",Total households,2 workers,3-or-more vehicles,Estimate,"4,370"
+"Roanoke County, Virginia",Total households,2 workers,3-or-more vehicles,Margin of Error,398
+"Roanoke County, Virginia",Total households,3 workers,"Total, vehicles available",Estimate,"1,665"
+"Roanoke County, Virginia",Total households,3 workers,"Total, vehicles available",Margin of Error,295
+"Roanoke County, Virginia",Total households,3 workers,0 vehicles,Estimate,10
+"Roanoke County, Virginia",Total households,3 workers,0 vehicles,Margin of Error,14
+"Roanoke County, Virginia",Total households,3 workers,1 vehicle,Estimate,30
+"Roanoke County, Virginia",Total households,3 workers,1 vehicle,Margin of Error,35
+"Roanoke County, Virginia",Total households,3 workers,2 vehicles,Estimate,255
+"Roanoke County, Virginia",Total households,3 workers,2 vehicles,Margin of Error,129
+"Roanoke County, Virginia",Total households,3 workers,3-or-more vehicles,Estimate,"1,365"
+"Roanoke County, Virginia",Total households,3 workers,3-or-more vehicles,Margin of Error,239
+"Roanoke County, Virginia",Total households,4-or-more workers,"Total, vehicles available",Estimate,445
+"Roanoke County, Virginia",Total households,4-or-more workers,"Total, vehicles available",Margin of Error,125
+"Roanoke County, Virginia",Total households,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",Total households,4-or-more workers,0 vehicles,Margin of Error,28
+"Roanoke County, Virginia",Total households,4-or-more workers,1 vehicle,Estimate,30
+"Roanoke County, Virginia",Total households,4-or-more workers,1 vehicle,Margin of Error,36
+"Roanoke County, Virginia",Total households,4-or-more workers,2 vehicles,Estimate,20
+"Roanoke County, Virginia",Total households,4-or-more workers,2 vehicles,Margin of Error,29
+"Roanoke County, Virginia",Total households,4-or-more workers,3-or-more vehicles,Estimate,395
+"Roanoke County, Virginia",Total households,4-or-more workers,3-or-more vehicles,Margin of Error,121
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"10,790"
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,518
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Estimate,"1,200"
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Margin of Error,192
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Estimate,"7,315"
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Margin of Error,503
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Estimate,"1,810"
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Margin of Error,252
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,460
+"Roanoke County, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,137
+"Roanoke County, Virginia",1-person household,0 workers,"Total, vehicles available",Estimate,"5,470"
+"Roanoke County, Virginia",1-person household,0 workers,"Total, vehicles available",Margin of Error,429
+"Roanoke County, Virginia",1-person household,0 workers,0 vehicles,Estimate,"1,005"
+"Roanoke County, Virginia",1-person household,0 workers,0 vehicles,Margin of Error,184
+"Roanoke County, Virginia",1-person household,0 workers,1 vehicle,Estimate,"3,505"
+"Roanoke County, Virginia",1-person household,0 workers,1 vehicle,Margin of Error,377
+"Roanoke County, Virginia",1-person household,0 workers,2 vehicles,Estimate,785
+"Roanoke County, Virginia",1-person household,0 workers,2 vehicles,Margin of Error,165
+"Roanoke County, Virginia",1-person household,0 workers,3-or-more vehicles,Estimate,170
+"Roanoke County, Virginia",1-person household,0 workers,3-or-more vehicles,Margin of Error,83
+"Roanoke County, Virginia",1-person household,1 worker,"Total, vehicles available",Estimate,"5,325"
+"Roanoke County, Virginia",1-person household,1 worker,"Total, vehicles available",Margin of Error,414
+"Roanoke County, Virginia",1-person household,1 worker,0 vehicles,Estimate,195
+"Roanoke County, Virginia",1-person household,1 worker,0 vehicles,Margin of Error,94
+"Roanoke County, Virginia",1-person household,1 worker,1 vehicle,Estimate,"3,810"
+"Roanoke County, Virginia",1-person household,1 worker,1 vehicle,Margin of Error,380
+"Roanoke County, Virginia",1-person household,1 worker,2 vehicles,Estimate,"1,025"
+"Roanoke County, Virginia",1-person household,1 worker,2 vehicles,Margin of Error,198
+"Roanoke County, Virginia",1-person household,1 worker,3-or-more vehicles,Estimate,290
+"Roanoke County, Virginia",1-person household,1 worker,3-or-more vehicles,Margin of Error,108
+"Roanoke County, Virginia",1-person household,2 workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",1-person household,2 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",1-person household,2 workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,2 workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,2 workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",1-person household,2 workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",1-person household,2 workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,2 workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,2 workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,2 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,3 workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",1-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",1-person household,3 workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,3 workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,3 workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",1-person household,3 workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",1-person household,3 workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,3 workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,3 workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"14,265"
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,617
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Estimate,310
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Margin of Error,109
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Estimate,"2,290"
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Margin of Error,308
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Estimate,"7,485"
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Margin of Error,513
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"4,180"
+"Roanoke County, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,357
+"Roanoke County, Virginia",2-person household,0 workers,"Total, vehicles available",Estimate,"4,515"
+"Roanoke County, Virginia",2-person household,0 workers,"Total, vehicles available",Margin of Error,378
+"Roanoke County, Virginia",2-person household,0 workers,0 vehicles,Estimate,125
+"Roanoke County, Virginia",2-person household,0 workers,0 vehicles,Margin of Error,59
+"Roanoke County, Virginia",2-person household,0 workers,1 vehicle,Estimate,895
+"Roanoke County, Virginia",2-person household,0 workers,1 vehicle,Margin of Error,220
+"Roanoke County, Virginia",2-person household,0 workers,2 vehicles,Estimate,"2,265"
+"Roanoke County, Virginia",2-person household,0 workers,2 vehicles,Margin of Error,250
+"Roanoke County, Virginia",2-person household,0 workers,3-or-more vehicles,Estimate,"1,225"
+"Roanoke County, Virginia",2-person household,0 workers,3-or-more vehicles,Margin of Error,218
+"Roanoke County, Virginia",2-person household,1 worker,"Total, vehicles available",Estimate,"4,810"
+"Roanoke County, Virginia",2-person household,1 worker,"Total, vehicles available",Margin of Error,351
+"Roanoke County, Virginia",2-person household,1 worker,0 vehicles,Estimate,170
+"Roanoke County, Virginia",2-person household,1 worker,0 vehicles,Margin of Error,85
+"Roanoke County, Virginia",2-person household,1 worker,1 vehicle,Estimate,"1,095"
+"Roanoke County, Virginia",2-person household,1 worker,1 vehicle,Margin of Error,214
+"Roanoke County, Virginia",2-person household,1 worker,2 vehicles,Estimate,"2,205"
+"Roanoke County, Virginia",2-person household,1 worker,2 vehicles,Margin of Error,287
+"Roanoke County, Virginia",2-person household,1 worker,3-or-more vehicles,Estimate,"1,335"
+"Roanoke County, Virginia",2-person household,1 worker,3-or-more vehicles,Margin of Error,188
+"Roanoke County, Virginia",2-person household,2 workers,"Total, vehicles available",Estimate,"4,945"
+"Roanoke County, Virginia",2-person household,2 workers,"Total, vehicles available",Margin of Error,457
+"Roanoke County, Virginia",2-person household,2 workers,0 vehicles,Estimate,15
+"Roanoke County, Virginia",2-person household,2 workers,0 vehicles,Margin of Error,25
+"Roanoke County, Virginia",2-person household,2 workers,1 vehicle,Estimate,300
+"Roanoke County, Virginia",2-person household,2 workers,1 vehicle,Margin of Error,130
+"Roanoke County, Virginia",2-person household,2 workers,2 vehicles,Estimate,"3,010"
+"Roanoke County, Virginia",2-person household,2 workers,2 vehicles,Margin of Error,375
+"Roanoke County, Virginia",2-person household,2 workers,3-or-more vehicles,Estimate,"1,620"
+"Roanoke County, Virginia",2-person household,2 workers,3-or-more vehicles,Margin of Error,243
+"Roanoke County, Virginia",2-person household,3 workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",2-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",2-person household,3 workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,3 workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,3 workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",2-person household,3 workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",2-person household,3 workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,3 workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,3 workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"5,895"
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,444
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Estimate,140
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Margin of Error,73
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Estimate,930
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Margin of Error,238
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Estimate,"2,165"
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Margin of Error,364
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"2,660"
+"Roanoke County, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,338
+"Roanoke County, Virginia",3-person household,0 workers,"Total, vehicles available",Estimate,530
+"Roanoke County, Virginia",3-person household,0 workers,"Total, vehicles available",Margin of Error,171
+"Roanoke County, Virginia",3-person household,0 workers,0 vehicles,Estimate,30
+"Roanoke County, Virginia",3-person household,0 workers,0 vehicles,Margin of Error,27
+"Roanoke County, Virginia",3-person household,0 workers,1 vehicle,Estimate,200
+"Roanoke County, Virginia",3-person household,0 workers,1 vehicle,Margin of Error,119
+"Roanoke County, Virginia",3-person household,0 workers,2 vehicles,Estimate,160
+"Roanoke County, Virginia",3-person household,0 workers,2 vehicles,Margin of Error,99
+"Roanoke County, Virginia",3-person household,0 workers,3-or-more vehicles,Estimate,140
+"Roanoke County, Virginia",3-person household,0 workers,3-or-more vehicles,Margin of Error,75
+"Roanoke County, Virginia",3-person household,1 worker,"Total, vehicles available",Estimate,"1,985"
+"Roanoke County, Virginia",3-person household,1 worker,"Total, vehicles available",Margin of Error,323
+"Roanoke County, Virginia",3-person household,1 worker,0 vehicles,Estimate,80
+"Roanoke County, Virginia",3-person household,1 worker,0 vehicles,Margin of Error,61
+"Roanoke County, Virginia",3-person household,1 worker,1 vehicle,Estimate,590
+"Roanoke County, Virginia",3-person household,1 worker,1 vehicle,Margin of Error,207
+"Roanoke County, Virginia",3-person household,1 worker,2 vehicles,Estimate,775
+"Roanoke County, Virginia",3-person household,1 worker,2 vehicles,Margin of Error,208
+"Roanoke County, Virginia",3-person household,1 worker,3-or-more vehicles,Estimate,535
+"Roanoke County, Virginia",3-person household,1 worker,3-or-more vehicles,Margin of Error,131
+"Roanoke County, Virginia",3-person household,2 workers,"Total, vehicles available",Estimate,"2,610"
+"Roanoke County, Virginia",3-person household,2 workers,"Total, vehicles available",Margin of Error,324
+"Roanoke County, Virginia",3-person household,2 workers,0 vehicles,Estimate,20
+"Roanoke County, Virginia",3-person household,2 workers,0 vehicles,Margin of Error,33
+"Roanoke County, Virginia",3-person household,2 workers,1 vehicle,Estimate,130
+"Roanoke County, Virginia",3-person household,2 workers,1 vehicle,Margin of Error,80
+"Roanoke County, Virginia",3-person household,2 workers,2 vehicles,Estimate,"1,075"
+"Roanoke County, Virginia",3-person household,2 workers,2 vehicles,Margin of Error,224
+"Roanoke County, Virginia",3-person household,2 workers,3-or-more vehicles,Estimate,"1,390"
+"Roanoke County, Virginia",3-person household,2 workers,3-or-more vehicles,Margin of Error,237
+"Roanoke County, Virginia",3-person household,3 workers,"Total, vehicles available",Estimate,770
+"Roanoke County, Virginia",3-person household,3 workers,"Total, vehicles available",Margin of Error,209
+"Roanoke County, Virginia",3-person household,3 workers,0 vehicles,Estimate,10
+"Roanoke County, Virginia",3-person household,3 workers,0 vehicles,Margin of Error,14
+"Roanoke County, Virginia",3-person household,3 workers,1 vehicle,Estimate,15
+"Roanoke County, Virginia",3-person household,3 workers,1 vehicle,Margin of Error,24
+"Roanoke County, Virginia",3-person household,3 workers,2 vehicles,Estimate,155
+"Roanoke County, Virginia",3-person household,3 workers,2 vehicles,Margin of Error,105
+"Roanoke County, Virginia",3-person household,3 workers,3-or-more vehicles,Estimate,590
+"Roanoke County, Virginia",3-person household,3 workers,3-or-more vehicles,Margin of Error,168
+"Roanoke County, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke County, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"7,370"
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,407
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Estimate,95
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Margin of Error,75
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Estimate,665
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Margin of Error,199
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Estimate,"3,020"
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Margin of Error,299
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"3,585"
+"Roanoke County, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,370
+"Roanoke County, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Estimate,220
+"Roanoke County, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Margin of Error,110
+"Roanoke County, Virginia",4-or-more-person household,0 workers,0 vehicles,Estimate,10
+"Roanoke County, Virginia",4-or-more-person household,0 workers,0 vehicles,Margin of Error,16
+"Roanoke County, Virginia",4-or-more-person household,0 workers,1 vehicle,Estimate,25
+"Roanoke County, Virginia",4-or-more-person household,0 workers,1 vehicle,Margin of Error,26
+"Roanoke County, Virginia",4-or-more-person household,0 workers,2 vehicles,Estimate,35
+"Roanoke County, Virginia",4-or-more-person household,0 workers,2 vehicles,Margin of Error,24
+"Roanoke County, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Estimate,150
+"Roanoke County, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Margin of Error,107
+"Roanoke County, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Estimate,"2,455"
+"Roanoke County, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Margin of Error,344
+"Roanoke County, Virginia",4-or-more-person household,1 worker,0 vehicles,Estimate,30
+"Roanoke County, Virginia",4-or-more-person household,1 worker,0 vehicles,Margin of Error,31
+"Roanoke County, Virginia",4-or-more-person household,1 worker,1 vehicle,Estimate,455
+"Roanoke County, Virginia",4-or-more-person household,1 worker,1 vehicle,Margin of Error,166
+"Roanoke County, Virginia",4-or-more-person household,1 worker,2 vehicles,Estimate,"1,065"
+"Roanoke County, Virginia",4-or-more-person household,1 worker,2 vehicles,Margin of Error,222
+"Roanoke County, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Estimate,905
+"Roanoke County, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Margin of Error,229
+"Roanoke County, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Estimate,"3,355"
+"Roanoke County, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Margin of Error,339
+"Roanoke County, Virginia",4-or-more-person household,2 workers,0 vehicles,Estimate,55
+"Roanoke County, Virginia",4-or-more-person household,2 workers,0 vehicles,Margin of Error,66
+"Roanoke County, Virginia",4-or-more-person household,2 workers,1 vehicle,Estimate,145
+"Roanoke County, Virginia",4-or-more-person household,2 workers,1 vehicle,Margin of Error,106
+"Roanoke County, Virginia",4-or-more-person household,2 workers,2 vehicles,Estimate,"1,800"
+"Roanoke County, Virginia",4-or-more-person household,2 workers,2 vehicles,Margin of Error,223
+"Roanoke County, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Estimate,"1,355"
+"Roanoke County, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Margin of Error,222
+"Roanoke County, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Estimate,895
+"Roanoke County, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Margin of Error,225
+"Roanoke County, Virginia",4-or-more-person household,3 workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",4-or-more-person household,3 workers,0 vehicles,Margin of Error,28
+"Roanoke County, Virginia",4-or-more-person household,3 workers,1 vehicle,Estimate,15
+"Roanoke County, Virginia",4-or-more-person household,3 workers,1 vehicle,Margin of Error,27
+"Roanoke County, Virginia",4-or-more-person household,3 workers,2 vehicles,Estimate,100
+"Roanoke County, Virginia",4-or-more-person household,3 workers,2 vehicles,Margin of Error,80
+"Roanoke County, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Estimate,775
+"Roanoke County, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Margin of Error,188
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Estimate,445
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Margin of Error,125
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Margin of Error,28
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Estimate,30
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Margin of Error,36
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Estimate,20
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Margin of Error,29
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Estimate,395
+"Roanoke County, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Margin of Error,121
+"Roanoke city, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Estimate,"42,540"
+"Roanoke city, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Margin of Error,580
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",0 vehicles,Estimate,"5,670"
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",0 vehicles,Margin of Error,525
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",1 vehicle,Estimate,"16,820"
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",1 vehicle,Margin of Error,784
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",2 vehicles,Estimate,"13,225"
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",2 vehicles,Margin of Error,710
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Estimate,"6,830"
+"Roanoke city, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Margin of Error,545
+"Roanoke city, Virginia",Total households,0 workers,"Total, vehicles available",Estimate,"12,520"
+"Roanoke city, Virginia",Total households,0 workers,"Total, vehicles available",Margin of Error,617
+"Roanoke city, Virginia",Total households,0 workers,0 vehicles,Estimate,"3,465"
+"Roanoke city, Virginia",Total households,0 workers,0 vehicles,Margin of Error,402
+"Roanoke city, Virginia",Total households,0 workers,1 vehicle,Estimate,"5,925"
+"Roanoke city, Virginia",Total households,0 workers,1 vehicle,Margin of Error,471
+"Roanoke city, Virginia",Total households,0 workers,2 vehicles,Estimate,"2,275"
+"Roanoke city, Virginia",Total households,0 workers,2 vehicles,Margin of Error,337
+"Roanoke city, Virginia",Total households,0 workers,3-or-more vehicles,Estimate,860
+"Roanoke city, Virginia",Total households,0 workers,3-or-more vehicles,Margin of Error,189
+"Roanoke city, Virginia",Total households,1 worker,"Total, vehicles available",Estimate,"17,940"
+"Roanoke city, Virginia",Total households,1 worker,"Total, vehicles available",Margin of Error,757
+"Roanoke city, Virginia",Total households,1 worker,0 vehicles,Estimate,"1,905"
+"Roanoke city, Virginia",Total households,1 worker,0 vehicles,Margin of Error,343
+"Roanoke city, Virginia",Total households,1 worker,1 vehicle,Estimate,"9,265"
+"Roanoke city, Virginia",Total households,1 worker,1 vehicle,Margin of Error,602
+"Roanoke city, Virginia",Total households,1 worker,2 vehicles,Estimate,"4,930"
+"Roanoke city, Virginia",Total households,1 worker,2 vehicles,Margin of Error,460
+"Roanoke city, Virginia",Total households,1 worker,3-or-more vehicles,Estimate,"1,835"
+"Roanoke city, Virginia",Total households,1 worker,3-or-more vehicles,Margin of Error,283
+"Roanoke city, Virginia",Total households,2 workers,"Total, vehicles available",Estimate,"10,350"
+"Roanoke city, Virginia",Total households,2 workers,"Total, vehicles available",Margin of Error,733
+"Roanoke city, Virginia",Total households,2 workers,0 vehicles,Estimate,270
+"Roanoke city, Virginia",Total households,2 workers,0 vehicles,Margin of Error,122
+"Roanoke city, Virginia",Total households,2 workers,1 vehicle,Estimate,"1,480"
+"Roanoke city, Virginia",Total households,2 workers,1 vehicle,Margin of Error,282
+"Roanoke city, Virginia",Total households,2 workers,2 vehicles,Estimate,"5,705"
+"Roanoke city, Virginia",Total households,2 workers,2 vehicles,Margin of Error,568
+"Roanoke city, Virginia",Total households,2 workers,3-or-more vehicles,Estimate,"2,895"
+"Roanoke city, Virginia",Total households,2 workers,3-or-more vehicles,Margin of Error,367
+"Roanoke city, Virginia",Total households,3 workers,"Total, vehicles available",Estimate,"1,425"
+"Roanoke city, Virginia",Total households,3 workers,"Total, vehicles available",Margin of Error,293
+"Roanoke city, Virginia",Total households,3 workers,0 vehicles,Estimate,20
+"Roanoke city, Virginia",Total households,3 workers,0 vehicles,Margin of Error,25
+"Roanoke city, Virginia",Total households,3 workers,1 vehicle,Estimate,90
+"Roanoke city, Virginia",Total households,3 workers,1 vehicle,Margin of Error,67
+"Roanoke city, Virginia",Total households,3 workers,2 vehicles,Estimate,270
+"Roanoke city, Virginia",Total households,3 workers,2 vehicles,Margin of Error,121
+"Roanoke city, Virginia",Total households,3 workers,3-or-more vehicles,Estimate,"1,050"
+"Roanoke city, Virginia",Total households,3 workers,3-or-more vehicles,Margin of Error,276
+"Roanoke city, Virginia",Total households,4-or-more workers,"Total, vehicles available",Estimate,305
+"Roanoke city, Virginia",Total households,4-or-more workers,"Total, vehicles available",Margin of Error,112
+"Roanoke city, Virginia",Total households,4-or-more workers,0 vehicles,Estimate,10
+"Roanoke city, Virginia",Total households,4-or-more workers,0 vehicles,Margin of Error,14
+"Roanoke city, Virginia",Total households,4-or-more workers,1 vehicle,Estimate,60
+"Roanoke city, Virginia",Total households,4-or-more workers,1 vehicle,Margin of Error,45
+"Roanoke city, Virginia",Total households,4-or-more workers,2 vehicles,Estimate,45
+"Roanoke city, Virginia",Total households,4-or-more workers,2 vehicles,Margin of Error,38
+"Roanoke city, Virginia",Total households,4-or-more workers,3-or-more vehicles,Estimate,190
+"Roanoke city, Virginia",Total households,4-or-more workers,3-or-more vehicles,Margin of Error,89
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"15,655"
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,720
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Estimate,"3,485"
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Margin of Error,389
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Estimate,"9,855"
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Margin of Error,688
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Estimate,"1,930"
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Margin of Error,267
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,385
+"Roanoke city, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,140
+"Roanoke city, Virginia",1-person household,0 workers,"Total, vehicles available",Estimate,"7,550"
+"Roanoke city, Virginia",1-person household,0 workers,"Total, vehicles available",Margin of Error,515
+"Roanoke city, Virginia",1-person household,0 workers,0 vehicles,Estimate,"2,580"
+"Roanoke city, Virginia",1-person household,0 workers,0 vehicles,Margin of Error,330
+"Roanoke city, Virginia",1-person household,0 workers,1 vehicle,Estimate,"4,070"
+"Roanoke city, Virginia",1-person household,0 workers,1 vehicle,Margin of Error,409
+"Roanoke city, Virginia",1-person household,0 workers,2 vehicles,Estimate,725
+"Roanoke city, Virginia",1-person household,0 workers,2 vehicles,Margin of Error,148
+"Roanoke city, Virginia",1-person household,0 workers,3-or-more vehicles,Estimate,175
+"Roanoke city, Virginia",1-person household,0 workers,3-or-more vehicles,Margin of Error,93
+"Roanoke city, Virginia",1-person household,1 worker,"Total, vehicles available",Estimate,"8,105"
+"Roanoke city, Virginia",1-person household,1 worker,"Total, vehicles available",Margin of Error,609
+"Roanoke city, Virginia",1-person household,1 worker,0 vehicles,Estimate,905
+"Roanoke city, Virginia",1-person household,1 worker,0 vehicles,Margin of Error,218
+"Roanoke city, Virginia",1-person household,1 worker,1 vehicle,Estimate,"5,785"
+"Roanoke city, Virginia",1-person household,1 worker,1 vehicle,Margin of Error,559
+"Roanoke city, Virginia",1-person household,1 worker,2 vehicles,Estimate,"1,205"
+"Roanoke city, Virginia",1-person household,1 worker,2 vehicles,Margin of Error,220
+"Roanoke city, Virginia",1-person household,1 worker,3-or-more vehicles,Estimate,210
+"Roanoke city, Virginia",1-person household,1 worker,3-or-more vehicles,Margin of Error,85
+"Roanoke city, Virginia",1-person household,2 workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",1-person household,2 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",1-person household,2 workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,2 workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,2 workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",1-person household,2 workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",1-person household,2 workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,2 workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,2 workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,2 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,3 workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",1-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",1-person household,3 workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,3 workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,3 workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",1-person household,3 workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",1-person household,3 workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,3 workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,3 workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"14,200"
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,780
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Estimate,"1,170"
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Margin of Error,277
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Estimate,"3,725"
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Margin of Error,463
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Estimate,"6,380"
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Margin of Error,560
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"2,920"
+"Roanoke city, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,340
+"Roanoke city, Virginia",2-person household,0 workers,"Total, vehicles available",Estimate,"3,575"
+"Roanoke city, Virginia",2-person household,0 workers,"Total, vehicles available",Margin of Error,406
+"Roanoke city, Virginia",2-person household,0 workers,0 vehicles,Estimate,495
+"Roanoke city, Virginia",2-person household,0 workers,0 vehicles,Margin of Error,202
+"Roanoke city, Virginia",2-person household,0 workers,1 vehicle,Estimate,"1,235"
+"Roanoke city, Virginia",2-person household,0 workers,1 vehicle,Margin of Error,268
+"Roanoke city, Virginia",2-person household,0 workers,2 vehicles,Estimate,"1,305"
+"Roanoke city, Virginia",2-person household,0 workers,2 vehicles,Margin of Error,245
+"Roanoke city, Virginia",2-person household,0 workers,3-or-more vehicles,Estimate,540
+"Roanoke city, Virginia",2-person household,0 workers,3-or-more vehicles,Margin of Error,152
+"Roanoke city, Virginia",2-person household,1 worker,"Total, vehicles available",Estimate,"5,450"
+"Roanoke city, Virginia",2-person household,1 worker,"Total, vehicles available",Margin of Error,516
+"Roanoke city, Virginia",2-person household,1 worker,0 vehicles,Estimate,530
+"Roanoke city, Virginia",2-person household,1 worker,0 vehicles,Margin of Error,204
+"Roanoke city, Virginia",2-person household,1 worker,1 vehicle,Estimate,"1,805"
+"Roanoke city, Virginia",2-person household,1 worker,1 vehicle,Margin of Error,299
+"Roanoke city, Virginia",2-person household,1 worker,2 vehicles,Estimate,"2,205"
+"Roanoke city, Virginia",2-person household,1 worker,2 vehicles,Margin of Error,318
+"Roanoke city, Virginia",2-person household,1 worker,3-or-more vehicles,Estimate,910
+"Roanoke city, Virginia",2-person household,1 worker,3-or-more vehicles,Margin of Error,227
+"Roanoke city, Virginia",2-person household,2 workers,"Total, vehicles available",Estimate,"5,175"
+"Roanoke city, Virginia",2-person household,2 workers,"Total, vehicles available",Margin of Error,512
+"Roanoke city, Virginia",2-person household,2 workers,0 vehicles,Estimate,145
+"Roanoke city, Virginia",2-person household,2 workers,0 vehicles,Margin of Error,89
+"Roanoke city, Virginia",2-person household,2 workers,1 vehicle,Estimate,685
+"Roanoke city, Virginia",2-person household,2 workers,1 vehicle,Margin of Error,197
+"Roanoke city, Virginia",2-person household,2 workers,2 vehicles,Estimate,"2,875"
+"Roanoke city, Virginia",2-person household,2 workers,2 vehicles,Margin of Error,384
+"Roanoke city, Virginia",2-person household,2 workers,3-or-more vehicles,Estimate,"1,470"
+"Roanoke city, Virginia",2-person household,2 workers,3-or-more vehicles,Margin of Error,250
+"Roanoke city, Virginia",2-person household,3 workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",2-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",2-person household,3 workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,3 workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,3 workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",2-person household,3 workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",2-person household,3 workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,3 workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,3 workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"6,460"
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,567
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Estimate,590
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Margin of Error,212
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Estimate,"1,595"
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Margin of Error,362
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Estimate,"2,590"
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Margin of Error,398
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"1,685"
+"Roanoke city, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,310
+"Roanoke city, Virginia",3-person household,0 workers,"Total, vehicles available",Estimate,865
+"Roanoke city, Virginia",3-person household,0 workers,"Total, vehicles available",Margin of Error,201
+"Roanoke city, Virginia",3-person household,0 workers,0 vehicles,Estimate,255
+"Roanoke city, Virginia",3-person household,0 workers,0 vehicles,Margin of Error,105
+"Roanoke city, Virginia",3-person household,0 workers,1 vehicle,Estimate,335
+"Roanoke city, Virginia",3-person household,0 workers,1 vehicle,Margin of Error,141
+"Roanoke city, Virginia",3-person household,0 workers,2 vehicles,Estimate,195
+"Roanoke city, Virginia",3-person household,0 workers,2 vehicles,Margin of Error,101
+"Roanoke city, Virginia",3-person household,0 workers,3-or-more vehicles,Estimate,85
+"Roanoke city, Virginia",3-person household,0 workers,3-or-more vehicles,Margin of Error,56
+"Roanoke city, Virginia",3-person household,1 worker,"Total, vehicles available",Estimate,"2,250"
+"Roanoke city, Virginia",3-person household,1 worker,"Total, vehicles available",Margin of Error,438
+"Roanoke city, Virginia",3-person household,1 worker,0 vehicles,Estimate,270
+"Roanoke city, Virginia",3-person household,1 worker,0 vehicles,Margin of Error,159
+"Roanoke city, Virginia",3-person household,1 worker,1 vehicle,Estimate,955
+"Roanoke city, Virginia",3-person household,1 worker,1 vehicle,Margin of Error,287
+"Roanoke city, Virginia",3-person household,1 worker,2 vehicles,Estimate,665
+"Roanoke city, Virginia",3-person household,1 worker,2 vehicles,Margin of Error,181
+"Roanoke city, Virginia",3-person household,1 worker,3-or-more vehicles,Estimate,365
+"Roanoke city, Virginia",3-person household,1 worker,3-or-more vehicles,Margin of Error,142
+"Roanoke city, Virginia",3-person household,2 workers,"Total, vehicles available",Estimate,"2,560"
+"Roanoke city, Virginia",3-person household,2 workers,"Total, vehicles available",Margin of Error,380
+"Roanoke city, Virginia",3-person household,2 workers,0 vehicles,Estimate,55
+"Roanoke city, Virginia",3-person household,2 workers,0 vehicles,Margin of Error,52
+"Roanoke city, Virginia",3-person household,2 workers,1 vehicle,Estimate,270
+"Roanoke city, Virginia",3-person household,2 workers,1 vehicle,Margin of Error,138
+"Roanoke city, Virginia",3-person household,2 workers,2 vehicles,Estimate,"1,535"
+"Roanoke city, Virginia",3-person household,2 workers,2 vehicles,Margin of Error,331
+"Roanoke city, Virginia",3-person household,2 workers,3-or-more vehicles,Estimate,700
+"Roanoke city, Virginia",3-person household,2 workers,3-or-more vehicles,Margin of Error,149
+"Roanoke city, Virginia",3-person household,3 workers,"Total, vehicles available",Estimate,780
+"Roanoke city, Virginia",3-person household,3 workers,"Total, vehicles available",Margin of Error,223
+"Roanoke city, Virginia",3-person household,3 workers,0 vehicles,Estimate,15
+"Roanoke city, Virginia",3-person household,3 workers,0 vehicles,Margin of Error,26
+"Roanoke city, Virginia",3-person household,3 workers,1 vehicle,Estimate,35
+"Roanoke city, Virginia",3-person household,3 workers,1 vehicle,Margin of Error,41
+"Roanoke city, Virginia",3-person household,3 workers,2 vehicles,Estimate,195
+"Roanoke city, Virginia",3-person household,3 workers,2 vehicles,Margin of Error,111
+"Roanoke city, Virginia",3-person household,3 workers,3-or-more vehicles,Estimate,540
+"Roanoke city, Virginia",3-person household,3 workers,3-or-more vehicles,Margin of Error,196
+"Roanoke city, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,0 vehicles,Estimate,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,1 vehicle,Estimate,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,2 vehicles,Estimate,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Roanoke city, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"6,225"
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,541
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Estimate,425
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Margin of Error,152
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Estimate,"1,645"
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Margin of Error,331
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Estimate,"2,325"
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Margin of Error,336
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,"1,835"
+"Roanoke city, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,304
+"Roanoke city, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Estimate,530
+"Roanoke city, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Margin of Error,184
+"Roanoke city, Virginia",4-or-more-person household,0 workers,0 vehicles,Estimate,135
+"Roanoke city, Virginia",4-or-more-person household,0 workers,0 vehicles,Margin of Error,92
+"Roanoke city, Virginia",4-or-more-person household,0 workers,1 vehicle,Estimate,280
+"Roanoke city, Virginia",4-or-more-person household,0 workers,1 vehicle,Margin of Error,139
+"Roanoke city, Virginia",4-or-more-person household,0 workers,2 vehicles,Estimate,50
+"Roanoke city, Virginia",4-or-more-person household,0 workers,2 vehicles,Margin of Error,47
+"Roanoke city, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Estimate,65
+"Roanoke city, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Margin of Error,52
+"Roanoke city, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Estimate,"2,130"
+"Roanoke city, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Margin of Error,310
+"Roanoke city, Virginia",4-or-more-person household,1 worker,0 vehicles,Estimate,200
+"Roanoke city, Virginia",4-or-more-person household,1 worker,0 vehicles,Margin of Error,107
+"Roanoke city, Virginia",4-or-more-person household,1 worker,1 vehicle,Estimate,725
+"Roanoke city, Virginia",4-or-more-person household,1 worker,1 vehicle,Margin of Error,213
+"Roanoke city, Virginia",4-or-more-person household,1 worker,2 vehicles,Estimate,855
+"Roanoke city, Virginia",4-or-more-person household,1 worker,2 vehicles,Margin of Error,214
+"Roanoke city, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Estimate,345
+"Roanoke city, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Margin of Error,115
+"Roanoke city, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Estimate,"2,615"
+"Roanoke city, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Margin of Error,382
+"Roanoke city, Virginia",4-or-more-person household,2 workers,0 vehicles,Estimate,75
+"Roanoke city, Virginia",4-or-more-person household,2 workers,0 vehicles,Margin of Error,54
+"Roanoke city, Virginia",4-or-more-person household,2 workers,1 vehicle,Estimate,520
+"Roanoke city, Virginia",4-or-more-person household,2 workers,1 vehicle,Margin of Error,202
+"Roanoke city, Virginia",4-or-more-person household,2 workers,2 vehicles,Estimate,"1,295"
+"Roanoke city, Virginia",4-or-more-person household,2 workers,2 vehicles,Margin of Error,271
+"Roanoke city, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Estimate,725
+"Roanoke city, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Margin of Error,190
+"Roanoke city, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Estimate,645
+"Roanoke city, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Margin of Error,192
+"Roanoke city, Virginia",4-or-more-person household,3 workers,0 vehicles,Estimate,4
+"Roanoke city, Virginia",4-or-more-person household,3 workers,0 vehicles,Margin of Error,28
+"Roanoke city, Virginia",4-or-more-person household,3 workers,1 vehicle,Estimate,55
+"Roanoke city, Virginia",4-or-more-person household,3 workers,1 vehicle,Margin of Error,47
+"Roanoke city, Virginia",4-or-more-person household,3 workers,2 vehicles,Estimate,75
+"Roanoke city, Virginia",4-or-more-person household,3 workers,2 vehicles,Margin of Error,61
+"Roanoke city, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Estimate,510
+"Roanoke city, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Margin of Error,179
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Estimate,305
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Margin of Error,112
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Estimate,10
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Margin of Error,14
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Estimate,60
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Margin of Error,45
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Estimate,45
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Margin of Error,38
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Estimate,190
+"Roanoke city, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Margin of Error,89
+"Salem city, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Estimate,"10,060"
+"Salem city, Virginia",Total households,"Total, number of workers in household","Total, vehicles available",Margin of Error,239
+"Salem city, Virginia",Total households,"Total, number of workers in household",0 vehicles,Estimate,610
+"Salem city, Virginia",Total households,"Total, number of workers in household",0 vehicles,Margin of Error,171
+"Salem city, Virginia",Total households,"Total, number of workers in household",1 vehicle,Estimate,"3,740"
+"Salem city, Virginia",Total households,"Total, number of workers in household",1 vehicle,Margin of Error,299
+"Salem city, Virginia",Total households,"Total, number of workers in household",2 vehicles,Estimate,"3,355"
+"Salem city, Virginia",Total households,"Total, number of workers in household",2 vehicles,Margin of Error,322
+"Salem city, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Estimate,"2,355"
+"Salem city, Virginia",Total households,"Total, number of workers in household",3-or-more vehicles,Margin of Error,235
+"Salem city, Virginia",Total households,0 workers,"Total, vehicles available",Estimate,"2,665"
+"Salem city, Virginia",Total households,0 workers,"Total, vehicles available",Margin of Error,243
+"Salem city, Virginia",Total households,0 workers,0 vehicles,Estimate,380
+"Salem city, Virginia",Total households,0 workers,0 vehicles,Margin of Error,131
+"Salem city, Virginia",Total households,0 workers,1 vehicle,Estimate,"1,340"
+"Salem city, Virginia",Total households,0 workers,1 vehicle,Margin of Error,205
+"Salem city, Virginia",Total households,0 workers,2 vehicles,Estimate,715
+"Salem city, Virginia",Total households,0 workers,2 vehicles,Margin of Error,140
+"Salem city, Virginia",Total households,0 workers,3-or-more vehicles,Estimate,230
+"Salem city, Virginia",Total households,0 workers,3-or-more vehicles,Margin of Error,76
+"Salem city, Virginia",Total households,1 worker,"Total, vehicles available",Estimate,"4,080"
+"Salem city, Virginia",Total households,1 worker,"Total, vehicles available",Margin of Error,302
+"Salem city, Virginia",Total households,1 worker,0 vehicles,Estimate,205
+"Salem city, Virginia",Total households,1 worker,0 vehicles,Margin of Error,92
+"Salem city, Virginia",Total households,1 worker,1 vehicle,Estimate,"2,040"
+"Salem city, Virginia",Total households,1 worker,1 vehicle,Margin of Error,275
+"Salem city, Virginia",Total households,1 worker,2 vehicles,Estimate,"1,050"
+"Salem city, Virginia",Total households,1 worker,2 vehicles,Margin of Error,171
+"Salem city, Virginia",Total households,1 worker,3-or-more vehicles,Estimate,785
+"Salem city, Virginia",Total households,1 worker,3-or-more vehicles,Margin of Error,158
+"Salem city, Virginia",Total households,2 workers,"Total, vehicles available",Estimate,"2,775"
+"Salem city, Virginia",Total households,2 workers,"Total, vehicles available",Margin of Error,302
+"Salem city, Virginia",Total households,2 workers,0 vehicles,Estimate,25
+"Salem city, Virginia",Total households,2 workers,0 vehicles,Margin of Error,26
+"Salem city, Virginia",Total households,2 workers,1 vehicle,Estimate,315
+"Salem city, Virginia",Total households,2 workers,1 vehicle,Margin of Error,134
+"Salem city, Virginia",Total households,2 workers,2 vehicles,Estimate,"1,580"
+"Salem city, Virginia",Total households,2 workers,2 vehicles,Margin of Error,257
+"Salem city, Virginia",Total households,2 workers,3-or-more vehicles,Estimate,855
+"Salem city, Virginia",Total households,2 workers,3-or-more vehicles,Margin of Error,168
+"Salem city, Virginia",Total households,3 workers,"Total, vehicles available",Estimate,480
+"Salem city, Virginia",Total households,3 workers,"Total, vehicles available",Margin of Error,124
+"Salem city, Virginia",Total households,3 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",Total households,3 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",Total households,3 workers,1 vehicle,Estimate,40
+"Salem city, Virginia",Total households,3 workers,1 vehicle,Margin of Error,47
+"Salem city, Virginia",Total households,3 workers,2 vehicles,Estimate,10
+"Salem city, Virginia",Total households,3 workers,2 vehicles,Margin of Error,13
+"Salem city, Virginia",Total households,3 workers,3-or-more vehicles,Estimate,430
+"Salem city, Virginia",Total households,3 workers,3-or-more vehicles,Margin of Error,120
+"Salem city, Virginia",Total households,4-or-more workers,"Total, vehicles available",Estimate,60
+"Salem city, Virginia",Total households,4-or-more workers,"Total, vehicles available",Margin of Error,45
+"Salem city, Virginia",Total households,4-or-more workers,0 vehicles,Estimate,0
+"Salem city, Virginia",Total households,4-or-more workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",Total households,4-or-more workers,1 vehicle,Estimate,0
+"Salem city, Virginia",Total households,4-or-more workers,1 vehicle,Margin of Error,22
+"Salem city, Virginia",Total households,4-or-more workers,2 vehicles,Estimate,0
+"Salem city, Virginia",Total households,4-or-more workers,2 vehicles,Margin of Error,22
+"Salem city, Virginia",Total households,4-or-more workers,3-or-more vehicles,Estimate,60
+"Salem city, Virginia",Total households,4-or-more workers,3-or-more vehicles,Margin of Error,45
+"Salem city, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"3,265"
+"Salem city, Virginia",1-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,318
+"Salem city, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Estimate,350
+"Salem city, Virginia",1-person household,"Total, number of workers in household",0 vehicles,Margin of Error,111
+"Salem city, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Estimate,"2,220"
+"Salem city, Virginia",1-person household,"Total, number of workers in household",1 vehicle,Margin of Error,276
+"Salem city, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Estimate,510
+"Salem city, Virginia",1-person household,"Total, number of workers in household",2 vehicles,Margin of Error,104
+"Salem city, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,180
+"Salem city, Virginia",1-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,88
+"Salem city, Virginia",1-person household,0 workers,"Total, vehicles available",Estimate,"1,490"
+"Salem city, Virginia",1-person household,0 workers,"Total, vehicles available",Margin of Error,225
+"Salem city, Virginia",1-person household,0 workers,0 vehicles,Estimate,275
+"Salem city, Virginia",1-person household,0 workers,0 vehicles,Margin of Error,102
+"Salem city, Virginia",1-person household,0 workers,1 vehicle,Estimate,945
+"Salem city, Virginia",1-person household,0 workers,1 vehicle,Margin of Error,183
+"Salem city, Virginia",1-person household,0 workers,2 vehicles,Estimate,250
+"Salem city, Virginia",1-person household,0 workers,2 vehicles,Margin of Error,69
+"Salem city, Virginia",1-person household,0 workers,3-or-more vehicles,Estimate,20
+"Salem city, Virginia",1-person household,0 workers,3-or-more vehicles,Margin of Error,23
+"Salem city, Virginia",1-person household,1 worker,"Total, vehicles available",Estimate,"1,775"
+"Salem city, Virginia",1-person household,1 worker,"Total, vehicles available",Margin of Error,246
+"Salem city, Virginia",1-person household,1 worker,0 vehicles,Estimate,75
+"Salem city, Virginia",1-person household,1 worker,0 vehicles,Margin of Error,55
+"Salem city, Virginia",1-person household,1 worker,1 vehicle,Estimate,"1,275"
+"Salem city, Virginia",1-person household,1 worker,1 vehicle,Margin of Error,207
+"Salem city, Virginia",1-person household,1 worker,2 vehicles,Estimate,260
+"Salem city, Virginia",1-person household,1 worker,2 vehicles,Margin of Error,94
+"Salem city, Virginia",1-person household,1 worker,3-or-more vehicles,Estimate,165
+"Salem city, Virginia",1-person household,1 worker,3-or-more vehicles,Margin of Error,92
+"Salem city, Virginia",1-person household,2 workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",1-person household,2 workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",1-person household,2 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,2 workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,2 workers,1 vehicle,Estimate,0
+"Salem city, Virginia",1-person household,2 workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",1-person household,2 workers,2 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,2 workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,2 workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",1-person household,2 workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,3 workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",1-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",1-person household,3 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,3 workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,3 workers,1 vehicle,Estimate,0
+"Salem city, Virginia",1-person household,3 workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",1-person household,3 workers,2 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,3 workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,3 workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",1-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",1-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",1-person household,4-or-more workers,0 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,4-or-more workers,1 vehicle,Estimate,0
+"Salem city, Virginia",1-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",1-person household,4-or-more workers,2 vehicles,Estimate,0
+"Salem city, Virginia",1-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",1-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"3,690"
+"Salem city, Virginia",2-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,336
+"Salem city, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Estimate,220
+"Salem city, Virginia",2-person household,"Total, number of workers in household",0 vehicles,Margin of Error,127
+"Salem city, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Estimate,895
+"Salem city, Virginia",2-person household,"Total, number of workers in household",1 vehicle,Margin of Error,230
+"Salem city, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Estimate,"1,725"
+"Salem city, Virginia",2-person household,"Total, number of workers in household",2 vehicles,Margin of Error,247
+"Salem city, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,845
+"Salem city, Virginia",2-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,149
+"Salem city, Virginia",2-person household,0 workers,"Total, vehicles available",Estimate,"1,025"
+"Salem city, Virginia",2-person household,0 workers,"Total, vehicles available",Margin of Error,192
+"Salem city, Virginia",2-person household,0 workers,0 vehicles,Estimate,105
+"Salem city, Virginia",2-person household,0 workers,0 vehicles,Margin of Error,86
+"Salem city, Virginia",2-person household,0 workers,1 vehicle,Estimate,320
+"Salem city, Virginia",2-person household,0 workers,1 vehicle,Margin of Error,105
+"Salem city, Virginia",2-person household,0 workers,2 vehicles,Estimate,440
+"Salem city, Virginia",2-person household,0 workers,2 vehicles,Margin of Error,112
+"Salem city, Virginia",2-person household,0 workers,3-or-more vehicles,Estimate,160
+"Salem city, Virginia",2-person household,0 workers,3-or-more vehicles,Margin of Error,67
+"Salem city, Virginia",2-person household,1 worker,"Total, vehicles available",Estimate,"1,315"
+"Salem city, Virginia",2-person household,1 worker,"Total, vehicles available",Margin of Error,219
+"Salem city, Virginia",2-person household,1 worker,0 vehicles,Estimate,105
+"Salem city, Virginia",2-person household,1 worker,0 vehicles,Margin of Error,73
+"Salem city, Virginia",2-person household,1 worker,1 vehicle,Estimate,460
+"Salem city, Virginia",2-person household,1 worker,1 vehicle,Margin of Error,174
+"Salem city, Virginia",2-person household,1 worker,2 vehicles,Estimate,420
+"Salem city, Virginia",2-person household,1 worker,2 vehicles,Margin of Error,121
+"Salem city, Virginia",2-person household,1 worker,3-or-more vehicles,Estimate,330
+"Salem city, Virginia",2-person household,1 worker,3-or-more vehicles,Margin of Error,94
+"Salem city, Virginia",2-person household,2 workers,"Total, vehicles available",Estimate,"1,350"
+"Salem city, Virginia",2-person household,2 workers,"Total, vehicles available",Margin of Error,219
+"Salem city, Virginia",2-person household,2 workers,0 vehicles,Estimate,15
+"Salem city, Virginia",2-person household,2 workers,0 vehicles,Margin of Error,23
+"Salem city, Virginia",2-person household,2 workers,1 vehicle,Estimate,115
+"Salem city, Virginia",2-person household,2 workers,1 vehicle,Margin of Error,69
+"Salem city, Virginia",2-person household,2 workers,2 vehicles,Estimate,865
+"Salem city, Virginia",2-person household,2 workers,2 vehicles,Margin of Error,198
+"Salem city, Virginia",2-person household,2 workers,3-or-more vehicles,Estimate,355
+"Salem city, Virginia",2-person household,2 workers,3-or-more vehicles,Margin of Error,114
+"Salem city, Virginia",2-person household,3 workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",2-person household,3 workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",2-person household,3 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",2-person household,3 workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,3 workers,1 vehicle,Estimate,0
+"Salem city, Virginia",2-person household,3 workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",2-person household,3 workers,2 vehicles,Estimate,0
+"Salem city, Virginia",2-person household,3 workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,3 workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",2-person household,3 workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",2-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",2-person household,4-or-more workers,0 vehicles,Estimate,0
+"Salem city, Virginia",2-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,4-or-more workers,1 vehicle,Estimate,0
+"Salem city, Virginia",2-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",2-person household,4-or-more workers,2 vehicles,Estimate,0
+"Salem city, Virginia",2-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",2-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"1,530"
+"Salem city, Virginia",3-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,233
+"Salem city, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Estimate,25
+"Salem city, Virginia",3-person household,"Total, number of workers in household",0 vehicles,Margin of Error,29
+"Salem city, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Estimate,350
+"Salem city, Virginia",3-person household,"Total, number of workers in household",1 vehicle,Margin of Error,133
+"Salem city, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Estimate,530
+"Salem city, Virginia",3-person household,"Total, number of workers in household",2 vehicles,Margin of Error,116
+"Salem city, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,625
+"Salem city, Virginia",3-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,164
+"Salem city, Virginia",3-person household,0 workers,"Total, vehicles available",Estimate,130
+"Salem city, Virginia",3-person household,0 workers,"Total, vehicles available",Margin of Error,85
+"Salem city, Virginia",3-person household,0 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,0 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",3-person household,0 workers,1 vehicle,Estimate,75
+"Salem city, Virginia",3-person household,0 workers,1 vehicle,Margin of Error,77
+"Salem city, Virginia",3-person household,0 workers,2 vehicles,Estimate,10
+"Salem city, Virginia",3-person household,0 workers,2 vehicles,Margin of Error,22
+"Salem city, Virginia",3-person household,0 workers,3-or-more vehicles,Estimate,45
+"Salem city, Virginia",3-person household,0 workers,3-or-more vehicles,Margin of Error,32
+"Salem city, Virginia",3-person household,1 worker,"Total, vehicles available",Estimate,560
+"Salem city, Virginia",3-person household,1 worker,"Total, vehicles available",Margin of Error,159
+"Salem city, Virginia",3-person household,1 worker,0 vehicles,Estimate,25
+"Salem city, Virginia",3-person household,1 worker,0 vehicles,Margin of Error,29
+"Salem city, Virginia",3-person household,1 worker,1 vehicle,Estimate,205
+"Salem city, Virginia",3-person household,1 worker,1 vehicle,Margin of Error,112
+"Salem city, Virginia",3-person household,1 worker,2 vehicles,Estimate,185
+"Salem city, Virginia",3-person household,1 worker,2 vehicles,Margin of Error,74
+"Salem city, Virginia",3-person household,1 worker,3-or-more vehicles,Estimate,140
+"Salem city, Virginia",3-person household,1 worker,3-or-more vehicles,Margin of Error,75
+"Salem city, Virginia",3-person household,2 workers,"Total, vehicles available",Estimate,635
+"Salem city, Virginia",3-person household,2 workers,"Total, vehicles available",Margin of Error,136
+"Salem city, Virginia",3-person household,2 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,2 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",3-person household,2 workers,1 vehicle,Estimate,70
+"Salem city, Virginia",3-person household,2 workers,1 vehicle,Margin of Error,56
+"Salem city, Virginia",3-person household,2 workers,2 vehicles,Estimate,330
+"Salem city, Virginia",3-person household,2 workers,2 vehicles,Margin of Error,105
+"Salem city, Virginia",3-person household,2 workers,3-or-more vehicles,Estimate,235
+"Salem city, Virginia",3-person household,2 workers,3-or-more vehicles,Margin of Error,94
+"Salem city, Virginia",3-person household,3 workers,"Total, vehicles available",Estimate,205
+"Salem city, Virginia",3-person household,3 workers,"Total, vehicles available",Margin of Error,112
+"Salem city, Virginia",3-person household,3 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,3 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",3-person household,3 workers,1 vehicle,Estimate,0
+"Salem city, Virginia",3-person household,3 workers,1 vehicle,Margin of Error,22
+"Salem city, Virginia",3-person household,3 workers,2 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,3 workers,2 vehicles,Margin of Error,22
+"Salem city, Virginia",3-person household,3 workers,3-or-more vehicles,Estimate,205
+"Salem city, Virginia",3-person household,3 workers,3-or-more vehicles,Margin of Error,112
+"Salem city, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Estimate,0
+"Salem city, Virginia",3-person household,4-or-more workers,"Total, vehicles available",Margin of Error,0
+"Salem city, Virginia",3-person household,4-or-more workers,0 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,4-or-more workers,0 vehicles,Margin of Error,0
+"Salem city, Virginia",3-person household,4-or-more workers,1 vehicle,Estimate,0
+"Salem city, Virginia",3-person household,4-or-more workers,1 vehicle,Margin of Error,0
+"Salem city, Virginia",3-person household,4-or-more workers,2 vehicles,Estimate,0
+"Salem city, Virginia",3-person household,4-or-more workers,2 vehicles,Margin of Error,0
+"Salem city, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Estimate,0
+"Salem city, Virginia",3-person household,4-or-more workers,3-or-more vehicles,Margin of Error,0
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Estimate,"1,580"
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household","Total, vehicles available",Margin of Error,222
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Estimate,10
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",0 vehicles,Margin of Error,16
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Estimate,270
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",1 vehicle,Margin of Error,119
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Estimate,595
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",2 vehicles,Margin of Error,153
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Estimate,705
+"Salem city, Virginia",4-or-more-person household,"Total, number of workers in household",3-or-more vehicles,Margin of Error,165
+"Salem city, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Estimate,25
+"Salem city, Virginia",4-or-more-person household,0 workers,"Total, vehicles available",Margin of Error,20
+"Salem city, Virginia",4-or-more-person household,0 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",4-or-more-person household,0 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,0 workers,1 vehicle,Estimate,0
+"Salem city, Virginia",4-or-more-person household,0 workers,1 vehicle,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,0 workers,2 vehicles,Estimate,15
+"Salem city, Virginia",4-or-more-person household,0 workers,2 vehicles,Margin of Error,16
+"Salem city, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Estimate,10
+"Salem city, Virginia",4-or-more-person household,0 workers,3-or-more vehicles,Margin of Error,14
+"Salem city, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Estimate,435
+"Salem city, Virginia",4-or-more-person household,1 worker,"Total, vehicles available",Margin of Error,125
+"Salem city, Virginia",4-or-more-person household,1 worker,0 vehicles,Estimate,0
+"Salem city, Virginia",4-or-more-person household,1 worker,0 vehicles,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,1 worker,1 vehicle,Estimate,100
+"Salem city, Virginia",4-or-more-person household,1 worker,1 vehicle,Margin of Error,60
+"Salem city, Virginia",4-or-more-person household,1 worker,2 vehicles,Estimate,185
+"Salem city, Virginia",4-or-more-person household,1 worker,2 vehicles,Margin of Error,83
+"Salem city, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Estimate,150
+"Salem city, Virginia",4-or-more-person household,1 worker,3-or-more vehicles,Margin of Error,83
+"Salem city, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Estimate,790
+"Salem city, Virginia",4-or-more-person household,2 workers,"Total, vehicles available",Margin of Error,175
+"Salem city, Virginia",4-or-more-person household,2 workers,0 vehicles,Estimate,10
+"Salem city, Virginia",4-or-more-person household,2 workers,0 vehicles,Margin of Error,16
+"Salem city, Virginia",4-or-more-person household,2 workers,1 vehicle,Estimate,130
+"Salem city, Virginia",4-or-more-person household,2 workers,1 vehicle,Margin of Error,99
+"Salem city, Virginia",4-or-more-person household,2 workers,2 vehicles,Estimate,385
+"Salem city, Virginia",4-or-more-person household,2 workers,2 vehicles,Margin of Error,141
+"Salem city, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Estimate,265
+"Salem city, Virginia",4-or-more-person household,2 workers,3-or-more vehicles,Margin of Error,100
+"Salem city, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Estimate,275
+"Salem city, Virginia",4-or-more-person household,3 workers,"Total, vehicles available",Margin of Error,91
+"Salem city, Virginia",4-or-more-person household,3 workers,0 vehicles,Estimate,0
+"Salem city, Virginia",4-or-more-person household,3 workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,3 workers,1 vehicle,Estimate,40
+"Salem city, Virginia",4-or-more-person household,3 workers,1 vehicle,Margin of Error,47
+"Salem city, Virginia",4-or-more-person household,3 workers,2 vehicles,Estimate,10
+"Salem city, Virginia",4-or-more-person household,3 workers,2 vehicles,Margin of Error,13
+"Salem city, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Estimate,225
+"Salem city, Virginia",4-or-more-person household,3 workers,3-or-more vehicles,Margin of Error,78
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Estimate,60
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,"Total, vehicles available",Margin of Error,45
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Estimate,0
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,0 vehicles,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Estimate,0
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,1 vehicle,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Estimate,0
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,2 vehicles,Margin of Error,22
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Estimate,60
+"Salem city, Virginia",4-or-more-person household,4-or-more workers,3-or-more vehicles,Margin of Error,45

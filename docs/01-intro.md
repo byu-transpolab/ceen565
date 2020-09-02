@@ -28,7 +28,7 @@ destination? Or why didn't some people just stay home in the first place?
 Transportation planning therefore must be concerned with both the supply of
 infrastructure and the demand for travel. For the most part, economists consider
 travel a **derived demand**, which means people only go to the hassle of 
-travelling somewhere if they have some other reason to be there. No one 
+traveling somewhere if they have some other reason to be there. No one 
 typically just drives around (with the possible exception of teenagers on a
 weekend night); they are going to work, or school, or a social engagement, or
 *something*.
@@ -41,7 +41,7 @@ makes in an average day. Technological developments like teleconferencing and
 smartphone-enabled ridehailing could generate different trends. At the same
 time, populations in most regions continue to grow. **Planning** for future 
 transportation infrastructure is difficult because of the uncertainty of the
-future, but it is necessary to keep economies rolling and preseve or improve
+future, but it is necessary to keep economies rolling and preserve or improve
 quality of life.
 
 In the United States and most societies with some democratic process,
@@ -678,9 +678,7 @@ employment centers.
 1. With the highway network layer in the demonstration model, create maps
 showing: link functional type; link free flow speed; and link hourly capacity.
 Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
-Identify the major freeways and principal arterials in the model region. *Note*:
-you will need to run the demonstration model through the network setup step to
-calculate the capacities and append them to the link.
+Identify the major freeways and principal arterials in the model region. 
    
 1. Find the shortest free-flow speed path along the network between two zones.
 Find the shortest distance path between the same two zones. Are the paths the
@@ -696,6 +694,15 @@ period level of service based on the volume to capacity ratios in the table
 below. How would you characterize traffic in Roanoke? Which is the
 worst-performing major facility?
 
+
+|LOS| V/C         | Color     |
+|:--|:------------|:----------|
+|A	| < 0.35			| Blue      |
+|B	| 0.35 - 0.54 | Light Blue|
+|C	| 0.55 - 0.77 | Green     |
+|D	|	0.78 - 0.93 | Yellow    |
+|E	| 0.94 - 0.99 | Orange    |
+|F	| $\geq$ 1.00 | Red       |
 
 ## Lab {-#lab-blocks}
 
@@ -771,7 +778,10 @@ marginal distributions of interest. These files are available
 [on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
-<img src="01-intro_files/figure-html/raw-marginals, "Raw marginal distribution curves from Roanoke region."-1.png" width="672" />
+<div class="figure">
+<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
+<p class="caption">(\#fig:raw-marginals)Raw marginal distribution curves from Roanoke region.</p>
+</div>
 
 Rules you need to follow when adjusting the curves:
 
@@ -783,55 +793,209 @@ Rules you need to follow when adjusting the curves:
   1. The total proportions across all four marginal curves at each $x$ value
   must sum to 1.
   
-The Roanoke household classification model is built into the Trip Generation 
-model. The marginal and joint classification curves are stored in the
-`params/classification` folder. Each file is a `.dbf` with the following format:
-
-  - `hh_size_lookup.dbf`: `[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]`
-  - `hh_workers_lookup.dbf`: `[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]`
-  - `hh_vehicles_lookup.dbf`: `[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]`
-
-Run the bare model through to trip generation. You can run a single module by
-double-clicking on its application icon (the yellow box), and then selecting
-`Run Current Group Only` in the "Run Application" dialog. Open the classified
-socioeconomic data file (`se_classified_2012A.dbf`) and run a tabulation report
-counting up the number of households in each district in the following three 
-categories:
-
-  - `W3V0` Households with three or more workers and no vehicles.
-  - `W0V3` Households with no workers and three or more vehicles. 
-  - `P2V2` Households with two people and two vehicles.
-
-In your report, comment on this initial distribution of households. Do they
-make sense based on what you saw in the joint distribution of household sizes,
-workers, and vehicles above?
-
-Replace the files in the `params/classification` folder with the distributions
-you created above. Recreate the tabulation report you previously created. Do 
-these numbers make more sense?
-
 
 ### Joint Distribution {-}
 
 In the section above we created curves to get the marginal distribution of
 household size, vehicles, and workers based on the average in a zone. In order to
-make sure that the joint distribution is correct, we will use IPF with a joint
-table as the seed. Census does not independently publish 3-dimensional tables,
-but the Census Transportation Planning Package (CTPP) is a partnership between 
-AASHTO and the Census Bureau and it publishes key tables not available in other
-places. For our seed you'll need to obtain CTPP table `A112305` for the counties
-in Virginia in our area.
+make sure that the joint distribution of all of these variables is correct, we
+will use IPF with a joint table as the seed. Census does not independently
+publish 3-dimensional tables, but the Census Transportation Planning Package
+(CTPP) is a partnership between AASHTO and the Census Bureau and it publishes
+key tables not available in other places. 
+
+The CTPP data is available 
+[through the AASHTO website](http://data5.ctpp.transportation.org/ctpp1216),
+or by searching "CTPP". Find table `A112305` for the residence counties where 
+your group members are from.  What do you see in this table? What makes sense
+and what does not?
+
+I have already gathered the data and done some preliminary preparation for
+you to compute the shares that belong in the household seed file. Run the 
+code below in an R session (with the `tidyverse` library loaded) to calculate
+the necessary shares. Follow along with the code to understand what is happening.
+
+
+```r
+raw_counts <- read_csv("https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv") 
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   RESIDENCE = col_character(),
+##   persons = col_character(),
+##   workers = col_character(),
+##   vehicles = col_character(),
+##   output = col_character(),
+##   count = col_number()
+## )
+```
+
+```r
+joint_distribution <- raw_counts %>%
+  # the data contain both "estimates" and "margin of error". We only want to
+  # keep the estimates rows.
+  filter(output == "Estimate")  %>%
+  
+  # The data records size as text, with `0 workers`. We want to extract the
+  # numeric information from these fields. This line of code says, for the variables
+  # persons, workers, and vehicles, take all non-numeric characters and replace
+  # them with nothing. It looks like gibberish, but it came from lots of Stack
+  # Overflow searching. I can't come up with this stuff from thin air, you know.
+  mutate_at(
+    c("persons", "workers", "vehicles"), 
+    function(x) {as.numeric(gsub("([0-9]+).*$", "\\1", x))}
+  ) %>%
+  
+  # the rows that say "total households" get turned to NA by the above process, and we
+  # don't want to keep those in anyways.
+  filter(!is.na(persons), !is.na(workers), !is.na(vehicles)) %>%
+  
+  # the roanoke model only includes households with 3+ workers, not 4+. So if a
+  # row is for more than 3 workers, we group it as 3
+  mutate(workers = ifelse(workers > 3, 3, workers)) %>%
+  
+  # but this creates a problem where we now have multiple rows with
+  # 3 workers. So we need to group and add up.
+  group_by(persons, workers, vehicles) %>%
+  summarize(count = sum(count)) %>%
+  ungroup() %>%
+  
+  # Finally, we want to turn the numbers into a share. So we divde the
+  # counts by the total count in the whole table.
+  mutate(share = count / sum(count))
+```
+
+```
+## Warning in (function (x) : NAs introduced by coercion
+```
+
+```
+## Warning in (function (x) : NAs introduced by coercion
+```
+
+```
+## Warning in (function (x) : NAs introduced by coercion
+```
+
+```
+## `summarise()` regrouping output by 'persons', 'workers' (override with `.groups` argument)
+```
+
+Now we can see the joint distribution of size, workers, and vehicles.
+
+```r
+joint_distribution %>%
+  group_by(persons) %>%
+  select(-count) %>%
+  pivot_wider(names_from = vehicles, values_from = share, names_prefix = "vehicles ") %>% 
+  knitr::kable()
+```
 
 
 
+ persons   workers   vehicles 0   vehicles 1   vehicles 2   vehicles 3
+--------  --------  -----------  -----------  -----------  -----------
+       1         0    0.0424577    0.0937149    0.0193590    0.0040148
+       1         1    0.0129243    0.1195635    0.0273885    0.0073146
+       1         2    0.0000000    0.0000000    0.0000000    0.0000000
+       1         3    0.0000000    0.0000000    0.0000000    0.0000000
+       2         0    0.0079746    0.0269485    0.0441076    0.0211739
+       2         1    0.0088545    0.0369580    0.0531271    0.0283235
+       2         2    0.0019249    0.0120993    0.0742460    0.0378930
+       2         3    0.0000000    0.0000000    0.0000000    0.0000000
+       3         0    0.0031348    0.0067096    0.0040148    0.0029698
+       3         1    0.0041248    0.0192490    0.0178740    0.0114394
+       3         2    0.0008250    0.0051697    0.0323383    0.0255736
+       3         3    0.0002750    0.0005500    0.0038498    0.0146842
+       4         0    0.0015949    0.0033548    0.0010999    0.0024749
+       4         1    0.0025299    0.0140792    0.0231537    0.0153992
+       4         2    0.0015399    0.0087445    0.0382779    0.0257936
+       4         3    0.0001540    0.0021999    0.0027499    0.0237037
+
+This table serves as the seed for the IPF process in the household classification
+Save this data table as a DBF file that you can put into the model at
+`params/classification/hh_seed.dbf`. The `write.dbf()` function is part of the
+`foreign` library.
+
+
+```r
+as.data.frame(joint_distribution) %>% 
+  foreign::write.dbf("data/hh_seed.dbf")
+```
 
 
 ### Report {-}
 
+For your homework, you should have a complete run of the uncalibrated, "bare" 
+RVTPO model. Open the "Trip Generation" submodule by double-clicking on the 
+yellow box labeled `Trip Generation`. This submodule has two steps: the 
+household classification model and the trip productions model. You can run
+just this step of the model (and not the entire travel model) by clicking the
+"Run Application" button in the top-left of the Cube window and then selecting the
+"Run current group only" option in the dialog.
+
+Open the classified socioeconomic data file that is an input to the trip 
+productions step (the file is named `se_classified_2012A.dbf`), and make 
+a tabulation report counting up the number of households in each district in the
+following three categories:
+
+  - `W3V0` Households with three or more workers and no vehicles.
+  - `W0V3` Households with no workers and three or more vehicles. 
+  - `P2V2` Households with two people and two vehicles.
+
+The marginal classification curves and the joint distribution seed table are
+stored in the `params/classification` folder. Each file is a `.dbf` with the
+following format:
+
+  - `hh_size_lookup.dbf`: `[AVG, PERSONS_1, PERSONS_2, PERSONS_3, PERSONS_4]`
+  - `hh_workers_lookup.dbf`: `[AVG, WORKERS_0, WORKERS_1, WORKERS_2, WORKERS_3]`
+  - `hh_vehicles_lookup.dbf`: `[AVG, VEHICLES_0, VEHICLES_1, VEHICLES_2, VEHICLES_3]`
+  - `hh_seed.dbf`: `[WORKERS, PERSONS, VEHICLES, SHARE]` 
+
+Open these files in Cube, and observe that the data contained them is nonsense.
+Replace the files in the `params/classification` folder with the distributions
+you created above, including the marginal distribution curves you calibrated by
+hand and the household seed you constructed from CTPP. Run the trip generation
+submodule again, and recreate the tabulation report you previously created. Do
+these numbers make more sense?
+
+::::{.rmdexample}
+You can edit the DBF files in Cube by hand; its copy-paste feature is not what
+you would expect from a software program in 2020 (or 2005). A more efficient
+way might be to use the `write.dbf()` function in R.
+
+
+```r
+# read the file you edited; there is also a readxl() function for excel
+# spreadsheets
+read_csv("data/raw_size.csv") %>%
+  # need to make sure the names on the columns match what Cube is expecting to
+  # get; you'll need to change this for the workers and vehicles
+  rename(AVG = average, PERSONS_1 = `1`, PERSONS_2 = `2`,
+         `PERSONS_3` = `3`, PERSONS_4 = `4`) %>%
+  # read_csv makes a modern data frame called a `tibble`. The old DBF function
+  # has no idea what do to with this. So we need to convert the tibble to an
+  # old-fashioned `data.frame`
+  as.data.frame() %>%
+  foreign::write.dbf("data/hh_size_lookup.dbf")
+```
+
+::::
+
+The classification model incorporates a zone-level IPF process executed in R; the
+script for this process is in `R/classification.R`. Open the script and find 
+the place where the maximum IPF iterations are set. Change this parameter to 50,
+save the R file, and and re-run both the model and your tabulation report.
+Change it again to 100 and note the execution time and any changes in the
+tabulation report. How many iterations should you run?
+
+
 Write a lab report describing the household classification model you have
 developed. Describe how you developed your marginal disaggregation curves,
-including any assertions you employed in smoothing the curves. Include plots of
-each curve. Describe how you determined the number of iterations of IPF to run
-in your model. Compare the distribution of housheolds by classification category
-to the joint distribution you obtained from the CTPP.
+including any assertions you employed in smoothing /adjusting the curves.
+Include plots of each curve. Describe how you determined the number of
+iterations of IPF to run in your model. Compare the distribution of households
+by classification category to the joint distribution you obtained from the CTPP.
 
