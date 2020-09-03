@@ -84,6 +84,19 @@ knitr::include_url("https://www.youtube.com/embed/wvyhKXyZVbM")
 
 ### Shortest Paths
 
+You can use Cube to measure the shortest path between two points in your model 
+network. You can also make isochrone maps of the travel time to various
+destinations from a specific origin point, like the map shown in Figure \@ref(fig:isochrone).
+The video below shows how to do this.
+
+```{r isochrone, fig.cap = "Isochrone map using network speed information.", echo = FALSE}
+knitr::include_graphics("images/isochrone.png")
+```
+
+```{r path-video, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/24jRCNUIQOo")
+```
+
 ### Working with Matrices
 
 ### Writing Custom Scripts
