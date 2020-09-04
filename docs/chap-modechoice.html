@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-09-01" />
+<meta name="date" content="2020-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -306,19 +306,19 @@ trips. The data is available on <a href="https://byu.box.com/shared/static/px4v9
 are listed as <code>worktrips_logitdata.rds</code>. We will also need to load the
 <code>mlogit</code> library package, which contains the tools necessary to estimate
 multinomial logit models.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="chap-modechoice.html#cb59-1"></a><span class="kw">library</span>(mlogit)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chap-modechoice.html#cb57-1"></a><span class="kw">library</span>(mlogit)</span></code></pre></div>
 <pre><code>## Loading required package: dfidx</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dfidx&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:stats&#39;:
 ## 
 ##     filter</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="chap-modechoice.html#cb63-1"></a>worktrips &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;data/worktrips_logitdata.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="chap-modechoice.html#cb61-1"></a>worktrips &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;data/worktrips_logitdata.rds&quot;</span>)</span></code></pre></div>
 <p>Because multinomial logit models are so different from other models,
 the data are stored in a special type of data frame. You can see the first several
 rows of this data below; Person 1 in household 2 has five alternatives, and they
 chose to drive alone. Person 3 chose to take transit.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="chap-modechoice.html#cb64-1"></a><span class="kw">head</span>(worktrips[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="chap-modechoice.html#cb62-1"></a><span class="kw">head</span>(worktrips[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>##                  HHID PERID CASE       ALTNUM NUMALTS CHOSEN  IVTT OVTT
 ## 2-1. Drive Alone    2     1    1  Drive Alone       5   TRUE 13.38  2.0
 ## 2-1. Share 2        2     1    1      Share 2       5  FALSE 18.38  2.0
@@ -348,7 +348,7 @@ estimate for each alternative. That is, <span class="math inline">\(\hat{\beta}_
 constant across alternatives, like the distance of the trip.</li>
 </ul>
 <p>To specify the model, we use the following construction.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="chap-modechoice.html#cb66-1"></a>fit.mnl &lt;-<span class="st"> </span><span class="kw">mlogit</span> ( CHOICE <span class="op">~</span><span class="st"> </span>Generic <span class="op">|</span><span class="st"> </span>Alt.Specific, <span class="dt">data =</span> logitdata )</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="chap-modechoice.html#cb64-1"></a>fit.mnl &lt;-<span class="st"> </span><span class="kw">mlogit</span> ( CHOICE <span class="op">~</span><span class="st"> </span>Generic <span class="op">|</span><span class="st"> </span>Alt.Specific, <span class="dt">data =</span> logitdata )</span></code></pre></div>
 <p>To examine the model output, the standard <code>summary()</code> command will produce a
 coefficients table and key test statistics. The the <code>texreg</code> package will
 produce convenient model comparison tables that can be included in a report or
@@ -419,8 +419,8 @@ etc., until you are satisfied that the model meets the targets.</p>
 the coefficients in a table in your lab report accompanying a description of the
 purpose of each coefficient and any notable values. These coefficients are
 fixed; they should not change as part of this exercise.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="chap-modechoice.html#cb68-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb68-2"><a href="chap-modechoice.html#cb68-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="chap-modechoice.html#cb66-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb66-2"><a href="chap-modechoice.html#cb66-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `;N` = col_double(),
@@ -625,8 +625,8 @@ with their nesting structure are:</p>
 |   |--Premium
 |
 |-- Non-motorized</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="chap-modechoice.html#cb71-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb71-2"><a href="chap-modechoice.html#cb71-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="chap-modechoice.html#cb69-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb69-2"><a href="chap-modechoice.html#cb69-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `;N` = col_double(),
@@ -749,9 +749,9 @@ bias adjustment formula,</p>
 <p><span class="math display">\[\alpha_{n+1} = \alpha_n + \log(A_j / S_j) \]</span></p>
 <p>Where <span class="math inline">\(A_j\)</span> is the population share (target) and <span class="math inline">\(S_j\)</span> is the model share.
 The population shares (targets) are given below.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="chap-modechoice.html#cb73-1"></a><span class="co"># Population shares (targets)</span></span>
-<span id="cb73-2"><a href="chap-modechoice.html#cb73-2"></a><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="op">%&gt;%</span></span>
-<span id="cb73-3"><a href="chap-modechoice.html#cb73-3"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="chap-modechoice.html#cb71-1"></a><span class="co"># Population shares (targets)</span></span>
+<span id="cb71-2"><a href="chap-modechoice.html#cb71-2"></a><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb71-3"><a href="chap-modechoice.html#cb71-3"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -822,8 +822,8 @@ or another.</p>
 <p>The table and figure below show the observed trip length frequency distributions
 for the purposes you need to calibrate. An Excel file with the values is on
 LearningSuite.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="chap-modechoice.html#cb74-1"></a>tlfd &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
-<span id="cb74-2"><a href="chap-modechoice.html#cb74-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tlfd)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="chap-modechoice.html#cb72-1"></a>tlfd &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
+<span id="cb72-2"><a href="chap-modechoice.html#cb72-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tlfd)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1014,10 +1014,10 @@ LearningSuite.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="chap-modechoice.html#cb75-1"></a><span class="kw">ggplot</span>(tlfd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(purpose, share, HBW<span class="op">:</span>HBSH), </span>
-<span id="cb75-2"><a href="chap-modechoice.html#cb75-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> LOW, <span class="dt">y =</span> share, <span class="dt">color =</span> purpose)) <span class="op">+</span></span>
-<span id="cb75-3"><a href="chap-modechoice.html#cb75-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb75-4"><a href="chap-modechoice.html#cb75-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="chap-modechoice.html#cb73-1"></a><span class="kw">ggplot</span>(tlfd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(purpose, share, HBW<span class="op">:</span>HBSH), </span>
+<span id="cb73-2"><a href="chap-modechoice.html#cb73-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> LOW, <span class="dt">y =</span> share, <span class="dt">color =</span> purpose)) <span class="op">+</span></span>
+<span id="cb73-3"><a href="chap-modechoice.html#cb73-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb73-4"><a href="chap-modechoice.html#cb73-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
 <p><img src="04_modechoice_files/figure-html/tfld-plot-1.png" width="672" /></p>
 <p>The modeled TLFD for each purpose can be had on the model home screen as an
 output of the trip distribution model. Calculate the error between your observed

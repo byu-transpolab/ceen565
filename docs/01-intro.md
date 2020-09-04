@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        48   46        28      139       55               2
-   2        47   31        21      118       53              11
-   3        35   32        12      132       86               0
+   1        32   24        18      131       86               2
+   2        40   32        24      138       71              11
+   3        37   46        18      121       58               0
 
 
 ::::{.rmdexample}
@@ -600,7 +600,7 @@ ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
+<img src="01-intro_files/figure-epub3/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram."  />
 <p class="caption">(\#fig:dc-histogram)Visualizing a continuous distribution with a histogram.</p>
 </div>
 
@@ -612,7 +612,7 @@ ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"),
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
+<img src="01-intro_files/figure-epub3/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart."  />
 <p class="caption">(\#fig:dc-barchart)Visualizing a discrete distribution with a bar chart.</p>
 </div>
 
@@ -643,7 +643,7 @@ table(nhts_trips$miles_cat, nhts_trips$trippurp)
 We can visualize joint distributions as well, and sometimes the results are
 quite nice.
 
-<img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" />
+![](01-intro_files/figure-epub3/dc-joint-hist-1.png)<!-- -->
 
 
 
@@ -698,7 +698,7 @@ middle of the night?
 traveled by facility type. What percent of the region's VMT occurs on freeways?
 What percent of the region's lane-miles are freeways? 
 
-1. Open the output highway network. Create a map of the highway links showing PM
+1. Create a map of the highway links showing PM
 period level of service based on the volume to capacity ratios in the table
 below. How would you characterize traffic in Roanoke? Which is the
 worst-performing major facility?
@@ -770,7 +770,7 @@ one census tract; for instance, the lowest average household size is in tract
 of 3 and 4+ person households.
 
 <div class="figure">
-<img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
+<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
 <p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
 </div>
 
@@ -788,7 +788,7 @@ marginal distributions of interest. These files are available
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 <div class="figure">
-<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
+<img src="01-intro_files/figure-epub3/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region."  />
 <p class="caption">(\#fig:raw-marginals)Raw marginal distribution curves from Roanoke region.</p>
 </div>
 
