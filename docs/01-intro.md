@@ -668,20 +668,29 @@ Let's say you have a function with a
 For instructions on accessing and running the model, see the [Appendix](#app-demomodel)
 
 1. With the TAZ layer and socioeconomic data in the demonstration model, make a
-set of choropleth maps showing: total households; household density; total jobs;
-job density; density of manufacturing vs office vs retail employment. Compare
-your maps with aerial imagery from Google Maps or OpenStreetMap. Describe the
-spatial patterns of the socioeconomic data in the model region. Identify which
-zones constitute the central business district, and identify any outlying
-employment centers.
+set of choropleth and / or bar chart maps showing the following socioeconomic 
+variables: 
+    - total households
+    - household density (per acre)
+    - total jobs
+    - job density
+    - share of manufacturing vs office vs retail employment
+    
+    Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+Describe the spatial patterns of the socioeconomic data in the model region.
+Identify which zones constitute the central business district, and identify any
+outlying employment centers.
 
-1. With the highway network layer in the demonstration model, create maps
+1. With the highway network layer, create maps
 showing: link functional type; link free flow speed; and link hourly capacity.
-Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+Compare your maps with aerial imagery from Google Maps or OpenStreetMap. Note
+that the hourly capacity is not on the input network, so you will need to use a
+either the loaded highway network that is output from the model, or an
+intermediate network after the initial highway capacity calculations.
 Identify the major freeways and principal arterials in the model region. 
    
 1. Find the shortest free-flow speed path along the network between two zones.
-Find the shortest distance path between the same two zones. Are the paths the
+Then find the shortest *distance* path between the same two zones. Are the paths the
 same? Do the paths match what an online mapping service shows for a trip in the
 middle of the night?
 
@@ -695,14 +704,14 @@ below. How would you characterize traffic in Roanoke? Which is the
 worst-performing major facility?
 
 
-|LOS| V/C         | Color     |
-|:--|:------------|:----------|
-|A	| < 0.35			| Blue      |
-|B	| 0.35 - 0.54 | Light Blue|
-|C	| 0.55 - 0.77 | Green     |
-|D	|	0.78 - 0.93 | Yellow    |
-|E	| 0.94 - 0.99 | Orange    |
-|F	| $\geq$ 1.00 | Red       |
+LOS   V/C           Color     
+----  ------------  ----------
+A     < 0.35        Blue      
+B     0.35 - 0.54   LightBlue 
+C     0.55 - 0.77   Green     
+D     0.78 - 0.93   Yellow    
+E     0.94 - 0.99   Orange    
+F     $\geq$ 1.00   Red       
 
 ## Lab {-#lab-blocks}
 

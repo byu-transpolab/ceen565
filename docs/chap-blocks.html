@@ -1017,18 +1017,28 @@ For instructions on accessing and running the model, see the <a href="#app-demom
 </blockquote>
 <ol style="list-style-type: decimal">
 <li><p>With the TAZ layer and socioeconomic data in the demonstration model, make a
-set of choropleth maps showing: total households; household density; total jobs;
-job density; density of manufacturing vs office vs retail employment. Compare
-your maps with aerial imagery from Google Maps or OpenStreetMap. Describe the
-spatial patterns of the socioeconomic data in the model region. Identify which
-zones constitute the central business district, and identify any outlying
-employment centers.</p></li>
-<li><p>With the highway network layer in the demonstration model, create maps
+set of choropleth and / or bar chart maps showing the following socioeconomic
+variables:</p>
+<ul>
+<li>total households</li>
+<li>household density (per acre)</li>
+<li>total jobs</li>
+<li>job density</li>
+<li>share of manufacturing vs office vs retail employment</li>
+</ul>
+<p>Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+Describe the spatial patterns of the socioeconomic data in the model region.
+Identify which zones constitute the central business district, and identify any
+outlying employment centers.</p></li>
+<li><p>With the highway network layer, create maps
 showing: link functional type; link free flow speed; and link hourly capacity.
-Compare your maps with aerial imagery from Google Maps or OpenStreetMap.
+Compare your maps with aerial imagery from Google Maps or OpenStreetMap. Note
+that the hourly capacity is not on the input network, so you will need to use a
+either the loaded highway network that is output from the model, or an
+intermediate network after the initial highway capacity calculations.
 Identify the major freeways and principal arterials in the model region.</p></li>
 <li><p>Find the shortest free-flow speed path along the network between two zones.
-Find the shortest distance path between the same two zones. Are the paths the
+Then find the shortest <em>distance</em> path between the same two zones. Are the paths the
 same? Do the paths match what an online mapping service shows for a trip in the
 middle of the night?</p></li>
 <li><p>Open the highway assignment report, which shows vehicle hours and miles
@@ -1049,32 +1059,32 @@ worst-performing major facility?</p></li>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">A | &lt; 0</td>
-<td align="left">&lt; 0.35 | Blue |</td>
+<td align="left">A</td>
+<td align="left">&lt; 0.35</td>
 <td align="left">Blue</td>
 </tr>
 <tr class="even">
-<td align="left">B | 0.3</td>
+<td align="left">B</td>
 <td align="left">0.35 - 0.54</td>
-<td align="left">Light Blue</td>
+<td align="left">LightBlue</td>
 </tr>
 <tr class="odd">
-<td align="left">C | 0.5</td>
+<td align="left">C</td>
 <td align="left">0.55 - 0.77</td>
 <td align="left">Green</td>
 </tr>
 <tr class="even">
-<td align="left">D | 0.7</td>
-<td align="left">0.78 - 0.93 | Yell</td>
+<td align="left">D</td>
+<td align="left">0.78 - 0.93</td>
 <td align="left">Yellow</td>
 </tr>
 <tr class="odd">
-<td align="left">E | 0.9</td>
+<td align="left">E</td>
 <td align="left">0.94 - 0.99</td>
 <td align="left">Orange</td>
 </tr>
 <tr class="even">
-<td align="left">F | $</td>
+<td align="left">F</td>
 <td align="left"><span class="math inline">\(\geq\)</span> 1.00</td>
 <td align="left">Red</td>
 </tr>
