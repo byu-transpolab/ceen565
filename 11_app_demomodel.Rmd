@@ -64,6 +64,23 @@ knitr::include_url("https://www.youtube.com/embed/88HAaQLVpJk")
 
 ## Files and Reports
 
+You can access files in the model in multiple ways:
+
+  - Through the application manager in Cube (input / output boxes)
+  - In the catalog windows on the side
+  - Directly in the File Explorer
+  
+```{r file-access, echo = FALSE}
+knitr::include_url("https://www.youtube.com/embed/Npw-jf19wak")
+```
+
+The model has a few prepared reports that you can run at any time. These are
+found in the "Reports" drop-down in the catalog along the left-hand side of the
+Cube window. These reports include:
+
+  - Highway vehicle miles traveled and vehicle hours traveled by facility type
+  - Mode choice by purpose
+  - Transit route-level boardings in Peak and Off-peak periods
 
 ## Network and Zone Maps
 
