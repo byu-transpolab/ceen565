@@ -4,6 +4,9 @@
 knitr::opts_chunk$set(cache = TRUE)
 library(tidyverse)
 library(tidycensus)
+library(tigris)
+library(leaflet)
+library(sf)
 library(nhts2017)
 theme_set(theme_bw())
 ```
@@ -376,7 +379,25 @@ represent with matrices:
   number of trips made, and represents the demand between two zones in a network.
 
 
-## Household Travel Surveys and Population Data
+## Data Inputs
+
+In the last section we discussed data *structures* like highway networks and
+socioeconomic data files. In this section, we are going to talk about the data
+*inputs* that can be used for developing travel models. Besides highway networks
+ --- which usually have to be supplied by the transportation agency --- modelers
+frequently gather data from household travel surveys and the US Census Bureau.
+
+
+::::{.rmdthink}
+Obtaining an accurate highway network is one of the most difficult tasks in 
+travel modeling. It's not conceptually or intellectually difficult, but it is 
+very difficult to map model networks onto the linear referencing systems or
+GIS files used by other agency departments. This is made even more
+difficult by model networks needing to be *routeable*: common GIS formats 
+like shapefiles have no way of representing routability. 
+::::
+
+### Household Travel Surveys
 
 Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in 
@@ -495,6 +516,108 @@ data do not have all the information on demographics and preferences a survey
 would provide, they provide a considerably larger and more detailed sample 
 on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.
+
+### US Census Bureau
+
+The primary statistical agency of the United States is the U.S. Census Bureau, 
+called Census. The need to collect statistics is established in the Constitution,
+
+> Representatives and direct Taxes shall be apportioned among the several States which
+may be included within this Union, according to their respective Numbers...
+The actual Enumeration shall be made within three Years after the first Meeting
+of the Congress of the United States, and within every subsequent Term of ten Years, in
+such Manner as they shall by Law direct. 
+
+Since the first census in 1790, Census has collected more data than simply the
+number of people in each state. Current programs that are especially important
+for travel modeling and other related demographic research include:
+
+  - The *Decennial Census of Population and Housing* is the thing most people
+  think of when they think of Census. Every ten years (most recently in 2020), 
+  Census attempts to collect the number, age, and other key population attributes
+  for every dwelling unit in the United States. 
+  - The *American Community Survey* (ACS) is an annual 1% sample of the US population.
+  This survey is considerably more detailed than the decennial census, and asks
+  questions regarding the education and income of household members, how each
+  worker traveled to work, whether people own or rent their home, etc.
+
+The ACS is a particularly useful data set, especially because the decennial
+census can become outdated as ten years go by between collections. To protect
+the individual identity of ACS respondents, Census engages in a number of
+different schemes.
+
+The simplest scheme is data aggregation. ACS data is usually obtained as tables
+representing the number of individuals or households in a geographic area that
+match a certain category. The data is aggregated in two ways: First, large geographic 
+areas are aggregated each year, meaning that up-to-date numbers are always 
+available; Second, smaller geographic areas contain groups of records collected 
+over the last five years. In this way there is a tradeoff between temporal and
+spatial precision that the researcher needs to consider.
+
+Another basic scheme is **top-coding**, where numeric variables are capped at a common
+value. The ACS will report how many people in a neighborhood have an income
+over $250,000, but not how many have an income over 
+$1 million. Census will also **suppress** small counts in a category; they will
+not reveal how many households have 8, 9, or 10 people, instead collapsing all
+of these households into a "seven or more" group. If too few individuals or
+households match that category, Census does not provide a count. For example, if
+only one household in a neighborhood makes more than $250,000, the ACS table for
+that cell will contain no information. That could mean there are zero, one,
+four, or some other small number of households
+in that category.
+
+Besides tables, the Census releases the ACS Public Use Micro-Sample (PUMS) 
+containing ACS responses as disaggregate *microdata*. These data are
+geographically located to much larger areas than other ACS records, and Census
+does imputation and data swapping on the records to ensure that private 
+information cannot be disclosed. But studies conducted on ACS PUMS records 
+reach the same statistical conclusions as studies conducted on the unmodeled and
+raw data, making PUMS a useful tool in studying populations.
+
+#### Geographies
+
+Census data are given in a geographical heirarchy:
+
+  - State
+  - County
+  - Tract
+  - Block Group
+  - Block
+
+The bottom three layers are shown in Figure \@ref(fig:censusgeos). Each layer
+nests completely within the layer above it. More detailed data is available
+at less spatially detailed geographies.
+
+```{r censusgeos, fig.cap="US Census Geographies in Central Provo.", echo = FALSE, messages = FALSE, warning = FALSE, cache = FALSE}
+ut_tracts <- tracts("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
+  filter(TRACTCE %in% c("001601", "001504", "001602", "001603", "001701",
+                        "001900", "001801", "001702", "001802", "001803",
+                        "002400", "002500", "002701")) %>%
+  select(GEOID, TRACTCE) %>%
+  st_transform(4236)
+
+ut_bg <- block_groups("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
+  filter(TRACTCE %in% ut_tracts$TRACTCE) %>%
+  select(GEOID, TRACTCE) %>%
+  st_transform(4236)
+
+ut_blks <- blocks("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
+  filter(TRACTCE10 %in% ut_tracts$TRACTCE) %>%
+  select(GEOID = GEOID10, TRACTCE = TRACTCE10) %>%
+  st_transform(4236)
+
+list(
+  "Tracts" = ut_tracts %>% mutate(Layer = "Tracts"),
+  "Block Groups" = ut_bg %>% mutate(Layer = "Block Groups"),
+  "Blocks" = ut_blks %>% mutate(Layer = "Blocks")
+) %>%
+  bind_rows() %>%
+  mutate(Layer = factor(Layer, levels = c("Blocks", "Block Groups", "Tracts"))) %>%
+  ggplot(aes(color = Layer)) +
+  geom_sf(alpha = 0.0)
+  
+```
+
 
 
 ## Statistical and Mathematical Techniques
