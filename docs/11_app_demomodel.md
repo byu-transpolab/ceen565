@@ -79,6 +79,11 @@ Cube window. These reports include:
   - Highway vehicle miles traveled and vehicle hours traveled by facility type
   - Mode choice by purpose
   - Transit route-level boardings in Peak and Off-peak periods
+  
+You can also make tabulations of any report. The video below has an example.
+
+[![](11_app_demomodel_files/figure-epub3/unnamed-chunk-1-1.png)](https://www.youtube.com/embed/okU6pu0KAiQ)<!-- -->
+
 
 ## Network and Zone Maps
 

@@ -1,7 +1,7 @@
 --- 
 title: "Urban Transportation Planning"
 author: "Gregory Macfarlane, PhD, PE"
-date: "2020-09-04"
+date: "2020-09-07"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

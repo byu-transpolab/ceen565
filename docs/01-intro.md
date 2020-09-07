@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        32   24        18      131       86               2
-   2        40   32        24      138       71              11
-   3        37   46        18      121       58               0
+   1        31   42        12      122       93               2
+   2        44   57        17      139       77              11
+   3        43   15        22      140       67               0
 
 
 ::::{.rmdexample}
@@ -370,7 +370,25 @@ represent with matrices:
   number of trips made, and represents the demand between two zones in a network.
 
 
-## Household Travel Surveys and Population Data
+## Data Inputs
+
+In the last section we discussed data *structures* like highway networks and
+socioeconomic data files. In this section, we are going to talk about the data
+*inputs* that can be used for developing travel models. Besides highway networks
+ --- which usually have to be supplied by the transportation agency --- modelers
+frequently gather data from household travel surveys and the US Census Bureau.
+
+
+::::{.rmdthink}
+Obtaining an accurate highway network is one of the most difficult tasks in 
+travel modeling. It's not conceptually or intellectually difficult, but it is 
+very difficult to map model networks onto the linear referencing systems or
+GIS files used by other agency departments. This is made even more
+difficult by model networks needing to be *routeable*: common GIS formats 
+like shapefiles have no way of representing routability. 
+::::
+
+### Household Travel Surveys
 
 Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in 
@@ -512,6 +530,83 @@ would provide, they provide a considerably larger and more detailed sample
 on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.
 
+### US Census Bureau
+
+The primary statistical agency of the United States is the U.S. Census Bureau, 
+called Census. The need to collect statistics is established in the Constitution,
+
+> Representatives and direct Taxes shall be apportioned among the several States which
+may be included within this Union, according to their respective Numbers...
+The actual Enumeration shall be made within three Years after the first Meeting
+of the Congress of the United States, and within every subsequent Term of ten Years, in
+such Manner as they shall by Law direct. 
+
+Since the first census in 1790, Census has collected more data than simply the
+number of people in each state. Current programs that are especially important
+for travel modeling and other related demographic research include:
+
+  - The *Decennial Census of Population and Housing* is the thing most people
+  think of when they think of Census. Every ten years (most recently in 2020), 
+  Census attempts to collect the number, age, and other key population attributes
+  for every dwelling unit in the United States. 
+  - The *American Community Survey* (ACS) is an annual 1% sample of the US population.
+  This survey is considerably more detailed than the decennial census, and asks
+  questions regarding the education and income of household members, how each
+  worker traveled to work, whether people own or rent their home, etc.
+
+The ACS is a particularly useful data set, especially because the decennial
+census can become outdated as ten years go by between collections. To protect
+the individual identity of ACS respondents, Census engages in a number of
+different schemes.
+
+The simplest scheme is data aggregation. ACS data is usually obtained as tables
+representing the number of individuals or households in a geographic area that
+match a certain category. The data is aggregated in two ways: First, large geographic 
+areas are aggregated each year, meaning that up-to-date numbers are always 
+available; Second, smaller geographic areas contain groups of records collected 
+over the last five years. In this way there is a tradeoff between temporal and
+spatial precision that the researcher needs to consider.
+
+Another basic scheme is **top-coding**, where numeric variables are capped at a common
+value. The ACS will report how many people in a neighborhood have an income
+over $250,000, but not how many have an income over 
+$1 million. Census will also **suppress** small counts in a category; they will
+not reveal how many households have 8, 9, or 10 people, instead collapsing all
+of these households into a "seven or more" group. If too few individuals or
+households match that category, Census does not provide a count. For example, if
+only one household in a neighborhood makes more than $250,000, the ACS table for
+that cell will contain no information. That could mean there are zero, one,
+four, or some other small number of households
+in that category.
+
+Besides tables, the Census releases the ACS Public Use Micro-Sample (PUMS) 
+containing ACS responses as disaggregate *microdata*. These data are
+geographically located to much larger areas than other ACS records, and Census
+does imputation and data swapping on the records to ensure that private 
+information cannot be disclosed. But studies conducted on ACS PUMS records 
+reach the same statistical conclusions as studies conducted on the unmodeled and
+raw data, making PUMS a useful tool in studying populations.
+
+#### Geographies
+
+Census data are given in a geographical heirarchy:
+
+  - State
+  - County
+  - Tract
+  - Block Group
+  - Block
+
+The bottom three layers are shown in Figure \@ref(fig:censusgeos). Each layer
+nests completely within the layer above it. More detailed data is available
+at less spatially detailed geographies.
+
+<div class="figure">
+<img src="01-intro_files/figure-epub3/censusgeos-1.png" alt="US Census Geographies in Central Provo."  />
+<p class="caption">(\#fig:censusgeos)US Census Geographies in Central Provo.</p>
+</div>
+
+
 
 ## Statistical and Mathematical Techniques
 
@@ -649,7 +744,178 @@ quite nice.
 
 ### Iterative Proportional Fitting {#ipf}
 
-Iterative Proportional Fitting
+There are times when we know two marginal distributions but do not know the 
+joint distribution. This can happen for a number of reasons:
+
+  - We know how many households of different sizes and workers, but not how
+  many large households have multiple workers.
+  - We have a forecast of truck volumes at external roads, but do not know
+  how many trucks go between the roads.
+  
+In these situations, a convenient technique is *iterative proportional fitting*.
+This technique updates a joint distribution to match two or more marginal 
+distributions within a particular tolerance.  IPF is complicated to explain but
+easy to demonstrate, so let's go straight into an example.
+
+Let's say we have a forecast for AADT at three external stations in the future.
+We can assume that the two-way AADT is roughly even in each direction, so the
+inbound volume at each station is half the AADT. Let's  also say we have an
+estimate of where the trips coming at those stations *today* go today. This 
+matrix is called a **seed**.
+
+
+```r
+# AADT projections
+volumes <- tibble(
+  Station = LETTERS[1:3],
+  Volume = c(20000, 30000, 35000),
+  AADT = Volume * 2
+)
+volumes
+```
+
+```
+## # A tibble: 3 x 3
+##   Station Volume  AADT
+##   <chr>    <dbl> <dbl>
+## 1 A        20000 40000
+## 2 B        30000 60000
+## 3 C        35000 70000
+```
+
+```r
+# observed distribution for a seed
+seed <- matrix(c( 0,	7501	,12500, 8956,	0, 11879, 9146,	21044,	4687),
+               nrow = 3, ncol = 3, byrow = TRUE)
+rownames(seed) <- colnames(seed) <- volumes$Station
+seed
+```
+
+```
+##      A     B     C
+## A    0  7501 12500
+## B 8956     0 11879
+## C 9146 21044  4687
+```
+
+Note that the row and column sums of the matrix do not match the forecast.
+But we can multiply each row in the matrix by the new volume estimate and the
+proportion of the seed matrix row that is in that cell. This gives us a new 
+estimate of the cell's value. Mathematically,
+
+\begin{equation}
+  S_{n+1, ij} = \frac{m_i * S_{n, ij} }{\sum_{i}S_{ij}}
+  (\#eq:ipf)
+\end{equation}
+
+Where $S$ is the seed matrix and $m$ is the marginal vector. We then repeat with
+the other marginal, 
+
+\begin{equation}
+  S_{n+2, ij} = \frac{m_j * S_{n, ij} }{\sum_{j}S_{ij}}
+  (\#eq:ipf2)
+\end{equation}
+
+In this example case, the first row is
+
+\begin{align*}
+  S_{1, 1 1} &= 20000 * 0 / 20001  &= 0\\
+  S_{1, 1 2} &= 20000 * 7501 / 20001  &= 7500.62\\
+  S_{1, 1 2} &= 20000 * 12500/ 20001  &= 12499.38\\
+\end{align*}
+
+And the whole row iteration is
+
+```r
+# get factor to multiply each row by
+row_factor <- volumes$Volume / rowSums(seed)
+# multiply across rows, see ?sweep()
+sweep(seed, 1, row_factor, "*")
+```
+
+```
+##           A         B        C
+## A     0.000  7500.625 12499.38
+## B 12895.608     0.000 17104.39
+## C  9178.255 21118.215  4703.53
+```
+
+We can write a function that does a complete round of row, then column fitting.
+
+
+```r
+ipf_round <- function(marginal1, marginal2, seed) {
+  # multiply the first marginal through the rows
+  seed_rows <- sweep(seed, 1, marginal1 / rowSums(seed), "*")
+  # multiply the second marginal through the columns
+  seed_cols <- sweep(seed_rows, 1, marginal2 / colSums(seed_rows), "*")
+  # return
+  seed_cols
+}
+
+ipf_round(volumes$Volume, volumes$Volume, seed)
+```
+
+```
+##           A         B         C
+## A     0.000  6795.933 11325.045
+## B 13517.957     0.000 17929.858
+## C  9363.575 21544.617  4798.499
+```
+
+If we repeat this process for several iterations, we can see that the change 
+between successive values shrinks. We can use this change to set a tolerance
+for when we want the process to stop. In this case, we get very close after
+just one iteration.
+
+
+```r
+change <- vector("numeric")
+joint <- seed
+for(i in 1:5){
+  # update joint table
+  new_joint <- ipf_round(volumes$Volume, volumes$Volume, joint)
+  # calculate absolute error at this iteration
+  print(sum(abs(new_joint - joint)))
+  # update joint
+  joint <- new_joint
+}
+```
+
+```
+## [1] 13322.53
+## [1] 6.366463e-12
+## [1] 6.366463e-12
+## [1] 6.366463e-12
+## [1] 6.366463e-12
+```
+
+```r
+# final estimate
+new_joint
+```
+
+```
+##           A         B         C
+## A     0.000  6795.933 11325.045
+## B 13517.957     0.000 17929.858
+## C  9363.575 21544.617  4798.499
+```
+
+
+A few notes:
+
+  - IPF is not guaranteed to progressively converge. Meaning, it is possible to get 
+  stuck in a loop where the successive change between iterations does not get 
+  smaller. It is important to set a maximum number of iterations. In our example,
+  a tolerance of `1e10` would be reached after one iteration, but a tolerance 
+  of `1e16` could never be achieved.
+  - If a cell in a seed matrix has a zero value, all successive iterations will
+  have zero. If the seed table has a structural zero, keep it in. Otherwise, you
+  might want to consider overriding the value with a small number.
+  - The process is not consistent: A different seed matrix will lead to a different
+  outcome. If you are uncertain about your seed matrix, you could consider 
+  taking the average of multiple potential seed matrices.
 
 ### Regression Analysis
 
