@@ -710,7 +710,125 @@ ggplot(nhts_trips %>%
 
 ### Iterative Proportional Fitting {#ipf}
 
-Iterative Proportional Fitting
+There are times when we know two marginal distributions but do not know the 
+joint distribution. This can happen for a number of reasons:
+
+  - We know how many households of different sizes and workers, but not how
+  many large households have multiple workers.
+  - We have a forecast of truck volumes at external roads, but do not know
+  how many trucks go between the roads.
+  
+In these situations, a convenient technique is *iterative proportional fitting*.
+This technique updates a joint distribution to match two or more marginal 
+distributions within a particular tolerance.  IPF is complicated to explain but
+easy to demonstrate, so let's go straight into an example.
+
+Let's say we have a forecast for AADT at three external stations in the future.
+We can assume that the two-way AADT is roughly even in each direction, so the
+inbound volume at each station is half the AADT. Let's  also say we have an
+estimate of where the trips coming at those stations *today* go today. This 
+matrix is called a **seed**.
+
+```{r ipf-1, echo = TRUE}
+# AADT projections
+volumes <- tibble(
+  Station = LETTERS[1:3],
+  Volume = c(20000, 30000, 35000),
+  AADT = Volume * 2
+)
+volumes
+
+# observed distribution for a seed
+seed <- matrix(c( 0,	7501	,12500, 8956,	0, 11879, 9146,	21044,	4687),
+               nrow = 3, ncol = 3, byrow = TRUE)
+rownames(seed) <- colnames(seed) <- volumes$Station
+seed
+```
+
+Note that the row and column sums of the matrix do not match the forecast.
+But we can multiply each row in the matrix by the new volume estimate and the
+proportion of the seed matrix row that is in that cell. This gives us a new 
+estimate of the cell's value. Mathematically,
+
+\begin{equation}
+  S_{n+1, ij} = \frac{m_i * S_{n, ij} }{\sum_{i}S_{ij}}
+  (\#eq:ipf)
+\end{equation}
+
+Where $S$ is the seed matrix and $m$ is the marginal vector. We then repeat with
+the other marginal, 
+
+\begin{equation}
+  S_{n+2, ij} = \frac{m_j * S_{n, ij} }{\sum_{j}S_{ij}}
+  (\#eq:ipf2)
+\end{equation}
+
+In this example case, the first row is
+
+\begin{align*}
+  S_{1, 1 1} &= 20000 * 0 / 20001  &= 0\\
+  S_{1, 1 2} &= 20000 * 7501 / 20001  &= 7500.62\\
+  S_{1, 1 2} &= 20000 * 12500/ 20001  &= 12499.38\\
+\end{align*}
+
+And the whole row iteration is
+```{r ipf-row}
+# get factor to multiply each row by
+row_factor <- volumes$Volume / rowSums(seed)
+# multiply across rows, see ?sweep()
+sweep(seed, 1, row_factor, "*")
+```
+
+We can write a function that does a complete round of row, then column fitting.
+
+```{r ipf-round}
+ipf_round <- function(marginal1, marginal2, seed) {
+  # multiply the first marginal through the rows
+  seed_rows <- sweep(seed, 1, marginal1 / rowSums(seed), "*")
+  # multiply the second marginal through the columns
+  seed_cols <- sweep(seed_rows, 1, marginal2 / colSums(seed_rows), "*")
+  # return
+  seed_cols
+}
+
+ipf_round(volumes$Volume, volumes$Volume, seed)
+```
+
+If we repeat this process for several iterations, we can see that the change 
+between successive values shrinks. We can use this change to set a tolerance
+for when we want the process to stop. In this case, we get very close after
+just one iteration.
+
+```{r ipf-repeat}
+change <- vector("numeric")
+joint <- seed
+for(i in 1:5){
+  # update joint table
+  new_joint <- ipf_round(volumes$Volume, volumes$Volume, joint)
+  # calculate absolute error at this iteration
+  print(sum(abs(new_joint - joint)))
+  # update joint
+  joint <- new_joint
+}
+
+# final estimate
+new_joint
+```
+
+
+A few notes:
+
+  - IPF is not guaranteed to progressively converge. Meaning, it is possible to get 
+  stuck in a loop where the successive change between iterations does not get 
+  smaller. It is important to set a maximum number of iterations. In our example,
+  a tolerance of `1e10` would be reached after one iteration, but a tolerance 
+  of `1e16` could never be achieved.
+  - If a cell in a seed matrix has a zero value, all successive iterations will
+  have zero. If the seed table has a structural zero, keep it in. Otherwise, you
+  might want to consider overriding the value with a small number.
+  - The process is not consistent: A different seed matrix will lead to a different
+  outcome. If you are uncertain about your seed matrix, you could consider 
+  taking the average of multiple potential seed matrices.
 
 ### Regression Analysis
 
