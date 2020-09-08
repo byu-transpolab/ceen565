@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        31   42        12      122       93               2
-   2        44   57        17      139       77              11
-   3        43   15        22      140       67               0
+   1        44   25        22      129       96               2
+   2        45   47        21      121       81              11
+   3        32   35        17      148       89               0
 
 
 ::::{.rmdexample}
@@ -602,7 +602,7 @@ nests completely within the layer above it. More detailed data is available
 at less spatially detailed geographies.
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/censusgeos-1.png" alt="US Census Geographies in Central Provo."  />
+<img src="01-intro_files/figure-html/censusgeos-1.png" alt="US Census Geographies in Central Provo." width="672" />
 <p class="caption">(\#fig:censusgeos)US Census Geographies in Central Provo.</p>
 </div>
 
@@ -695,7 +695,7 @@ ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram."  />
+<img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
 <p class="caption">(\#fig:dc-histogram)Visualizing a continuous distribution with a histogram.</p>
 </div>
 
@@ -707,7 +707,7 @@ ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"),
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart."  />
+<img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
 <p class="caption">(\#fig:dc-barchart)Visualizing a discrete distribution with a bar chart.</p>
 </div>
 
@@ -738,7 +738,7 @@ table(nhts_trips$miles_cat, nhts_trips$trippurp)
 We can visualize joint distributions as well, and sometimes the results are
 quite nice.
 
-![](01-intro_files/figure-epub3/dc-joint-hist-1.png)<!-- -->
+<img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" />
 
 
 
@@ -845,10 +845,10 @@ We can write a function that does a complete round of row, then column fitting.
 
 ```r
 ipf_round <- function(marginal1, marginal2, seed) {
-  # multiply the first marginal through the rows
-  seed_rows <- sweep(seed, 1, marginal1 / rowSums(seed), "*")
-  # multiply the second marginal through the columns
-  seed_cols <- sweep(seed_rows, 1, marginal2 / colSums(seed_rows), "*")
+  # multiply the first marginal through the rows (MARGIN = 1)
+  seed_rows <- sweep(seed, MARGIN = 1, marginal1 / rowSums(seed), "*")
+  # multiply the second marginal through the columns (MARGIN = 2)
+  seed_cols <- sweep(seed_rows, MARGIN = 2, marginal2 / colSums(seed_rows), "*")
   # return
   seed_cols
 }
@@ -858,15 +858,14 @@ ipf_round(volumes$Volume, volumes$Volume, seed)
 
 ```
 ##           A         B         C
-## A     0.000  6795.933 11325.045
-## B 13517.957     0.000 17929.858
-## C  9363.575 21544.617  4798.499
+## A     0.000  7862.609 12751.752
+## B 11684.052     0.000 17449.749
+## C  8315.948 22137.391  4798.499
 ```
 
 If we repeat this process for several iterations, we can see that the change 
 between successive values shrinks. We can use this change to set a tolerance
-for when we want the process to stop. In this case, we get very close after
-just one iteration.
+for when we want the process to stop. 
 
 
 ```r
@@ -883,11 +882,11 @@ for(i in 1:5){
 ```
 
 ```
-## [1] 13322.53
-## [1] 6.366463e-12
-## [1] 6.366463e-12
-## [1] 6.366463e-12
-## [1] 6.366463e-12
+## [1] 10947.1
+## [1] 1550.274
+## [1] 325.7515
+## [1] 109.2708
+## [1] 37.10879
 ```
 
 ```r
@@ -897,9 +896,9 @@ new_joint
 
 ```
 ##           A         B         C
-## A     0.000  6795.933 11325.045
-## B 13517.957     0.000 17929.858
-## C  9363.575 21544.617  4798.499
+## A     0.000  7748.922 12251.164
+## B 11945.229     0.000 18047.050
+## C  8054.771 22251.078  4701.787
 ```
 
 
@@ -907,9 +906,10 @@ A few notes:
 
   - IPF is not guaranteed to progressively converge. Meaning, it is possible to get 
   stuck in a loop where the successive change between iterations does not get 
-  smaller. It is important to set a maximum number of iterations. In our example,
-  a tolerance of `1e10` would be reached after one iteration, but a tolerance 
-  of `1e16` could never be achieved.
+  smaller. It is important to set a maximum number of iterations.
+  - IPF can work in any number of dimensions. A two-dimensional matrix is easy to 
+  visualize and works as a good example, but that's by no means an upper limit. 
+  Just keep repeating.
   - If a cell in a seed matrix has a zero value, all successive iterations will
   have zero. If the seed table has a structural zero, keep it in. Otherwise, you
   might want to consider overriding the value with a small number.
@@ -1036,7 +1036,7 @@ one census tract; for instance, the lowest average household size is in tract
 of 3 and 4+ person households.
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
+<img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
 <p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
 </div>
 
@@ -1054,7 +1054,7 @@ marginal distributions of interest. These files are available
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region."  />
+<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
 <p class="caption">(\#fig:raw-marginals)Raw marginal distribution curves from Roanoke region.</p>
 </div>
 

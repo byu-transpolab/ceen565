@@ -783,10 +783,10 @@ We can write a function that does a complete round of row, then column fitting.
 
 ```{r ipf-round}
 ipf_round <- function(marginal1, marginal2, seed) {
-  # multiply the first marginal through the rows
-  seed_rows <- sweep(seed, 1, marginal1 / rowSums(seed), "*")
-  # multiply the second marginal through the columns
-  seed_cols <- sweep(seed_rows, 1, marginal2 / colSums(seed_rows), "*")
+  # multiply the first marginal through the rows (MARGIN = 1)
+  seed_rows <- sweep(seed, MARGIN = 1, marginal1 / rowSums(seed), "*")
+  # multiply the second marginal through the columns (MARGIN = 2)
+  seed_cols <- sweep(seed_rows, MARGIN = 2, marginal2 / colSums(seed_rows), "*")
   # return
   seed_cols
 }
@@ -796,8 +796,7 @@ ipf_round(volumes$Volume, volumes$Volume, seed)
 
 If we repeat this process for several iterations, we can see that the change 
 between successive values shrinks. We can use this change to set a tolerance
-for when we want the process to stop. In this case, we get very close after
-just one iteration.
+for when we want the process to stop. 
 
 ```{r ipf-repeat}
 change <- vector("numeric")
@@ -820,9 +819,10 @@ A few notes:
 
   - IPF is not guaranteed to progressively converge. Meaning, it is possible to get 
   stuck in a loop where the successive change between iterations does not get 
-  smaller. It is important to set a maximum number of iterations. In our example,
-  a tolerance of `1e10` would be reached after one iteration, but a tolerance 
-  of `1e16` could never be achieved.
+  smaller. It is important to set a maximum number of iterations.
+  - IPF can work in any number of dimensions. A two-dimensional matrix is easy to 
+  visualize and works as a good example, but that's by no means an upper limit. 
+  Just keep repeating.
   - If a cell in a seed matrix has a zero value, all successive iterations will
   have zero. If the seed table has a structural zero, keep it in. Otherwise, you
   might want to consider overriding the value with a small number.
