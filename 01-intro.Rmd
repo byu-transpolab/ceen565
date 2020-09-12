@@ -832,10 +832,132 @@ A few notes:
 
 ### Regression Analysis
 
-We often want to know what will happen 
+Consider the basic model in \@ref(eq:basic-model). This is a linear model, meaning
+that it creates a line that minimizes the error between the points. Figure 
+\@ref(fig:lm-mpg) shows the linear relationship between engine displacement (in
+cubic centimeters) and engine miles per gallon in a sample of cars.
 
-```{r}
+```{r lm-mpg, fig.cap = "Relationship between engine displacement and miles per gallon.", echo = True}
+ggplot(mtcars, aes(y = mpg, x = disp)) + 
+  geom_point() +  stat_smooth(method = "lm", color = "red") + theme_bw()
+```
 
+How do we calculate this line? In R, the function to compute a basic linear
+regression is `lm()`. So to regress the `mpg` variable on the `disp` variable,
+
+```{r lm1}
+# y ~ x + x1 + others, from data
+lm1 <-  lm(mpg ~ disp, data = mtcars)
+# print summary
+summary(lm1)
+```
+
+What this suggests is that for every additional cc of displacement, the engine
+miles per gallon changes by `r coef(lm1)[2]` miles per gallon.
+But how does R calculate this? 
+
+Assume $y = X\beta + \epsilon$, we want the estimate $\hat{\beta}$ that minimizes
+the total error $\epsilon = y - X\hat(beta)$. We can measure this total error as
+the "sum of squared residuals"
+\begin{equation}
+  SSR(\hat{\beta}) = \sum(y - X\beta)^2
+  (\#eq:ssr)
+\end{equation}
+
+If we take derivative of this with respect to $\beta$, set to zero, and solve
+for $\hat{\beta}$, we obtain the following estimate:
+
+\begin{equation}
+  \hat{\beta} = (X'X)^{-1}X'y
+  (\#eq:betahat)
+\end{equation}
+
+We can calculate this manually in R, and verify that it matches the estimates
+obtained through `lm()`.
+
+```{r ols}
+y <- mtcars$mpg
+X <- model.matrix(mpg ~ disp, data = mtcars)
+(XTX1 <- solve(t(X) %*% X))
+(beta <- XTX1 %*% t(X) %*% y)
+```
+
+#### Variance and Confidence Tests
+
+Because $\hat{\beta}$ is an estimate rather than a population statistic, we have 
+to consider that the estimate might be erroneous. That is, we need to construct
+a hypothesis test,
+
+\begin{align*}
+  h_0:& \beta = 0\\
+  h_a:& \beta \neq 0\\
+\end{align*}
+
+Let's look at the variance of our least-squares estimates:
+
+\begin{align*}
+  \hat{\beta} &= (X'X)^{-1}X'(X\beta + \epsilon)\\
+  \hat{\beta} &= \beta + (X'X)^{-1}X'\epsilon\\
+  Var(\hat{\beta}) &= 0 + (X'X)^{-1}X'\Sigma_{\epsilon} X(X'X)^{-1}\\
+\end{align*}
+
+If we assume that \epsilon is *independently and identically distributed* (IID)
+with mean 0 and variance $\sigma^2$,
+
+\begin{align*}
+  \Sigma_\epsilon &= \sigma^2I\\
+  Var(\hat{\beta}) &= 0 + (X'X)^{-1}X\sigma^2X(X'X)^{-1}\\
+  &= \sigma^2(X'X)^{-1}X'X(X'X)^{-1}\\
+  & = \sigma^2(X'X)^{-1}
+\end{align*}
+  
+What does IID mean? It means that the distribution of $\epsilon$ does not depend
+on the values of $X$. 
+
+```{r olsse}
+e <- y - X %*% beta
+s <- sum(e^2 / (nrow(X) - ncol(X))) ## SSR / degrees of freedom
+(se <- sqrt(diag(s * XTX1)))
+```
+
+So, let's talk about confidence tests using our new measure of the distribution
+of $\hat{\beta}$. What is the probability of observing an estimate 
+*at least this extreme* given the null hypothesis that the true value is 0?
+The $t$-statistic is the quotient of $\beta$ and its standard error, with
+the $p$-value determined based on the degrees of freedom of the model.
+
+```{r olst}
+(t = beta / se)
+# two-tailed P test with certain degrees of freedom
+2*(pt(abs(t), nrow(X) - ncol(X), lower.tail = FALSE))
+```
+
+
+Of course, this test is only valid if the errors are IID.
+When you `plot` the results of a linear model, you get a series of diagnostic
+plots. The first one is a plot of the residuals at different values of $X\beta$,
+which allows you to visually inspect whether the IID assumption is valid.
+
+```{r regression-plot}
+plot(lm1, which = 1)
+```
+
+So, what can you do when the IID assumption is violated? Well, you could try 
+to transform the data. What if the inverse of displacement is what matters?
+
+```{r regression-inverse}
+# transform the data
+lm2 <- lm(log(mpg) ~ I(1 / disp), data = mtcars)
+plot(lm2, which = 1)
+```
+
+There might also be other variables that matter. We could add the number of 
+engine cylinders into our estimation. Both of these are better than the original 
+model.
+
+```{r regression-morevars}
+lm3 <- lm(mpg ~ disp + cyl, data = mtcars)
+plot(lm3, which = 1)
 ```
 
 
