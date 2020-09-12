@@ -1,8 +1,48 @@
 # Trip Generation {#chap-tripgen}
 
-The details of the Trip Generation models are given in section 4.4 of *NCHRP 716*
-and in the course notes. In this unit we will use data from both the NHTS 
-and from the Puget Sound Regional Council (PSRC).
+The purpose of the trip generation model is to turn socioeconomic data into a
+certain number of trips. Every trip has two ends: an *origin* and a *destination*.
+But because we do not yet know where trips are going, at this stage of the model
+we instead forecast trip **productions** and trip **attractions**.
+
+Imagine a basic day where you travel from home to work, and then back to home.
+You made two trips. The first trip originated at your home and was destined for
+work: your second trip originated at work and was destined for home. But your
+home *produced* two trips, and your workplace *attracted* two trips.
+
+This distinction is critical. In a trip production model, we use the attributes 
+of households to figure out how many trips each zone produces. In a trip attraction
+model, we use socioeconomic data to determine how many trips are attracted to the
+zone.   It would be oversimplifying to say that all trip *production* happens at
+households: businesses produce commercial trips, and households can also attract
+trips from other households. But in this class, we are mostly going to concern
+ourselves with household trip production.
+
+Trip generation models are separated by **trip purpose**; trip purposes are
+defined by the kind of activity occurring at the production and attraction 
+ends of a trip. Common trip purposes include:
+
+  - *Home-based work* (HBW): trips produced at a home and attracted to a work place.
+  - *Home-based school / college* (HBSchool): trips produced at a home and attracted
+  to a school or college.
+  - *Home-based shopping / recreational* (HBShop): trips produced at a home and
+  attracted to a shopping or recreational activity.
+  - *Home-based other* (HBO): trips produced at a home and attracted to any
+  activity not-defined above.
+  - *Non Home-based* (NHB): trips produced somewhere other than a home and
+  attracted to anywhere.
+  
+The specific purposes included in a model are a function of the data available
+and the needs of the region. If there is no university or college in a region,
+then the HBSchool purpose might be sufficient; otherwise, there might need
+to be a HBSchool and a HBCollege. Or, if there is no data on trips by students,
+this purpose might just get folded into HBO.
+
+The next two sections give details of how to construct a cross-classification
+model of trip production as well as a regression model of trip attractions.
+More details of trip Generation models are given in Section 4.4 of 
+*NCHRP Report 716*.
+
 
 ## Trip Production
 
@@ -30,7 +70,8 @@ hh <- nhts_households %>%
   select(houseid, wthhfin, hhsize, hhvehcnt, numadlt, hhfaminc, wrkcount) %>%
   mutate(
     hhsize = ifelse(hhsize > 4, 4, hhsize),
-    hhvehcnt = ifelse(hhvehcnt > 3, 3, hhvehcnt)
+    hhvehcnt = ifelse(hhvehcnt > 3, 3, hhvehcnt),
+    wrkcount = ifelse(wrkcount > 2, 2, wrkcount)
   )
 hh
 ```
@@ -141,7 +182,7 @@ plot(hbo_rates, which = 1)
 ```
 
 
-## Homework
+## Trip Generation Homework
 
 1. Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not? 
@@ -168,7 +209,7 @@ models have the best fit in terms of $R^2$ value? Why?
 this by adding a `-1` to the formula, as in `lm(y ~ x - 1)`. Do the rates
 change? By how much? Should you keep the intercept in or remove it?
 
-## Lab 
+## Trip Generation Lab 
 
 In this lab you will implement and calibrate trip generation rates for the RVTPO
 model.
