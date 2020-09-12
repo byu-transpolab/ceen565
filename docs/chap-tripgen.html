@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-09-07" />
+<meta name="date" content="2020-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,8 +165,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#homework"><i class="fa fa-check"></i><b>2.3</b> Homework</a></li>
-<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab"><i class="fa fa-check"></i><b>2.4</b> Lab</a><ul>
+<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-homework"><i class="fa fa-check"></i><b>2.3</b> Trip Generation Homework</a></li>
+<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-lab"><i class="fa fa-check"></i><b>2.4</b> Trip Generation Lab</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.4.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.4.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.4.2</b> Trip Attraction</a></li>
 <li class="chapter" data-level="2.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
@@ -177,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
-<li class="chapter" data-level="4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab"><i class="fa fa-check"></i><b>4.1</b> Lab</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#lab"><i class="fa fa-check"></i><b>4.1</b> Lab</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mode-choice-calibration"><i class="fa fa-check"></i><b>4.1.1</b> Mode Choice Calibration</a></li>
 <li class="chapter" data-level="4.1.2" data-path="chap-modechoice.html"><a href="chap-modechoice.html#destination-choice-calibration"><i class="fa fa-check"></i><b>4.1.2</b> Destination Choice Calibration</a></li>
 <li class="chapter" data-level="4.1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>4.1.3</b> Report</a></li>
@@ -231,9 +231,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="chap-tripgen" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Trip Generation</h1>
-<p>The details of the Trip Generation models are given in section 4.4 of <em>NCHRP 716</em>
-and in the course notes. In this unit we will use data from both the NHTS
-and from the Puget Sound Regional Council (PSRC).</p>
+<p>The purpose of the trip generation model is to turn socioeconomic data into a
+certain number of trips. Every trip has two ends: an <em>origin</em> and a <em>destination</em>.
+But because we do not yet know where trips are going, at this stage of the model
+we instead forecast trip <strong>productions</strong> and trip <strong>attractions</strong>.</p>
+<p>Imagine a basic day where you travel from home to work, and then back to home.
+You made two trips. The first trip originated at your home and was destined for
+work: your second trip originated at work and was destined for home. But your
+home <em>produced</em> two trips, and your workplace <em>attracted</em> two trips.</p>
+<p>This distinction is critical. In a trip production model, we use the attributes
+of households to figure out how many trips each zone produces. In a trip attraction
+model, we use socioeconomic data to determine how many trips are attracted to the
+zone. It would be oversimplifying to say that all trip <em>production</em> happens at
+households: businesses produce commercial trips, and households can also attract
+trips from other households. But in this class, we are mostly going to concern
+ourselves with household trip production.</p>
+<p>Trip generation models are separated by <strong>trip purpose</strong>; trip purposes are
+defined by the kind of activity occurring at the production and attraction
+ends of a trip. Common trip purposes include:</p>
+<ul>
+<li><em>Home-based work</em> (HBW): trips produced at a home and attracted to a work place.</li>
+<li><em>Home-based school / college</em> (HBSchool): trips produced at a home and attracted
+to a school or college.</li>
+<li><em>Home-based shopping / recreational</em> (HBShop): trips produced at a home and
+attracted to a shopping or recreational activity.</li>
+<li><em>Home-based other</em> (HBO): trips produced at a home and attracted to any
+activity not-defined above.</li>
+<li><em>Non Home-based</em> (NHB): trips produced somewhere other than a home and
+attracted to anywhere.</li>
+</ul>
+<p>The specific purposes included in a model are a function of the data available
+and the needs of the region. If there is no university or college in a region,
+then the HBSchool purpose might be sufficient; otherwise, there might need
+to be a HBSchool and a HBCollege. Or, if there is no data on trips by students,
+this purpose might just get folded into HBO.</p>
+<p>The next two sections give details of how to construct a cross-classification
+model of trip production as well as a regression model of trip attractions.
+More details of trip Generation models are given in Section 4.4 of
+<em>NCHRP Report 716</em>.</p>
 <div id="trip-production" class="section level2">
 <h2><span class="header-section-number">2.1</span> Trip Production</h2>
 <p>The trip production model is a cross-classification model. What this means
@@ -257,9 +292,10 @@ vehicles at 3.</p>
 <span id="cb40-8"><a href="chap-tripgen.html#cb40-8"></a><span class="st">  </span><span class="kw">select</span>(houseid, wthhfin, hhsize, hhvehcnt, numadlt, hhfaminc, wrkcount) <span class="op">%&gt;%</span></span>
 <span id="cb40-9"><a href="chap-tripgen.html#cb40-9"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
 <span id="cb40-10"><a href="chap-tripgen.html#cb40-10"></a>    <span class="dt">hhsize =</span> <span class="kw">ifelse</span>(hhsize <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>, <span class="dv">4</span>, hhsize),</span>
-<span id="cb40-11"><a href="chap-tripgen.html#cb40-11"></a>    <span class="dt">hhvehcnt =</span> <span class="kw">ifelse</span>(hhvehcnt <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>, hhvehcnt)</span>
-<span id="cb40-12"><a href="chap-tripgen.html#cb40-12"></a>  )</span>
-<span id="cb40-13"><a href="chap-tripgen.html#cb40-13"></a>hh</span></code></pre></div>
+<span id="cb40-11"><a href="chap-tripgen.html#cb40-11"></a>    <span class="dt">hhvehcnt =</span> <span class="kw">ifelse</span>(hhvehcnt <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>, hhvehcnt),</span>
+<span id="cb40-12"><a href="chap-tripgen.html#cb40-12"></a>    <span class="dt">wrkcount =</span> <span class="kw">ifelse</span>(wrkcount <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">2</span>, wrkcount)</span>
+<span id="cb40-13"><a href="chap-tripgen.html#cb40-13"></a>  )</span>
+<span id="cb40-14"><a href="chap-tripgen.html#cb40-14"></a>hh</span></code></pre></div>
 <pre><code>## # A tibble: 10,381 x 7
 ##    houseid  wthhfin hhsize hhvehcnt numadlt hhfaminc                  wrkcount
 ##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr+lbl&gt;                    &lt;dbl&gt;
@@ -474,8 +510,8 @@ heteroskedasticity. But there may be things we can try to make it better.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="chap-tripgen.html#cb64-1"></a><span class="kw">plot</span>(hbo_rates, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="02_tripgen_files/figure-html/fitted-1.png" width="672" /></p>
 </div>
-<div id="homework" class="section level2">
-<h2><span class="header-section-number">2.3</span> Homework</h2>
+<div id="trip-generation-homework" class="section level2">
+<h2><span class="header-section-number">2.3</span> Trip Generation Homework</h2>
 <ol style="list-style-type: decimal">
 <li><p>Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not?</p></li>
@@ -497,8 +533,8 @@ this by adding a <code>-1</code> to the formula, as in <code>lm(y ~ x - 1)</code
 change? By how much? Should you keep the intercept in or remove it?</p></li>
 </ol>
 </div>
-<div id="lab" class="section level2">
-<h2><span class="header-section-number">2.4</span> Lab</h2>
+<div id="trip-generation-lab" class="section level2">
+<h2><span class="header-section-number">2.4</span> Trip Generation Lab</h2>
 <p>In this lab you will implement and calibrate trip generation rates for the RVTPO
 model.</p>
 <div id="trip-production-1" class="section level3">

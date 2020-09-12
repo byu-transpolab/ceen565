@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        44   25        22      129       96               2
-   2        45   47        21      121       81              11
-   3        32   35        17      148       89               0
+   1        32   32        12      121       59               2
+   2        39   32        19      131       99              11
+   3        49   72        17      124       93               0
 
 
 ::::{.rmdexample}
@@ -602,7 +602,7 @@ nests completely within the layer above it. More detailed data is available
 at less spatially detailed geographies.
 
 <div class="figure">
-<img src="01-intro_files/figure-html/censusgeos-1.png" alt="US Census Geographies in Central Provo." width="672" />
+<img src="01-intro_files/figure-epub3/censusgeos-1.png" alt="US Census Geographies in Central Provo."  />
 <p class="caption">(\#fig:censusgeos)US Census Geographies in Central Provo.</p>
 </div>
 
@@ -695,7 +695,7 @@ ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
+<img src="01-intro_files/figure-epub3/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram."  />
 <p class="caption">(\#fig:dc-histogram)Visualizing a continuous distribution with a histogram.</p>
 </div>
 
@@ -707,7 +707,7 @@ ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"),
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
+<img src="01-intro_files/figure-epub3/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart."  />
 <p class="caption">(\#fig:dc-barchart)Visualizing a discrete distribution with a bar chart.</p>
 </div>
 
@@ -738,7 +738,7 @@ table(nhts_trips$miles_cat, nhts_trips$trippurp)
 We can visualize joint distributions as well, and sometimes the results are
 quite nice.
 
-<img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" />
+![](01-intro_files/figure-epub3/dc-joint-hist-1.png)<!-- -->
 
 
 
@@ -1036,7 +1036,7 @@ one census tract; for instance, the lowest average household size is in tract
 of 3 and 4+ person households.
 
 <div class="figure">
-<img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
+<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
 <p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
 </div>
 
@@ -1054,7 +1054,7 @@ marginal distributions of interest. These files are available
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 <div class="figure">
-<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
+<img src="01-intro_files/figure-epub3/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region."  />
 <p class="caption">(\#fig:raw-marginals)Raw marginal distribution curves from Roanoke region.</p>
 </div>
 
