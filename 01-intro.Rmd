@@ -837,7 +837,7 @@ that it creates a line that minimizes the error between the points. Figure
 \@ref(fig:lm-mpg) shows the linear relationship between engine displacement (in
 cubic centimeters) and engine miles per gallon in a sample of cars.
 
-```{r lm-mpg, fig.cap = "Relationship between engine displacement and miles per gallon.", echo = True}
+```{r lm-mpg, fig.cap = "Relationship between engine displacement and miles per gallon."}
 ggplot(mtcars, aes(y = mpg, x = disp)) + 
   geom_point() +  stat_smooth(method = "lm", color = "red") + theme_bw()
 ```
@@ -860,11 +860,11 @@ Assume $y = X\beta + \epsilon$, we want the estimate $\hat{\beta}$ that minimize
 the total error $\epsilon = y - X\hat(beta)$. We can measure this total error as
 the "sum of squared residuals"
 \begin{equation}
-  SSR(\hat{\beta}) = \sum(y - X\beta)^2
+  SSR(\hat{\beta}) = \sum(y - X\hat{\beta})^2
   (\#eq:ssr)
 \end{equation}
 
-If we take derivative of this with respect to $\beta$, set to zero, and solve
+If we take derivative of this with respect to $\hat(\beta)$, set to zero, and solve
 for $\hat{\beta}$, we obtain the following estimate:
 
 \begin{equation}
@@ -901,7 +901,7 @@ Let's look at the variance of our least-squares estimates:
   Var(\hat{\beta}) &= 0 + (X'X)^{-1}X'\Sigma_{\epsilon} X(X'X)^{-1}\\
 \end{align*}
 
-If we assume that \epsilon is *independently and identically distributed* (IID)
+If we assume that $\epsilon$ is *independently and identically distributed* (IID)
 with mean 0 and variance $\sigma^2$,
 
 \begin{align*}

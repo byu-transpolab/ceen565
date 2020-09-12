@@ -1217,7 +1217,134 @@ taking the average of multiple potential seed matrices.</li>
 </div>
 <div id="regression-analysis" class="section level3">
 <h3><span class="header-section-number">1.5.3</span> Regression Analysis</h3>
-<p>We often want to know what will happen</p>
+<p>Consider the basic model in <a href="chap-blocks.html#eq:basic-model">(1.1)</a>. This is a linear model, meaning
+that it creates a line that minimizes the error between the points. Figure
+<a href="chap-blocks.html#fig:lm-mpg">1.7</a> shows the linear relationship between engine displacement (in
+cubic centimeters) and engine miles per gallon in a sample of cars.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-blocks.html#cb30-1"></a><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">y =</span> mpg, <span class="dt">x =</span> disp)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb30-2"><a href="chap-blocks.html#cb30-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure"><span id="fig:lm-mpg"></span>
+<img src="01-intro_files/figure-html/lm-mpg-1.png" alt="Relationship between engine displacement and miles per gallon." width="672" />
+<p class="caption">
+Figure 1.7: Relationship between engine displacement and miles per gallon.
+</p>
+</div>
+<p>How do we calculate this line? In R, the function to compute a basic linear
+regression is <code>lm()</code>. So to regress the <code>mpg</code> variable on the <code>disp</code> variable,</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-blocks.html#cb32-1"></a><span class="co"># y ~ x + x1 + others, from data</span></span>
+<span id="cb32-2"><a href="chap-blocks.html#cb32-2"></a>lm1 &lt;-<span class="st">  </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</span>
+<span id="cb32-3"><a href="chap-blocks.html#cb32-3"></a><span class="co"># print summary</span></span>
+<span id="cb32-4"><a href="chap-blocks.html#cb32-4"></a><span class="kw">summary</span>(lm1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ disp, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.8922 -2.2022 -0.9631  1.6272  7.2305 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***
+## disp        -0.041215   0.004712  -8.747 9.38e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.251 on 30 degrees of freedom
+## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 
+## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</code></pre>
+<p>What this suggests is that for every additional cc of displacement, the engine
+miles per gallon changes by -0.0412151 miles per gallon.
+But how does R calculate this?</p>
+<p>Assume <span class="math inline">\(y = X\beta + \epsilon\)</span>, we want the estimate <span class="math inline">\(\hat{\beta}\)</span> that minimizes
+the total error <span class="math inline">\(\epsilon = y - X\hat(beta)\)</span>. We can measure this total error as
+the “sum of squared residuals”
+<span class="math display" id="eq:ssr">\[\begin{equation}
+  SSR(\hat{\beta}) = \sum(y - X\hat{\beta})^2
+  \tag{1.8}
+\end{equation}\]</span></p>
+<p>If we take derivative of this with respect to <span class="math inline">\(\hat(\beta)\)</span>, set to zero, and solve
+for <span class="math inline">\(\hat{\beta}\)</span>, we obtain the following estimate:</p>
+<p><span class="math display" id="eq:betahat">\[\begin{equation}
+  \hat{\beta} = (X&#39;X)^{-1}X&#39;y
+  \tag{1.9}
+\end{equation}\]</span></p>
+<p>We can calculate this manually in R, and verify that it matches the estimates
+obtained through <code>lm()</code>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chap-blocks.html#cb34-1"></a>y &lt;-<span class="st"> </span>mtcars<span class="op">$</span>mpg</span>
+<span id="cb34-2"><a href="chap-blocks.html#cb34-2"></a>X &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(mpg <span class="op">~</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</span>
+<span id="cb34-3"><a href="chap-blocks.html#cb34-3"></a>(XTX1 &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X))</span></code></pre></div>
+<pre><code>##               (Intercept)          disp
+## (Intercept)  0.1430397593 -4.845217e-04
+## disp        -0.0004845217  2.100025e-06</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-blocks.html#cb36-1"></a>(beta &lt;-<span class="st"> </span>XTX1 <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>y)</span></code></pre></div>
+<pre><code>##                    [,1]
+## (Intercept) 29.59985476
+## disp        -0.04121512</code></pre>
+<div id="variance-and-confidence-tests" class="section level4">
+<h4><span class="header-section-number">1.5.3.1</span> Variance and Confidence Tests</h4>
+<p>Because <span class="math inline">\(\hat{\beta}\)</span> is an estimate rather than a population statistic, we have
+to consider that the estimate might be erroneous. That is, we need to construct
+a hypothesis test,</p>
+<p><span class="math display">\[\begin{align*}
+  h_0:&amp; \beta = 0\\
+  h_a:&amp; \beta \neq 0\\
+\end{align*}\]</span></p>
+<p>Let’s look at the variance of our least-squares estimates:</p>
+<p><span class="math display">\[\begin{align*}
+  \hat{\beta} &amp;= (X&#39;X)^{-1}X&#39;(X\beta + \epsilon)\\
+  \hat{\beta} &amp;= \beta + (X&#39;X)^{-1}X&#39;\epsilon\\
+  Var(\hat{\beta}) &amp;= 0 + (X&#39;X)^{-1}X&#39;\Sigma_{\epsilon} X(X&#39;X)^{-1}\\
+\end{align*}\]</span></p>
+<p>If we assume that <span class="math inline">\(\epsilon\)</span> is <em>independently and identically distributed</em> (IID)
+with mean 0 and variance <span class="math inline">\(\sigma^2\)</span>,</p>
+<p><span class="math display">\[\begin{align*}
+  \Sigma_\epsilon &amp;= \sigma^2I\\
+  Var(\hat{\beta}) &amp;= 0 + (X&#39;X)^{-1}X\sigma^2X(X&#39;X)^{-1}\\
+  &amp;= \sigma^2(X&#39;X)^{-1}X&#39;X(X&#39;X)^{-1}\\
+  &amp; = \sigma^2(X&#39;X)^{-1}
+\end{align*}\]</span></p>
+<p>What does IID mean? It means that the distribution of <span class="math inline">\(\epsilon\)</span> does not depend
+on the values of <span class="math inline">\(X\)</span>.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-blocks.html#cb38-1"></a>e &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>beta</span>
+<span id="cb38-2"><a href="chap-blocks.html#cb38-2"></a>s &lt;-<span class="st"> </span><span class="kw">sum</span>(e<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>(<span class="kw">nrow</span>(X) <span class="op">-</span><span class="st"> </span><span class="kw">ncol</span>(X))) <span class="co">## SSR / degrees of freedom</span></span>
+<span id="cb38-3"><a href="chap-blocks.html#cb38-3"></a>(se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(s <span class="op">*</span><span class="st"> </span>XTX1)))</span></code></pre></div>
+<pre><code>## (Intercept)        disp 
+## 1.229719515 0.004711833</code></pre>
+<p>So, let’s talk about confidence tests using our new measure of the distribution
+of <span class="math inline">\(\hat{\beta}\)</span>. What is the probability of observing an estimate
+<em>at least this extreme</em> given the null hypothesis that the true value is 0?
+The <span class="math inline">\(t\)</span>-statistic is the quotient of <span class="math inline">\(\beta\)</span> and its standard error, with
+the <span class="math inline">\(p\)</span>-value determined based on the degrees of freedom of the model.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-blocks.html#cb40-1"></a>(<span class="dt">t =</span> beta <span class="op">/</span><span class="st"> </span>se)</span></code></pre></div>
+<pre><code>##                  [,1]
+## (Intercept) 24.070411
+## disp        -8.747152</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-blocks.html#cb42-1"></a><span class="co"># two-tailed P test with certain degrees of freedom</span></span>
+<span id="cb42-2"><a href="chap-blocks.html#cb42-2"></a><span class="dv">2</span><span class="op">*</span>(<span class="kw">pt</span>(<span class="kw">abs</span>(t), <span class="kw">nrow</span>(X) <span class="op">-</span><span class="st"> </span><span class="kw">ncol</span>(X), <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>))</span></code></pre></div>
+<pre><code>##                     [,1]
+## (Intercept) 3.576586e-21
+## disp        9.380327e-10</code></pre>
+<p>Of course, this test is only valid if the errors are IID.
+When you <code>plot</code> the results of a linear model, you get a series of diagnostic
+plots. The first one is a plot of the residuals at different values of <span class="math inline">\(X\beta\)</span>,
+which allows you to visually inspect whether the IID assumption is valid.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chap-blocks.html#cb44-1"></a><span class="kw">plot</span>(lm1, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/regression-plot-1.png" width="672" /></p>
+<p>So, what can you do when the IID assumption is violated? Well, you could try
+to transform the data. What if the inverse of displacement is what matters?</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chap-blocks.html#cb45-1"></a><span class="co"># transform the data</span></span>
+<span id="cb45-2"><a href="chap-blocks.html#cb45-2"></a>lm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg) <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span>disp), <span class="dt">data =</span> mtcars)</span>
+<span id="cb45-3"><a href="chap-blocks.html#cb45-3"></a><span class="kw">plot</span>(lm2, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/regression-inverse-1.png" width="672" /></p>
+<p>There might also be other variables that matter. We could add the number of
+engine cylinders into our estimation. Both of these are better than the original
+model.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chap-blocks.html#cb46-1"></a>lm3 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>disp <span class="op">+</span><span class="st"> </span>cyl, <span class="dt">data =</span> mtcars)</span>
+<span id="cb46-2"><a href="chap-blocks.html#cb46-2"></a><span class="kw">plot</span>(lm3, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/regression-morevars-1.png" width="672" /></p>
+</div>
 </div>
 <div id="numerical-optimization" class="section level3">
 <h3><span class="header-section-number">1.5.4</span> Numerical Optimization</h3>
@@ -1351,7 +1478,7 @@ marginal distribution tables:</p>
 </ul>
 <p>Using these data, we can calculate how the average distribution of
 households changes based on the average household size in the tract. Figure
-<a href="chap-blocks.html#fig:hh-marginal">1.7</a> shows precisely this distribution, using a cubic
+<a href="chap-blocks.html#fig:hh-marginal">1.8</a> shows precisely this distribution, using a cubic
 polynomial to fit the average distribution. Each set of four points represents
 one census tract; for instance, the lowest average household size is in tract
 <code>51770001100</code> with 1.37 persons per household on average. This tract shows
@@ -1360,7 +1487,7 @@ of 3 and 4+ person households.</p>
 <div class="figure"><span id="fig:hh-marginal"></span>
 <img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
 <p class="caption">
-Figure 1.7: Distribution of households by size, based on average households size.
+Figure 1.8: Distribution of households by size, based on average households size.
 </p>
 </div>
 <p>For the most part the distributions make sense, with a few exceptions. It makes
@@ -1372,11 +1499,11 @@ proportion is. We’ll need to do some manual adjusting to these curves.</p>
 <p>I have provided you with initial marginal distribution curves for the three
 marginal distributions of interest. These files are available
 <a href="https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg">on Box</a>, and the
-starting values are shown graphically in Figure <a href="chap-blocks.html#fig:raw-marginals">1.8</a>.</p>
+starting values are shown graphically in Figure <a href="chap-blocks.html#fig:raw-marginals">1.9</a>.</p>
 <div class="figure"><span id="fig:raw-marginals"></span>
 <img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
 <p class="caption">
-Figure 1.8: Raw marginal distribution curves from Roanoke region.
+Figure 1.9: Raw marginal distribution curves from Roanoke region.
 </p>
 </div>
 <p>Rules you need to follow when adjusting the curves:</p>
@@ -1408,7 +1535,7 @@ and what does not?</p>
 you to compute the shares that belong in the household seed file. Run the
 code below in an R session (with the <code>tidyverse</code> library loaded) to calculate
 the necessary shares. Follow along with the code to understand what is happening.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-blocks.html#cb30-1"></a>raw_counts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chap-blocks.html#cb47-1"></a>raw_counts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv&quot;</span>) </span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   RESIDENCE = col_character(),
@@ -1418,48 +1545,48 @@ the necessary shares. Follow along with the code to understand what is happening
 ##   output = col_character(),
 ##   count = col_number()
 ## )</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-blocks.html#cb32-1"></a>joint_distribution &lt;-<span class="st"> </span>raw_counts <span class="op">%&gt;%</span></span>
-<span id="cb32-2"><a href="chap-blocks.html#cb32-2"></a><span class="st">  </span><span class="co"># the data contain both &quot;estimates&quot; and &quot;margin of error&quot;. We only want to</span></span>
-<span id="cb32-3"><a href="chap-blocks.html#cb32-3"></a><span class="st">  </span><span class="co"># keep the estimates rows.</span></span>
-<span id="cb32-4"><a href="chap-blocks.html#cb32-4"></a><span class="st">  </span><span class="kw">filter</span>(output <span class="op">==</span><span class="st"> &quot;Estimate&quot;</span>)  <span class="op">%&gt;%</span></span>
-<span id="cb32-5"><a href="chap-blocks.html#cb32-5"></a><span class="st">  </span></span>
-<span id="cb32-6"><a href="chap-blocks.html#cb32-6"></a><span class="st">  </span><span class="co"># The data records size as text, with `0 workers`. We want to extract the</span></span>
-<span id="cb32-7"><a href="chap-blocks.html#cb32-7"></a><span class="st">  </span><span class="co"># numeric information from these fields. This line of code says, for the variables</span></span>
-<span id="cb32-8"><a href="chap-blocks.html#cb32-8"></a><span class="st">  </span><span class="co"># persons, workers, and vehicles, take all non-numeric characters and replace</span></span>
-<span id="cb32-9"><a href="chap-blocks.html#cb32-9"></a><span class="st">  </span><span class="co"># them with nothing. It looks like gibberish, but it came from lots of Stack</span></span>
-<span id="cb32-10"><a href="chap-blocks.html#cb32-10"></a><span class="st">  </span><span class="co"># Overflow searching. I can&#39;t come up with this stuff from thin air, you know.</span></span>
-<span id="cb32-11"><a href="chap-blocks.html#cb32-11"></a><span class="st">  </span><span class="kw">mutate_at</span>(</span>
-<span id="cb32-12"><a href="chap-blocks.html#cb32-12"></a>    <span class="kw">c</span>(<span class="st">&quot;persons&quot;</span>, <span class="st">&quot;workers&quot;</span>, <span class="st">&quot;vehicles&quot;</span>), </span>
-<span id="cb32-13"><a href="chap-blocks.html#cb32-13"></a>    <span class="cf">function</span>(x) {<span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;([0-9]+).*$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, x))}</span>
-<span id="cb32-14"><a href="chap-blocks.html#cb32-14"></a>  ) <span class="op">%&gt;%</span></span>
-<span id="cb32-15"><a href="chap-blocks.html#cb32-15"></a><span class="st">  </span></span>
-<span id="cb32-16"><a href="chap-blocks.html#cb32-16"></a><span class="st">  </span><span class="co"># the rows that say &quot;total households&quot; get turned to NA by the above process, and we</span></span>
-<span id="cb32-17"><a href="chap-blocks.html#cb32-17"></a><span class="st">  </span><span class="co"># don&#39;t want to keep those in anyways.</span></span>
-<span id="cb32-18"><a href="chap-blocks.html#cb32-18"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(persons), <span class="op">!</span><span class="kw">is.na</span>(workers), <span class="op">!</span><span class="kw">is.na</span>(vehicles)) <span class="op">%&gt;%</span></span>
-<span id="cb32-19"><a href="chap-blocks.html#cb32-19"></a><span class="st">  </span></span>
-<span id="cb32-20"><a href="chap-blocks.html#cb32-20"></a><span class="st">  </span><span class="co"># the roanoke model only includes households with 3+ workers, not 4+. So if a</span></span>
-<span id="cb32-21"><a href="chap-blocks.html#cb32-21"></a><span class="st">  </span><span class="co"># row is for more than 3 workers, we group it as 3</span></span>
-<span id="cb32-22"><a href="chap-blocks.html#cb32-22"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">workers =</span> <span class="kw">ifelse</span>(workers <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>, workers)) <span class="op">%&gt;%</span></span>
-<span id="cb32-23"><a href="chap-blocks.html#cb32-23"></a><span class="st">  </span></span>
-<span id="cb32-24"><a href="chap-blocks.html#cb32-24"></a><span class="st">  </span><span class="co"># but this creates a problem where we now have multiple rows with</span></span>
-<span id="cb32-25"><a href="chap-blocks.html#cb32-25"></a><span class="st">  </span><span class="co"># 3 workers. So we need to group and add up.</span></span>
-<span id="cb32-26"><a href="chap-blocks.html#cb32-26"></a><span class="st">  </span><span class="kw">group_by</span>(persons, workers, vehicles) <span class="op">%&gt;%</span></span>
-<span id="cb32-27"><a href="chap-blocks.html#cb32-27"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">sum</span>(count)) <span class="op">%&gt;%</span></span>
-<span id="cb32-28"><a href="chap-blocks.html#cb32-28"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
-<span id="cb32-29"><a href="chap-blocks.html#cb32-29"></a><span class="st">  </span></span>
-<span id="cb32-30"><a href="chap-blocks.html#cb32-30"></a><span class="st">  </span><span class="co"># Finally, we want to turn the numbers into a share. So we divde the</span></span>
-<span id="cb32-31"><a href="chap-blocks.html#cb32-31"></a><span class="st">  </span><span class="co"># counts by the total count in the whole table.</span></span>
-<span id="cb32-32"><a href="chap-blocks.html#cb32-32"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="chap-blocks.html#cb49-1"></a>joint_distribution &lt;-<span class="st"> </span>raw_counts <span class="op">%&gt;%</span></span>
+<span id="cb49-2"><a href="chap-blocks.html#cb49-2"></a><span class="st">  </span><span class="co"># the data contain both &quot;estimates&quot; and &quot;margin of error&quot;. We only want to</span></span>
+<span id="cb49-3"><a href="chap-blocks.html#cb49-3"></a><span class="st">  </span><span class="co"># keep the estimates rows.</span></span>
+<span id="cb49-4"><a href="chap-blocks.html#cb49-4"></a><span class="st">  </span><span class="kw">filter</span>(output <span class="op">==</span><span class="st"> &quot;Estimate&quot;</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb49-5"><a href="chap-blocks.html#cb49-5"></a><span class="st">  </span></span>
+<span id="cb49-6"><a href="chap-blocks.html#cb49-6"></a><span class="st">  </span><span class="co"># The data records size as text, with `0 workers`. We want to extract the</span></span>
+<span id="cb49-7"><a href="chap-blocks.html#cb49-7"></a><span class="st">  </span><span class="co"># numeric information from these fields. This line of code says, for the variables</span></span>
+<span id="cb49-8"><a href="chap-blocks.html#cb49-8"></a><span class="st">  </span><span class="co"># persons, workers, and vehicles, take all non-numeric characters and replace</span></span>
+<span id="cb49-9"><a href="chap-blocks.html#cb49-9"></a><span class="st">  </span><span class="co"># them with nothing. It looks like gibberish, but it came from lots of Stack</span></span>
+<span id="cb49-10"><a href="chap-blocks.html#cb49-10"></a><span class="st">  </span><span class="co"># Overflow searching. I can&#39;t come up with this stuff from thin air, you know.</span></span>
+<span id="cb49-11"><a href="chap-blocks.html#cb49-11"></a><span class="st">  </span><span class="kw">mutate_at</span>(</span>
+<span id="cb49-12"><a href="chap-blocks.html#cb49-12"></a>    <span class="kw">c</span>(<span class="st">&quot;persons&quot;</span>, <span class="st">&quot;workers&quot;</span>, <span class="st">&quot;vehicles&quot;</span>), </span>
+<span id="cb49-13"><a href="chap-blocks.html#cb49-13"></a>    <span class="cf">function</span>(x) {<span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;([0-9]+).*$&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, x))}</span>
+<span id="cb49-14"><a href="chap-blocks.html#cb49-14"></a>  ) <span class="op">%&gt;%</span></span>
+<span id="cb49-15"><a href="chap-blocks.html#cb49-15"></a><span class="st">  </span></span>
+<span id="cb49-16"><a href="chap-blocks.html#cb49-16"></a><span class="st">  </span><span class="co"># the rows that say &quot;total households&quot; get turned to NA by the above process, and we</span></span>
+<span id="cb49-17"><a href="chap-blocks.html#cb49-17"></a><span class="st">  </span><span class="co"># don&#39;t want to keep those in anyways.</span></span>
+<span id="cb49-18"><a href="chap-blocks.html#cb49-18"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(persons), <span class="op">!</span><span class="kw">is.na</span>(workers), <span class="op">!</span><span class="kw">is.na</span>(vehicles)) <span class="op">%&gt;%</span></span>
+<span id="cb49-19"><a href="chap-blocks.html#cb49-19"></a><span class="st">  </span></span>
+<span id="cb49-20"><a href="chap-blocks.html#cb49-20"></a><span class="st">  </span><span class="co"># the roanoke model only includes households with 3+ workers, not 4+. So if a</span></span>
+<span id="cb49-21"><a href="chap-blocks.html#cb49-21"></a><span class="st">  </span><span class="co"># row is for more than 3 workers, we group it as 3</span></span>
+<span id="cb49-22"><a href="chap-blocks.html#cb49-22"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">workers =</span> <span class="kw">ifelse</span>(workers <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>, workers)) <span class="op">%&gt;%</span></span>
+<span id="cb49-23"><a href="chap-blocks.html#cb49-23"></a><span class="st">  </span></span>
+<span id="cb49-24"><a href="chap-blocks.html#cb49-24"></a><span class="st">  </span><span class="co"># but this creates a problem where we now have multiple rows with</span></span>
+<span id="cb49-25"><a href="chap-blocks.html#cb49-25"></a><span class="st">  </span><span class="co"># 3 workers. So we need to group and add up.</span></span>
+<span id="cb49-26"><a href="chap-blocks.html#cb49-26"></a><span class="st">  </span><span class="kw">group_by</span>(persons, workers, vehicles) <span class="op">%&gt;%</span></span>
+<span id="cb49-27"><a href="chap-blocks.html#cb49-27"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">sum</span>(count)) <span class="op">%&gt;%</span></span>
+<span id="cb49-28"><a href="chap-blocks.html#cb49-28"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
+<span id="cb49-29"><a href="chap-blocks.html#cb49-29"></a><span class="st">  </span></span>
+<span id="cb49-30"><a href="chap-blocks.html#cb49-30"></a><span class="st">  </span><span class="co"># Finally, we want to turn the numbers into a share. So we divde the</span></span>
+<span id="cb49-31"><a href="chap-blocks.html#cb49-31"></a><span class="st">  </span><span class="co"># counts by the total count in the whole table.</span></span>
+<span id="cb49-32"><a href="chap-blocks.html#cb49-32"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">share =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count))</span></code></pre></div>
 <pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
 <pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
 <pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;persons&#39;, &#39;workers&#39; (override with `.groups` argument)</code></pre>
 <p>Now we can see the joint distribution of size, workers, and vehicles.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="chap-blocks.html#cb37-1"></a>joint_distribution <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="chap-blocks.html#cb37-2"></a><span class="st">  </span><span class="kw">group_by</span>(persons) <span class="op">%&gt;%</span></span>
-<span id="cb37-3"><a href="chap-blocks.html#cb37-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>count) <span class="op">%&gt;%</span></span>
-<span id="cb37-4"><a href="chap-blocks.html#cb37-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> vehicles, <span class="dt">values_from =</span> share, <span class="dt">names_prefix =</span> <span class="st">&quot;vehicles &quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb37-5"><a href="chap-blocks.html#cb37-5"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chap-blocks.html#cb54-1"></a>joint_distribution <span class="op">%&gt;%</span></span>
+<span id="cb54-2"><a href="chap-blocks.html#cb54-2"></a><span class="st">  </span><span class="kw">group_by</span>(persons) <span class="op">%&gt;%</span></span>
+<span id="cb54-3"><a href="chap-blocks.html#cb54-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>count) <span class="op">%&gt;%</span></span>
+<span id="cb54-4"><a href="chap-blocks.html#cb54-4"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> vehicles, <span class="dt">values_from =</span> share, <span class="dt">names_prefix =</span> <span class="st">&quot;vehicles &quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-5"><a href="chap-blocks.html#cb54-5"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1606,8 +1733,8 @@ the necessary shares. Follow along with the code to understand what is happening
 Save this data table as a DBF file that you can put into the model at
 <code>params/classification/hh_seed.dbf</code>. The <code>write.dbf()</code> function is part of the
 <code>foreign</code> library.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-blocks.html#cb38-1"></a><span class="kw">as.data.frame</span>(joint_distribution) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb38-2"><a href="chap-blocks.html#cb38-2"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_seed.dbf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chap-blocks.html#cb55-1"></a><span class="kw">as.data.frame</span>(joint_distribution) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb55-2"><a href="chap-blocks.html#cb55-2"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_seed.dbf&quot;</span>)</span></code></pre></div>
 </div>
 <div id="report" class="section level3 unnumbered">
 <h3>Report</h3>
@@ -1646,18 +1773,18 @@ these numbers make more sense?</p>
 <p>You can edit the DBF files in Cube by hand; its copy-paste feature is not what
 you would expect from a software program in 2020 (or 2005). A more efficient
 way might be to use the <code>write.dbf()</code> function in R.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="chap-blocks.html#cb39-1"></a><span class="co"># read the file you edited; there is also a readxl() function for excel</span></span>
-<span id="cb39-2"><a href="chap-blocks.html#cb39-2"></a><span class="co"># spreadsheets</span></span>
-<span id="cb39-3"><a href="chap-blocks.html#cb39-3"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/raw_size.csv&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb39-4"><a href="chap-blocks.html#cb39-4"></a><span class="st">  </span><span class="co"># need to make sure the names on the columns match what Cube is expecting to</span></span>
-<span id="cb39-5"><a href="chap-blocks.html#cb39-5"></a><span class="st">  </span><span class="co"># get; you&#39;ll need to change this for the workers and vehicles</span></span>
-<span id="cb39-6"><a href="chap-blocks.html#cb39-6"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">AVG =</span> average, <span class="dt">PERSONS_1 =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">PERSONS_2 =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>,</span>
-<span id="cb39-7"><a href="chap-blocks.html#cb39-7"></a>         <span class="st">`</span><span class="dt">PERSONS_3</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">3</span><span class="st">`</span>, <span class="dt">PERSONS_4 =</span> <span class="st">`</span><span class="dt">4</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
-<span id="cb39-8"><a href="chap-blocks.html#cb39-8"></a><span class="st">  </span><span class="co"># read_csv makes a modern data frame called a `tibble`. The old DBF function</span></span>
-<span id="cb39-9"><a href="chap-blocks.html#cb39-9"></a><span class="st">  </span><span class="co"># has no idea what do to with this. So we need to convert the tibble to an</span></span>
-<span id="cb39-10"><a href="chap-blocks.html#cb39-10"></a><span class="st">  </span><span class="co"># old-fashioned `data.frame`</span></span>
-<span id="cb39-11"><a href="chap-blocks.html#cb39-11"></a><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></span>
-<span id="cb39-12"><a href="chap-blocks.html#cb39-12"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_size_lookup.dbf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="chap-blocks.html#cb56-1"></a><span class="co"># read the file you edited; there is also a readxl() function for excel</span></span>
+<span id="cb56-2"><a href="chap-blocks.html#cb56-2"></a><span class="co"># spreadsheets</span></span>
+<span id="cb56-3"><a href="chap-blocks.html#cb56-3"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/raw_size.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb56-4"><a href="chap-blocks.html#cb56-4"></a><span class="st">  </span><span class="co"># need to make sure the names on the columns match what Cube is expecting to</span></span>
+<span id="cb56-5"><a href="chap-blocks.html#cb56-5"></a><span class="st">  </span><span class="co"># get; you&#39;ll need to change this for the workers and vehicles</span></span>
+<span id="cb56-6"><a href="chap-blocks.html#cb56-6"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">AVG =</span> average, <span class="dt">PERSONS_1 =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">PERSONS_2 =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>,</span>
+<span id="cb56-7"><a href="chap-blocks.html#cb56-7"></a>         <span class="st">`</span><span class="dt">PERSONS_3</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">3</span><span class="st">`</span>, <span class="dt">PERSONS_4 =</span> <span class="st">`</span><span class="dt">4</span><span class="st">`</span>) <span class="op">%&gt;%</span></span>
+<span id="cb56-8"><a href="chap-blocks.html#cb56-8"></a><span class="st">  </span><span class="co"># read_csv makes a modern data frame called a `tibble`. The old DBF function</span></span>
+<span id="cb56-9"><a href="chap-blocks.html#cb56-9"></a><span class="st">  </span><span class="co"># has no idea what do to with this. So we need to convert the tibble to an</span></span>
+<span id="cb56-10"><a href="chap-blocks.html#cb56-10"></a><span class="st">  </span><span class="co"># old-fashioned `data.frame`</span></span>
+<span id="cb56-11"><a href="chap-blocks.html#cb56-11"></a><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></span>
+<span id="cb56-12"><a href="chap-blocks.html#cb56-12"></a><span class="st">  </span>foreign<span class="op">::</span><span class="kw">write.dbf</span>(<span class="st">&quot;data/hh_size_lookup.dbf&quot;</span>)</span></code></pre></div>
 </div>
 <p>The classification model incorporates a zone-level IPF process executed in R; the
 script for this process is in <code>R/classification.R</code>. Open the script and find
