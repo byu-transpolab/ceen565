@@ -301,7 +301,7 @@ ggplot(psrc_attractions, aes(x = totemp, y = HBW)) +
 ## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
-<img src="02_tripgen_files/figure-html/totemp-hbw-1.png" width="672" />
+![](02_tripgen_files/figure-epub3/totemp-hbw-1.png)<!-- -->
 
 We can estimate a linear regression model with the `lm` function. In this function
 we specify the model as `y ~ x + ...`.
@@ -381,7 +381,7 @@ heteroskedasticity. But there may be things we can try to make it better.
 plot(hbo_rates, which = 1)
 ```
 
-<img src="02_tripgen_files/figure-html/fitted-1.png" width="672" />
+![](02_tripgen_files/figure-epub3/fitted-1.png)<!-- -->
 
 
 ## Homework {-#hw-generation}

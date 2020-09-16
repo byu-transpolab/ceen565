@@ -5,7 +5,7 @@ The purpose of the trip distribution model is to show
 
 ## Homework {-#hw-distribution}
 <div class="figure">
-<img src="images/03_networkgraph.png" alt="Simple 3-zone system." width="570" />
+<img src="images/03_networkgraph.png" alt="Simple 3-zone system." width="1141" />
 <p class="caption">(\#fig:networkgraph)Simple 3-zone system.</p>
 </div>
 
@@ -28,7 +28,7 @@ constrains the predicted trips to a given zone to equal the true zonal
 attractions $A_j$.
 
 <div class="figure">
-<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="384" />
+<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="768" />
 <p class="caption">(\#fig:tripbalancing)Trip balancing algorithm.</p>
 </div>
 

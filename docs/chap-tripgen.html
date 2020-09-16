@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-09-12" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,15 +165,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-homework"><i class="fa fa-check"></i><b>2.3</b> Trip Generation Homework</a></li>
-<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-lab"><i class="fa fa-check"></i><b>2.4</b> Trip Generation Lab</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.4.1</b> Trip Production</a></li>
-<li class="chapter" data-level="2.4.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.4.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#hw-generation"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab-generation"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.2.1</b> Trip Production</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.2.2</b> Trip Attraction</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.2.3</b> Report</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a><ul>
-<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="chap-distribution.html"><a href="chap-distribution.html#first-problem-gravity-model-development"><i class="fa fa-check"></i><b>3.0.1</b> First Problem: Gravity Model Development</a></li>
+<li class="chapter" data-level="3.0.2" data-path="chap-distribution.html"><a href="chap-distribution.html#second-problem-model-application"><i class="fa fa-check"></i><b>3.0.2</b> Second Problem: Model Application</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
@@ -510,8 +513,8 @@ heteroskedasticity. But there may be things we can try to make it better.</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="chap-tripgen.html#cb81-1"></a><span class="kw">plot</span>(hbo_rates, <span class="dt">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="02_tripgen_files/figure-html/fitted-1.png" width="672" /></p>
 </div>
-<div id="trip-generation-homework" class="section level2">
-<h2><span class="header-section-number">2.3</span> Trip Generation Homework</h2>
+<div id="hw-generation" class="section level2 unnumbered">
+<h2>Homework</h2>
 <ol style="list-style-type: decimal">
 <li><p>Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not?</p></li>
@@ -533,12 +536,12 @@ this by adding a <code>-1</code> to the formula, as in <code>lm(y ~ x - 1)</code
 change? By how much? Should you keep the intercept in or remove it?</p></li>
 </ol>
 </div>
-<div id="trip-generation-lab" class="section level2">
-<h2><span class="header-section-number">2.4</span> Trip Generation Lab</h2>
+<div id="lab-generation" class="section level2 unnumbered">
+<h2>Lab</h2>
 <p>In this lab you will implement and calibrate trip generation rates for the RVTPO
 model.</p>
 <div id="trip-production-1" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Trip Production</h3>
+<h3><span class="header-section-number">2.2.1</span> Trip Production</h3>
 <p>The trip production rates are stored in the <code>params/trip_prod/</code> folder, with a
 dbf file for each trip purpose in the model. We are going to calibrate the
 following trip purposes:</p>
@@ -612,7 +615,7 @@ the trip rates is maintained (i.e. households with more workers must make at
 least as many work trips).</p>
 </div>
 <div id="trip-attraction-1" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> Trip Attraction</h3>
+<h3><span class="header-section-number">2.2.2</span> Trip Attraction</h3>
 <p>The trip attraction rates enter into the destination choice model, but it is
 helpful to compare the total forecasted attractions using the rates you
 estimated. Apply the rates to the zonal socioeconomic data file and calculate
@@ -621,7 +624,7 @@ rates so that the total attractions for your three estimated purposes match the
 regional totals.</p>
 </div>
 <div id="report" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> Report</h3>
+<h3><span class="header-section-number">2.2.3</span> Report</h3>
 <p>Prepare a technical report describing the process by which you estimated
 household trip production and attraction rates, and calibrated the trip rates to
 reproduce regional totals. Calculate the margin of error for <em>all</em> purposes (not

@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-09-12" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,15 +165,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-homework"><i class="fa fa-check"></i><b>2.3</b> Trip Generation Homework</a></li>
-<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-lab"><i class="fa fa-check"></i><b>2.4</b> Trip Generation Lab</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.4.1</b> Trip Production</a></li>
-<li class="chapter" data-level="2.4.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.4.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#hw-generation"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab-generation"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.2.1</b> Trip Production</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.2.2</b> Trip Attraction</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.2.3</b> Report</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a><ul>
-<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="chap-distribution.html"><a href="chap-distribution.html#first-problem-gravity-model-development"><i class="fa fa-check"></i><b>3.0.1</b> First Problem: Gravity Model Development</a></li>
+<li class="chapter" data-level="3.0.2" data-path="chap-distribution.html"><a href="chap-distribution.html#second-problem-model-application"><i class="fa fa-check"></i><b>3.0.2</b> Second Problem: Model Application</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
@@ -231,24 +234,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="chap-distribution" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Trip Distribution</h1>
+<p>The purpose of the trip distribution model is to show</p>
 <div id="hw-distribution" class="section level2 unnumbered">
 <h2>Homework</h2>
-<div align = "center">
-<img src="images/03_networkgraph.png" title="fig:" width="400" alt="Simple Distribution Graph" />
-<div align = "left">
-<p>The figure above<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> presents a simple three zone
-system, the link travel times for this system (for internal trips, <span class="math inline">\(t_{ii}=2\)</span>
-globally), and the zonal productions and attractions. Assume a gravity model of
-the form.</p>
+<div class="figure"><span id="fig:networkgraph"></span>
+<img src="images/03_networkgraph.png" alt="Simple 3-zone system." width="570" />
+<p class="caption">
+Figure 3.1: Simple 3-zone system.
+</p>
+</div>
+<p>shows a basic three-zone system,
+including the
+productions and attractions at each zone, as well as the travel times between them.</p>
+<p>Figure <a href="chap-distribution.html#fig:networkgraph">3.1</a><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+presents a simple three zone system, the link travel times for this system (for
+internal trips, <span class="math inline">\(t_{ii}=2\)</span> globally), and the zonal productions and attractions.
+Assume a gravity model of the form</p>
 <p><span class="math display">\[T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j&#39;}A^*_{j&#39;}(t_{ij})^{-b}}\]</span></p>
-<p>where <span class="math inline">\(A_j^*\)</span> is a ``modified attraction term’’ defined by the
-algorithm shown in the figure below. This algorithm constrains
-the predicted trips to a given zone to equal the true zonal attractions
-<span class="math inline">\(A_j\)</span>.</p>
-<div align = "center">
-<img src="images/03_algorithm.png" title="fig:" width="250" alt="Trip Balancing Algorithm" />
-<div align = "left">
-<p>Question 1: Write a computer program or build a spreadsheet that computes the
+<p>where <span class="math inline">\(A_j^*\)</span> is a “modified attraction term” defined by the
+algorithm shown in Figure <a href="chap-distribution.html#fig:tripbalancing">3.2</a> below. This algorithm
+constrains the predicted trips to a given zone to equal the true zonal
+attractions <span class="math inline">\(A_j\)</span>.</p>
+<div class="figure"><span id="fig:tripbalancing"></span>
+<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="384" />
+<p class="caption">
+Figure 3.2: Trip balancing algorithm.
+</p>
+</div>
+<div id="first-problem-gravity-model-development" class="section level3">
+<h3><span class="header-section-number">3.0.1</span> First Problem: Gravity Model Development</h3>
+<p>Write a computer program or build a spreadsheet that computes the
 O-D flows for this system using the algorithm (with <span class="math inline">\(\varepsilon=1\)</span>). Find the
 value of <span class="math inline">\(b\)</span> (to a single decimal place) which provides the “best fit” with the
 observed O-D matrix in the table below. Discuss how you determined which <span class="math inline">\(b\)</span>
@@ -283,12 +298,83 @@ value gave the “best fit.”</p>
 </tr>
 </tbody>
 </table>
-<p>Question 2: The region represented in Question 1 has begun improvements to the
-link between zones 1 and 2 that will reduce the travel time from 5 to 3. Using
-your program and the value of <span class="math inline">\(b\)</span> estimated above, determine the effect of this
-improvement on the predicted trip distribution matrix. Is the response
-reasonable?</p>
+<p>The function below shows how to calculate one round of a gravity model in R.
+The function takes the production and attractions vector, in addition to the
+cost matrix and the impedance parameter, and calculates the <span class="math inline">\(T_{ij}\)</span> matrix.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chap-distribution.html#cb86-1"></a><span class="co">#&#39; Gravity Model</span></span>
+<span id="cb86-2"><a href="chap-distribution.html#cb86-2"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
+<span id="cb86-3"><a href="chap-distribution.html#cb86-3"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
+<span id="cb86-4"><a href="chap-distribution.html#cb86-4"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
+<span id="cb86-5"><a href="chap-distribution.html#cb86-5"></a><span class="co">#&#39; @param b impedance parameter</span></span>
+<span id="cb86-6"><a href="chap-distribution.html#cb86-6"></a>gravity &lt;-<span class="st"> </span><span class="cf">function</span>(p, a, C, b){</span>
+<span id="cb86-7"><a href="chap-distribution.html#cb86-7"></a>  <span class="co"># output matrix (all 0 here)</span></span>
+<span id="cb86-8"><a href="chap-distribution.html#cb86-8"></a>  trips &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow =</span> <span class="kw">length</span>(p), <span class="dt">ncol =</span> <span class="kw">length</span>(a)) </span>
+<span id="cb86-9"><a href="chap-distribution.html#cb86-9"></a>  <span class="co"># loop over all rows (production)</span></span>
+<span id="cb86-10"><a href="chap-distribution.html#cb86-10"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(p)) {</span>
+<span id="cb86-11"><a href="chap-distribution.html#cb86-11"></a>    bottomA &lt;-<span class="st"> </span><span class="kw">sum</span>(a <span class="op">*</span><span class="st"> </span>C[i, ]<span class="op">^</span>(<span class="op">-</span>b)) <span class="co"># denominator</span></span>
+<span id="cb86-12"><a href="chap-distribution.html#cb86-12"></a>    </span>
+<span id="cb86-13"><a href="chap-distribution.html#cb86-13"></a>    <span class="co"># loop over all columns (attraction)</span></span>
+<span id="cb86-14"><a href="chap-distribution.html#cb86-14"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(a)) {</span>
+<span id="cb86-15"><a href="chap-distribution.html#cb86-15"></a>      <span class="co"># calculate gravity model for trips from i to j</span></span>
+<span id="cb86-16"><a href="chap-distribution.html#cb86-16"></a>      topA &lt;-<span class="st"> </span>a[j] <span class="op">*</span><span class="st"> </span>C[i,j]<span class="op">^</span>(<span class="op">-</span>b)</span>
+<span id="cb86-17"><a href="chap-distribution.html#cb86-17"></a>      trips[i, j] &lt;-<span class="st">  </span>p[i] <span class="op">*</span><span class="st"> </span>topA <span class="op">/</span><span class="st"> </span>bottomA</span>
+<span id="cb86-18"><a href="chap-distribution.html#cb86-18"></a>    }</span>
+<span id="cb86-19"><a href="chap-distribution.html#cb86-19"></a>  }</span>
+<span id="cb86-20"><a href="chap-distribution.html#cb86-20"></a>  </span>
+<span id="cb86-21"><a href="chap-distribution.html#cb86-21"></a>  <span class="kw">return</span>(trips)</span>
+<span id="cb86-22"><a href="chap-distribution.html#cb86-22"></a>}</span></code></pre></div>
+<p>Once you have this function (as well as the necessary vectors and cost matrix),
+you can calculate the gravity model with arbitrary values of the impedance coefficient.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="chap-distribution.html#cb87-1"></a><span class="co"># calculate one round of gravity model with </span></span>
+<span id="cb87-2"><a href="chap-distribution.html#cb87-2"></a>p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">100</span>)</span>
+<span id="cb87-3"><a href="chap-distribution.html#cb87-3"></a>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">150</span>)</span>
+<span id="cb87-4"><a href="chap-distribution.html#cb87-4"></a>C &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb87-5"><a href="chap-distribution.html#cb87-5"></a><span class="kw">gravity</span>(p, a, C, <span class="dt">b =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>##          [,1]      [,2]     [,3]
+## [1,] 59.22613  9.364473 31.40940
+## [2,] 84.61917 33.448665 81.93216
+## [3,] 42.56523 12.287524 45.14725</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chap-distribution.html#cb89-1"></a><span class="kw">gravity</span>(p, a, C, <span class="dt">b =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<pre><code>##          [,1]      [,2]     [,3]
+## [1,] 75.27793  4.760994 19.96108
+## [2,] 55.52540 54.870858 89.60374
+## [3,] 28.52074 10.977638 60.50162</code></pre>
+<p>The code I provided above is real, and will work for you if you choose to do
+this exercise in R. The code below is pseudo-code that you will need to flesh
+out on your own (and with your classmates) to accomplish the first part of this
+homework. You will need to figure out how to store the adjusted attractions
+vector, as well as how to compute the error between successive iterations of the
+algorithm.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chap-distribution.html#cb91-1"></a><span class="co">#&#39; Function to balance gravity model PSEUDO-CODE</span></span>
+<span id="cb91-2"><a href="chap-distribution.html#cb91-2"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
+<span id="cb91-3"><a href="chap-distribution.html#cb91-3"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
+<span id="cb91-4"><a href="chap-distribution.html#cb91-4"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
+<span id="cb91-5"><a href="chap-distribution.html#cb91-5"></a><span class="co">#&#39; @param b impedance parameter</span></span>
+<span id="cb91-6"><a href="chap-distribution.html#cb91-6"></a><span class="co">#&#39; @param tolerance Acceptable change in trips matrix</span></span>
+<span id="cb91-7"><a href="chap-distribution.html#cb91-7"></a><span class="kw">balance_gravity</span>(p, a, C, b, tolerance) {</span>
+<span id="cb91-8"><a href="chap-distribution.html#cb91-8"></a>  <span class="co"># loop through algorithm</span></span>
+<span id="cb91-9"><a href="chap-distribution.html#cb91-9"></a>  <span class="cf">while</span>(error <span class="op">&gt;</span><span class="st"> </span>tolerance){</span>
+<span id="cb91-10"><a href="chap-distribution.html#cb91-10"></a>    <span class="co"># compute gravity model with adjusted attractions, using your function</span></span>
+<span id="cb91-11"><a href="chap-distribution.html#cb91-11"></a>    trips &lt;-<span class="st"> </span><span class="kw">gravity</span>(p, astar, C, b) </span>
+<span id="cb91-12"><a href="chap-distribution.html#cb91-12"></a>    <span class="co"># calculate the error as the change in trips in successive iterations</span></span>
+<span id="cb91-13"><a href="chap-distribution.html#cb91-13"></a>  }</span>
+<span id="cb91-14"><a href="chap-distribution.html#cb91-14"></a>  <span class="kw">return</span>(trips)</span>
+<span id="cb91-15"><a href="chap-distribution.html#cb91-15"></a>}</span></code></pre></div>
+<p>Once you have the algorithm in place, you will need to determine how you will
+decide which value of <code>b</code> minimizes the total error between the predicted and
+observed trip distribution. You could solve this manually by trying different
+values of beta, or by using a goal seek / optimization program. The choice
+is yours, but you should document what you do in your homework response.</p>
+</div>
+<div id="second-problem-model-application" class="section level3">
+<h3><span class="header-section-number">3.0.2</span> Second Problem: Model Application</h3>
+<p>The region represented in Problem 1 has begun improvements to the
+link between zones 1 and 2 that will reduce the travel cost from 5 to 3. Using
+your algorithm and the value of <span class="math inline">\(b\)</span> estimated above, determine the effect of this
+improvement on the predicted trip distribution matrix.<br />
+Is the response reasonable?</p>
 
+</div>
 </div>
 </div>
 <div class="footnotes">

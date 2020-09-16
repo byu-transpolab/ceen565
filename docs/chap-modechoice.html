@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-09-12" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,15 +165,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-homework"><i class="fa fa-check"></i><b>2.3</b> Trip Generation Homework</a></li>
-<li class="chapter" data-level="2.4" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-generation-lab"><i class="fa fa-check"></i><b>2.4</b> Trip Generation Lab</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.4.1</b> Trip Production</a></li>
-<li class="chapter" data-level="2.4.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.4.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.4.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.4.3</b> Report</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#hw-generation"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab-generation"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.2.1</b> Trip Production</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.2.2</b> Trip Attraction</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.2.3</b> Report</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a><ul>
-<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a></li>
+<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="chap-distribution.html"><a href="chap-distribution.html#first-problem-gravity-model-development"><i class="fa fa-check"></i><b>3.0.1</b> First Problem: Gravity Model Development</a></li>
+<li class="chapter" data-level="3.0.2" data-path="chap-distribution.html"><a href="chap-distribution.html#second-problem-model-application"><i class="fa fa-check"></i><b>3.0.2</b> Second Problem: Model Application</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a></li>
@@ -309,7 +312,7 @@ trips. The data is available on <a href="https://byu.box.com/shared/static/px4v9
 are listed as <code>worktrips_logitdata.rds</code>. We will also need to load the
 <code>mlogit</code> library package, which contains the tools necessary to estimate
 multinomial logit models.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chap-modechoice.html#cb86-1"></a><span class="kw">library</span>(mlogit)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chap-modechoice.html#cb92-1"></a><span class="kw">library</span>(mlogit)</span></code></pre></div>
 <pre><code>## Warning: package &#39;mlogit&#39; was built under R version 4.0.2</code></pre>
 <pre><code>## Loading required package: dfidx</code></pre>
 <pre><code>## 
@@ -317,12 +320,12 @@ multinomial logit models.</p>
 <pre><code>## The following object is masked from &#39;package:stats&#39;:
 ## 
 ##     filter</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chap-modechoice.html#cb91-1"></a>worktrips &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;data/worktrips_logitdata.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chap-modechoice.html#cb97-1"></a>worktrips &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;data/worktrips_logitdata.rds&quot;</span>)</span></code></pre></div>
 <p>Because multinomial logit models are so different from other models,
 the data are stored in a special type of data frame. You can see the first several
 rows of this data below; Person 1 in household 2 has five alternatives, and they
 chose to drive alone. Person 3 chose to take transit.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chap-modechoice.html#cb92-1"></a><span class="kw">head</span>(worktrips[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="chap-modechoice.html#cb98-1"></a><span class="kw">head</span>(worktrips[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>##                  HHID PERID CASE       ALTNUM NUMALTS CHOSEN  IVTT OVTT
 ## 2-1. Drive Alone    2     1    1  Drive Alone       5   TRUE 13.38  2.0
 ## 2-1. Share 2        2     1    1      Share 2       5  FALSE 18.38  2.0
@@ -352,7 +355,7 @@ estimate for each alternative. That is, <span class="math inline">\(\hat{\beta}_
 constant across alternatives, like the distance of the trip.</li>
 </ul>
 <p>To specify the model, we use the following construction.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chap-modechoice.html#cb94-1"></a>fit.mnl &lt;-<span class="st"> </span><span class="kw">mlogit</span> ( CHOICE <span class="op">~</span><span class="st"> </span>Generic <span class="op">|</span><span class="st"> </span>Alt.Specific, <span class="dt">data =</span> logitdata )</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chap-modechoice.html#cb100-1"></a>fit.mnl &lt;-<span class="st"> </span><span class="kw">mlogit</span> ( CHOICE <span class="op">~</span><span class="st"> </span>Generic <span class="op">|</span><span class="st"> </span>Alt.Specific, <span class="dt">data =</span> logitdata )</span></code></pre></div>
 <p>To examine the model output, the standard <code>summary()</code> command will produce a
 coefficients table and key test statistics. The the <code>texreg</code> package will
 produce convenient model comparison tables that can be included in a report or
@@ -423,8 +426,8 @@ etc., until you are satisfied that the model meets the targets.</p>
 the coefficients in a table in your lab report accompanying a description of the
 purpose of each coefficient and any notable values. These coefficients are
 fixed; they should not change as part of this exercise.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chap-modechoice.html#cb96-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb96-2"><a href="chap-modechoice.html#cb96-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chap-modechoice.html#cb102-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb102-2"><a href="chap-modechoice.html#cb102-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `;N` = col_double(),
@@ -629,8 +632,8 @@ with their nesting structure are:</p>
 |   |--Premium
 |
 |-- Non-motorized</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chap-modechoice.html#cb99-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb99-2"><a href="chap-modechoice.html#cb99-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chap-modechoice.html#cb105-1"></a><span class="kw">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb105-2"><a href="chap-modechoice.html#cb105-2"></a><span class="st">  </span>pander<span class="op">::</span><span class="kw">pander</span>()</span></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `;N` = col_double(),
@@ -753,9 +756,9 @@ bias adjustment formula,</p>
 <p><span class="math display">\[\alpha_{n+1} = \alpha_n + \log(A_j / S_j) \]</span></p>
 <p>Where <span class="math inline">\(A_j\)</span> is the population share (target) and <span class="math inline">\(S_j\)</span> is the model share.
 The population shares (targets) are given below.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="chap-modechoice.html#cb101-1"></a><span class="co"># Population shares (targets)</span></span>
-<span id="cb101-2"><a href="chap-modechoice.html#cb101-2"></a><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="op">%&gt;%</span></span>
-<span id="cb101-3"><a href="chap-modechoice.html#cb101-3"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chap-modechoice.html#cb107-1"></a><span class="co"># Population shares (targets)</span></span>
+<span id="cb107-2"><a href="chap-modechoice.html#cb107-2"></a><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="op">%&gt;%</span></span>
+<span id="cb107-3"><a href="chap-modechoice.html#cb107-3"></a><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -826,8 +829,8 @@ or another.</p>
 <p>The table and figure below show the observed trip length frequency distributions
 for the purposes you need to calibrate. An Excel file with the values is on
 LearningSuite.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chap-modechoice.html#cb102-1"></a>tlfd &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
-<span id="cb102-2"><a href="chap-modechoice.html#cb102-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tlfd)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="chap-modechoice.html#cb108-1"></a>tlfd &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
+<span id="cb108-2"><a href="chap-modechoice.html#cb108-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tlfd)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1018,10 +1021,10 @@ LearningSuite.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="chap-modechoice.html#cb103-1"></a><span class="kw">ggplot</span>(tlfd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(purpose, share, HBW<span class="op">:</span>HBSH), </span>
-<span id="cb103-2"><a href="chap-modechoice.html#cb103-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> LOW, <span class="dt">y =</span> share, <span class="dt">color =</span> purpose)) <span class="op">+</span></span>
-<span id="cb103-3"><a href="chap-modechoice.html#cb103-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb103-4"><a href="chap-modechoice.html#cb103-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chap-modechoice.html#cb109-1"></a><span class="kw">ggplot</span>(tlfd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(purpose, share, HBW<span class="op">:</span>HBSH), </span>
+<span id="cb109-2"><a href="chap-modechoice.html#cb109-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> LOW, <span class="dt">y =</span> share, <span class="dt">color =</span> purpose)) <span class="op">+</span></span>
+<span id="cb109-3"><a href="chap-modechoice.html#cb109-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb109-4"><a href="chap-modechoice.html#cb109-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
 <p><img src="04_modechoice_files/figure-html/tfld-plot-1.png" width="672" /></p>
 <p>The modeled TLFD for each purpose can be had on the model home screen as an
 output of the trip distribution model. Calculate the error between your observed
