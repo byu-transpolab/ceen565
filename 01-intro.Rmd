@@ -588,7 +588,7 @@ The bottom three layers are shown in Figure \@ref(fig:censusgeos). Each layer
 nests completely within the layer above it. More detailed data is available
 at less spatially detailed geographies.
 
-```{r censusgeos, fig.cap="US Census Geographies in Central Provo.", echo = FALSE, messages = FALSE, warning = FALSE, cache = FALSE}
+```{r censusgeos, fig.cap="US Census Geographies in Central Provo.", echo = FALSE, messages = FALSE, warning = FALSE, cache = TRUE}
 ut_tracts <- tracts("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
   filter(TRACTCE %in% c("001601", "001504", "001602", "001603", "001701",
                         "001900", "001801", "001702", "001802", "001803",

@@ -1,7 +1,7 @@
 # R and RStudio Help {#app-rstudio}
 
 ```{r setup, echo = FALSE}
-knitr::opts_chunk$set(warning = FALSE, error = TRUE)
+knitr::opts_chunk$set(warning = FALSE, error = TRUE, cache = TRUE)
 ```
 
 
