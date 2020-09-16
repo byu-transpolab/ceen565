@@ -182,7 +182,7 @@ plot(hbo_rates, which = 1)
 ```
 
 
-## Trip Generation Homework
+## Homework {-#hw-generation}
 
 1. Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not? 
@@ -209,7 +209,7 @@ models have the best fit in terms of $R^2$ value? Why?
 this by adding a `-1` to the formula, as in `lm(y ~ x - 1)`. Do the rates
 change? By how much? Should you keep the intercept in or remove it?
 
-## Trip Generation Lab 
+## Lab  {-#lab-generation}
 
 In this lab you will implement and calibrate trip generation rates for the RVTPO
 model.

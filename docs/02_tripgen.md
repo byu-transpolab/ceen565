@@ -301,7 +301,7 @@ ggplot(psrc_attractions, aes(x = totemp, y = HBW)) +
 ## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
-![](02_tripgen_files/figure-epub3/totemp-hbw-1.png)<!-- -->
+<img src="02_tripgen_files/figure-html/totemp-hbw-1.png" width="672" />
 
 We can estimate a linear regression model with the `lm` function. In this function
 we specify the model as `y ~ x + ...`.
@@ -381,10 +381,10 @@ heteroskedasticity. But there may be things we can try to make it better.
 plot(hbo_rates, which = 1)
 ```
 
-![](02_tripgen_files/figure-epub3/fitted-1.png)<!-- -->
+<img src="02_tripgen_files/figure-html/fitted-1.png" width="672" />
 
 
-## Trip Generation Homework
+## Homework {-#hw-generation}
 
 1. Calculate the trip rates for each purpose by household size, and by income
 group. Do the rates make sense? Why or why not? 
@@ -411,7 +411,7 @@ models have the best fit in terms of $R^2$ value? Why?
 this by adding a `-1` to the formula, as in `lm(y ~ x - 1)`. Do the rates
 change? By how much? Should you keep the intercept in or remove it?
 
-## Trip Generation Lab 
+## Lab  {-#lab-generation}
 
 In this lab you will implement and calibrate trip generation rates for the RVTPO
 model.
