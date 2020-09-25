@@ -25,7 +25,7 @@ nato0 <- function(x){ifelse(is.na(x), 0, x)}
 
 tripprod <- hh %>%
   left_join(trips, by = "houseid") %>%
-  # change all NA values in columns from the trips data to 0.a
+  # change all NA values in columns from the trips data to 0
   mutate_at(vars(names(trips)), nato0)
 
 # Trip productions ==============
@@ -38,3 +38,17 @@ tripprod %>%
   group_by(hhsize, hhvehcnt) %>%
   summarise(count = n()) %>%
   pivot_wider(names_from = hhvehcnt, values_from = count)
+
+# consider variance ======
+tripprod %>%
+  group_by(hhsize, hhvehcnt) %>%
+  summarise(
+    mean_hbw = weighted.mean(HBW, wthhfin),
+    sd_hbw = sqrt(Hmisc::wtd.var(HBW, wthhfin))
+  ) %>%
+  ggplot(aes(x = hhsize, y = mean_hbw, ymin = mean_hbw - sd_hbw, ymax = mean_hbw + sd_hbw,
+             color = factor(hhvehcnt), fill = factor(hhvehcnt))) + 
+  geom_line() +
+  geom_ribbon(alpha = 0.1) + 
+  facet_wrap(~hhvehcnt)
+  
