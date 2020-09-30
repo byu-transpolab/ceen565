@@ -1,16 +1,14 @@
 # Trip Distribution {#chap-distribution}
 
-The purpose of the trip distribution model is to show
+The purpose of the trip distribution model is to match up productions with
+attractions.
+
 
 
 ## Homework {-#hw-distribution}
 ```{r networkgraph, fig.cap = "Simple 3-zone system.", echo = FALSE}
 knitr::include_graphics("images/03_networkgraph.png")
 ```
-
-shows a basic three-zone system,
-including the
-productions and attractions at each zone, as well as the travel times between them.
 
 Figure \@ref(fig:networkgraph)^[This problem is adapted with permission from 
 *Urban Transportation Planning: Second Edition* by Michael D. Meyer and 
@@ -19,7 +17,7 @@ presents a simple three zone system, the link travel times for this system (for
 internal trips, $t_{ii}=2$ globally), and the zonal productions and attractions.
 Assume a gravity model of the form
 
-$$T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j'}A^*_{j'}(t_{ij})^{-b}}$$
+$$T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j'\in J}A^*_{j'}(t_{ij'})^{-b}}$$
 
 where $A_j^*$ is a "modified attraction term" defined by the
 algorithm shown in Figure \@ref(fig:tripbalancing) below. This algorithm
@@ -30,7 +28,7 @@ attractions $A_j$.
 knitr::include_graphics("images/03_algorithm.png")
 ```
 
-### First Problem: Gravity Model Development
+### First Problem: Gravity Model Development {-}
 
 Write a computer program or build a spreadsheet that computes the
 O-D flows for this system using the algorithm (with $\varepsilon=1$). Find the
@@ -115,7 +113,7 @@ observed trip distribution. You could solve this manually by trying different
 values of beta, or by using a goal seek / optimization program. The choice
 is yours, but you should document what you do in your homework response.
 
-### Second Problem: Model Application
+### Second Problem: Model Application {-}
 
 The region represented in Problem 1 has begun improvements to the
 link between zones 1 and 2 that will reduce the travel cost from 5 to 3. Using
