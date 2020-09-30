@@ -1,19 +1,26 @@
 # Trip Distribution {#chap-distribution}
 
-The trip distribution model is the second component in a traditional 4-step model. The purpose of the trip distribution model is to produce a trip table with the estimated number of trips from each TAZ to every other TAZ in the study area. To do this, predicted productions at each origin TAZ, and predicted attractions at each destination TAZ are combined to create a production-attraction model. Your homework this week will focus on a basic, three zone system which you will calibrate using a Gravity Model. The Gravity Model assumes that the number of trips between any two zones is either directly proportional to the trips produced and attracted, or is inversely proportional to the travel time between two zones. 
+The trip distribution model is the second component in a traditional 4-step
+model. The purpose of the trip distribution model is to produce a trip table
+with the estimated number of trips from each TAZ to every other TAZ in the study
+area. To do this, predicted productions at each origin TAZ, and predicted
+attractions at each destination TAZ are combined to create a
+production-attraction model. Your homework this week will focus on a basic,
+three zone system which you will calibrate using a Gravity Model. The Gravity
+Model assumes that the number of trips between any two zones is directly
+proportional to the trips produced and attracted, controlling for the
+proportional to the travel time between two zones.
 
-Please reference this article from the Travel Forecasting Resource for more information about trip distribution:  [Trip Distribution Article](https://tfresource.org/topics/Trip_distribution.html)
 
+Please reference [this article from the Travel Forecasting Resource](https://tfresource.org/topics/Trip_distribution.html)
+for more information about  about trip distribution. Section 4.5 of NHCRP report
+716 also provides good background.
 
 ## Homework {-#hw-distribution}
 <div class="figure">
 <img src="images/03_networkgraph.png" alt="Simple 3-Zone System." width="570" />
 <p class="caption">(\#fig:networkgraph)Simple 3-Zone System.</p>
 </div>
-
-Figure 3.1 shows a basic three-zone system,
-including the
-productions and attractions at each zone, as well as the travel times between them.
 
 Figure \@ref(fig:networkgraph)^[This problem is adapted with permission from 
 *Urban Transportation Planning: Second Edition* by Michael D. Meyer and 
@@ -22,7 +29,7 @@ presents a simple three zone system, the link travel times for this system (for
 internal trips, $t_{ii}=2$ globally), and the zonal productions and attractions.
 Assume a gravity model of the form
 
-$$T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j'}A^*_{j'}(t_{ij})^{-b}}$$
+$$T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j'\in J}A^*_{j'}(t_{ij'})^{-b}}$$
 
 where $A_j^*$ is a "modified attraction term" defined by the
 algorithm shown in Figure \@ref(fig:tripbalancing) below. This algorithm
@@ -34,7 +41,7 @@ attractions $A_j$.
 <p class="caption">(\#fig:tripbalancing)Trip balancing algorithm.</p>
 </div>
 
-### First Problem: Gravity Model Development
+### First Problem: Gravity Model Development {-}
 
 Write a computer program or build a spreadsheet that computes the
 O-D flows for this system using the algorithm (with $\varepsilon=1$). Find the
@@ -139,7 +146,7 @@ observed trip distribution. You could solve this manually by trying different
 values of beta, or by using a goal seek / optimization program. The choice
 is yours, but you should document what you do in your homework response.
 
-### Second Problem: Model Application
+### Second Problem: Model Application {-}
 
 The region represented in Problem 1 has begun improvements to the
 link between zones 1 and 2 that will reduce the travel cost from 5 to 3. Using

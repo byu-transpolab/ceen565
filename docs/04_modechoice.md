@@ -453,7 +453,7 @@ ggplot(tlfd %>% gather(purpose, share, HBW:HBSH),
   xlab("Distance") + ylab("%Trips")
 ```
 
-![](04_modechoice_files/figure-epub3/tfld-plot-1.png)<!-- -->
+<img src="04_modechoice_files/figure-html/tfld-plot-1.png" width="672" />
 
 The modeled TLFD for each purpose can be had on the model home screen as an
 output of the trip distribution model. Calculate the error between your observed

@@ -1,7 +1,7 @@
 --- 
 title: "Urban Transportation Planning"
 author: "Gregory Macfarlane, PhD, PE"
-date: "2020-09-16"
+date: "2020-09-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -14,7 +14,7 @@ description: "These are notes and assignments related to the *Urban Transportati
 
 # Foreword {-#syllabus}
 
-
+<img src="images/cover.jpg" width="50%" style="display: block; margin: auto;" />
 
 This book contains course notes and assignments for a senior / graduate class in
 transportation planning and elementary travel modeling. A description for this course

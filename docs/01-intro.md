@@ -247,9 +247,9 @@ Table: (\#tab:setable)Example SE Table
 
  taz   persons   hh   workers   retail   office   manufacturing
 ----  --------  ---  --------  -------  -------  --------------
-   1        32   32        12      121       59               2
-   2        39   32        19      131       99              11
-   3        49   72        17      124       93               0
+   1        44   25        22      129       96               2
+   2        45   47        21      121       81              11
+   3        32   35        17      148       89               0
 
 
 ::::{.rmdexample}
@@ -602,7 +602,7 @@ nests completely within the layer above it. More detailed data is available
 at less spatially detailed geographies.
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/censusgeos-1.png" alt="US Census Geographies in Central Provo."  />
+<img src="01-intro_files/figure-html/censusgeos-1.png" alt="US Census Geographies in Central Provo." width="672" />
 <p class="caption">(\#fig:censusgeos)US Census Geographies in Central Provo.</p>
 </div>
 
@@ -695,7 +695,7 @@ ggplot(nhts_trips, aes(x = trpmiles, weight = wttrdfin)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram."  />
+<img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
 <p class="caption">(\#fig:dc-histogram)Visualizing a continuous distribution with a histogram.</p>
 </div>
 
@@ -707,7 +707,7 @@ ggplot(nhts_trips, aes(x = as_factor(trippurp, levels = "labels"),
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart."  />
+<img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
 <p class="caption">(\#fig:dc-barchart)Visualizing a discrete distribution with a bar chart.</p>
 </div>
 
@@ -738,7 +738,7 @@ table(nhts_trips$miles_cat, nhts_trips$trippurp)
 We can visualize joint distributions as well, and sometimes the results are
 quite nice.
 
-![](01-intro_files/figure-epub3/dc-joint-hist-1.png)<!-- -->
+<img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" />
 
 
 
@@ -935,7 +935,7 @@ ggplot(mtcars, aes(y = mpg, x = disp)) +
 ```
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/lm-mpg-1.png" alt="Relationship between engine displacement and miles per gallon."  />
+<img src="01-intro_files/figure-html/lm-mpg-1.png" alt="Relationship between engine displacement and miles per gallon." width="672" />
 <p class="caption">(\#fig:lm-mpg)Relationship between engine displacement and miles per gallon.</p>
 </div>
 
@@ -1100,7 +1100,7 @@ which allows you to visually inspect whether the IID assumption is valid.
 plot(lm1, which = 1)
 ```
 
-![](01-intro_files/figure-epub3/regression-plot-1.png)<!-- -->
+<img src="01-intro_files/figure-html/regression-plot-1.png" width="672" />
 
 So, what can you do when the IID assumption is violated? Well, you could try 
 to transform the data. What if the inverse of displacement is what matters?
@@ -1112,7 +1112,7 @@ lm2 <- lm(log(mpg) ~ I(1 / disp), data = mtcars)
 plot(lm2, which = 1)
 ```
 
-![](01-intro_files/figure-epub3/regression-inverse-1.png)<!-- -->
+<img src="01-intro_files/figure-html/regression-inverse-1.png" width="672" />
 
 There might also be other variables that matter. We could add the number of 
 engine cylinders into our estimation. Both of these are better than the original 
@@ -1124,7 +1124,7 @@ lm3 <- lm(mpg ~ disp + cyl, data = mtcars)
 plot(lm3, which = 1)
 ```
 
-![](01-intro_files/figure-epub3/regression-morevars-1.png)<!-- -->
+<img src="01-intro_files/figure-html/regression-morevars-1.png" width="672" />
 
 
 ### Numerical Optimization
@@ -1239,7 +1239,7 @@ one census tract; for instance, the lowest average household size is in tract
 of 3 and 4+ person households.
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/hh-marginal-1.png" alt="Distribution of households by size, based on average households size."  />
+<img src="01-intro_files/figure-html/hh-marginal-1.png" alt="Distribution of households by size, based on average households size." width="672" />
 <p class="caption">(\#fig:hh-marginal)Distribution of households by size, based on average households size.</p>
 </div>
 
@@ -1257,7 +1257,7 @@ marginal distributions of interest. These files are available
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 <div class="figure">
-<img src="01-intro_files/figure-epub3/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region."  />
+<img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
 <p class="caption">(\#fig:raw-marginals)Raw marginal distribution curves from Roanoke region.</p>
 </div>
 

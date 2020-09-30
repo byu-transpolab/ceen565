@@ -29,7 +29,7 @@ final folder, i.e., `C:\folder\folder\rvtpo_bare`. If there are any spaces your
 model will crash.
 
 <div class="figure">
-<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="838" />
+<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="419" />
 <p class="caption">(\#fig:rvtpo-dir)RVTPO model home folder</p>
 </div>
 
@@ -41,7 +41,7 @@ step. Some steps actually contain several sub-steps, and double-clicking the
 yellow step box will expand that application.
 
 <div class="figure">
-<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="1693" />
+<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="846" />
 <p class="caption">(\#fig:app-interface)RVTPO model application interface</p>
 </div>
 
@@ -58,7 +58,7 @@ zones.] Complete instructions are included in the model user's guide (in the
 I have also made a YouTube video showing these steps. Note that the video
 shows you getting the model from Canvas; get it from [Box](https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x).
 
-[![](11_app_demomodel_files/figure-epub3/initial-run-video-1.png)](https://www.youtube.com/embed/88HAaQLVpJk)<!-- -->
+<iframe src="https://www.youtube.com/embed/88HAaQLVpJk" width="672" height="400px"></iframe>
 
 
 
@@ -70,7 +70,7 @@ You can access files in the model in multiple ways:
   - In the catalog windows on the side
   - Directly in the File Explorer
   
-[![](11_app_demomodel_files/figure-epub3/file-access-1.png)](https://www.youtube.com/embed/Npw-jf19wak)<!-- -->
+<iframe src="https://www.youtube.com/embed/Npw-jf19wak" width="672" height="400px"></iframe>
 
 The model has a few prepared reports that you can run at any time. These are
 found in the "Reports" drop-down in the catalog along the left-hand side of the
@@ -82,7 +82,7 @@ Cube window. These reports include:
   
 You can also make tabulations of any report. The video below has an example.
 
-[![](11_app_demomodel_files/figure-epub3/unnamed-chunk-1-1.png)](https://www.youtube.com/embed/okU6pu0KAiQ)<!-- -->
+<iframe src="https://www.youtube.com/embed/okU6pu0KAiQ" width="672" height="400px"></iframe>
 
 
 ## Network and Zone Maps
@@ -93,12 +93,12 @@ presentations. For example, Figure \@ref(fig:network-factypes) shows the network
 links by facility type. The video below shows how to do this.
 
 <div class="figure">
-<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="977" />
+<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="488" />
 <p class="caption">(\#fig:network-factypes)Facility types in the Roanoke region.</p>
 </div>
 
 
-[![](11_app_demomodel_files/figure-epub3/netchoro-video-1.png)](https://www.youtube.com/embed/wvyhKXyZVbM)<!-- -->
+<iframe src="https://www.youtube.com/embed/wvyhKXyZVbM" width="672" height="400px"></iframe>
 
 
 ### Shortest Paths
@@ -109,11 +109,11 @@ destinations from a specific origin point, like the map shown in Figure \@ref(fi
 The video below shows how to do this.
 
 <div class="figure">
-<img src="images/isochrone.png" alt="Isochrone map using network speed information." width="1455" />
+<img src="images/isochrone.png" alt="Isochrone map using network speed information." width="728" />
 <p class="caption">(\#fig:isochrone)Isochrone map using network speed information.</p>
 </div>
 
-[![](11_app_demomodel_files/figure-epub3/path-video-1.png)](https://www.youtube.com/embed/24jRCNUIQOo)<!-- -->
+<iframe src="https://www.youtube.com/embed/24jRCNUIQOo" width="672" height="400px"></iframe>
 
 ### Working with Matrices
 
