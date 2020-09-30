@@ -42,6 +42,48 @@ gravity <- function(p, a, C, b){
   return(trips)
 }
 
+#' Function to balance gravity model PSEUDO-CODE
+#' @param p vector of productions, length n
+#' @param A vector of attractions, lenth n
+#' @param C matrix of impedances, dim n x n
+#' @param b impedance parameter
+#' @param tolerance Acceptable change in trips matrix
+balance_gravity <- function(p, a, C, b, tolerance = 0.01, maxiterations = 40) {
+  # loop through algorithm
+  while(error > tolerance){
+    # compute gravity model with adjusted attractions, using your function
+    trips <- gravity(p, astar, C, b) 
+    # calculate the error as the change in trips in successive iterations
+  }
+  return(trips)
+}
+# calibration
+observed <- matrix(c(80, 5, 15, 80, 40, 80, 40, 5, 55), nrow=3, byrow=TRUE)
+
+# root mean squared error
+rmse <- function(x, y){
+  sqrt(mean((x - y)^2))
+}
+
+
+single_constrained <- gravity(p, a, C, 2)
+double_constrained <- balance_gravity(p, a, C, 2)
+
+
+
+for(b in seq(0.1, 5, 0.1)){
+  print(rmse(gravity(p, a, C, b), observed))
+  print(b)
+}
+
+tibble(
+  b = seq(0.1, 5, 0.1),
+  rmse = rmse(gravity(p, a, C, b), observed)
+)
+
+  
+
+
 
 
 gravity(p, a, C, 1.5)
