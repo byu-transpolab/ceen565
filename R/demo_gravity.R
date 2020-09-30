@@ -50,13 +50,25 @@ gravity <- function(p, a, C, b){
 #' @param tolerance Acceptable change in trips matrix
 balance_gravity <- function(p, a, C, b, tolerance = 0.01, maxiterations = 40) {
   # loop through algorithm
+  astar <- a
+  trips0 <- matrix(0, nrow = length(p), ncol = length(a)) 
+  error <- Inf
+  iteration <- 0
   while(error > tolerance){
     # compute gravity model with adjusted attractions, using your function
     trips <- gravity(p, astar, C, b) 
     # calculate the error as the change in trips in successive iterations
+    error <- sum(abs(trips - trips0))
+    if (iteration > maxiterations) break
+    
+    astar <- astar * a / colSums(trips)
+    iteration <- iteration + 1
+    trips0 <- trips
   }
   return(trips)
 }
+
+
 # calibration
 observed <- matrix(c(80, 5, 15, 80, 40, 80, 40, 5, 55), nrow=3, byrow=TRUE)
 
