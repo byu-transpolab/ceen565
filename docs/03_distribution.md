@@ -1,15 +1,17 @@
 # Trip Distribution {#chap-distribution}
 
-The purpose of the trip distribution model is to show
+The trip distribution model is the second component in a traditional 4-step model. The purpose of the trip distribution model is to produce a trip table with the estimated number of trips from each TAZ to every other TAZ in the study area. To do this, predicted productions at each origin TAZ, and predicted attractions at each destination TAZ are combined to create a production-attraction model. Your homework this week will focus on a basic, three zone system which you will calibrate using a Gravity Model. The Gravity Model assumes that the number of trips between any two zones is either directly proportional to the trips produced and attracted, or is inversely proportional to the travel time between two zones. 
+
+Please reference this article from the Travel Forecasting Resource for more information about trip distribution:  [Trip Distribution Article](https://tfresource.org/topics/Trip_distribution.html)
 
 
 ## Homework {-#hw-distribution}
 <div class="figure">
-<img src="images/03_networkgraph.png" alt="Simple 3-zone system." width="1141" />
-<p class="caption">(\#fig:networkgraph)Simple 3-zone system.</p>
+<img src="images/03_networkgraph.png" alt="Simple 3-Zone System." width="570" />
+<p class="caption">(\#fig:networkgraph)Simple 3-Zone System.</p>
 </div>
 
-shows a basic three-zone system,
+Figure 3.1 shows a basic three-zone system,
 including the
 productions and attractions at each zone, as well as the travel times between them.
 
@@ -28,7 +30,7 @@ constrains the predicted trips to a given zone to equal the true zonal
 attractions $A_j$.
 
 <div class="figure">
-<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="768" />
+<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="384" />
 <p class="caption">(\#fig:tripbalancing)Trip balancing algorithm.</p>
 </div>
 
