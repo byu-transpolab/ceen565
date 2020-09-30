@@ -7,3 +7,6 @@ _bookdown_files/*
 *.log
 ceen565.rds
 ceen565.Rmd
+*_cache/*
+*_files/*
+render*.rds
