@@ -221,7 +221,7 @@ for work trips using the data collected in the San Francisco Bay. Then, you will
 calculate nested logit models on the same data set. In the third step, you will
 calculate mode choice model log sums and estimate a destination choice model.
 
-### First Problem Set: Multinomial Logit Model Estimation
+### First Problem Set: Multinomial Logit Model Estimation {-}
 To do this, use the `mlogit()` function, in a manner sort of like you
 would use the `lm()` command. One thing to look out for: the difference between
 generic and alternative-specific variables, described above. 
@@ -297,7 +297,7 @@ which is the preferred in terms of model likelihood? What about in terms of
 behavioral sensitivity / reasonableness?
 
 
-### Third Problem Set: Log Sums, Destination Choice, and Accessibility
+### Third Problem Set: Log Sums and Destination Choice {-}
 
 
 |                        |Mode Choice  |
@@ -380,7 +380,7 @@ improvement to the destination choice? Does this include the mode choice benefit
 
 
 
-## Lab
+## Lab {-}
 
 In practice, small-sample surveys have a difficult time generating estimates of
 choice parameters that are both precise and rational. As a result, it is
@@ -406,10 +406,10 @@ skims > mode choice logsums > destination choice > mode choice
 ```
 
 As a result you will need to calibrate the models iteratively: first adjust the 
-mode choice constants, then the distance decay parameter, then mode choice,
+mode choice constants, then the distance decay parameters, then mode choice,
 etc., until you are satisfied that the model meets the targets.
 
-### Mode Choice Calibration
+### Mode Choice Calibration {-}
 
 The coefficients are found in the `./Params/mc/MC_Coefficients.csv` file. Record
 the coefficients in a table in your lab report accompanying a description of the
@@ -573,7 +573,7 @@ Non-motorized     1.4    9.9
 
 
 
-### Destination Choice Calibration
+### Destination Choice Calibration {-}
 
 A destination choice model has three basic components: 
 
@@ -663,8 +663,8 @@ Re-run the destination choice model with your new coefficients, run the mode cho
 model, and adjust the coefficients over there.
 
 
-### Report 
+### Report {-}
 Your lab report should describe the trip distribution and mode choice models;
 include discussions of the coefficients and your process to calibrate the mode
 and distance constants. Provide results of the calibration including observed and 
-modeled trip length frequency distributions.
+modeled mode choice and trip length frequency distributions.

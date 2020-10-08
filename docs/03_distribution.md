@@ -18,7 +18,7 @@ for more information about  about trip distribution. Section 4.5 of NHCRP report
 
 ## Homework {-#hw-distribution}
 <div class="figure">
-<img src="images/03_networkgraph.png" alt="Simple 3-Zone System." width="570" />
+<img src="images/03_networkgraph.png" alt="Simple 3-Zone System." width="1141" />
 <p class="caption">(\#fig:networkgraph)Simple 3-Zone System.</p>
 </div>
 
@@ -48,7 +48,7 @@ matrices becomes close to zero. This algorithm therefore
 attractions $A_j$, within some *tolerance* represented by the value $\varepsilon$.
 
 <div class="figure">
-<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="384" />
+<img src="images/03_algorithm.png" alt="Trip balancing algorithm." width="768" />
 <p class="caption">(\#fig:tripbalancing)Trip balancing algorithm.</p>
 </div>
 

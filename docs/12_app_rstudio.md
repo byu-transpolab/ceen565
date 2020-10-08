@@ -42,7 +42,7 @@ There is also a very useful
 [cheat sheet](https://resources.rstudio.com/rstudio-cheatsheets/rstudio-ide-cheat-sheet) 
 for working with RStudio on the Rstudio website.
 
-<iframe src="https://www.youtube.com/embed/c3xv8wOIj-g" width="672" height="400px"></iframe>
+[![](12_app_rstudio_files/figure-epub3/orient-video-1.png)](https://www.youtube.com/embed/c3xv8wOIj-g)<!-- -->
 
 
 ## R Packages
@@ -79,7 +79,7 @@ install.packages("remotes") # tools for installing development packages
 remotes::install_github("byu-transpolab/nhts2017")
 ```
 
-<iframe src="https://www.youtube.com/embed/ULQAbpmPBhk" width="672" height="400px"></iframe>
+[![](12_app_rstudio_files/figure-epub3/nhts-video-1.png)](https://www.youtube.com/embed/ULQAbpmPBhk)<!-- -->
 
 
 You only need to **install** a package once on your computer. But every time you 
@@ -92,7 +92,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ───────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -103,7 +103,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -505,7 +505,7 @@ ggplot(mytrips, aes(x = trpmiles)) +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-histogram-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-histogram-1.png)<!-- -->
 
 This ends up not being very informative because some trips are very long. We 
 could filter out the long trips within the data argument (Note that we still have
@@ -525,7 +525,7 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles)) +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-histogram1-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-histogram1-1.png)<!-- -->
 
 If we wanted to see the difference between lengths of different trip purposes,
 we could add a color aesthetic to the plot. By default this stacks the two 
@@ -545,7 +545,7 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippu
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-histogram2-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-histogram2-1.png)<!-- -->
 
 You could also show this with a statistical density (the integral of a density
 function is 1). Note that the `alpha` statement for fill opacity is not included
@@ -562,7 +562,7 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippu
 ## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-histogram3-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-histogram3-1.png)<!-- -->
 
 `ggplot2` also excels at building statistical analysis on top of visualization.
 For example, we can see the odometer reading for cars still on the road in 
@@ -609,7 +609,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-vehicles-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles-1.png)<!-- -->
 
 This is pretty unreadable. But we can add a few things to the figure to make it a little bit
 easier to understand, like smooth average lines and point transparency. 
@@ -630,7 +630,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-vehicles1-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles1-1.png)<!-- -->
 
 Let's break this out by vehicle type.
 
@@ -651,7 +651,7 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-vehicles2-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles2-1.png)<!-- -->
 
 And let's clean it up a little bit. This is a figure that you could put in a
 published journal article or thesis, if it showed something you cared to show.
@@ -676,4 +676,4 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="12_app_rstudio_files/figure-html/ggplot2-vehicles3-1.png" width="672" />
+![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles3-1.png)<!-- -->

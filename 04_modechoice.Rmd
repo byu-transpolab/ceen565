@@ -208,7 +208,7 @@ for work trips using the data collected in the San Francisco Bay. Then, you will
 calculate nested logit models on the same data set. In the third step, you will
 calculate mode choice model log sums and estimate a destination choice model.
 
-### First Problem Set: Multinomial Logit Model Estimation
+### First Problem Set: Multinomial Logit Model Estimation {-}
 To do this, use the `mlogit()` function, in a manner sort of like you
 would use the `lm()` command. One thing to look out for: the difference between
 generic and alternative-specific variables, described above. 
