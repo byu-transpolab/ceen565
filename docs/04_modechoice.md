@@ -3,84 +3,191 @@
 
 
 
+Assume that person has a set of mode choices in front of them. They could
+pick to drive, walk, take transit, or some combination of those. Which one they
+pick for which kind of trip is not a simple question, but travel models need
+a mathematical way to represent this choice.
+
+## Mathematical Derivation
+We'll say that person $n$ is choosing between alternatives $i, j, \ldots \in J$.
+In economic theory, people pick the alternative that brings them the most 
+*utility*, $U$. So person $n$ will choose $i$ if $U_i>U_j, \forall j \neq i \in J$.
+The problem we face is that $U$ contains things we can measure and model (like the 
+travel time and the fare) as well as things we can't (like how much this person
+hates riding the bus). So really $U_i$ has two parts: a measurable portion $V_i$
+and an unmeasurable portion $\varepsilon_i$.
+
+\begin{equation}
+  U_i = V_i + \varepsilon_i
+  (\#eq:uve)
+\end{equation}
+
+So in our model, people will choose $i$ if 
+
+\begin{align*}
+V_i + \varepsilon_i &> V_j + \varepsilon_j, \forall j \neq i \in J\\
+V_i - V_j &> \varepsilon_j - \varepsilon_i, \forall j \neq i \in J\\
+\end{align*}
+
+or, if the difference in observed utility is greater than the difference in the
+unobserved error. Because this difference in error is unobserved, we can treat
+it as a random variable with an assumed distribution. If we make a particular
+assumption^[Specifically, that $\varepsilon_i$ is distributed IID with a Gumbel extreme value distribution], then the *probability* that person $n$ chooses option $i$ is
+
+\begin{equation}
+  P_n(i | V_i, V_j \forall j \neq i \in J) = \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}}
+  (\#eq:mnl)
+\end{equation}
+
+There are two important things to note that result from this derivation:
+
+  1. Only the differences in Utility matter. This will have a number of implications
+  for the interpretation and use of the model.
+  2. The model formula depends entirely on the assumed distribution of the unobserved
+  utility. If that assumption isn't met (and it usually isn't!) a different model
+  is needed.
+  
+## Utility Equations
+
+The observed utility usually takes a linear form, $V_i = \alpha_i + X_i\beta$. This
+means that each alternative will have a linear equation,
+
+\begin{align*}
+V_{\text{Auto}}  =&  - 0.05(\text{time}_a)  - 0.3(\text{cost}_a)\\
+V_{\text{Bus}}  =& -4.5 - 0.05(\text{time}_b)  - 0.3(\text{cost}_b) - 1.4(\text{high income})\\   
+V_{\text{Walk}}  =& -6.0 - 0.05(\text{time}_w)  - 0.3(\text{cost}_w) - 1.8(\text{high income})\\   
+\end{align*}
+
+Recall that only the difference in the utility matters, which we showed theoretically above.
+you can also see it numerically because $e^0 / (e^1 + e^0) = e^1 / (e^2 + e^1) = 0.269$.
+So the utility equations have to reflect this difference in the way that they get
+structured. There are three basic basic values that show up in these equations,
+and the difference between them is how they create and use difference in the
+utility:
+
+  - *Alternative-Specific Constants*: These function like intercepts in a 
+  linear regression model. The constants control for the observed difference
+  between alternatives resulting from the unobserved utility; if all else is
+  equal, the constants describe what the utility of each mode will be. One
+  alternative is selected as the *reference alternative*, with $\alpha = 0$.
+  - *Generic Coefficients*: These coefficients have a single estimated
+	parameter. That is, the $\hat{\beta}$ coefficient for these variables has the
+	same value in the utility equation for every alternative. These estimates come
+	from variables that vary naturally across the alternatives, like the cost of
+	travel.
+  - *Alternative-Specific Coefficient*: This type of coefficient has a unique
+	estimate for each alternative. That is, $\hat{\beta}_{DA}$ is different from
+	$\hat{\beta}_{Walk}$.  This type of estimate comes from variables that are
+	constant across alternatives, like the distance of the trip.
+
+
+## MNL Estimation
+
+Ordinary Least Squares does not work on multinomial logit models, so we need
+another way of estimating the model coefficients. We instead use a numerical
+procedure called *maximum likelihood estimation*.^[You can estimate linear
+regression models with maximum likelihood estimation as well, but it can be
+proven the MLE and OLS result in exactly the same answers.]
+
+The utility equation is $V_i = \alpha_i + X_i\beta$. We want to find an estimate
+$\hat\beta$ that are *most likely* given the observed data. For one person,
+the probability that our model picks an alternative $i$ is given by the MNL 
+formula in Equation \@ref(eq:mnl). Let's simplify this to a function of $\beta$,
+$P_{in}(\beta)$. We want to pick the value of $\beta$ that gives a high probability
+to the chosen alternative and low probability to the non-chosen alternatives.
+Let's create a power value $\delta_{in}$ equal to 1 if chosen and zero if not.
+The likelihood of our model for one alternative is therefore
+
+\begin{equation}
+\mathcal{L} = P_{in}(\beta)^{\delta_{in}}
+  (\#eq:likelihood)
+\end{equation}
+
+But we want to find values that maximize this likelihood for *all* alternatives 
+for *all* people. Recall from basic statistics that the probability of multiple
+independent events occuring simultaneously is the product of the probabilities
+of each event. So the likelihood equation for our entire dataset is 
+
+\begin{equation*}
+\mathcal{L} = \prod_{n=1}^N \prod_{i \in J} P_{in}(\beta)^{\delta_{in}}
+\end{equation*}
+
+We encounter a problem here where each $P_{in}$ is going to be a number much
+smaller than 1. If we multiply too many of these numbers together, our computer
+won't be able to keep track of a number that small. So we instead use the
+logarithm of the likelihood function which turns products into sums,
+
+\begin{equation}
+\log(\mathcal{L}) = \sum_{n=1}^N \sum_{i \in J} \delta_{in} \log(P_{in}(\beta))
+  (\#eq:loglikelihood)
+\end{equation}
+
+We can also compare the log-likelihood of our estimated model 
+$\log\mathcal{L}(\beta)$ against the log-likelihood of some reference models to create 
+a statistic that works *kind of* like $R^2$ in a linear regression model.
+
+First, imagine that we have a perfect model. That would mean the $P_{in} = 1$ for
+the chosen alternative and zero for the others. The log-likelihood of this model
+is
+
+\begin{align*}
+\log\mathcal{L}(*) &= \sum_{n=1}^N  \log(1)\\
+   &= \sum_{n=1}^N  0\\
+\end{align*}
+
+Now, what happens if we have a model that is literally no better than random
+chance? This could be called a *null model* where each option has equal probability.
+That would also imply that every utility value is exactly the same,
+
+\begin{align*}
+\log\mathcal{L}(0) &= \sum_{n=1}^N \sum_{i \in J} \delta_{in} \log(\frac{e^0}{\sum_J e^0})\\
+ &= \sum_{n=1}^N  \log(\frac{1}{J})\\
+ &= N \log(\frac{1}{J})\\
+\end{align*}
+
+This value depends on the number of observations and alternatives in the data
+set, and so will be different for each problem. But because the logarithm of
+a fraction is a negative number, $\log\mathcal{L}(0)$ will be a large negative
+number.
+
+The last special likelihood is what would happen if we just used the observed
+choice probabilities, or the *market shares*. This is equivalent to a model
+estimated with only the constants and no other variables included.
+
+\begin{align*}
+\log\mathcal{L}(C) &= \sum_{n=1}^N \sum_{i \in J} \delta_{in} \log(\frac{e^\alpha}{\sum_J e^\alpha})\\
+ &= \sum_{n=1}^N  \sum_{i \in J} \log(P_i)\\
+ &= N_i \sum_{i \in J} \log(P_i)\\
+\end{align*}
+
+We can create a measure of goodness-of-fit using these measures. Let's call it
+$\rho^2$. Let's consider how much more likely our estimated model is than the null
+model:
+
+\begin{equation}
+  \rho_0^2 = 1 - \frac{\log\mathcal{L}(\beta)}{\log\mathcal{L}(0)}
+  (\#eq:rhonull)
+\end{equation}
+
+If our model is no better than random chance, then $\rho_0^2 = 0$. If our model
+is perfect (log-likelihood of zero), then $\rho_0^2 = 1$. In practice, you will 
+not ever see $\rho_0^2$ values anywhere near 1. You can build an analogous
+$\rho_C^2$ metric by using the market shares likelihood as a reference.
 
 
 ## Homework {-#hw-modechoice}
 
-Let's first start with a couple of practice problems before using data to estimate
-multinomial logit models.
-
-1. Calculate the Non-motorized Travel Time, Auto Utility, Non-motorized Utility,
-Auto Probability, Non-motorized Probability, and the Mode Choice Logsum using
-the following information:
-
-<div align="center">$\beta$<sub>1</sub> = -0.025,
-$\beta$<sub>2</sub> = -0.06257,
-$\alpha$<sub>1</sub> = 1,
-$\alpha$<sub>2</sub> = -1.2258
-
-
-$$Highway Time = \begin{vmatrix}0.77 & 1.55 & 21.60\\
-1.55 & 0.77 & 20.51\\22.02 & 20.93 & 1.21
-\end{vmatrix}$$
-
-$$ Highway Distance = \begin{vmatrix}0 & 0.72 & 12.87\\
-0.72 & 0 & 12.49\\12.82 & 12.44 & 0
-\end{vmatrix}$$
-
-
-2. Calculate the Utility, Probability, Trips, and Destination Choice Logsum. Check your answer to make sure the rowsum of the Trips is equal to the productions for each row. The Mode Choice Logsum found in Question 1 should be used as the impedance. Use the following information:
-
-<div align="center">$\beta$<sub>2</sub> = 1.1657,
-$\alpha$<sub>2</sub> = Attractions
-
-| n | Productions |
-|:---:|:---:|
-| 1 | 0.6 |
-| 2 | 1.8 |
-| 3 | 1.3 |
-
-| n | Attractions | 
-|:---:|:---:|
-| 1 | 125 |
-| 2 | 180 |
-| 3 | 210 |
-
-<div align = "left">
-
-Now, for this week's assignment, you will use data from the 2000 Bay Area Travel
-Survey to estimate multinomial logit models that predict mode choice for work
-trips. The data is available on [on Box](https://byu.box.com/shared/static/px4v9aycpy7f399fsng2oz4w74tfwgbh.rds). The data
-are listed as `worktrips_logitdata.rds`. We will also need to load the 
+In this unit's assignment, you will use data from the 2000 Bay Area Travel
+Survey to estimate multinomial  and nested logit models that predict mode choice for work
+trips. The data is available on [on Box](https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds). The data
+are named as `worktrips_dfidx.rds`. You will also need to load the 
 `mlogit` library package, which contains the tools necessary to estimate
 multinomial logit models.
 
 
 ```r
 library(mlogit)
-```
-
-```
-## Warning: package 'mlogit' was built under R version 4.0.2
-```
-
-```
-## Loading required package: dfidx
-```
-
-```
-## 
-## Attaching package: 'dfidx'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     filter
-```
-
-```r
-worktrips <- read_rds("data/worktrips_logitdata.rds")
+worktrips <- read_rds("data/worktrips_dfidx.rds")
 ```
 
 Because multinomial logit models are so different from other models, 
@@ -109,38 +216,32 @@ head(worktrips[,1:8], n=12)
 ## 5-1. Share 2        5     1    3      Share 2       4  FALSE 13.60  6.0
 ```
 
-Now that your data is cleaned and formatted, you can estimate multinomial logit
-models.  To do this, use the `mlogit()` function, in a manner sort of like you
-would use the `lm()` command. One thing to look out for: the difference between
-generic and alternative-specific variables.^[This can be confusing for many
-students; just remember that the difference between generic and
-alternative-specific is in the coefficients, not the variables.]
+In the first section, you will estimate a multinomial logit mode choice model
+for work trips using the data collected in the San Francisco Bay. Then, you will
+calculate nested logit models on the same data set. In the third step, you will
+calculate mode choice model log sums and estimate a destination choice model.
 
-  - *Generic Variables*: These are coefficients with a single estimated
-	parameter. That is, the $\hat{\beta}$ coefficient for these variables has the
-	same value in the utility equation for every alternative. These estimates come
-	from variables that vary naturally across the alternatives, like the cost of
-	travel.
-  - *Alternative-Specific Variables*: This type of coefficient has a unique
-	estimate for each alternative. That is, $\hat{\beta}_{DA}$ is different from
-	$\hat{\beta}_{Walk}$.  This type of estimate comes from variables that are
-	constant across alternatives, like the distance of the trip.
-	
+### First Problem Set: Multinomial Logit Model Estimation
+To do this, use the `mlogit()` function, in a manner sort of like you
+would use the `lm()` command. One thing to look out for: the difference between
+generic and alternative-specific variables, described above. 
 To specify the model, we use the following construction.
 
+
 ```r
-fit.mnl <- mlogit ( CHOICE ~ Generic | Alt.Specific, data = logitdata )
+fit.mnl <- mlogit ( CHOSEN ~ Generic | Alt.Specific, data = worktrips )
 ```
 
 To examine the model output, the standard `summary()` command will produce a
-coefficients table and key test statistics. The the `texreg` package will
-produce convenient model comparison tables that can be included in a report or
-pasted into Excel for further formatting. For your homework, please include a
-model comparison table rather than a print out of each model summary.
+coefficients table and key test statistics. The `modelsummary` 
+packages will produce convenient model comparison tables that can be included in
+a report or pasted into Excel for further formatting. For your homework, please
+include a formatted model comparison table rather than a print out of each model
+summary.
 
 Question 1: Calculate the likelihood of a model with no covariates
 (equal-shares) and a model with constants only (market shares). Estimate a model
-with only the travel time, and calculate the McFadden pseudo-$R^2$ statistic
+with only the travel time, and calculate the $\rho^2$ statistics
 with respect to the equal shares model and the market shares model. Which
 statistic is reported by the `summary()` command? Why is this important?
 
@@ -159,16 +260,31 @@ for the bus?
 
 Question 4: Estimate a model with the residential population density
 (`RSPOPDEN`) and the workplace employment density (`WKEMPDEN`), controlling for
-the affordability of the trip (`COSTINC`). Does land use at the origin or the
-destination of the trip affect the mode choice problem more? Is it different
+the affordability of the trip (`COSTINC`). Does land use at the production or the
+attraction end of the trip affect the mode choice problem more? Is it different
 by mode?
+
+### Second Problem Set: Nested Logit Models {-}
+
+In this set of problems, you will estimate nested logit models. To specify
+nests in an `mlogit` estimation, you supply a list of alternatives to the `nests` 
+argument. The code below puts all auto-based alternatives in one nest called
+`auto` and the other alternatives into another nest called `nonauto`.
+
+
+```r
+nl <- mlogit(CHOSEN ~ COST + TVTT  + OVTT | WKEMPDEN,  data = worktrips,
+             nests = list(auto = c('Drive Alone', 'Share 2', 'Share 3+'),
+                          nonauto = c('Bike', 'Walk', 'Transit'))
+```
+
 
 Question 5: Estimate a nested logit model including cost, travel time,
 out-of-vehicle travel time, and workplace employment density. Group car
 alternatives into one nest, and non-car alternatives into another. Constrain the
-nesting parameter to a single value (`un.nest.el = TRUE`). What is the estimated
-value of the nesting parameter? What are the implications of this parameter
-value for across-nest substitution?
+nesting parameter to a single value (set the parameter `un.nest.el = TRUE`).
+What is the estimated value of the nesting parameter? What are the implications
+of this parameter value for across-nest substitution?
 
 Question 6: Estimate another nested logit model with the same nests, but this
 time segment the data on income; include households making less than \$50k/year
@@ -176,11 +292,93 @@ in one segment and households making at least \$50k in the other. Add vehicles
 per worker as a covariate (`VEHBYWRK`). Comment on how the two segments respond
 to the different covariates. Which matters more to which group?
 
-Question 7. Of the models you estimated, which is the preferred in terms of model
-likelihood? What about in terms of behavioral sensitivity?
+Question 7. Of all the models you estimated (including in the previous segment),
+which is the preferred in terms of model likelihood? What about in terms of
+behavioral sensitivity / reasonableness?
 
-Hint: A tool to compare models is the `screenreg()` function in `library(texreg)`.
-<div align = "left">
+
+### Third Problem Set: Log Sums, Destination Choice, and Accessibility
+
+
+|                        |Mode Choice  |
+|:-----------------------|:---------|
+|(Intercept) × Share 2   |-2.405    |
+|                        |(0.063)   |
+|(Intercept) × Share 3++ |-3.863    |
+|                        |(0.107)   |
+|(Intercept) × Transit   |-1.535    |
+|                        |(0.134)   |
+|(Intercept) × Bike      |-3.595    |
+|                        |(0.187)   |
+|(Intercept) × Walk      |-2.598    |
+|                        |(0.105)   |
+|IVTT                    |-0.006    |
+|                        |(0.006)   |
+|OVTT                    |-0.052    |
+|                        |(0.006)   |
+|COST                    |-0.003    |
+|                        |(0.000)   |
+|WKEMPDEN × Share 2      |0.001     |
+|                        |(0.000)   |
+|WKEMPDEN × Share 3++    |0.002     |
+|                        |(0.000)   |
+|WKEMPDEN × Transit      |0.003     |
+|                        |(0.000)   |
+|WKEMPDEN × Bike         |0.001     |
+|                        |(0.001)   |
+|WKEMPDEN × Walk         |0.002     |
+|                        |(0.001)   |
+|Num.Obs.                |5029      |
+|AIC                     |7329.0    |
+|BIC                     |          |
+|Log.Lik.                |-3651.489 |
+|rho2                    |0.248     |
+|rho20                   |0.595     |
+
+Question 8. An MNL mode choice model is given above. Calculate the utility,
+choice probabilities, and the choice model logsum for the individual in the
+dataset below.
+
+|  IVTT | OVTT |  COST | WKEMPDEN  | alternative |
+|------:|-----:|------:|----------:|:------------|
+|  13.4 | 2    |  70.6 |     3.48  | Drive Alone |
+|  18.4 | 2    |  35.3 |     3.48  | Share 2     |
+|  20.4 | 2    |  20.2 |     3.48  | Share 3+    |
+|  25.9 | 15.2 | 116.  |     3.48  | Transit     |
+|  40.5 | 2    |   0   |     3.48  | Bike        |
+
+
+Question 9 The same person is choosing which of two destinations to travel to.
+The travel times to Zone 1 are given in question 8, and the travel times to Zone
+2 are given below. The destination choice utility equation is 
+$V_j = 0.35 * \text{MCLS}_{ij} + 2.56 * \text{office}_j +  1.45 * \text{service}_j$.
+
+|  IVTT| OVTT|   COST| WKEMPDEN|alternative |
+|-----:|----:|------:|--------:|:-----------|
+| 29.92| 10.0| 390.81|   764.19|Drive Alone |
+| 34.92| 10.0| 195.40|   764.19|Share 2     |
+| 21.92| 10.0|  97.97|   764.19|Share 3+    |
+| 22.96| 14.2| 185.00|   764.19|Transit     |
+| 58.95| 10.0|   0.00|   764.19|Bike        |
+
+The socioeconomic data for both zones is given below.  Calculate the destination
+utilities, choice probabilities, and the destination choice logsum.
+
+| TAZ| office| service|
+|---:|------:|-------:|
+|   1|    126|     742|
+|   2|    321|     140|
+
+Question 10. An improvement to the transit system is proposed that will lower the
+above individual's transit out-of-vehicle time to zone 1 to 5 minutes (from 15.2). Calculate
+the mode choice utility, probabilities, and the mode choice model logsum. What
+is the monetary value of this transit improvement to the mode choice of this person?
+
+Question 11. Using the same improvement, calculate the destination choice utility,
+probabilities, and destination choice logsum. What is the monetary value of the transit
+improvement to the destination choice? Does this include the mode choice benefit?
+
+
 
 ## Lab
 
