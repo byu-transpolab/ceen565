@@ -457,7 +457,7 @@ dataset below.
 Question 9 The same person is choosing which of two destinations to travel to.
 The travel times to Zone 1 are given in question 8, and the travel times to Zone
 2 are given below. The destination choice utility equation is 
-$V_j = 0.35 * \text{MCLS}_{ij} + 2.56 * \text{office}_j +  1.45 * \text{service}_j$.
+$V_j = 0.35 * \text{MCLS}_{ij} + 2.56 * \ln(\text{office}_j) +  1.45 * ln(\text{service}_j)$.
 
 |  IVTT| OVTT|   COST| WKEMPDEN|alternative |
 |-----:|----:|------:|--------:|:-----------|
