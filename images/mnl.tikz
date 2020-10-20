@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 5) {};
+		\node [style=none] (1) at (-4, 2) {};
+		\node [style=none] (3) at (2, 2) {};
+		\node [style=none] (4) at (-4, 1.25) {};
+		\node [style=none] (7) at (-4, 1.25) {Auto};
+		\node [style=none] (8) at (2, 1.25) {Bus};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (0.center);
+		\draw (3.center) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

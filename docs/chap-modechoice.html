@@ -183,6 +183,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mathematical-derivation"><i class="fa fa-check"></i><b>4.1</b> Mathematical Derivation</a></li>
 <li class="chapter" data-level="4.2" data-path="chap-modechoice.html"><a href="chap-modechoice.html#utility-equations"><i class="fa fa-check"></i><b>4.2</b> Utility Equations</a></li>
 <li class="chapter" data-level="4.3" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mnl-estimation"><i class="fa fa-check"></i><b>4.3</b> MNL Estimation</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-modechoice.html"><a href="chap-modechoice.html#iia-and-nested-logit"><i class="fa fa-check"></i><b>4.4</b> IIA and Nested Logit</a></li>
+<li class="chapter" data-level="4.5" data-path="chap-modechoice.html"><a href="chap-modechoice.html#accessibility-and-log-sums"><i class="fa fa-check"></i><b>4.5</b> Accessibility and Log Sums</a></li>
+<li class="chapter" data-level="4.6" data-path="chap-modechoice.html"><a href="chap-modechoice.html#destination-choice"><i class="fa fa-check"></i><b>4.6</b> Destination Choice</a></li>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a><ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#first-problem-set-multinomial-logit-model-estimation"><i class="fa fa-check"></i>First Problem Set: Multinomial Logit Model Estimation</a></li>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#second-problem-set-nested-logit-models"><i class="fa fa-check"></i>Second Problem Set: Nested Logit Models</a></li>
@@ -385,6 +388,94 @@ model:</p>
 is perfect (log-likelihood of zero), then <span class="math inline">\(\rho_0^2 = 1\)</span>. In practice, you will
 not ever see <span class="math inline">\(\rho_0^2\)</span> values anywhere near 1. You can build an analogous
 <span class="math inline">\(\rho_C^2\)</span> metric by using the market shares likelihood as a reference.</p>
+</div>
+<div id="iia-and-nested-logit" class="section level2">
+<h2><span class="header-section-number">4.4</span> IIA and Nested Logit</h2>
+<p>The MNL model has a property referred to as the
+<strong>independence of irrelevant alternatives</strong> (IIA). This simply means that the
+ratio of the probabilities of two alternatives is only based on the utility of
+those two alternatives. Mathematically,</p>
+<p><span class="math display" id="eq:iia">\[\begin{equation}
+ \frac{P_i}{P_k} = 
+   \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}} \times 
+   \frac{\sum_{j\in J} e^{V_j}}{} = \frac{e^{V_i}}{e^{V_k}}
+  \tag{4.6}
+\end{equation}\]</span></p>
+<p>This property plays an important role in mode choice, because it introduces
+some unreasonable behavior when we add a new mode. Consider if we have two
+modes, car and bus, with utilities of <span class="math inline">\(V_{bus} = 0\)</span> and <span class="math inline">\(V_{car} = 1\)</span>. The
+choice probabilities of these two modes are</p>
+<p><span class="math display">\[\begin{align*}
+  P_{car} &amp;= \frac{exp(1)}{exp(0) + exp(1)} &amp;= 0.731\\
+  P_{bus} &amp;= \frac{exp(0)}{exp(0) + exp(1)} &amp;= 0.269\\
+  \frac{P_{car} }{P_{bus}} &amp;= 0.368  &amp;
+\end{align*}\]</span></p>
+<p>Now imagine add a light rail alternative to this scenario, with <span class="math inline">\(V_{LRT} = 0.5\)</span>.
+The choice probabilities are now</p>
+<p><span class="math display">\[\begin{align*}
+  P_{car} &amp;= \frac{exp(1)  }{exp(0) + exp(1) + exp(0.5)} &amp;= 0.506\\
+  P_{bus} &amp;= \frac{exp(0)  }{exp(0) + exp(1) + exp(0.5)} &amp;= 0.186\\
+  P_{LRT} &amp;= \frac{exp(0.5)}{exp(0) + exp(1) + exp(0.5)} &amp;= 0.307\\
+  \frac{P_{car} }{P_{bus}} &amp; = 0.368 &amp;
+\end{align*}\]</span></p>
+<p>The <em>ratio</em> of the choice probabilities of car and bus stay exactly the same.
+A consequence of this is that 73% of the new light rail passengers were
+formerly automobile passengers. But this doesn’t makes intuitive sense; we would
+expect light rail and bus to have more unobserved things in common. Surely,
+some automobile riders will decide to take transit when there is a light rail
+instead of just a bus, but not <em>most</em> of the new light rail riders to be
+converts. So we need a way to represent the fact that some alternatives are
+“closer” to other alternatives.</p>
+<p>When we derived the MNL, we assumed that the unobserved error <span class="math inline">\(\varepsilon_i\)</span>
+was distributed independently. That is, if we were to make a matrix of the
+correlation of the error between our three alternatives for car, bus, and LRT,
+it would be the matrix below:</p>
+<p><span class="math display">\[\begin{equation*}
+\varepsilon  \sim
+\begin{matrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1\\
+\end{matrix}
+
+\end{equation*}\]</span></p>
+<p>But what is more likely is that the two alternatives for bus and LRT have correlated
+error terms, or the correlation between them is somewhere between 0 and 1. Let’s
+assume that there is instead some coefficient that dictates the degree to which
+these error terms are allowed to be correlated.</p>
+<p><span class="math display">\[\begin{equation*}
+\varepsilon  \sim
+\begin{matrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; \lambda_{transit}\\
+0 &amp; 1 - \lambda_{transit} &amp; 1\\
+\end{matrix}
+\end{equation*}\]</span></p>
+<p>This is equivalent to saying that the choice of mode doesn’t look like an
+equal choice among three alternatives,</p>
+<p><img src="04_modechoice_files/figure-html/unnamed-chunk-1-1.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>But instead a two-stage choice, where people first choose whether they will take
+transit, and then which transit mode they will choose.</p>
+<p><img src="04_modechoice_files/figure-html/unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>This results in a <strong>nested logit model</strong>. The choice probability of an alternative
+in this model is now</p>
+<p><span class="math display" id="eq:nestedlogit">\[\begin{equation}
+  P_{i} = \frac{e^{V_i/\lambda_k}(\lambda_{j \in B_{k}} e^{V_j/\lambda_k})^{\lambda_l - 1}}
+  {\sum_{l\in K}(\sum_{j \in B_l} e^{V_j/\lambda_l})^{\lambda_l - 1}}
+  \tag{4.7}
+\end{equation}\]</span></p>
+<p>It is important to note that if the estimated <span class="math inline">\(\lambda\)</span> value equals one, then
+there is no observable correlation between the error terms, and the model reduces
+to the MNL. If <span class="math inline">\(\lambda&gt;1\)</span>, then it implies <em>negative</em> correlation between the
+alternatives. This violates utility theory, because it would cause <em>more</em>
+people to choose auto when the utility of a transit mode increases. So valid
+values for the estimated correlation are <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span>.</p>
+</div>
+<div id="accessibility-and-log-sums" class="section level2">
+<h2><span class="header-section-number">4.5</span> Accessibility and Log Sums</h2>
+</div>
+<div id="destination-choice" class="section level2">
+<h2><span class="header-section-number">4.6</span> Destination Choice</h2>
 </div>
 <div id="hw-modechoice" class="section level2 unnumbered">
 <h2>Homework</h2>

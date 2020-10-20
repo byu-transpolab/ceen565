@@ -179,6 +179,140 @@ is perfect (log-likelihood of zero), then $\rho_0^2 = 1$. In practice, you will
 not ever see $\rho_0^2$ values anywhere near 1. You can build an analogous
 $\rho_C^2$ metric by using the market shares likelihood as a reference.
 
+## IIA and Nested Logit
+
+The MNL model has a property referred to as the 
+**independence of irrelevant  alternatives** (IIA). This simply means that the
+ratio of the probabilities of two alternatives is only based on the utility of
+those two alternatives. Mathematically,
+
+\begin{equation}
+ \frac{P_i}{P_k} = 
+   \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}} \times 
+   \frac{\sum_{j\in J} e^{V_j}}{} = \frac{e^{V_i}}{e^{V_k}}
+  (\#eq:iia)
+\end{equation}
+
+This property plays an important role in mode choice, because it introduces 
+some unreasonable behavior when we add a new mode. Consider if we have two 
+modes, car and bus, with utilities of $V_{bus} = 0$ and $V_{car} = 1$. The
+choice probabilities of these two modes are
+
+\begin{align*}
+  P_{car} &= \frac{exp(1)}{exp(0) + exp(1)} &= 0.731\\
+  P_{bus} &= \frac{exp(0)}{exp(0) + exp(1)} &= 0.269\\
+  \frac{P_{car} }{P_{bus}} &= 0.368  &
+\end{align*}  
+
+Now imagine add a light rail alternative to this scenario, with $V_{LRT} = 0.5$.
+The choice probabilities are now
+
+\begin{align*}
+  P_{car} &= \frac{exp(1)  }{exp(0) + exp(1) + exp(0.5)} &= 0.506\\
+  P_{bus} &= \frac{exp(0)  }{exp(0) + exp(1) + exp(0.5)} &= 0.186\\
+  P_{LRT} &= \frac{exp(0.5)}{exp(0) + exp(1) + exp(0.5)} &= 0.307\\
+  \frac{P_{car} }{P_{bus}} & = 0.368 &
+\end{align*}  
+
+The *ratio* of the choice probabilities of car and bus stay exactly the same. 
+A consequence of this is that 73% of the new light rail passengers were
+formerly automobile passengers. But this doesn't makes intuitive sense; we would
+expect light rail and bus to have more unobserved things in common. Surely, 
+some automobile riders will decide to take transit when there is a light rail
+instead of just a bus, but not *most* of the new light rail riders to be
+converts. So we need a way to represent the fact that some alternatives are
+"closer" to other alternatives. 
+
+When we derived the MNL, we assumed that the unobserved error $\varepsilon_i$
+was distributed independently. That is, if we were to make a matrix of the
+correlation of the error between our three alternatives for car, bus, and LRT,
+it would be the matrix below:
+
+\begin{equation*}
+\varepsilon  \sim
+\begin{matrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{matrix}
+
+\end{equation*}
+
+But what is more likely is that the two alternatives for bus and LRT have correlated
+error terms, or the correlation between them is somewhere between 0 and 1.  Let's
+assume that there is instead some coefficient that dictates the degree to which
+these error terms are allowed to be correlated.
+
+\begin{equation*}
+\varepsilon  \sim
+\begin{matrix}
+1 & 0 & 0\\
+0 & 1 & \lambda_{transit}\\
+0 & 1 - \lambda_{transit} & 1\\
+\end{matrix}
+\end{equation*}
+
+This is equivalent to saying that the choice of mode doesn't look like an
+equal choice among three alternatives,
+
+```{r, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
+\begin{tikzpicture}
+		\node [] (0) at (-1, 5) {};
+		\node [] (1) at (-4, 2) {};
+		\node [] (3) at (2, 2) {};
+		\node [] (4) at (-1, 2) {};
+		\node [] (7) at (-4, 1.25) {Auto};
+		\node [] (7) at (-1, 1.25) {Bus};
+		\node [] (8) at (2, 1.25) {LRT};
+		\draw (1.center) to (0.center);
+		\draw (4.center) to (0.center);
+		\draw (3.center) to (0.center);
+\end{tikzpicture}
+```
+
+But instead a two-stage choice, where people first choose whether they will take
+transit, and then which transit mode they will choose. 
+
+```{r, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
+\begin{tikzpicture}
+		\node [] (0) at (0, 6) {};
+		\node [] (1) at (-2, 3) {};
+		\node [] (3) at (2, 3) {};
+		\node [] (4) at (1, 0) {};
+		\node [] (5) at (-3, 2) {Auto};
+		\node [] (6) at (1, -1) {Bus};
+		\node [] (7) at (3, -1) {LRT};
+		\node [] (8) at (3, 0) {};
+		\draw (1.center) to (0.center);
+		\draw (0.center) to (3.center);
+		\draw (3.center) to (4.center);
+		\draw (3.center) to (8.center);
+\end{tikzpicture}
+```
+
+This results in a **nested logit model**. The choice probability of an alternative
+in this model is now
+
+\begin{equation}
+  P_{i} = \frac{e^{V_i/\lambda_k}(\lambda_{j \in B_{k}} e^{V_j/\lambda_k})^{\lambda_l - 1}}
+  {\sum_{l\in K}(\sum_{j \in B_l} e^{V_j/\lambda_l})^{\lambda_l - 1}}
+  (\#eq:nestedlogit)
+\end{equation}
+
+It is important to note that if the estimated $\lambda$ value equals one, then
+there is no observable correlation between the error terms, and the model reduces
+to the MNL. If $\lambda>1$, then it implies *negative* correlation between the 
+alternatives. This violates utility theory, because it would cause *more* 
+people to choose auto when the utility of a transit mode increases. So valid
+values for the estimated correlation are $0 < \lambda < 1$.
+
+## Accessibility and Log Sums
+
+## Destination Choice
+
+
+
+
 
 ## Homework {-#hw-modechoice}
 
