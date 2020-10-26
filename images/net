@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-9, 2) {};
+		\node [style=none] (1) at (0, 2) {};
+		\node [style=none] (2) at (-4.75, 5) {};
+		\node [style=none] (3) at (-4.5, 1.25) {t_a = 10 + 0.02 V_t};
+		\node [style=none] (4) at (-4.25, 5) {t_b = 15 + 0.005 V_b};
+		\node [style=none] (5) at (-10, 1.75) {A};
+		\node [style=none] (6) at (1, 1.75) {B};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (1.center);
+		\draw [bend left=45, looseness=1.25] (0.center) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

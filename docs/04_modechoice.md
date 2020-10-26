@@ -250,12 +250,12 @@ these error terms are allowed to be correlated.
 This is equivalent to saying that the choice of mode doesn't look like an
 equal choice among three alternatives,
 
-<img src="04_modechoice_files/figure-html/unnamed-chunk-1-1.png" width="30%" style="display: block; margin: auto;" />
+<img src="04_modechoice_files/figure-epub3/unnamed-chunk-1-1.png" width="30%" style="display: block; margin: auto;" />
 
 But instead a two-stage choice, where people first choose whether they will take
 transit, and then which transit mode they will choose. 
 
-<img src="04_modechoice_files/figure-html/unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
+<img src="04_modechoice_files/figure-epub3/unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
 
 This results in a **nested logit model**. The choice probability of an alternative
 in this model is now
@@ -757,7 +757,7 @@ ggplot(tlfd %>% gather(purpose, share, HBW:HBSH),
   xlab("Distance") + ylab("%Trips")
 ```
 
-<img src="04_modechoice_files/figure-html/tfld-plot-1.png" width="672" />
+![](04_modechoice_files/figure-epub3/tfld-plot-1.png)<!-- -->
 
 The modeled TLFD for each purpose can be had on the model home screen as an
 output of the trip distribution model. Calculate the error between your observed
