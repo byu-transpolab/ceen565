@@ -7,6 +7,22 @@ library(readxl)
 # Network Assignment and Validation {#chap-assignment}
 
 
+## Volume - Delay Functions
+
+```{r bpr_coeffs}
+bpr <- function(vc, alpha, beta) { (1 + alpha * (vc)^beta) }
+bpr_coefs <- read_csv("data/bpr_coeffs.csv") %>%
+  left_join(tibble(Facility = rep(c("Freeway", "Arterial"), each = 131),
+                   vc = rep(seq(0, 1.30, by = 0.01), 2))) %>%
+  mutate( t1 = bpr(vc, alpha, beta) )
+
+ggplot(bpr_coefs, aes(x = vc, y = t1, color = Facility)) + 
+  facet_wrap(~`MPO Size`) +
+  geom_line() + theme_bw()
+  
+```
+
+
 ## Homework {-#hw-assignment}
 
 

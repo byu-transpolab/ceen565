@@ -1,0 +1,9 @@
+﻿MPO Size,Facility,alpha,beta
+> 1 M,Freeway,0.48,6.95
+500k - 1M,Freeway,0.43,8.82
+200k - 1M,Freeway,0.15,8
+50k - 200k,Freeway,0.15,8.8
+> 1 M,Arterial,0.53,4.4
+500k - 1M,Arterial,0.42,5.2
+200k - 1M,Arterial,0.5,4
+50k - 200k,Arterial,0.45,5.6
