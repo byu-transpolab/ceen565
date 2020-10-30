@@ -31,7 +31,7 @@ of different sizes. As roads become more heavily loaded, the travel time increas
 and other routes become more attractive.
 
 <div class="figure">
-<img src="05_assignment_files/figure-epub3/bpr-coeffs-1.png" alt="Average BPR VDF curves in a sample of MPO models."  />
+<img src="05_assignment_files/figure-html/bpr-coeffs-1.png" alt="Average BPR VDF curves in a sample of MPO models." width="672" />
 <p class="caption">(\#fig:bpr-coeffs)Average BPR VDF curves in a sample of MPO models.</p>
 </div>
 
@@ -42,20 +42,8 @@ Consider that we have the network below, with two routes between nodes $A$ and
 $B$. The bypass is longer initially, but its travel time will grow less quickly
 with added volume.
 
-<img src="05_assignment_files/figure-epub3/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="05_assignment_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
 
-The most basic way to assign trips is with an "all-or-nothing" (AON) assignment.
-This simply puts all the trips between $i$ and $j$ on the shortest route. This
-is obviously not great in a lot of ways, because it will overload some
-roads while leaving other roads completely empty. So if we assign 1000 trips to
-this network, the volumes and travel times become
-
-<img src="05_assignment_files/figure-epub3/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
-
-We could repeat this process many times, assigning new AON loads to the updated
-travel times. This won't converge to anything, but we could take the average of
-all the different AON loadings and run with that. It's not perfect, but it's
-easy.
 
 In general, the operating theory of network assignment is called 
 *static user equilibrium*,
@@ -110,22 +98,90 @@ solve(A) %*% b
 ## [4,]  400
 ```
 
-In larger networks, this is really not possible. So we are going to learn two
-methods that are designed to simulate the true SUE solution by working
-iteratively.
+It is not going to be feasible to construct this UE matrix for more complex networks.
+So engineers have developed heuristic algorithms that iterate to find
+a solution that replicates the UE conditions.
 
-### FHWA Incremental Assignment
+### All-or-Nothing
+The most basic way to assign trips is with an "all-or-nothing" (AON) assignment.
+This simply puts all the trips between $i$ and $j$ on the shortest route. This
+is obviously not great in a lot of ways, because it will overload some
+roads while leaving other roads completely empty. So if we assign 1000 trips to
+this network, the volumes and travel times become
 
-A big problem with the AON assignment is the large jump in travel times between
-iterations. The FHWA algorithm is designed to weight the travel time from 
-previous iterations more heavily than the current iteration.
+<img src="05_assignment_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
 
-  1. Determine the number of increments, $N$.
-  1. Assign $T / N$ trips via AON
-  1. Calculate the the travel times for links on the network as 
-  $t_{i + 1} = t_{i}/N + t_{i - 1}*(N-1)/N$
-  1. Return to step 2
+We could repeat this process many times, assigning new AON loads to the updated
+travel times. This won't converge to anything, but we could take the average of
+all the different AON loadings and run with that. It's not perfect, but it's
+easy.
+
+
+### Incremental Assignment
+
+Instead of assigning the flows all at once, we might be able to get a more
+realistic loading by loading the flows in increments. Here's how this algorithm
+works:
+
+  1. Select increments $p_n$ that sum to 1 (e.g.,  0.4, 0.3, 0.2, and 0.1)
+  1. Calculate the travel times on all links
+  1. Assign $V_n * p_n$ trips to the network via All-or-Nothing
+  1. Return to step 2 with the next increment
   
+Assigning the 1000 trips to our two-route network using the increment values
+results in the following successive assignments.
+  
+| Iteration | Increment | Vb  | tb   | Vt  | tt |
+|-----------|-----------|-----|------|-----|----|
+| 0         |           | 0   | 15   | 0   | 10 |
+| 1         | 0.4       | 0   | 15   | 400 | 18 |
+| 2         | 0.3       | 300 | 16.5 | 400 | 18 |
+| 3         | 0.2       | 500 | 17.5 | 400 | 18 |
+| 4         | 0.1       | 600 | 18   | 400 | 18 | 
+
+### Successive Averages (FHWA) Assignment
+
+A big problem with the AON assignment (and with incremental assignment) is the
+large jump in travel times between iterations. It also is not guaranteed to
+converge to any particular solution, and the outcome is determined by the
+assumptions of the number of increments applied.
+
+This can be improved with a method developed by FHWA that is designed to
+repeatedly load the network and update the travel times by a diminishing rate.
+In this method, the volume on any particular link after iteration  is given by
+
+\begin{equation}
+  V_{n} = (1-\phi) * V_{n-1} + \phi F
+  (\#eq:fhwa)
+\end{equation}
+
+Where $\phi = 1 / n$ and F is the load of an All-or-Nothing assignment. 
+As $n$ increases, the relative amount of weight given to the previous assignment
+increases relative to the new AON assignment. The following table shows ten iterations
+of this algorithm.
+
+| Iterations | Load | phi        | Vt         | tt         | Vb         | tb         |
+|------------|------|------------|------------|------------|------------|------------|
+| 1          | F    | 1          | 1000       |            |            |            |
+|            | V    |            | 1000       | 30         |            | 15         |
+| 2          | F    | 0.5        |            |            | 1000       |            |
+|            | V    |            | 500        | 20         | 500        | 17.5       |
+| 3          | F    | 0.33333333 |            |            | 1000       |            |
+|            | V    |            | 333.33     | 16.67      | 666.67     | 18.3333333 |
+| 4          | F    | 0.25       | 1000       |            |            |            |
+|            | V    |            | 500        | 20         | 500        | 17.5       |
+| 5          | F    | 0.2        |            |            | 1000       |            |
+|            | V    |            | 400        | 18         | 600        | 18         |
+| 6          | F    | 0.16666667 | 1000       |            | 0          |            |
+|            | V    |            | 500        | 20         | 500        | 17.5       |
+| 7          | F    | 0.14285714 |            |            | 1000       |            |
+|            | V    |            | 428.571429 | 18.5714286 | 571.428571 | 17.8571429 |
+| 8          | F    | 0.125      |            | 10         | 1000       | 20         |
+|            | V    |            | 375        | 17.5       | 625        | 18.125     |
+| 9          | F    | 0.11111111 | 1000       |            |            |            |
+|            | V    |            | 444.44     | 18.89      | 555.56     | 17.78      |
+| 10         | F    | 0.1        |            |            | 1000       |            |
+|            | V    |            | 400.00     | 18.00      | 600.00     | 18.00      |
 
 ### Frank-Wolfe 
 
@@ -170,7 +226,7 @@ closer to each other. The figure below shows the value of the relative gap
 after several thousand iterations in the Washington, D.C. travel model.
 
 <div class="figure">
-<img src="images/05_convergence.png" alt="Relative gap after several thousand iterations." width="964" />
+<img src="images/05_relativegap.png" alt="Relative gap after several thousand iterations." width="899" />
 <p class="caption">(\#fig:relative-gap)Relative gap after several thousand iterations.</p>
 </div>
 
@@ -197,8 +253,8 @@ t_{BC} =& 7.25 + 0.005 q_{BC}\\
 t_{BD} =& 20 + 0.01 q_{BD}
 \end{align*}
 
-Question 1: Solve for the static user equilibrium (SUE) link flows and travel times by
-solving a set of simultaneous equations that explicitly define the SUE
+Question 1: Solve for the user equilibrium (UE) link flows and travel times by
+solving a set of simultaneous equations that explicitly define the UE
 conditions.  Demonstrate that your solution is the user equilibrium by showing
 through example that all UE conditions are satisfied.
 
@@ -206,11 +262,15 @@ Question 2: Perform four iterations of All Or Nothing (AON) assignment on the ne
 and O/D volumes.  Show the link flows and travel times at the end of each
 iteration and compute the average link loads and travel times.
 
-Question 3: Assign trips using the FHWA assignment heuristic.  Show the link
-flows and travel times for four incremental assignments, and the final average
-assignment and resulting travel times.
+Question 3: Perform four iterations of an incremental assignment assignment 
+using the increment values 0.4, 0.3, 0.2, and 0.1.  Show the link flows and
+travel times at the end of each iteration.
 
-Question 4: Compare these four traffic assignment heuristic approaches to the UE
+Question 4: Assign trips using the successive averages (FHWA) heuristic.  Show
+the link flows and travel times for five successive assignments, and the final
+assignment. 
+
+Question 5: Compare these three traffic assignment heuristic approaches to the UE
 assignment and to each other.  How do the resulting flow patterns differ (cite
 specific differences)?  Which one comes closest to the UE flows? 
 
@@ -220,12 +280,12 @@ volumes between your base scenario (no-build) and the widening is given in the f
 below. What is a likely explanation for the patterns shown in the figure?
 
 <div class="figure">
-<img src="images/05_convergence.png" alt="Difference in assigned volumes when adding a lane in area with blue circle." width="964" />
+<img src="images/05_convergence.png" alt="Difference in assigned volumes when adding a lane in area with blue circle." width="482" />
 <p class="caption">(\#fig:unnamed-chunk-3)Difference in assigned volumes when adding a lane in area with blue circle.</p>
 </div>
 
 
-## Laboratory Assignment
+## Laboratory Assignment {-}
 
 The highway volume-to-capacity curves in the Roanoke Model have already been
 largely calibrated^[To be specific, VDOT has values that they assert for all of
