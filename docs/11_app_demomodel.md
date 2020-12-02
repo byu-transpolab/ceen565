@@ -29,7 +29,7 @@ final folder, i.e., `C:\folder\folder\rvtpo_bare`. If there are any spaces your
 model will crash.
 
 <div class="figure">
-<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="838" />
+<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="419" />
 <p class="caption">(\#fig:rvtpo-dir)RVTPO model home folder</p>
 </div>
 
@@ -41,7 +41,7 @@ step. Some steps actually contain several sub-steps, and double-clicking the
 yellow step box will expand that application.
 
 <div class="figure">
-<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="1693" />
+<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="846" />
 <p class="caption">(\#fig:app-interface)RVTPO model application interface</p>
 </div>
 
@@ -58,7 +58,7 @@ zones.] Complete instructions are included in the model user's guide (in the
 I have also made a YouTube video showing these steps. Note that the video
 shows you getting the model from Canvas; get it from [Box](https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x).
 
-[![](11_app_demomodel_files/figure-epub3/initial-run-video-1.png)](https://www.youtube.com/embed/88HAaQLVpJk)<!-- -->
+<iframe src="https://www.youtube.com/embed/88HAaQLVpJk" width="672" height="400px"></iframe>
 
 
 
@@ -70,7 +70,7 @@ You can access files in the model in multiple ways:
   - In the catalog windows on the side
   - Directly in the File Explorer
   
-[![](11_app_demomodel_files/figure-epub3/file-access-1.png)](https://www.youtube.com/embed/Npw-jf19wak)<!-- -->
+<iframe src="https://www.youtube.com/embed/Npw-jf19wak" width="672" height="400px"></iframe>
 
 The model has a few prepared reports that you can run at any time. These are
 found in the "Reports" drop-down in the catalog along the left-hand side of the
@@ -82,8 +82,52 @@ Cube window. These reports include:
   
 You can also make tabulations of any report. The video below has an example.
 
-[![](11_app_demomodel_files/figure-epub3/unnamed-chunk-1-1.png)](https://www.youtube.com/embed/okU6pu0KAiQ)<!-- -->
+<iframe src="https://www.youtube.com/embed/okU6pu0KAiQ" width="672" height="400px"></iframe>
 
+## Writing Custom Scripts
+Sometimes what you would like to look at is not calculated directly from the
+model, but you can write scripts that will compute what you need. Two common 
+script types are for matrix manipulation and for network manipulation.
+
+
+### Network Bandwidth
+
+The script below will compute the difference between 2040 and 2012 highway
+volumes. The script can be adapted for similar applications. The video
+shows how to use this script and calculate what you need to.
+
+<iframe src="https://www.youtube.com/embed/BCSi0h7tbew" width="672" height="400px"></iframe>
+
+
+
+```
+RUN PGM=NETWORK
+NETI[1] = "C:\projects\rvtpo-master\Base\Output\LOADED_2012A.net"
+NETI[2] = "C:\projects\rvtpo-master\Base\EC_2040\Output\LOADED_2040A.net"
+NETO = "C:\projects\rvtpo-master\Base\Output\Growth.net" INCLUDE = base_vol, ec2040_vol, diff
+
+PROCESS  PHASE=INPUT
+;Use this phase to modify data as it is read, such as recoding node numbers.
+ENDPROCESS
+
+PROCESS  PHASE=NODEMERGE  
+; Use this phase to make computations and selections of any data on the NODEI files.
+ENDPROCESS
+
+
+PROCESS  PHASE=LINKMERGE  
+  ; Use this phase to make computations and selections of any data on the LINKI files.
+  base_vol = li.1.TOTAL_VOL
+  ec2040_vol = li.2.TOTAL_VOL
+  diff = ec2040_vol - base_vol  
+ENDPROCESS
+
+PROCESS  PHASE=SUMMARY   
+; Use this phase for combining and reporting of working variables.
+ENDPROCESS
+
+ENDRUN
+```
 
 ## Network and Zone Maps
 
@@ -93,12 +137,12 @@ presentations. For example, Figure \@ref(fig:network-factypes) shows the network
 links by facility type. The video below shows how to do this.
 
 <div class="figure">
-<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="977" />
+<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="488" />
 <p class="caption">(\#fig:network-factypes)Facility types in the Roanoke region.</p>
 </div>
 
 
-[![](11_app_demomodel_files/figure-epub3/netchoro-video-1.png)](https://www.youtube.com/embed/wvyhKXyZVbM)<!-- -->
+<iframe src="https://www.youtube.com/embed/wvyhKXyZVbM" width="672" height="400px"></iframe>
 
 
 ### Shortest Paths
@@ -109,14 +153,76 @@ destinations from a specific origin point, like the map shown in Figure \@ref(fi
 The video below shows how to do this.
 
 <div class="figure">
-<img src="images/isochrone.png" alt="Isochrone map using network speed information." width="1455" />
+<img src="images/isochrone.png" alt="Isochrone map using network speed information." width="728" />
 <p class="caption">(\#fig:isochrone)Isochrone map using network speed information.</p>
 </div>
 
-[![](11_app_demomodel_files/figure-epub3/path-video-1.png)](https://www.youtube.com/embed/24jRCNUIQOo)<!-- -->
+<iframe src="https://www.youtube.com/embed/24jRCNUIQOo" width="672" height="400px"></iframe>
 
-### Working with Matrices
 
-### Writing Custom Scripts
+### Mode Choice Logsum Maps
+
+The mode choice model logsums are an important accessibility component in the model
+that you may want to visualize. This video shows how to create these datasets 
+and visualize them.
+
+<iframe src="https://www.youtube.com/embed/KjsTnkU1h1Y" width="672" height="400px"></iframe>
+
+The script is here:
+
+```
+/*
+  Average logsum calculator
+  
+  This script reads in a matrix (ideally a logsum) matrix and writes out the row averages.
+*/
+RUN PGM=MATRIX 
+  
+  ; Input matrix 1
+  FILEI MATI[1] = "C:\projects\rvtpo-master\Base\Output\HBW_MCLS.MAT"
+  ; Can add additional input matrices
+  FILEI MATI[2] = "C:\projects\rvtpo-master\Base\Output\HBO_MCLS.MAT"
+  
+  ; Output DBF
+  FILEO RECO[1] = "C:\projects\rvtpo-master\Base\Output\average_mcls.dbf", 
+        FIELDS= Z HBW HBO ; can add additional fields
+  
+  ; specify which working matrices are which purpose
+  ; MW[n] = MI.[which mati].[which table]
+  FILLMW MW[1] = MI.1.1 ; HBW  
+  FILLMW MW[2] = MI.2.1 ; HBO
+  ; can add additional fields
+  
+  
+  ; The MATRIX program has an implicit row loop. So for each row, we restart the N and sum calculations
+  n = 0
+  hbw = 0
+  hbo = 0
+  
+  ; loop through destinations
+  LOOP JJ=1, ZONES
+    hbw = hbw + MW[1][JJ]
+    hbo = hbo + MW[2][JJ]
+    ; add other fields
+    n = n + 1 ; increment number of zones
+  ENDLOOP
+   
+  ; write output record
+  RO.Z = I
+  RO.HBW = hbw / n
+  RO.HBO = hbo / n
+  ; other fields
+  
+  WRITE RECO = 1
+
+
+ENDRUN
+```
+
+
+## Editing Transit Lines
+
+
+<iframe src="https://www.youtube.com/embed/z0a268m_9TA" width="672" height="400px"></iframe>
 
 
