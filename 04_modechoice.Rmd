@@ -5,7 +5,7 @@
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 library(tidyverse)
 library(readxl)
-
+library(kableExtra)
 ```
 
 Assume that person has a set of mode choices in front of them. They could
@@ -537,7 +537,8 @@ fixed; they should not change as part of this exercise.
 
 ```{r coeff.table}
 read_csv("data/rvtpo_data/MC_Coefficients.csv") %>%
-  pander::pander()
+  kbl() %>%
+  kable_styling()
 ```
 
 The mode-specific constants are in a separate file, `./Params/mc/MC_Constants.csv`.
@@ -558,7 +559,8 @@ Trips
 ```
 ```{r constants.table}
 read_csv("data/rvtpo_data/MC_Constants.csv") %>%
-  pander::pander()
+  kbl() %>%
+  kable_styling()
 ```
 
 There is currently no premium service in the model, so changing its constant
