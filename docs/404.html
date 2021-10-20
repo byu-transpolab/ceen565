@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Demonstration Model | Urban Transportation Planning</title>
+  <title>Page not found | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Demonstration Model | Urban Transportation Planning" />
+  <meta property="og:title" content="Page not found | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Demonstration Model | Urban Transportation Planning" />
+  <meta name="twitter:title" content="Page not found | Urban Transportation Planning" />
   
   <meta name="twitter:description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chap-process.html"/>
-<link rel="next" href="app-rstudio.html"/>
+
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -300,229 +300,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="app-demomodel" class="section level1" number="7">
-<h1><span class="header-section-number">A</span> Demonstration Model</h1>
-<p>In this class we will use the model for the Roanoke Valley Transportation
-Planning Organization (RVTPO), the MPO responsible for transportation planning
-in Roanoke, Virginia. The model is written for the CUBE travel modeling software
-package, the same software used by the Wasatch Front Regional Council model. The
-model code and files are available on
-<a href="https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x">Box</a>.</p>
-<p>A few key parameters files have been reset to default values, rather than the
-calibrated values used in the actual model. The homework assignments and lab
-activities in this course will walk you through re-calibrating the model to use
-in your term assignments.</p>
-<div id="running-the-model" class="section level2" number="7.1">
-<h2><span class="header-section-number">A.1</span> Running the Model</h2>
-<p>The model files are available from <a href="https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x">Box</a>
-as a compressed file called <code>rvtpo_bare.zip</code>. Extract this file to a folder on
-your local computer. I prefer to keep my models in a
-folder on the <code>C:\</code> drive called <code>C:\projects</code>. It may be that the C drive is
-not available to you, but you should place the model at a path that makes sense
-and that will not change from session to session. It is possible that the <code>J:</code>
-drive will not have enough space for multiple runs of the model.</p>
-<blockquote>
-<p>The path that you choose <strong>must have no spaces</strong>, from the drive letter to the
-final folder, i.e., <code>C:\folder\folder\rvtpo_bare</code>. If there are any spaces your
-model will crash.</p>
-</blockquote>
-<div class="figure"><span style="display:block;" id="fig:rvtpo-dir"></span>
-<img src="images/00_home_folder.png" alt="RVTPO model home folder" width="419" />
-<p class="caption">
-Figure A.1: RVTPO model home folder
-</p>
-</div>
-<p>Double-click on the <code>roanoke.cat</code> Cube catalog file. This will open
-the model application interface in Cube. On this interface you can see the steps
-the model will execute, as well as access the input / output files for each
-step. Some steps actually contain several sub-steps, and double-clicking the
-yellow step box will expand that application.</p>
-<div class="figure"><span style="display:block;" id="fig:app-interface"></span>
-<img src="images/00_cube_home.png" alt="RVTPO model application interface" width="846" />
-<p class="caption">
-Figure A.2: RVTPO model application interface
-</p>
-</div>
-<p>Run the base scenario of the model by pushing the large blue “Run”
-button in the upper left-hand corner of the Cube application. A window
-will appear first asking you to confirm which scenario you are running, and then
-showing you the progress. This model takes approximately 15 minutes to run on my
-laptop.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> Complete instructions are included in the model user’s guide (in the
-<code>usersguide/</code> folder).</p>
-<p>I have also made a YouTube video showing these steps. Note that the video
-shows you getting the model from Canvas; get it from <a href="https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x">Box</a>.</p>
-<iframe src="https://www.youtube.com/embed/88HAaQLVpJk" width="672" height="400px" data-external="1">
-</iframe>
-</div>
-<div id="files-and-reports" class="section level2" number="7.2">
-<h2><span class="header-section-number">A.2</span> Files and Reports</h2>
-<p>You can access files in the model in multiple ways:</p>
-<ul>
-<li>Through the application manager in Cube (input / output boxes)</li>
-<li>In the catalog windows on the side</li>
-<li>Directly in the File Explorer</li>
-</ul>
-<iframe src="https://www.youtube.com/embed/Npw-jf19wak" width="672" height="400px" data-external="1">
-</iframe>
-<p>The model has a few prepared reports that you can run at any time. These are
-found in the “Reports” drop-down in the catalog along the left-hand side of the
-Cube window. These reports include:</p>
-<ul>
-<li>Highway vehicle miles traveled and vehicle hours traveled by facility type</li>
-<li>Mode choice by purpose</li>
-<li>Transit route-level boardings in Peak and Off-peak periods</li>
-</ul>
-<p>You can also make tabulations of any report. The video below has an example.</p>
-<iframe src="https://www.youtube.com/embed/okU6pu0KAiQ" width="672" height="400px" data-external="1">
-</iframe>
-</div>
-<div id="writing-custom-scripts" class="section level2" number="7.3">
-<h2><span class="header-section-number">A.3</span> Writing Custom Scripts</h2>
-<p>Sometimes what you would like to look at is not calculated directly from the
-model, but you can write scripts that will compute what you need. Two common
-script types are for matrix manipulation and for network manipulation.</p>
-<div id="network-bandwidth" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">A.3.1</span> Network Bandwidth</h3>
-<p>The script below will compute the difference between 2040 and 2012 highway
-volumes. The script can be adapted for similar applications. The video
-shows how to use this script and calculate what you need to.</p>
-<iframe src="https://www.youtube.com/embed/BCSi0h7tbew" width="672" height="400px" data-external="1">
-</iframe>
-<pre><code>RUN PGM=NETWORK
-NETI[1] = &quot;C:\projects\rvtpo-master\Base\Output\LOADED_2012A.net&quot;
-NETI[2] = &quot;C:\projects\rvtpo-master\Base\EC_2040\Output\LOADED_2040A.net&quot;
-NETO = &quot;C:\projects\rvtpo-master\Base\Output\Growth.net&quot; INCLUDE = base_vol, ec2040_vol, diff
-
-PROCESS  PHASE=INPUT
-;Use this phase to modify data as it is read, such as recoding node numbers.
-ENDPROCESS
-
-PROCESS  PHASE=NODEMERGE  
-; Use this phase to make computations and selections of any data on the NODEI files.
-ENDPROCESS
-
-
-PROCESS  PHASE=LINKMERGE  
-  ; Use this phase to make computations and selections of any data on the LINKI files.
-  base_vol = li.1.TOTAL_VOL
-  ec2040_vol = li.2.TOTAL_VOL
-  diff = ec2040_vol - base_vol  
-ENDPROCESS
-
-PROCESS  PHASE=SUMMARY   
-; Use this phase for combining and reporting of working variables.
-ENDPROCESS
-
-ENDRUN</code></pre>
-</div>
-</div>
-<div id="network-and-zone-maps" class="section level2" number="7.4">
-<h2><span class="header-section-number">A.4</span> Network and Zone Maps</h2>
-<p>You can use Cube to create maps of network and zone data that you can use for
-debugging and analysis. You can also include these graphics in reports and
-presentations. For example, Figure <a href="app-demomodel.html#fig:network-factypes">A.3</a> shows the network
-links by facility type. The video below shows how to do this.</p>
-<div class="figure"><span style="display:block;" id="fig:network-factypes"></span>
-<img src="images/00_facility_types.png" alt="Facility types in the Roanoke region." width="488" />
-<p class="caption">
-Figure A.3: Facility types in the Roanoke region.
-</p>
-</div>
-<iframe src="https://www.youtube.com/embed/wvyhKXyZVbM" width="672" height="400px" data-external="1">
-</iframe>
-<div id="shortest-paths" class="section level3" number="7.4.1">
-<h3><span class="header-section-number">A.4.1</span> Shortest Paths</h3>
-<p>You can use Cube to measure the shortest path between two points in your model
-network. You can also make isochrone maps of the travel time to various
-destinations from a specific origin point, like the map shown in Figure <a href="app-demomodel.html#fig:isochrone">A.4</a>.
-The video below shows how to do this.</p>
-<div class="figure"><span style="display:block;" id="fig:isochrone"></span>
-<img src="images/isochrone.png" alt="Isochrone map using network speed information." width="728" />
-<p class="caption">
-Figure A.4: Isochrone map using network speed information.
-</p>
-</div>
-<iframe src="https://www.youtube.com/embed/24jRCNUIQOo" width="672" height="400px" data-external="1">
-</iframe>
-</div>
-<div id="mode-choice-logsum-maps" class="section level3" number="7.4.2">
-<h3><span class="header-section-number">A.4.2</span> Mode Choice Logsum Maps</h3>
-<p>The mode choice model logsums are an important accessibility component in the model
-that you may want to visualize. This video shows how to create these datasets
-and visualize them.</p>
-<iframe src="https://www.youtube.com/embed/KjsTnkU1h1Y" width="672" height="400px" data-external="1">
-</iframe>
-<p>The script is here:</p>
-<pre><code>/*
-  Average logsum calculator
-  
-  This script reads in a matrix (ideally a logsum) matrix and writes out the row averages.
-*/
-RUN PGM=MATRIX 
-  
-  ; Input matrix 1
-  FILEI MATI[1] = &quot;C:\projects\rvtpo-master\Base\Output\HBW_MCLS.MAT&quot;
-  ; Can add additional input matrices
-  FILEI MATI[2] = &quot;C:\projects\rvtpo-master\Base\Output\HBO_MCLS.MAT&quot;
-  
-  ; Output DBF
-  FILEO RECO[1] = &quot;C:\projects\rvtpo-master\Base\Output\average_mcls.dbf&quot;, 
-        FIELDS= Z HBW HBO ; can add additional fields
-  
-  ; specify which working matrices are which purpose
-  ; MW[n] = MI.[which mati].[which table]
-  FILLMW MW[1] = MI.1.1 ; HBW  
-  FILLMW MW[2] = MI.2.1 ; HBO
-  ; can add additional fields
-  
-  
-  ; The MATRIX program has an implicit row loop. So for each row, we restart the N and sum calculations
-  n = 0
-  hbw = 0
-  hbo = 0
-  
-  ; loop through destinations
-  LOOP JJ=1, ZONES
-    hbw = hbw + MW[1][JJ]
-    hbo = hbo + MW[2][JJ]
-    ; add other fields
-    n = n + 1 ; increment number of zones
-  ENDLOOP
-   
-  ; write output record
-  RO.Z = I
-  RO.HBW = hbw / n
-  RO.HBO = hbo / n
-  ; other fields
-  
-  WRITE RECO = 1
-
-
-ENDRUN</code></pre>
-</div>
-</div>
-<div id="editing-transit-lines" class="section level2" number="7.5">
-<h2><span class="header-section-number">A.5</span> Editing Transit Lines</h2>
-<iframe src="https://www.youtube.com/embed/z0a268m_9TA" width="672" height="400px" data-external="1">
-</iframe>
-
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="9">
-<li id="fn9"><p>It’s a small model with only about 250 zones; a larger model like WFRC
-will take many hours. Generally model run time increases with the square of the
-zones.<a href="app-demomodel.html#fnref9" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="chap-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="app-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

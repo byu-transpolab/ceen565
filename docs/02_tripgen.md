@@ -78,7 +78,7 @@ hh
 ```
 
 ```
-## # A tibble: 10,381 x 7
+## # A tibble: 10,381 × 7
 ##    houseid  wthhfin hhsize hhvehcnt numadlt hhfaminc                  wrkcount
 ##    <chr>      <dbl>  <dbl>    <dbl>   <dbl> <chr+lbl>                    <dbl>
 ##  1 30000019   279.       2        2       2 03 [$15,000 to $24,999]          0
@@ -113,7 +113,7 @@ trips <- nhts_trips %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'houseid' (override with `.groups` argument)
+## `summarise()` has grouped output by 'houseid'. You can override using the `.groups` argument.
 ```
 
 ```r
@@ -121,7 +121,7 @@ trips
 ```
 
 ```
-## # A tibble: 9,518 x 7
+## # A tibble: 9,518 × 7
 ## # Groups:   houseid [9,518]
 ##    houseid    HBO HBSHOP   NHB HBSOCREC   HBW  `-9`
 ##    <chr>    <int>  <int> <int>    <int> <int> <int>
@@ -157,21 +157,21 @@ tripprod
 ```
 
 ```
-## # A tibble: 10,381 x 13
-##    houseid wthhfin hhsize hhvehcnt numadlt hhfaminc wrkcount   HBO HBSHOP   NHB
-##    <chr>     <dbl>  <dbl>    <dbl>   <dbl> <chr+lb>    <dbl> <dbl>  <dbl> <dbl>
-##  1 300000…   279.       2        2       2 03 [$15…        0     4      0     0
-##  2 300002…   103.       1        2       1 05 [$35…        0     1      1     4
-##  3 300002…   244.       3        3       2 07 [$75…        1     2      4     3
-##  4 300004…   348.       2        2       2 06 [$50…        2     7      2     6
-##  5 300004…   133.       4        2       2 08 [$10…        2     8      2     9
-##  6 300004…   120.       2        0       2 03 [$15…        0     2      0     0
-##  7 300005…    35.7      2        3       2 06 [$50…        2     0      2     2
-##  8 300007…   130.       1        1       1 06 [$50…        1     0      3     1
-##  9 300009…   147.       4        3       4 09 [$12…        1     4      0     2
-## 10 300011…   304.       2        0       2 04 [$25…        2     3      2     0
+## # A tibble: 10,381 × 13
+##    houseid  wthhfin hhsize hhvehcnt numadlt hhfaminc wrkcount   HBO HBSHOP   NHB
+##    <chr>      <dbl>  <dbl>    <dbl>   <dbl> <chr+lb>    <dbl> <dbl>  <dbl> <dbl>
+##  1 30000019   279.       2        2       2 03 [$15…        0     4      0     0
+##  2 30000288   103.       1        2       1 05 [$35…        0     1      1     4
+##  3 30000289   244.       3        3       2 07 [$75…        1     2      4     3
+##  4 30000463   348.       2        2       2 06 [$50…        2     7      2     6
+##  5 30000465   133.       4        2       2 08 [$10…        2     8      2     9
+##  6 30000478   120.       2        0       2 03 [$15…        0     2      0     0
+##  7 30000545    35.7      2        3       2 06 [$50…        2     0      2     2
+##  8 30000770   130.       1        1       1 06 [$50…        1     0      3     1
+##  9 30000983   147.       4        3       4 09 [$12…        1     4      0     2
+## 10 30001177   304.       2        0       2 04 [$25…        2     3      2     0
 ## # … with 10,371 more rows, and 3 more variables: HBSOCREC <dbl>, HBW <dbl>,
-## #   `-9` <dbl>
+## #   -9 <dbl>
 ```
 
 Now we can count up the number of trips by grouping the variables we care 
@@ -189,7 +189,7 @@ hbo_tripprod <- tripprod %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'hhsize' (override with `.groups` argument)
+## `summarise()` has grouped output by 'hhsize'. You can override using the `.groups` argument.
 ```
 
 ```r
@@ -197,7 +197,7 @@ hbo_tripprod
 ```
 
 ```
-## # A tibble: 16 x 4
+## # A tibble: 16 × 4
 ## # Groups:   hhsize [4]
 ##    hhsize hhvehcnt     n   HBO
 ##     <dbl>    <dbl> <int> <dbl>
@@ -240,21 +240,19 @@ psrc_attractions <- read_csv("https://byu.box.com/shared/static/7ci8vomip719bdno
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   attr_tract = col_double(),
-##   HBO = col_double(),
-##   HBShop = col_double(),
-##   HBW = col_double(),
-##   NHB = col_double(),
-##   tothh = col_double(),
-##   retl = col_double(),
-##   manu = col_double(),
-##   offi = col_double(),
-##   gved = col_double(),
-##   othr = col_double(),
-##   totemp = col_double()
-## )
+## Rows: 643 Columns: 12
+```
+
+```
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## dbl (12): attr_tract, HBO, HBShop, HBW, NHB, tothh, retl, manu, offi, gved, ...
+```
+
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```r
@@ -262,19 +260,19 @@ psrc_attractions
 ```
 
 ```
-## # A tibble: 643 x 12
-##    attr_tract    HBO HBShop    HBW    NHB tothh  retl  manu  offi  gved  othr
-##         <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-##  1    5.30e10 8.92e3 1.02e3 6151.  4.70e2  3779   508   121   680    28   199
-##  2    5.30e10 2.58e4 1.48e2    0   1.03e4  3654   146     0   605   264   117
-##  3    5.30e10 3.90e1 1.30e1    0   8.50e2  1187    50     0   574     0     0
-##  4    5.30e10 1.22e3 4.78e2   83.1 2.79e3  3760   385     0   773   211    99
-##  5    5.30e10 5.08e3 3.53e2    0   5.30e3  2437    97    53   981    27   124
-##  6    5.30e10 0.     0.        0   9.89e1  1251     0     0    96     2    93
-##  7    5.30e10 9.79e3 4.22e3 1937.  3.22e4  3413   997     0  4017   527   101
-##  8    5.30e10 5.66e3 3.24e1  178.  4.20e3  2222   315     0   967    19    89
-##  9    5.30e10 1.65e3 1.08e0    0   2.22e3  1067     0     0    33    61    15
-## 10    5.30e10 2.07e3 0.        0   4.25e0   868     0     0    80     0     5
+## # A tibble: 643 × 12
+##     attr_tract     HBO  HBShop    HBW    NHB tothh  retl  manu  offi  gved  othr
+##          <dbl>   <dbl>   <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 53033000100  8918.  1024.   6151.  4.70e2  3779   508   121   680    28   199
+##  2 53033000200 25787.   148.      0   1.03e4  3654   146     0   605   264   117
+##  3 53033000300    39.0   13.0     0   8.50e2  1187    50     0   574     0     0
+##  4 53033000401  1215.   478.     83.1 2.79e3  3760   385     0   773   211    99
+##  5 53033000402  5079.   353.      0   5.30e3  2437    97    53   981    27   124
+##  6 53033000500     0      0       0   9.89e1  1251     0     0    96     2    93
+##  7 53033000600  9787.  4217.   1937.  3.22e4  3413   997     0  4017   527   101
+##  8 53033000700  5659.    32.4   178.  4.20e3  2222   315     0   967    19    89
+##  9 53033000800  1653.     1.08    0   2.22e3  1067     0     0    33    61    15
+## 10 53033000900  2075.     0       0   4.25e0   868     0     0    80     0     5
 ## # … with 633 more rows, and 1 more variable: totemp <dbl>
 ```
 
@@ -453,7 +451,7 @@ rvtpo_productions
 ```
 
 ```
-## # A tibble: 267 x 7
+## # A tibble: 267 × 7
 ##      TAZ  HBWP NHBWP  HBOP HBSCP HBSHP NHBOP
 ##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 ##  1     1 199.  113.  199.  112.  199.  384. 
@@ -475,7 +473,7 @@ rvtpo_productions %>%
 ```
 
 ```
-## # A tibble: 1 x 7
+## # A tibble: 1 × 7
 ##     TAZ   HBWP  NHBWP   HBOP  HBSCP  HBSHP  NHBOP
 ##   <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
 ## 1 35778 28200. 16093. 28200. 15933. 28200. 54513.

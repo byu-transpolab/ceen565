@@ -525,65 +525,201 @@ fixed; they should not change as part of this exercise.
 
 ```r
 read_csv("data/rvtpo_data/MC_Coefficients.csv") %>%
-  pander::pander()
+  kbl() %>%
+  kable_styling()
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   `;N` = col_double(),
-##   Name = col_character(),
-##   HBW = col_double(),
-##   HBO = col_double(),
-##   NHB = col_double(),
-##   HBSC = col_double()
-## )
+## Rows: 20 Columns: 6
 ```
 
+```
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (1): Name
+## dbl (5): ;N, HBW, HBO, NHB, HBSC
+```
 
-------------------------------------------------------------
- ;N     Name        HBW        HBO        NHB        HBSC   
----- ----------- ---------- ---------- ---------- ----------
- 1      CIVTT      -0.025     -0.015     -0.02      -0.015  
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
- 2     CSWAIT     -0.05625   -0.03375    -0.045    -0.03375 
-
- 3     CLWAIT      -0.025     -0.015     -0.02      -0.015  
-
- 4     CXWAIT     -0.0625    -0.0375     -0.05     -0.0375  
-
- 5      CCOST     -0.00158   -0.00237   -0.00253    -0.18   
-
- 6     CDRIVE     -0.05625   -0.03375    -0.045    -0.03375 
-
- 7     CTERML     -0.0625    -0.0375     -0.05     -0.0625  
-
- 8      CWALK     -0.0625    -0.0375     -0.05     -0.0375  
-
- 9     CWALK1     -0.0625    -0.0375     -0.05     -0.0375  
-
- 10    CWALK2     -0.09375   -0.05625    -0.075    -0.05625 
-
- 11    CBIKE1     -0.0625    -0.0375     -0.05     -0.0375  
-
- 12    CBIKE2     -0.09375   -0.05625    -0.075    -0.05625 
-
- 13   DWalkBIKE      1          1          1          1     
-
- 14      NC1        0.5        0.5        0.5        0.5    
-
- 15      NC2        0.5        0.5        0.5        0.5    
-
- 16      NC3        0.5        0.5        0.5        0.5    
-
- 17      CBD         0          0          0          0     
-
- 18     NXFER        0          0          0          0     
-
- 19   AUTOCOST      13.6       13.6       13.6       13.6   
-
- 20   SHAREFAC       2          2          2          2     
-------------------------------------------------------------
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> ;N </th>
+   <th style="text-align:left;"> Name </th>
+   <th style="text-align:right;"> HBW </th>
+   <th style="text-align:right;"> HBO </th>
+   <th style="text-align:right;"> NHB </th>
+   <th style="text-align:right;"> HBSC </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> CIVTT </td>
+   <td style="text-align:right;"> -0.02500 </td>
+   <td style="text-align:right;"> -0.01500 </td>
+   <td style="text-align:right;"> -0.02000 </td>
+   <td style="text-align:right;"> -0.01500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> CSWAIT </td>
+   <td style="text-align:right;"> -0.05625 </td>
+   <td style="text-align:right;"> -0.03375 </td>
+   <td style="text-align:right;"> -0.04500 </td>
+   <td style="text-align:right;"> -0.03375 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> CLWAIT </td>
+   <td style="text-align:right;"> -0.02500 </td>
+   <td style="text-align:right;"> -0.01500 </td>
+   <td style="text-align:right;"> -0.02000 </td>
+   <td style="text-align:right;"> -0.01500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> CXWAIT </td>
+   <td style="text-align:right;"> -0.06250 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+   <td style="text-align:right;"> -0.05000 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> CCOST </td>
+   <td style="text-align:right;"> -0.00158 </td>
+   <td style="text-align:right;"> -0.00237 </td>
+   <td style="text-align:right;"> -0.00253 </td>
+   <td style="text-align:right;"> -0.18000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> CDRIVE </td>
+   <td style="text-align:right;"> -0.05625 </td>
+   <td style="text-align:right;"> -0.03375 </td>
+   <td style="text-align:right;"> -0.04500 </td>
+   <td style="text-align:right;"> -0.03375 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> CTERML </td>
+   <td style="text-align:right;"> -0.06250 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+   <td style="text-align:right;"> -0.05000 </td>
+   <td style="text-align:right;"> -0.06250 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> CWALK </td>
+   <td style="text-align:right;"> -0.06250 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+   <td style="text-align:right;"> -0.05000 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> CWALK1 </td>
+   <td style="text-align:right;"> -0.06250 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+   <td style="text-align:right;"> -0.05000 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> CWALK2 </td>
+   <td style="text-align:right;"> -0.09375 </td>
+   <td style="text-align:right;"> -0.05625 </td>
+   <td style="text-align:right;"> -0.07500 </td>
+   <td style="text-align:right;"> -0.05625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> CBIKE1 </td>
+   <td style="text-align:right;"> -0.06250 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+   <td style="text-align:right;"> -0.05000 </td>
+   <td style="text-align:right;"> -0.03750 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:left;"> CBIKE2 </td>
+   <td style="text-align:right;"> -0.09375 </td>
+   <td style="text-align:right;"> -0.05625 </td>
+   <td style="text-align:right;"> -0.07500 </td>
+   <td style="text-align:right;"> -0.05625 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> DWalkBIKE </td>
+   <td style="text-align:right;"> 1.00000 </td>
+   <td style="text-align:right;"> 1.00000 </td>
+   <td style="text-align:right;"> 1.00000 </td>
+   <td style="text-align:right;"> 1.00000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:left;"> NC1 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:left;"> NC2 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:left;"> NC3 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+   <td style="text-align:right;"> 0.50000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:left;"> CBD </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:left;"> NXFER </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+   <td style="text-align:right;"> 0.00000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> AUTOCOST </td>
+   <td style="text-align:right;"> 13.60000 </td>
+   <td style="text-align:right;"> 13.60000 </td>
+   <td style="text-align:right;"> 13.60000 </td>
+   <td style="text-align:right;"> 13.60000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:left;"> SHAREFAC </td>
+   <td style="text-align:right;"> 2.00000 </td>
+   <td style="text-align:right;"> 2.00000 </td>
+   <td style="text-align:right;"> 2.00000 </td>
+   <td style="text-align:right;"> 2.00000 </td>
+  </tr>
+</tbody>
+</table>
 
 The mode-specific constants are in a separate file, `./Params/mc/MC_Constants.csv`.
 The reference alternative in the choice model is Drive Alone, and the alternatives
@@ -604,45 +740,121 @@ Trips
 
 ```r
 read_csv("data/rvtpo_data/MC_Constants.csv") %>%
-  pander::pander()
+  kbl() %>%
+  kable_styling()
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   `;N` = col_double(),
-##   Name = col_character(),
-##   HBW = col_double(),
-##   HBO = col_double(),
-##   NHB = col_double(),
-##   HBSC = col_double()
-## )
+## Rows: 10 Columns: 6
 ```
 
+```
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (1): Name
+## dbl (5): ;N, HBW, HBO, NHB, HBSC
+```
 
-----------------------------------------------------
- ;N    Name      HBW       HBO       NHB      HBSC  
----- -------- --------- --------- --------- --------
- 1     K_SR     -1.17    0.0164    -0.0336   -1.169 
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
 
- 2    K_TRN    -0.3903   -1.981    -2.271    0.3261 
-
- 3    K_NMOT   -1.226    -0.3834   -0.8655   -1.25  
-
- 4    K_PREM      0         0         0        0    
-
- 5      NA        0         0         0        0    
-
- 6      NA        0         0         0        0    
-
- 7      NA        0         0         0        0    
-
- 8      NA        0         0         0        0    
-
- 9      NA        0         0         0        0    
-
- 10     NA        0         0         0        0    
-----------------------------------------------------
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> ;N </th>
+   <th style="text-align:left;"> Name </th>
+   <th style="text-align:right;"> HBW </th>
+   <th style="text-align:right;"> HBO </th>
+   <th style="text-align:right;"> NHB </th>
+   <th style="text-align:right;"> HBSC </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> K_SR </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -0.0336 </td>
+   <td style="text-align:right;"> -1.1685 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> K_TRN </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -2.2714 </td>
+   <td style="text-align:right;"> 0.3261 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> K_NMOT </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -0.8655 </td>
+   <td style="text-align:right;"> -1.2505 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> K_PREM </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+</tbody>
+</table>
 
 There is currently no premium service in the model, so changing its constant
 will not result in more people taking it. But the structure for it exists, if the

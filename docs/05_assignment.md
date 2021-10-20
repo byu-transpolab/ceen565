@@ -31,7 +31,7 @@ of different sizes. As roads become more heavily loaded, the travel time increas
 and other routes become more attractive.
 
 <div class="figure">
-<img src="05_assignment_files/figure-html/bpr-coeffs-1.png" alt="Average BPR VDF curves in a sample of MPO models." width="672" />
+<img src="05_assignment_files/figure-epub3/bpr-coeffs-1.png" alt="Average BPR VDF curves in a sample of MPO models."  />
 <p class="caption">(\#fig:bpr-coeffs)Average BPR VDF curves in a sample of MPO models.</p>
 </div>
 
@@ -42,7 +42,7 @@ Consider that we have the network below, with two routes between nodes $A$ and
 $B$. The bypass is longer initially, but its travel time will grow less quickly
 with added volume.
 
-<img src="05_assignment_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="05_assignment_files/figure-epub3/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 In general, the operating theory of network assignment is called 
@@ -109,7 +109,7 @@ is obviously not great in a lot of ways, because it will overload some
 roads while leaving other roads completely empty. So if we assign 1000 trips to
 this network, the volumes and travel times become
 
-<img src="05_assignment_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="05_assignment_files/figure-epub3/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
 
 We could repeat this process many times, assigning new AON loads to the updated
 travel times. This won't converge to anything, but we could take the average of
@@ -226,7 +226,7 @@ closer to each other. The figure below shows the value of the relative gap
 after several thousand iterations in the Washington, D.C. travel model.
 
 <div class="figure">
-<img src="images/05_relativegap.png" alt="Relative gap after several thousand iterations." width="899" />
+<img src="images/05_relativegap.png" alt="Relative gap after several thousand iterations." width="1798" />
 <p class="caption">(\#fig:relative-gap)Relative gap after several thousand iterations.</p>
 </div>
 
@@ -280,7 +280,7 @@ volumes between your base scenario (no-build) and the widening is given in the f
 below. What is a likely explanation for the patterns shown in the figure?
 
 <div class="figure">
-<img src="images/05_convergence.png" alt="Difference in assigned volumes when adding a lane in area with blue circle." width="482" />
+<img src="images/05_convergence.png" alt="Difference in assigned volumes when adding a lane in area with blue circle." width="964" />
 <p class="caption">(\#fig:unnamed-chunk-3)Difference in assigned volumes when adding a lane in area with blue circle.</p>
 </div>
 
