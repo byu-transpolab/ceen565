@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Urban Transportation Planning" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2020-10-26" />
+<meta name="date" content="2021-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 
 <link rel="next" href="chap-blocks.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +51,25 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +122,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -134,94 +161,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Urban Transportation Planning</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Foreword</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Foreword</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="chap-blocks.html"><a href="chap-blocks.html"><i class="fa fa-check"></i><b>1</b> Building Blocks</a><ul>
+<li class="chapter" data-level="1" data-path="chap-blocks.html"><a href="chap-blocks.html"><i class="fa fa-check"></i><b>1</b> Building Blocks</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="chap-blocks.html"><a href="chap-blocks.html#planning-for-human-systems"><i class="fa fa-check"></i><b>1.1</b> Planning for Human Systems</a></li>
 <li class="chapter" data-level="1.2" data-path="chap-blocks.html"><a href="chap-blocks.html#the-four-step-transportation-planning-process"><i class="fa fa-check"></i><b>1.2</b> The Four-Step Transportation Planning Process</a></li>
-<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.3</b> Travel Model Building Blocks</a><ul>
+<li class="chapter" data-level="1.3" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-model-building-blocks"><i class="fa fa-check"></i><b>1.3</b> Travel Model Building Blocks</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="chap-blocks.html"><a href="chap-blocks.html#travel-analysis-zones-and-se-data"><i class="fa fa-check"></i><b>1.3.1</b> Travel Analysis Zones and SE Data</a></li>
 <li class="chapter" data-level="1.3.2" data-path="chap-blocks.html"><a href="chap-blocks.html#transportation-networks"><i class="fa fa-check"></i><b>1.3.2</b> Transportation Networks</a></li>
 <li class="chapter" data-level="1.3.3" data-path="chap-blocks.html"><a href="chap-blocks.html#matrices"><i class="fa fa-check"></i><b>1.3.3</b> Matrices</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="chap-blocks.html"><a href="chap-blocks.html#data-inputs"><i class="fa fa-check"></i><b>1.4</b> Data Inputs</a><ul>
+<li class="chapter" data-level="1.4" data-path="chap-blocks.html"><a href="chap-blocks.html#data-inputs"><i class="fa fa-check"></i><b>1.4</b> Data Inputs</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="chap-blocks.html"><a href="chap-blocks.html#household-travel-surveys"><i class="fa fa-check"></i><b>1.4.1</b> Household Travel Surveys</a></li>
 <li class="chapter" data-level="1.4.2" data-path="chap-blocks.html"><a href="chap-blocks.html#us-census-bureau"><i class="fa fa-check"></i><b>1.4.2</b> US Census Bureau</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.5</b> Statistical and Mathematical Techniques</a><ul>
+<li class="chapter" data-level="1.5" data-path="chap-blocks.html"><a href="chap-blocks.html#statistical-and-mathematical-techniques"><i class="fa fa-check"></i><b>1.5</b> Statistical and Mathematical Techniques</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="chap-blocks.html"><a href="chap-blocks.html#continuous-and-discrete-distributions"><i class="fa fa-check"></i><b>1.5.1</b> Continuous and Discrete Distributions</a></li>
 <li class="chapter" data-level="1.5.2" data-path="chap-blocks.html"><a href="chap-blocks.html#ipf"><i class="fa fa-check"></i><b>1.5.2</b> Iterative Proportional Fitting</a></li>
 <li class="chapter" data-level="1.5.3" data-path="chap-blocks.html"><a href="chap-blocks.html#regression-analysis"><i class="fa fa-check"></i><b>1.5.3</b> Regression Analysis</a></li>
 <li class="chapter" data-level="1.5.4" data-path="chap-blocks.html"><a href="chap-blocks.html#numerical-optimization"><i class="fa fa-check"></i><b>1.5.4</b> Numerical Optimization</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#hw-blocks"><i class="fa fa-check"></i>Homework</a></li>
-<li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#lab-blocks"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#lab-blocks"><i class="fa fa-check"></i>Lab</a>
+<ul>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#marginal-distributions"><i class="fa fa-check"></i>Marginal Distributions</a></li>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#joint-distribution"><i class="fa fa-check"></i>Joint Distribution</a></li>
 <li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i>Report</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a><ul>
+<li class="chapter" data-level="2" data-path="chap-tripgen.html"><a href="chap-tripgen.html"><i class="fa fa-check"></i><b>2</b> Trip Generation</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production"><i class="fa fa-check"></i><b>2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction"><i class="fa fa-check"></i><b>2.2</b> Trip Attraction</a></li>
 <li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#hw-generation"><i class="fa fa-check"></i>Homework</a></li>
-<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab-generation"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="" data-path="chap-tripgen.html"><a href="chap-tripgen.html#lab-generation"><i class="fa fa-check"></i>Lab</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-production-1"><i class="fa fa-check"></i><b>2.2.1</b> Trip Production</a></li>
 <li class="chapter" data-level="2.2.2" data-path="chap-tripgen.html"><a href="chap-tripgen.html#trip-attraction-1"><i class="fa fa-check"></i><b>2.2.2</b> Trip Attraction</a></li>
-<li class="chapter" data-level="2.2.3" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i><b>2.2.3</b> Report</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-tripgen.html"><a href="chap-tripgen.html#report-1"><i class="fa fa-check"></i><b>2.2.3</b> Report</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a><ul>
-<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a><ul>
+<li class="chapter" data-level="3" data-path="chap-distribution.html"><a href="chap-distribution.html"><i class="fa fa-check"></i><b>3</b> Trip Distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#hw-distribution"><i class="fa fa-check"></i>Homework</a>
+<ul>
 <li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#first-problem-gravity-model-development"><i class="fa fa-check"></i>First Problem: Gravity Model Development</a></li>
 <li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#second-problem-model-calibration"><i class="fa fa-check"></i>Second Problem: Model Calibration</a></li>
 <li class="chapter" data-level="" data-path="chap-distribution.html"><a href="chap-distribution.html#third-problem-model-application"><i class="fa fa-check"></i>Third Problem: Model Application</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a><ul>
+<li class="chapter" data-level="4" data-path="chap-modechoice.html"><a href="chap-modechoice.html"><i class="fa fa-check"></i><b>4</b> Mode and Destination Choice</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mathematical-derivation"><i class="fa fa-check"></i><b>4.1</b> Mathematical Derivation</a></li>
 <li class="chapter" data-level="4.2" data-path="chap-modechoice.html"><a href="chap-modechoice.html#utility-equations"><i class="fa fa-check"></i><b>4.2</b> Utility Equations</a></li>
 <li class="chapter" data-level="4.3" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mnl-estimation"><i class="fa fa-check"></i><b>4.3</b> MNL Estimation</a></li>
 <li class="chapter" data-level="4.4" data-path="chap-modechoice.html"><a href="chap-modechoice.html#iia-and-nested-logit"><i class="fa fa-check"></i><b>4.4</b> IIA and Nested Logit</a></li>
 <li class="chapter" data-level="4.5" data-path="chap-modechoice.html"><a href="chap-modechoice.html#accessibility-and-log-sums"><i class="fa fa-check"></i><b>4.5</b> Accessibility and Log Sums</a></li>
 <li class="chapter" data-level="4.6" data-path="chap-modechoice.html"><a href="chap-modechoice.html#destination-choice"><i class="fa fa-check"></i><b>4.6</b> Destination Choice</a></li>
-<li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a><ul>
+<li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#hw-modechoice"><i class="fa fa-check"></i>Homework</a>
+<ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#first-problem-set-multinomial-logit-model-estimation"><i class="fa fa-check"></i>First Problem Set: Multinomial Logit Model Estimation</a></li>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#second-problem-set-nested-logit-models"><i class="fa fa-check"></i>Second Problem Set: Nested Logit Models</a></li>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#third-problem-set-log-sums-and-destination-choice"><i class="fa fa-check"></i>Third Problem Set: Log Sums and Destination Choice</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#lab"><i class="fa fa-check"></i>Lab</a><ul>
+<li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#lab"><i class="fa fa-check"></i>Lab</a>
+<ul>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#mode-choice-calibration"><i class="fa fa-check"></i>Mode Choice Calibration</a></li>
 <li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#destination-choice-calibration"><i class="fa fa-check"></i>Destination Choice Calibration</a></li>
-<li class="chapter" data-level="" data-path="chap-blocks.html"><a href="chap-blocks.html#report"><i class="fa fa-check"></i>Report</a></li>
+<li class="chapter" data-level="" data-path="chap-modechoice.html"><a href="chap-modechoice.html#report-2"><i class="fa fa-check"></i>Report</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="chap-assignment.html"><a href="chap-assignment.html"><i class="fa fa-check"></i><b>5</b> Network Assignment and Validation</a><ul>
+<li class="chapter" data-level="5" data-path="chap-assignment.html"><a href="chap-assignment.html"><i class="fa fa-check"></i><b>5</b> Network Assignment and Validation</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="chap-assignment.html"><a href="chap-assignment.html#volume---delay-functions"><i class="fa fa-check"></i><b>5.1</b> Volume - Delay Functions</a></li>
-<li class="chapter" data-level="5.2" data-path="chap-assignment.html"><a href="chap-assignment.html#assignment-algorithms"><i class="fa fa-check"></i><b>5.2</b> Assignment Algorithms</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="chap-assignment.html"><a href="chap-assignment.html#fhwa-incremental-assignment"><i class="fa fa-check"></i><b>5.2.1</b> FHWA Incremental Assignment</a></li>
-<li class="chapter" data-level="5.2.2" data-path="chap-assignment.html"><a href="chap-assignment.html#frank-wolfe"><i class="fa fa-check"></i><b>5.2.2</b> Frank-Wolfe</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-assignment.html"><a href="chap-assignment.html#assignment-algorithms"><i class="fa fa-check"></i><b>5.2</b> Assignment Algorithms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-assignment.html"><a href="chap-assignment.html#all-or-nothing"><i class="fa fa-check"></i><b>5.2.1</b> All-or-Nothing</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-assignment.html"><a href="chap-assignment.html#incremental-assignment"><i class="fa fa-check"></i><b>5.2.2</b> Incremental Assignment</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-assignment.html"><a href="chap-assignment.html#successive-averages-fhwa-assignment"><i class="fa fa-check"></i><b>5.2.3</b> Successive Averages (FHWA) Assignment</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chap-assignment.html"><a href="chap-assignment.html#frank-wolfe"><i class="fa fa-check"></i><b>5.2.4</b> Frank-Wolfe</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chap-assignment.html"><a href="chap-assignment.html#hw-assignment"><i class="fa fa-check"></i>Homework</a></li>
-<li class="chapter" data-level="5.3" data-path="chap-assignment.html"><a href="chap-assignment.html#laboratory-assignment"><i class="fa fa-check"></i><b>5.3</b> Laboratory Assignment</a></li>
+<li class="chapter" data-level="" data-path="chap-assignment.html"><a href="chap-assignment.html#laboratory-assignment"><i class="fa fa-check"></i>Laboratory Assignment</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="chap-process.html"><a href="chap-process.html"><i class="fa fa-check"></i><b>6</b> The Planning Process</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="app-demomodel.html"><a href="app-demomodel.html"><i class="fa fa-check"></i><b>A</b> Demonstration Model</a><ul>
+<li class="chapter" data-level="A" data-path="app-demomodel.html"><a href="app-demomodel.html"><i class="fa fa-check"></i><b>A</b> Demonstration Model</a>
+<ul>
 <li class="chapter" data-level="A.1" data-path="app-demomodel.html"><a href="app-demomodel.html#running-the-model"><i class="fa fa-check"></i><b>A.1</b> Running the Model</a></li>
 <li class="chapter" data-level="A.2" data-path="app-demomodel.html"><a href="app-demomodel.html#files-and-reports"><i class="fa fa-check"></i><b>A.2</b> Files and Reports</a></li>
-<li class="chapter" data-level="A.3" data-path="app-demomodel.html"><a href="app-demomodel.html#network-and-zone-maps"><i class="fa fa-check"></i><b>A.3</b> Network and Zone Maps</a><ul>
-<li class="chapter" data-level="A.3.1" data-path="app-demomodel.html"><a href="app-demomodel.html#shortest-paths"><i class="fa fa-check"></i><b>A.3.1</b> Shortest Paths</a></li>
-<li class="chapter" data-level="A.3.2" data-path="app-demomodel.html"><a href="app-demomodel.html#working-with-matrices"><i class="fa fa-check"></i><b>A.3.2</b> Working with Matrices</a></li>
-<li class="chapter" data-level="A.3.3" data-path="app-demomodel.html"><a href="app-demomodel.html#writing-custom-scripts"><i class="fa fa-check"></i><b>A.3.3</b> Writing Custom Scripts</a></li>
+<li class="chapter" data-level="A.3" data-path="app-demomodel.html"><a href="app-demomodel.html#writing-custom-scripts"><i class="fa fa-check"></i><b>A.3</b> Writing Custom Scripts</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="app-demomodel.html"><a href="app-demomodel.html#network-bandwidth"><i class="fa fa-check"></i><b>A.3.1</b> Network Bandwidth</a></li>
 </ul></li>
+<li class="chapter" data-level="A.4" data-path="app-demomodel.html"><a href="app-demomodel.html#network-and-zone-maps"><i class="fa fa-check"></i><b>A.4</b> Network and Zone Maps</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="app-demomodel.html"><a href="app-demomodel.html#shortest-paths"><i class="fa fa-check"></i><b>A.4.1</b> Shortest Paths</a></li>
+<li class="chapter" data-level="A.4.2" data-path="app-demomodel.html"><a href="app-demomodel.html#mode-choice-logsum-maps"><i class="fa fa-check"></i><b>A.4.2</b> Mode Choice Logsum Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>B</b> R and RStudio Help</a><ul>
+<li class="chapter" data-level="A.5" data-path="app-demomodel.html"><a href="app-demomodel.html#editing-transit-lines"><i class="fa fa-check"></i><b>A.5</b> Editing Transit Lines</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="app-rstudio.html"><a href="app-rstudio.html"><i class="fa fa-check"></i><b>B</b> R and RStudio Help</a>
+<ul>
 <li class="chapter" data-level="B.1" data-path="app-rstudio.html"><a href="app-rstudio.html#installing"><i class="fa fa-check"></i><b>B.1</b> Installing</a></li>
 <li class="chapter" data-level="B.2" data-path="app-rstudio.html"><a href="app-rstudio.html#rstudio-orientation"><i class="fa fa-check"></i><b>B.2</b> RStudio Orientation</a></li>
 <li class="chapter" data-level="B.3" data-path="app-rstudio.html"><a href="app-rstudio.html#r-packages"><i class="fa fa-check"></i><b>B.3</b> R Packages</a></li>
-<li class="chapter" data-level="B.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>B.4</b> Working with Tables</a><ul>
+<li class="chapter" data-level="B.4" data-path="app-rstudio.html"><a href="app-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>B.4</b> Working with Tables</a>
+<ul>
 <li class="chapter" data-level="B.4.1" data-path="app-rstudio.html"><a href="app-rstudio.html#reading-data"><i class="fa fa-check"></i><b>B.4.1</b> Reading Data</a></li>
 <li class="chapter" data-level="B.4.2" data-path="app-rstudio.html"><a href="app-rstudio.html#modifying-and-summarizing-tables"><i class="fa fa-check"></i><b>B.4.2</b> Modifying and Summarizing Tables</a></li>
 <li class="chapter" data-level="B.4.3" data-path="app-rstudio.html"><a href="app-rstudio.html#app-mutate"><i class="fa fa-check"></i><b>B.4.3</b> Mutate, Summarize, and Group</a></li>
@@ -251,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Urban Transportation Planning</h1>
 <p class="author"><em>Gregory Macfarlane, PhD, PE</em></p>
-<p class="date"><em>2020-10-26</em></p>
+<p class="date"><em>2021-10-20</em></p>
 </div>
 <div id="syllabus" class="section level1 unnumbered">
 <h1>Foreword</h1>
@@ -313,7 +365,6 @@ distributed under creative commons licenses. Specific attributions are below:</p
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -332,6 +383,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -352,6 +404,10 @@ gitbook.start({
 "text": null
 },
 "download": ["ceen565.pdf", "ceen565.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
