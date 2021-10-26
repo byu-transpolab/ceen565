@@ -24,7 +24,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2021-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -674,17 +674,54 @@ of this algorithm.</p>
 </div>
 <div id="frank-wolfe" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> Frank-Wolfe</h3>
-<p>We can represent SUE traffic assignment as a nonlinear optimization problem. Let</p>
+<p>We can represent SUE traffic assignment as a nonlinear optimization problem.
+We want to find the loading of links that minimizes the total delay in the
+system, subject to the UE constraints. We can represent the total vehicle travel
+time on a single link as an integral of the travel time function:</p>
+<p><span class="math display" id="eq:optim-delay">\[\begin{equation}
+\int_0^{v} S(x) dx
+  \tag{5.3}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(v\)</span> is the volume assigned to the link and <span class="math inline">\(S(x)\)</span> is the volume-delay
+function for the link. As the volume increases, the total delay experienced by
+each vehicle increases as well. The R function <code>integrate</code> computes a numerical
+integral for a function on a finite interval. We can compute the total vehicle
+travel time for each link at an equal loading of 500 vehicles as</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chap-assignment.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delay on bypass</span></span>
+<span id="cb118-2"><a href="chap-assignment.html#cb118-2" aria-hidden="true" tabindex="-1"></a>vdb <span class="ot">&lt;-</span> <span class="cf">function</span>(v){<span class="dv">15</span> <span class="sc">+</span> <span class="fl">0.005</span><span class="sc">*</span>v} <span class="co"># volume-delay for bypass</span></span>
+<span id="cb118-3"><a href="chap-assignment.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(vdb, <span class="dv">0</span>, <span class="dv">500</span>)<span class="sc">$</span>value</span></code></pre></div>
+<pre><code>## [1] 8125</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chap-assignment.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delay on town</span></span>
+<span id="cb120-2"><a href="chap-assignment.html#cb120-2" aria-hidden="true" tabindex="-1"></a>vdt <span class="ot">&lt;-</span> <span class="cf">function</span>(v){<span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.02</span><span class="sc">*</span>v} <span class="co"># volume-delay for town</span></span>
+<span id="cb120-3"><a href="chap-assignment.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(vdt, <span class="dv">0</span>, <span class="dv">500</span>)<span class="sc">$</span>value</span></code></pre></div>
+<pre><code>## [1] 7500</code></pre>
+<p>If we plot these two integrals on the same graph (opposing each other), it is
+pretty easy to see that the 600, 400 loading condition minimizes the area under
+each curve, and therefore the total travel time on the system.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chap-assignment.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse vdt function</span></span>
+<span id="cb122-2"><a href="chap-assignment.html#cb122-2" aria-hidden="true" tabindex="-1"></a>rvdt <span class="ot">&lt;-</span> <span class="cf">function</span>(x){<span class="dv">30</span> <span class="sc">-</span> <span class="fl">0.02</span> <span class="sc">*</span> x}</span>
+<span id="cb122-3"><a href="chap-assignment.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb122-4"><a href="chap-assignment.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> vdb, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>), <span class="at">color =</span> <span class="st">&quot;#ECCBAE&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-5"><a href="chap-assignment.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> rvdt, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>), <span class="at">color =</span> <span class="st">&quot;#046C9A&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-6"><a href="chap-assignment.html#cb122-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> vdb, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">600</span>), <span class="at">fill =</span> <span class="st">&quot;#ECCBAE&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-7"><a href="chap-assignment.html#cb122-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> rvdt, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">600</span>, <span class="dv">1000</span>), <span class="at">fill =</span> <span class="st">&quot;#046C9A&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">geom =</span> <span class="st">&quot;area&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-8"><a href="chap-assignment.html#cb122-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Volume on Bypass (Town = 1000 - Bypass)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Travel Time&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb122-9"><a href="chap-assignment.html#cb122-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="05_assignment_files/figure-html/integrate-flow-1.png" width="672" /></p>
+<p>Keep in mind that though the travel <em>time</em> is the same on both links for the
+last vehicle, the total <em>delay</em> is different on each link because more people
+use the bypass than the town route. We can now set up the rest of the
+optimization. Let</p>
 <ul>
 <li><span class="math inline">\(v_a =\)</span> vehicles assigned to link <span class="math inline">\(a\)</span>.</li>
 <li><span class="math inline">\(S_a(v_a) =\)</span> the travel cost on link <span class="math inline">\(a\)</span> as a function of its volume (VDF function)</li>
 <li><span class="math inline">\(X_{ij}^r =\)</span> the total number of vehicles traveling from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> on
 the sum of links that represent route <span class="math inline">\(r\)</span>.</li>
 </ul>
-<p>We want to minimize the total travel cost</p>
+<p>We want to minimize the total travel cost for all users</p>
 <p><span class="math display" id="eq:fw-objective">\[\begin{equation}
   \sum_a \int_0^{v_a} S_a(x) dx
-  \tag{5.3}
+  \tag{5.4}
 \end{equation}\]</span></p>
 <p>subject to the constraints</p>
 <p><span class="math display">\[\begin{align*}
@@ -695,7 +732,30 @@ the sum of links that represent route <span class="math inline">\(r\)</span>.</l
 <p>In text, the constraints are as follow: the volume on a link is a
 sum of the volume on all routes that use that link (<span class="math inline">\(\delta\)</span> is indicator), the
 total of all routes has to equal the total number of trips assigned, and the
-paths on a route are not allowed to be negative.</p>
+paths on a route are not allowed to be negative. This is a <em>nonlinear programming</em>
+problem. A number of libraries exist that will find the optimal solutions
+to these problems. The <code>Rsolnp</code> library finds our solution in 2 iterations.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="chap-assignment.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rsolnp)  <span class="co"># nonlinear programming solver library</span></span>
+<span id="cb123-2"><a href="chap-assignment.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="chap-assignment.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># total travel time objective function</span></span>
+<span id="cb123-4"><a href="chap-assignment.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x is a vector of volumes on each link</span></span>
+<span id="cb123-5"><a href="chap-assignment.html#cb123-5" aria-hidden="true" tabindex="-1"></a>total_time <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb123-6"><a href="chap-assignment.html#cb123-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># integrate from 0 to estimated volume</span></span>
+<span id="cb123-7"><a href="chap-assignment.html#cb123-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">integrate</span>(vdb, <span class="dv">0</span>, x[<span class="dv">1</span>])<span class="sc">$</span>value, </span>
+<span id="cb123-8"><a href="chap-assignment.html#cb123-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">integrate</span>(vdt, <span class="dv">0</span>, x[<span class="dv">2</span>])<span class="sc">$</span>value)</span>
+<span id="cb123-9"><a href="chap-assignment.html#cb123-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb123-10"><a href="chap-assignment.html#cb123-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-11"><a href="chap-assignment.html#cb123-11" aria-hidden="true" tabindex="-1"></a>opt <span class="ot">&lt;-</span> <span class="fu">solnp</span>(</span>
+<span id="cb123-12"><a href="chap-assignment.html#cb123-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">500</span>), <span class="co"># starting values</span></span>
+<span id="cb123-13"><a href="chap-assignment.html#cb123-13" aria-hidden="true" tabindex="-1"></a>  total_time, <span class="co"># objective function</span></span>
+<span id="cb123-14"><a href="chap-assignment.html#cb123-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">eqfun =</span> sum, <span class="at">eqB =</span> <span class="dv">1000</span>, <span class="co">#the sum of volumes must be 1000</span></span>
+<span id="cb123-15"><a href="chap-assignment.html#cb123-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">LB =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="co"># flows must be positive</span></span>
+<span id="cb123-16"><a href="chap-assignment.html#cb123-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">UB =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1000</span>) <span class="co">#flows cannot exceed total volume</span></span>
+<span id="cb123-17"><a href="chap-assignment.html#cb123-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 
+## Iter: 1 fn: 15500.0000    Pars:  599.99719 400.00281
+## Iter: 2 fn: 15500.0000    Pars:  599.99967 400.00033
+## solnp--&gt; Completed in 2 iterations</code></pre>
 <p>Various algorithms can be used to find the values of <span class="math inline">\(v_a\)</span> that minimize this
 objective function subject to these constraints. A popular algorithm is the
 Frank-Wolfe algorithm, though other algorithms have been developed that converge
@@ -751,7 +811,13 @@ assignment.</p>
 <p>Question 5: Compare these three traffic assignment heuristic approaches to the UE
 assignment and to each other. How do the resulting flow patterns differ (cite
 specific differences)? Which one comes closest to the UE flows?</p>
-<p>Question 5: You are considering a road widening project in a suburb of a large
+<!-- NEW QUESTION 
+Construct a nonlinear programming solver to find the optimal loadings for this network.
+You will need to construct an objective function that represents the total travel
+time on all links, and a set of constraints that defines how the newtork is loaded.
+Note that the solver might not succeed from every starting value; try a couple.
+-->
+<p>Question 6: You are considering a road widening project in a suburb of a large
 metropolitan area (indicated with the blue circle). The difference in loaded
 volumes between your base scenario (no-build) and the widening is given in the figure
 below. What is a likely explanation for the patterns shown in the figure?</p>

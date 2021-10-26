@@ -28,6 +28,7 @@ eq:nestedlogit
 eq:bpr-vdf
 fig:bpr-coeffs
 eq:fhwa
+eq:optim-delay
 eq:fw-objective
 fig:relative-gap
 fig:unnamed-chunk-3

@@ -185,14 +185,74 @@ of this algorithm.
 
 ### Frank-Wolfe 
 
-We can represent SUE traffic assignment as a nonlinear optimization problem. Let
+We can represent SUE traffic assignment as a nonlinear optimization problem. 
+We want to find the loading of links that minimizes the total delay in the 
+system, subject to the UE constraints. We can represent the total vehicle travel
+time on a single link as an integral of the travel time function:
+
+\begin{equation}
+\int_0^{v} S(x) dx
+  (\#eq:optim-delay)
+\end{equation}
+
+where $v$ is the volume assigned to the link and $S(x)$ is the volume-delay
+function for the link. As the volume increases, the total delay experienced by
+each vehicle increases as well. The R function `integrate` computes a numerical 
+integral for a function on a finite interval. We can compute the total vehicle
+travel time for each link at an equal loading of 500 vehicles as 
+
+
+```r
+# delay on bypass
+vdb <- function(v){15 + 0.005*v} # volume-delay for bypass
+integrate(vdb, 0, 500)$value
+```
+
+```
+## [1] 8125
+```
+
+```r
+# delay on town
+vdt <- function(v){10 + 0.02*v} # volume-delay for town
+integrate(vdt, 0, 500)$value
+```
+
+```
+## [1] 7500
+```
+
+If we plot these two integrals on the same graph (opposing each other), it is 
+pretty easy to see that the 600, 400 loading condition minimizes the area under
+each curve, and therefore the total travel time on the system.
+
+
+```r
+# reverse vdt function
+rvdt <- function(x){30 - 0.02 * x}
+ggplot() + 
+  stat_function(fun = vdb, xlim = c(0,1000), color = "#ECCBAE") + 
+  stat_function(fun = rvdt, xlim = c(0,1000), color = "#046C9A") + 
+  stat_function(fun = vdb, xlim = c(0, 600), fill = "#ECCBAE", alpha = 0.2, geom = "area") + 
+  stat_function(fun = rvdt, xlim = c(600, 1000), fill = "#046C9A", alpha = 0.2, geom = "area") + 
+  xlab("Volume on Bypass (Town = 1000 - Bypass)") + ylab("Travel Time") + 
+  theme_bw()
+```
+
+![](05_assignment_files/figure-epub3/integrate-flow-1.png)<!-- -->
+
+
+Keep in mind that though the travel *time* is the same on both links for the 
+last vehicle, the total *delay* is different on each link because more people
+use the bypass than the town route. We can now set up the rest of the
+optimization. Let
 
   - $v_a =$ vehicles assigned to link $a$.
   - $S_a(v_a) =$ the travel cost on link $a$ as a function of its volume (VDF function)
   - $X_{ij}^r =$ the total number of vehicles traveling from $i$ to $j$ on
   the sum of links that represent route $r$.
   
-We want to minimize the total travel cost
+We want to minimize the total travel cost for all users
 
 \begin{equation}
   \sum_a \int_0^{v_a} S_a(x) dx
@@ -210,7 +270,37 @@ subject to the constraints
 In text, the constraints are as follow: the volume on a link is a
 sum of the volume on all routes that use that link ($\delta$ is indicator), the 
 total of all routes has to equal the total number of trips assigned, and the
-paths on a route are not allowed to be negative.
+paths on a route are not allowed to be negative. This is a *nonlinear programming*
+problem. A number of libraries exist that will find the optimal solutions 
+to these problems. The `Rsolnp` library finds our solution in 2 iterations.
+
+
+```r
+library(Rsolnp)  # nonlinear programming solver library
+
+# total travel time objective function
+# x is a vector of volumes on each link
+total_time <- function(x){
+  # integrate from 0 to estimated volume
+  sum(integrate(vdb, 0, x[1])$value, 
+      integrate(vdt, 0, x[2])$value)
+}
+
+opt <- solnp(
+  c(500, 500), # starting values
+  total_time, # objective function
+  eqfun = sum, eqB = 1000, #the sum of volumes must be 1000
+  LB = c(0, 0), # flows must be positive
+  UB = c(1000, 1000) #flows cannot exceed total volume
+)
+```
+
+```
+## 
+## Iter: 1 fn: 15500.0000	 Pars:  599.99719 400.00281
+## Iter: 2 fn: 15500.0000	 Pars:  599.99967 400.00033
+## solnp--> Completed in 2 iterations
+```
 
 Various algorithms can be used to find the values of $v_a$ that minimize this
 objective function subject to these constraints. A popular algorithm is the 
@@ -258,6 +348,9 @@ solving a set of simultaneous equations that explicitly define the UE
 conditions.  Demonstrate that your solution is the user equilibrium by showing
 through example that all UE conditions are satisfied.
 
+
+
+
 Question 2: Perform four iterations of All Or Nothing (AON) assignment on the network
 and O/D volumes.  Show the link flows and travel times at the end of each
 iteration and compute the average link loads and travel times.
@@ -274,7 +367,17 @@ Question 5: Compare these three traffic assignment heuristic approaches to the U
 assignment and to each other.  How do the resulting flow patterns differ (cite
 specific differences)?  Which one comes closest to the UE flows? 
 
-Question 5: You are considering a road widening project in a suburb of a large
+<!-- NEW QUESTION 
+Construct a nonlinear programming solver to find the optimal loadings for this network.
+You will need to construct an objective function that represents the total travel
+time on all links, and a set of constraints that defines how the newtork is loaded.
+Note that the solver might not succeed from every starting value; try a couple.
+-->
+
+
+
+
+Question 6: You are considering a road widening project in a suburb of a large
 metropolitan area (indicated with the blue circle). The difference in loaded
 volumes between your base scenario (no-build) and the widening is given in the figure
 below. What is a likely explanation for the patterns shown in the figure?
