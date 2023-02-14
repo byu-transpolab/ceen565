@@ -4,10 +4,7 @@
 .Ruserdata
 *.DS_Store
 
-_bookdown_files/*
-*.log
-ceen565.rds
-ceen565.Rmd
-*_cache/*
-*_files/*
-render*.rds
+/.quarto/
+/renv/library/
+/_book/
+/_freeze/

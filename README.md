@@ -1,11 +1,12 @@
 # Urban Transportation Planning
 
-This book contains course notes and assignments for a senior / graduate class in
+Notes and assignments for CE 565 - Urban Transportation Planning (now with Quarto and renv!)
+
+This repository contains course notes and assignments for a senior / graduate class in
 transportation planning and elementary travel modeling. A description for this course
 is:
 
 > An advanced course in urban transportation planning. Urban transportation as the outcome of an economic system, details and techniques for four-step travel model development, applications of travel models within a legal and regulatory context.
-
 The book is organized into six units:
 
   1. [Building Blocks](#chap-blocks)

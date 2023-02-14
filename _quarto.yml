@@ -1,0 +1,41 @@
+project:
+  type: book
+  output-dir: _book
+  execute-dir: project
+
+book:
+  title: Urban Transportation Planning
+  author:
+    - name: Gregory Macfarlane, PhD, PE
+      email: example@example.com
+   editor:
+     - name: Hayden Atchley
+       email: atchley.sha@protonmail.com
+  description: |
+    These are notes and assignments related to the _Urban Transportation Planning_ class at BYU.
+  date: today
+  date-format: D MMMM YYYY
+  cover-image: /images/cover.jpg
+  downloads: [pdf, epub]
+  sidebar:
+    search: true
+  chapters: 
+    - index.qmd
+    - intro.qmd
+    - references.qmd
+      
+execute:
+  warning: false
+  echo: false
+  
+bibliography: references.bib
+  
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+  pdf:
+    documentclass: scrreport
+  epub:
+    cover-image: cover.png
