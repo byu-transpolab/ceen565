@@ -7,3 +7,7 @@
 /.quarto/
 /_book/
 /_freeze/
+
+
+## temp ignores until better implementation exists
+/intro_files/
