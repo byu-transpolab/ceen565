@@ -12,4 +12,11 @@ Encoding: UTF-8
 RnwWeave: knitr
 LaTeX: pdfLaTeX
 
+AutoAppendNewline: Yes
+StripTrailingWhitespace: Yes
+LineEndingConversion: Posix
+
 BuildType: Website
+
+MarkdownWrap: Column
+MarkdownWrapAtColumn: 80

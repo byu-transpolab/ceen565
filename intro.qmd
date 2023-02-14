@@ -1,9 +1,3 @@
----
-editor: 
-  markdown: 
-    wrap: 80
----
-
 # Building Blocks {#sec-blocks}
 
 ```{r}
@@ -451,8 +445,8 @@ tables stored in different files or a database.
     contains information like the trip purpose and many other elements collected
     with the form in @fig-travel-diary.
 
-Tables -@tbl-show-nhts-hh through -@tbl-show-nhts-trips show data collected from
-one household in the 2017 National Household Travel Survey. The household
+Tables [-@tbl-show-nhts-hh] through [-@tbl-show-nhts-trips] show data collected
+from one household in the 2017 National Household Travel Survey. The household
 contains four people, two of whom are working adults in their late thirties.
 (the other two are children, and the NHTS did not collect their trip data). The
 household has two vehicles, and on the survey travel day person 2 appeared to

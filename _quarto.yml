@@ -16,7 +16,7 @@ book:
   date: today
   date-format: D MMMM YYYY
   cover-image: /images/cover.jpg
-  downloads: [pdf, epub]
+  # downloads: [pdf, epub]
   sidebar:
     search: true
   chapters: 
@@ -39,7 +39,7 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-  pdf:
-    documentclass: scrreport
-  epub:
-    cover-image: /images/cover.jpg
+  # pdf:
+  #   documentclass: scrreport
+  # epub:
+  #   cover-image: /images/cover.jpg
