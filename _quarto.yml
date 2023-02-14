@@ -8,9 +8,9 @@ book:
   author:
     - name: Gregory Macfarlane, PhD, PE
       email: example@example.com
-   editor:
-     - name: Hayden Atchley
-       email: atchley.sha@protonmail.com
+  editor:
+    - name: Hayden Atchley
+      email: atchley.sha@protonmail.com
   description: |
     These are notes and assignments related to the _Urban Transportation Planning_ class at BYU.
   date: today
