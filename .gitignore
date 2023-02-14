@@ -5,6 +5,5 @@
 *.DS_Store
 
 /.quarto/
-/renv/library/
 /_book/
 /_freeze/

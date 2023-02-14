@@ -27,7 +27,11 @@ book:
 execute:
   warning: false
   echo: false
+  cache: false
+  freeze: auto
   
+# reference-location: margin
+# citation-location: margin
 bibliography: references.bib
   
 format:
@@ -38,4 +42,4 @@ format:
   pdf:
     documentclass: scrreport
   epub:
-    cover-image: cover.png
+    cover-image: /images/cover.jpg
