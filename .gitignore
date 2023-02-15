@@ -11,3 +11,5 @@
 
 ## temp ignores until better implementation exists
 /intro_files/
+/tripgen_files/
+/distribution_files/
