@@ -1032,7 +1032,7 @@ plot(lm3, which = 1)
 
 Let's say you have a function with a
 
-## Homework {#sec-hw-blocks}
+## Homework {#sec-blocks-hw}
 
 > Some of these questions require a completed run of the demonstration model.
 > For instructions on accessing and running the model, see the
@@ -1088,7 +1088,7 @@ tibble(
   knitr::kable()
 ```
 
-## Lab {#sec-lab-blocks}
+## Lab {#sec-blocks-lab}
 
 Demographers for the Commonwealth of Virginia --- like those in other states ---
 forecast a certain number of residents, households, and jobs for many years into
