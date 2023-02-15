@@ -14,7 +14,7 @@ book:
   description: |
     These are notes and assignments related to the _Urban Transportation Planning_ class at BYU.
   date: today
-  date-format: D MMMM YYYY
+  date-format: MMMM D, YYYY
   cover-image: /images/cover.jpg
   # downloads: [pdf, epub]
   sidebar:
