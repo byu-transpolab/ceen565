@@ -19,21 +19,23 @@ book:
   # downloads: [pdf, epub]
   sidebar:
     search: true
-  chapters: 
+  chapters:
     - index.qmd
     - intro.qmd
+    - tripgen.qmd
+    - distribution.qmd
     - references.qmd
-      
+
 execute:
   warning: false
   echo: false
   cache: false
   freeze: auto
-  
+
 # reference-location: margin
 # citation-location: margin
 bibliography: references.bib
-  
+
 format:
   html:
     theme: cosmo
