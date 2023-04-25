@@ -45,11 +45,9 @@ option $i$ is
 [^mode_choice-1]: Specifically, that $\varepsilon_i$ is distributed IID with a
     Gumbel extreme value distribution
 
-```{=tex}
-\begin{equation}
+$$
   P_n(i | V_i, V_j \forall j \neq i \in J) = \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}}
-\end{equation} {#eq-mnl}
-```
+$$ {#eq-mnl}
 
 There are two important things to note that result from this derivation:
 
@@ -107,7 +105,7 @@ procedure called *maximum likelihood estimation*.[^mode_choice-2]
 The utility equation is $V_i = \alpha_i + X_i\beta$. We want to find an estimate
 $\hat\beta$ that are *most likely* given the observed data. For one person, the
 probability that our model picks an alternative $i$ is given by the MNL formula
-in Equation \@ref(eq:mnl). Let's simplify this to a function of $\beta$,
+in @eq-mnl. Let's simplify this to a function of $\beta$,
 $P_{in}(\beta)$. We want to pick the value of $\beta$ that gives a high
 probability to the chosen alternative and low probability to the non-chosen
 alternatives. Let's create a power value $\delta_{in}$ equal to 1 if chosen and
