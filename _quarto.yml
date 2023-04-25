@@ -25,11 +25,12 @@ book:
     - tripgen.qmd
     # - modechoice.qmd
     - distribution.qmd
+    # - mode_choice.qmd
     # - assignment.qmd
     # - process.qmd
     - references.qmd
   # appendices:
-  #   - demomodel.qmd
+  #   - demo_model.qmd
   #   - rstudio.qmd
 
 execute:
@@ -43,11 +44,30 @@ execute:
 bibliography: references.bib
 
 format:
-  html:
-    theme: cosmo
-    css: styles.css
+  # html:
+  #   theme: cosmo
+  #   css: styles.css
+  #   toc: true
+  titlepage-pdf:
+    documentclass: scrbook
+    classoption: ["oneside", "open=any"]
+    number-sections: true
     toc: true
-  # pdf:
-  #   documentclass: scrreport
+    lof: true
+    lot: true
+    titlepage: vline
+    # titlepage-bg-image: "img/corner-bg.png"
+    titlepage-logo: "img/logo.png"
+    titlepage-theme:
+      vrule-text: "Hello, world!"
+    # titlepage-header: "The Publisher"
+    # template: eisvogel.latex
+    # titlepage: true
+    # book: true
+    # titlepage-background: bg/background4.pdf
+    # float-placement-figure: htbp
+    # number-depth: 1
+    # toc-depth: 2
+    # documentclass: scrreport
   # epub:
   #   cover-image: /images/cover.jpg
