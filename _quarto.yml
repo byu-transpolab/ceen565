@@ -23,7 +23,6 @@ book:
     - index.qmd
     - intro.qmd
     - tripgen.qmd
-    # - modechoice.qmd
     - distribution.qmd
     # - mode_choice.qmd
     # - assignment.qmd
