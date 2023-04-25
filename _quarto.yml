@@ -23,8 +23,14 @@ book:
     - index.qmd
     - intro.qmd
     - tripgen.qmd
+    # - modechoice.qmd
     - distribution.qmd
+    # - assignment.qmd
+    # - process.qmd
     - references.qmd
+  # appendices:
+  #   - demomodel.qmd
+  #   - rstudio.qmd
 
 execute:
   warning: false
