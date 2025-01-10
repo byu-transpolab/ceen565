@@ -7,7 +7,7 @@ Planning Organization (RVTPO), the MPO responsible for transportation planning
 in Roanoke, Virginia. The model is written for the CUBE travel modeling software
 package, the same software used by the Wasatch Front Regional Council model. The
 model code and files are available on 
-[Box](https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x).
+[Box](https://byu.box.com/v/rvtpo-bare-model).
 
 A few key parameters files have been reset to default values, rather than the
 calibrated values used in the actual model. The homework assignments and lab
@@ -16,7 +16,7 @@ in your term assignments.
 
 ## Running the Model
 
-The model files are available from [Box](https://byu.box.com/s/34xeaghgt8lpbcraosb7cbt8umddh96x) 
+The model files are available f   rom [Box](https://byu.box.com/v/rvtpo-bare-model) 
 as a compressed file called `rvtpo_bare.zip`. Extract this file to a folder on 
 your local computer. I prefer to keep my models in a
 folder on the `C:\` drive called `C:\projects`. It may be that the C drive is

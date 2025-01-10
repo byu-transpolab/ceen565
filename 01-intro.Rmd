@@ -8,6 +8,7 @@ library(tigris)
 library(leaflet)
 library(sf)
 library(nhts2017)
+library(haven)
 theme_set(theme_bw())
 ```
 
@@ -451,7 +452,7 @@ is a typical day for this person or not, but that's the data that was collected.
 
 ```{r show-nhts-hh, echo = FALSE}
 nhts_households %>% 
-  mutate_at(c("hhfaminc"), ~as_factor(., levels = "labels")) %>%
+  mutate(hhfaminc = as_factor(hhfaminc, levels = "values")) |> 
   filter(houseid == "30000082") %>%
   select(houseid, hhsize, numadlt, wrkcount, hhvehcnt, hhfaminc, wthhfin) %>%
   knitr::kable(caption = "NHTS Households File")
@@ -589,20 +590,20 @@ nests completely within the layer above it. More detailed data is available
 at less spatially detailed geographies.
 
 ```{r censusgeos, fig.cap="US Census Geographies in Central Provo.", echo = FALSE, messages = FALSE, warning = FALSE, cache = TRUE}
-ut_tracts <- tracts("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
-  filter(TRACTCE %in% c("001601", "001504", "001602", "001603", "001701",
+ut_tracts <- tracts("UT", "Utah", class = "sf", progress_bar = FALSE, year = 2010) %>%
+  filter(TRACTCE10 %in% c("001601", "001504", "001602", "001603", "001701",
                         "001900", "001801", "001702", "001802", "001803",
                         "002400", "002500", "002701")) %>%
-  select(GEOID, TRACTCE) %>%
+  select(GEOID = GEOID10, TRACTCE10) %>%
   st_transform(4236)
 
-ut_bg <- block_groups("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
-  filter(TRACTCE %in% ut_tracts$TRACTCE) %>%
-  select(GEOID, TRACTCE) %>%
+ut_bg <- block_groups("UT", "Utah", class = "sf", progress_bar = FALSE, year = 2010) %>%
+  filter(TRACTCE10 %in% ut_tracts$TRACTCE10) %>%
+  select(GEOID = GEOID10, TRACTCE10) %>%
   st_transform(4236)
 
-ut_blks <- blocks("UT", "Utah", class = "sf", progress_bar = FALSE) %>%
-  filter(TRACTCE10 %in% ut_tracts$TRACTCE) %>%
+ut_blks <- blocks("UT", "Utah", class = "sf", progress_bar = FALSE, year = 2010) %>%
+  filter(TRACTCE10 %in% ut_tracts$TRACTCE10) %>%
   select(GEOID = GEOID10, TRACTCE = TRACTCE10) %>%
   st_transform(4236)
 
@@ -1136,7 +1137,7 @@ proportion is. We'll need to do some manual adjusting to these curves.
 
 I have provided you with initial marginal distribution curves for the three
 marginal distributions of interest. These files are available 
-[on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
+[on Box](https://byu.box.com/v/rvtpo-bare-model), and the
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 ```{r raw-marginals, fig.cap="Raw marginal distribution curves from Roanoke region.", echo = FALSE, warning=FALSE, message=FALSE}

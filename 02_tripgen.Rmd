@@ -62,6 +62,7 @@ vehicles at 3.
 ```{r tp_load, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(nhts2017)
+library(haven)
 
 hh <- nhts_households %>% 
   # filter to MSA size 2, travel on weekday

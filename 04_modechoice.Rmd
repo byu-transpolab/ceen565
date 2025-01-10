@@ -255,9 +255,9 @@ these error terms are allowed to be correlated.
 This is equivalent to saying that the choice of mode doesn't look like an
 equal choice among three alternatives,
 
-```{r, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
+```{r tree1, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
 \begin{tikzpicture}
-		\node [] (0) at (-1, 5) {};
+		\node [] (0) at (-1, 5) {};/include
 		\node [] (1) at (-4, 2) {};
 		\node [] (3) at (2, 2) {};
 		\node [] (4) at (-1, 2) {};
@@ -273,7 +273,7 @@ equal choice among three alternatives,
 But instead a two-stage choice, where people first choose whether they will take
 transit, and then which transit mode they will choose. 
 
-```{r, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
+```{r treenl, echo=FALSE, engine='tikz', out.width='30%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', engine.opts = list(template = "latex/tikz2pdf.tex"), fig.align="center"}
 \begin{tikzpicture}
 		\node [] (0) at (0, 6) {};
 		\node [] (1) at (-2, 3) {};
@@ -318,7 +318,7 @@ values for the estimated correlation are $0 < \lambda < 1$.
 
 In this unit's assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial  and nested logit models that predict mode choice for work
-trips. The data is available on [on Box](https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds). The data
+trips. The data is available on [on Box]((https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds). The data
 are named as `worktrips_dfidx.rds`. You will also need to load the 
 `mlogit` library package, which contains the tools necessary to estimate
 multinomial logit models.
@@ -326,6 +326,7 @@ multinomial logit models.
 ```{r worktrips}
 library(mlogit)
 worktrips <- read_rds("data/worktrips_dfidx.rds")
+system2("wget",args =  c("https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds", "-O mytrips.rds"))
 ```
 
 Because multinomial logit models are so different from other models, 
