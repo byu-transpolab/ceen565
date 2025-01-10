@@ -2,6 +2,7 @@
 p <- c(100, 200, 100)
 a <- c(200, 50, 150)
 C <- matrix(c(2,5,4,5,2,3,4,3,2), nrow=3, byrow=TRUE)
+C1 <- matrix(c(2,5,4,4,2,3,4,3,2), nrow=3, byrow=TRUE)
 
 trips <- matrix(0, nrow = 3, ncol = 3)
 b <- 1.5
@@ -88,12 +89,12 @@ for(b in seq(0.1, 5, 0.1)){
   print(b)
 }
 
-tibble(
-  b = seq(0.1, 5, 0.1),
-  rmse = rmse(gravity(p, a, C, b), observed)
-)
 
-  
+objective_function <- function(b){
+  predicted <- gravity(p, a, C, b)
+  rmse(predicted, observed)
+}
+
 
 
 

@@ -10,7 +10,7 @@ worktrips <- read_rds("data/worktrips_dfidx.rds")
 mnl1 <- mlogit(CHOSEN ~ TVTT, data = worktrips)
 
 # what is the frequency table in this dataset?
-mnl1$freq
+mnl1$freq / sum(mnl1$freq)
 
 # calculate null and market shares log likelihoods
 ll0 <- sum(mnl1$freq * log(1/6))
@@ -28,12 +28,12 @@ mnl3 <- mlogit(CHOSEN ~ OVTT + IVTT, data = worktrips)
 # compare the models against each other.
 modelsummary(list(mnl1, mnl2), statistic = "std.error", stars = TRUE, statistic_vertical = FALSE)
 
-nl <- mlogit(CHOSEN ~ TVTT | WKEMPDEN, data = worktrips,
+nl <- mlogit(CHOSEN ~ OVTT + IVTT | WKEMPDEN, data = worktrips,
              nests = list(
-               auto = c('Drive Alone', 'Share 2', 'Share 3+'),
-               nonauto = c('Bike', 'Walk', 'Transit')
+               motorized = c('Drive Alone', 'Share 2', 'Share 3+'),
+               nonmot = c('Bike', 'Walk', "Transit")
              ),
-             un.nest.el = TRUE)
+             un.nest.el = FALSE, constPar = c("iv:motorized" = 1))
 
 
 worktrips_li <- worktrips %>% filter(HHINC <= 50)
@@ -58,5 +58,4 @@ worktrips_p1 <- worktrips %>% filter(idx$id %in% c("3_1", "2_1"))
 a <- predict(mnl1, worktrips, type = "linpred")[1:5, ]
 b <- predict(mnl1, worktrips)[1:5, ]
 
-texreg::screenreg(list(nl_li, nl_hi))
-
+modelsummary(list(mnl1, mnl3, mnl2))
