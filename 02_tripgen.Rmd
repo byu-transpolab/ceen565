@@ -266,18 +266,17 @@ least as many work trips).
 
 The trip attraction rates enter into the destination choice model, but it is
 helpful to compare the total forecasted attractions using the rates you
-estimated. Apply the rates to the zonal socioeconomic data file and calculate
+estimated in your regression models. Apply the rates to the zonal socioeconomic data file and calculate
 the total number of attracted trips for each of the three purposes. Adjust the
 rates so that the total attractions for your three estimated purposes match the
-regional totals.
+regional targets above.
 
 ### Report
 
 Prepare a technical report describing the process by which you estimated
 household trip production and attraction rates, and calibrated the trip rates to
-reproduce regional totals. Calculate the margin of error for *all* purposes (not
-just the purposes you calibrated). Discuss how well the calibrated trip
-generation models replicates the survey targets, and justify your residual
+reproduce regional totals. Calculate the margin of error from the targets for each purpose. Discuss how well the calibrated trip
+generation/attraction models replicate the survey targets, and justify your residual
 error. Use formatted tables to display results instead of screenshots of output.
 
 You will be graded on the overall readability, flow, formatting and grammar in
