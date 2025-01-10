@@ -10,3 +10,4 @@ ceen565.Rmd
 *_cache/*
 *_files/*
 render*.rds
+data/tripprod.csv
