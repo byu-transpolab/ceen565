@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Mode and Destination Choice | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Mode and Destination Choice | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2021-10-26" />
+<meta name="date" content="2025-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="chap-distribution.html"/>
 <link rel="next" href="chap-assignment.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,15 +49,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,10 +122,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -300,14 +304,14 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chap-modechoice" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Mode and Destination Choice</h1>
+<div id="chap-modechoice" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Mode and Destination Choice<a href="chap-modechoice.html#chap-modechoice" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Assume that person has a set of mode choices in front of them. They could
 pick to drive, walk, take transit, or some combination of those. Which one they
 pick for which kind of trip is not a simple question, but travel models need
 a mathematical way to represent this choice.</p>
-<div id="mathematical-derivation" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Mathematical Derivation</h2>
+<div id="mathematical-derivation" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Mathematical Derivation<a href="chap-modechoice.html#mathematical-derivation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’ll say that person <span class="math inline">\(n\)</span> is choosing between alternatives <span class="math inline">\(i, j, \ldots \in J\)</span>.
 In economic theory, people pick the alternative that brings them the most
 <em>utility</em>, <span class="math inline">\(U\)</span>. So person <span class="math inline">\(n\)</span> will choose <span class="math inline">\(i\)</span> if <span class="math inline">\(U_i&gt;U_j, \forall j \neq i \in J\)</span>.
@@ -341,8 +345,8 @@ utility. If that assumption isn’t met (and it usually isn’t!) a different mo
 is needed.</li>
 </ol>
 </div>
-<div id="utility-equations" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Utility Equations</h2>
+<div id="utility-equations" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Utility Equations<a href="chap-modechoice.html#utility-equations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The observed utility usually takes a linear form, <span class="math inline">\(V_i = \alpha_i + X_i\beta\)</span>. This
 means that each alternative will have a linear equation,</p>
 <p><span class="math display">\[\begin{align*}
@@ -373,8 +377,8 @@ estimate for each alternative. That is, <span class="math inline">\(\hat{\beta}_
 constant across alternatives, like the distance of the trip.</li>
 </ul>
 </div>
-<div id="mnl-estimation" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> MNL Estimation</h2>
+<div id="mnl-estimation" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> MNL Estimation<a href="chap-modechoice.html#mnl-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ordinary Least Squares does not work on multinomial logit models, so we need
 another way of estimating the model coefficients. We instead use a numerical
 procedure called <em>maximum likelihood estimation</em>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
@@ -420,8 +424,8 @@ chance? This could be called a <em>null model</em> where each option has equal p
 That would also imply that every utility value is exactly the same,</p>
 <p><span class="math display">\[\begin{align*}
 \log\mathcal{L}(0) &amp;= \sum_{n=1}^N \sum_{i \in J} \delta_{in} \log(\frac{e^0}{\sum_J e^0})\\
- &amp;= \sum_{n=1}^N  \log(\frac{1}{J})\\
- &amp;= N \log(\frac{1}{J})\\
+&amp;= \sum_{n=1}^N  \log(\frac{1}{J})\\
+&amp;= N \log(\frac{1}{J})\\
 \end{align*}\]</span></p>
 <p>This value depends on the number of observations and alternatives in the data
 set, and so will be different for each problem. But because the logarithm of
@@ -432,8 +436,8 @@ choice probabilities, or the <em>market shares</em>. This is equivalent to a mod
 estimated with only the constants and no other variables included.</p>
 <p><span class="math display">\[\begin{align*}
 \log\mathcal{L}(C) &amp;= \sum_{n=1}^N \sum_{i \in J} \delta_{in} \log(\frac{e^\alpha}{\sum_J e^\alpha})\\
- &amp;= \sum_{n=1}^N  \sum_{i \in J} \log(P_i)\\
- &amp;= N_i \sum_{i \in J} \log(P_i)\\
+&amp;= \sum_{n=1}^N  \sum_{i \in J} \log(P_i)\\
+&amp;= N_i \sum_{i \in J} \log(P_i)\\
 \end{align*}\]</span></p>
 <p>We can create a measure of goodness-of-fit using these measures. Let’s call it
 <span class="math inline">\(\rho^2\)</span>. Let’s consider how much more likely our estimated model is than the null
@@ -447,15 +451,15 @@ is perfect (log-likelihood of zero), then <span class="math inline">\(\rho_0^2 =
 not ever see <span class="math inline">\(\rho_0^2\)</span> values anywhere near 1. You can build an analogous
 <span class="math inline">\(\rho_C^2\)</span> metric by using the market shares likelihood as a reference.</p>
 </div>
-<div id="iia-and-nested-logit" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> IIA and Nested Logit</h2>
+<div id="iia-and-nested-logit" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> IIA and Nested Logit<a href="chap-modechoice.html#iia-and-nested-logit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The MNL model has a property referred to as the
 <strong>independence of irrelevant alternatives</strong> (IIA). This simply means that the
 ratio of the probabilities of two alternatives is only based on the utility of
 those two alternatives. Mathematically,</p>
 <p><span class="math display" id="eq:iia">\[\begin{equation}
- \frac{P_i}{P_k} = 
-   \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}} \times 
+\frac{P_i}{P_k} =
+   \frac{e^{V_i}}{\sum_{j\in J} e^{V_j}} \times
    \frac{\sum_{j\in J} e^{V_j}}{} = \frac{e^{V_i}}{e^{V_k}}
   \tag{4.6}
 \end{equation}\]</span></p>
@@ -511,10 +515,10 @@ these error terms are allowed to be correlated.</p>
 \end{equation*}\]</span></p>
 <p>This is equivalent to saying that the choice of mode doesn’t look like an
 equal choice among three alternatives,</p>
-<p><img src="04_modechoice_files/figure-html/unnamed-chunk-1-1.png" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="04_modechoice_files/figure-html/tree1-1.png" width="30%" style="display: block; margin: auto;" /></p>
 <p>But instead a two-stage choice, where people first choose whether they will take
 transit, and then which transit mode they will choose.</p>
-<p><img src="04_modechoice_files/figure-html/unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="04_modechoice_files/figure-html/treenl-1.png" width="30%" style="display: block; margin: auto;" /></p>
 <p>This results in a <strong>nested logit model</strong>. The choice probability of an alternative
 in this model is now</p>
 <p><span class="math display" id="eq:nestedlogit">\[\begin{equation}
@@ -529,51 +533,77 @@ alternatives. This violates utility theory, because it would cause <em>more</em>
 people to choose auto when the utility of a transit mode increases. So valid
 values for the estimated correlation are <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span>.</p>
 </div>
-<div id="accessibility-and-log-sums" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Accessibility and Log Sums</h2>
+<div id="accessibility-and-log-sums" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Accessibility and Log Sums<a href="chap-modechoice.html#accessibility-and-log-sums" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="destination-choice" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Destination Choice</h2>
+<div id="destination-choice" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Destination Choice<a href="chap-modechoice.html#destination-choice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="hw-modechoice" class="section level2 unnumbered">
-<h2>Homework</h2>
+<div id="hw-modechoice" class="section level2 unnumbered hasAnchor">
+<h2>Homework<a href="chap-modechoice.html#hw-modechoice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this unit’s assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial and nested logit models that predict mode choice for work
-trips. The data is available on <a href="https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds">on Box</a>. The data
+trips. The data is available on [on Box]((<a href="https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds" class="uri">https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds</a>). The data
 are named as <code>worktrips_dfidx.rds</code>. You will also need to load the
 <code>mlogit</code> library package, which contains the tools necessary to estimate
 multinomial logit models.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chap-modechoice.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlogit)</span>
-<span id="cb96-2"><a href="chap-modechoice.html#cb96-2" aria-hidden="true" tabindex="-1"></a>worktrips <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/worktrips_dfidx.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chap-modechoice.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(mlogit)</span></code></pre></div>
+<pre><code>## Loading required package: dfidx</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dfidx&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="chap-modechoice.html#cb96-1" tabindex="-1"></a>worktrips <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/worktrips_dfidx.rds&quot;</span>)</span>
+<span id="cb96-2"><a href="chap-modechoice.html#cb96-2" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">&quot;wget&quot;</span>,<span class="at">args =</span>  <span class="fu">c</span>(<span class="st">&quot;https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds&quot;</span>, <span class="st">&quot;-O mytrips.rds&quot;</span>))</span></code></pre></div>
 <p>Because multinomial logit models are so different from other models,
 the data are stored in a special type of data frame. You can see the first several
 rows of this data below; Person 1 in household 2 has five alternatives, and they
 chose to drive alone. Person 3 chose to take transit.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chap-modechoice.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(worktrips[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
-<pre><code>##                  HHID PERID CASE       ALTNUM NUMALTS CHOSEN  IVTT OVTT
-## 2-1. Drive Alone    2     1    1  Drive Alone       5   TRUE 13.38  2.0
-## 2-1. Share 2        2     1    1      Share 2       5  FALSE 18.38  2.0
-## 2-1. Share 3+       2     1    1     Share 3+       5  FALSE 20.38  2.0
-## 2-1. Transit        2     1    1      Transit       5  FALSE 25.90 15.2
-## 2-1. Bike           2     1    1         Bike       5  FALSE 40.50  2.0
-## 3-1. Drive Alone    3     1    2  Drive Alone       5  FALSE 29.92 10.0
-## 3-1. Share 2        3     1    2      Share 2       5  FALSE 34.92 10.0
-## 3-1. Share 3+       3     1    2     Share 3+       5  FALSE 21.92 10.0
-## 3-1. Transit        3     1    2      Transit       5   TRUE 22.96 14.2
-## 3-1. Bike           3     1    2         Bike       5  FALSE 58.95 10.0
-## 5-1. Drive Alone    5     1    3  Drive Alone       4   TRUE  8.60  6.0
-## 5-1. Share 2        5     1    3      Share 2       4  FALSE 13.60  6.0</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="chap-modechoice.html#cb97-1" tabindex="-1"></a><span class="fu">head</span>(worktrips[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## ~~~~~~~
+##  first 12 observations out of 22033 
+## ~~~~~~~
+##    ALTNUM CHOSEN  IVTT  OVTT  TVTT   COST DIST WKZONE       idx
+## 1       1   TRUE 13.42  4.50 17.92  44.56 4.38    683 100_:lone
+## 2       2  FALSE 18.42  4.50 22.92  22.28 4.38    683 100_:re 2
+## 3       3  FALSE 20.42  4.50 24.92  12.73 4.38    683 100_:e 3+
+## 4       4  FALSE 15.97 44.68 60.65 100.00 4.38    683 100_:nsit
+## 5       2  FALSE 27.54 10.00 37.54 162.28 8.55    723 1000:re 2
+## 6       3  FALSE 14.54 10.00 24.54  79.04 8.55    723 1000:e 3+
+## 7       4   TRUE 21.08 22.40 43.48 150.00 8.55    723 1000:nsit
+## 8       5  FALSE 43.90 10.00 53.90   0.00 8.55    723 1000:Bike
+## 9       1   TRUE 17.20  4.50 21.70  61.04 6.53    716 1005:lone
+## 10      2  FALSE 22.20  4.50 26.70  30.52 6.53    716 1005:re 2
+## 11      3  FALSE 24.20  4.50 28.70  17.44 6.53    716 1005:e 3+
+## 12      4  FALSE 29.73 39.92 69.65 100.00 6.53    716 1005:nsit
+## 
+## ~~~ indexes ~~~~
+##        id alternative
+## 1   100_2 Drive Alone
+## 2   100_2     Share 2
+## 3   100_2    Share 3+
+## 4   100_2     Transit
+## 5  1000_1     Share 2
+## 6  1000_1    Share 3+
+## 7  1000_1     Transit
+## 8  1000_1        Bike
+## 9  1005_1 Drive Alone
+## 10 1005_1     Share 2
+## 11 1005_1    Share 3+
+## 12 1005_1     Transit
+## indexes:  1, 2</code></pre>
 <p>In the first section, you will estimate a multinomial logit mode choice model
 for work trips using the data collected in the San Francisco Bay. Then, you will
 calculate nested logit models on the same data set. In the third step, you will
 calculate mode choice model log sums and estimate a destination choice model.</p>
-<div id="first-problem-set-multinomial-logit-model-estimation" class="section level3 unnumbered">
-<h3>First Problem Set: Multinomial Logit Model Estimation</h3>
+<div id="first-problem-set-multinomial-logit-model-estimation" class="section level3 unnumbered hasAnchor">
+<h3>First Problem Set: Multinomial Logit Model Estimation<a href="chap-modechoice.html#first-problem-set-multinomial-logit-model-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To do this, use the <code>mlogit()</code> function, in a manner sort of like you
 would use the <code>lm()</code> command. One thing to look out for: the difference between
 generic and alternative-specific variables, described above.
 To specify the model, we use the following construction.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chap-modechoice.html#cb99-1" aria-hidden="true" tabindex="-1"></a>fit.mnl <span class="ot">&lt;-</span> <span class="fu">mlogit</span> ( CHOSEN <span class="sc">~</span> Generic <span class="sc">|</span> Alt.Specific, <span class="at">data =</span> worktrips )</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="chap-modechoice.html#cb99-1" tabindex="-1"></a>fit.mnl <span class="ot">&lt;-</span> <span class="fu">mlogit</span> ( CHOSEN <span class="sc">~</span> Generic <span class="sc">|</span> Alt.Specific, <span class="at">data =</span> worktrips )</span></code></pre></div>
 <p>To examine the model output, the standard <code>summary()</code> command will produce a
 coefficients table and key test statistics. The <code>modelsummary</code>
 packages will produce convenient model comparison tables that can be included in
@@ -600,15 +630,15 @@ the affordability of the trip (<code>COSTINC</code>). Does land use at the produ
 attraction end of the trip affect the mode choice problem more? Is it different
 by mode?</p>
 </div>
-<div id="second-problem-set-nested-logit-models" class="section level3 unnumbered">
-<h3>Second Problem Set: Nested Logit Models</h3>
+<div id="second-problem-set-nested-logit-models" class="section level3 unnumbered hasAnchor">
+<h3>Second Problem Set: Nested Logit Models<a href="chap-modechoice.html#second-problem-set-nested-logit-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this set of problems, you will estimate nested logit models. To specify
 nests in an <code>mlogit</code> estimation, you supply a list of alternatives to the <code>nests</code>
 argument. The code below puts all auto-based alternatives in one nest called
 <code>auto</code> and the other alternatives into another nest called <code>nonauto</code>.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chap-modechoice.html#cb100-1" aria-hidden="true" tabindex="-1"></a>nl <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(CHOSEN <span class="sc">~</span> COST <span class="sc">+</span> TVTT  <span class="sc">+</span> OVTT <span class="sc">|</span> WKEMPDEN,  <span class="at">data =</span> worktrips,</span>
-<span id="cb100-2"><a href="chap-modechoice.html#cb100-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">nests =</span> <span class="fu">list</span>(<span class="at">auto =</span> <span class="fu">c</span>(<span class="st">&#39;Drive Alone&#39;</span>, <span class="st">&#39;Share 2&#39;</span>, <span class="st">&#39;Share 3+&#39;</span>),</span>
-<span id="cb100-3"><a href="chap-modechoice.html#cb100-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">nonauto =</span> <span class="fu">c</span>(<span class="st">&#39;Bike&#39;</span>, <span class="st">&#39;Walk&#39;</span>, <span class="st">&#39;Transit&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chap-modechoice.html#cb100-1" tabindex="-1"></a>nl <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(CHOSEN <span class="sc">~</span> COST <span class="sc">+</span> TVTT  <span class="sc">+</span> OVTT <span class="sc">|</span> WKEMPDEN,  <span class="at">data =</span> worktrips,</span>
+<span id="cb100-2"><a href="chap-modechoice.html#cb100-2" tabindex="-1"></a>             <span class="at">nests =</span> <span class="fu">list</span>(<span class="at">auto =</span> <span class="fu">c</span>(<span class="st">&#39;Drive Alone&#39;</span>, <span class="st">&#39;Share 2&#39;</span>, <span class="st">&#39;Share 3+&#39;</span>),</span>
+<span id="cb100-3"><a href="chap-modechoice.html#cb100-3" tabindex="-1"></a>                          <span class="at">nonauto =</span> <span class="fu">c</span>(<span class="st">&#39;Bike&#39;</span>, <span class="st">&#39;Walk&#39;</span>, <span class="st">&#39;Transit&#39;</span>))</span></code></pre></div>
 <p>Question 5: Estimate a nested logit model including cost, travel time,
 out-of-vehicle travel time, and workplace employment density. Group car
 alternatives into one nest, and non-car alternatives into another. Constrain the
@@ -624,8 +654,8 @@ to the different covariates. Which matters more to which group?</p>
 which is the preferred in terms of model likelihood? What about in terms of
 behavioral sensitivity / reasonableness?</p>
 </div>
-<div id="third-problem-set-log-sums-and-destination-choice" class="section level3 unnumbered">
-<h3>Third Problem Set: Log Sums and Destination Choice</h3>
+<div id="third-problem-set-log-sums-and-destination-choice" class="section level3 unnumbered hasAnchor">
+<h3>Third Problem Set: Log Sums and Destination Choice<a href="chap-modechoice.html#third-problem-set-log-sums-and-destination-choice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -818,7 +848,7 @@ dataset below.</p>
 <p>Question 9 The same person is choosing which of two destinations to travel to.
 The travel times to Zone 1 are given in question 8, and the travel times to Zone
 2 are given below. The destination choice utility equation is
-<span class="math inline">\(V_j = 0.35 * \text{MCLS}_{ij} + 2.56 * \ln(\text{office}_j) + 1.45 * ln(\text{service}_j)\)</span>.</p>
+<span class="math inline">\(V_j = 0.35 * \text{MCLS}_{ij} + 2.56 * \ln(\text{office}_j) +  1.45 * ln(\text{service}_j)\)</span>.</p>
 <table>
 <thead>
 <tr class="header">
@@ -899,8 +929,8 @@ probabilities, and destination choice logsum. What is the monetary value of the 
 improvement to the destination choice? Does this include the mode choice benefit?</p>
 </div>
 </div>
-<div id="lab" class="section level2 unnumbered">
-<h2>Lab</h2>
+<div id="lab" class="section level2 unnumbered hasAnchor">
+<h2>Lab<a href="chap-modechoice.html#lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In practice, small-sample surveys have a difficult time generating estimates of
 choice parameters that are both precise and rational. As a result, it is
 common to assert choice coefficients that have worked well in comparable
@@ -922,21 +952,21 @@ Mathematically they happen simultaneously, but in the model it goes</p>
 <p>As a result you will need to calibrate the models iteratively: first adjust the
 mode choice constants, then the distance decay parameters, then mode choice,
 etc., until you are satisfied that the model meets the targets.</p>
-<div id="mode-choice-calibration" class="section level3 unnumbered">
-<h3>Mode Choice Calibration</h3>
+<div id="mode-choice-calibration" class="section level3 unnumbered hasAnchor">
+<h3>Mode Choice Calibration<a href="chap-modechoice.html#mode-choice-calibration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The coefficients are found in the <code>./Params/mc/MC_Coefficients.csv</code> file. Record
 the coefficients in a table in your lab report accompanying a description of the
 purpose of each coefficient and any notable values. These coefficients are
 fixed; they should not change as part of this exercise.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chap-modechoice.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="chap-modechoice.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="chap-modechoice.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
-<pre><code>## Rows: 20 Columns: 6</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chap-modechoice.html#cb102-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Coefficients.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="chap-modechoice.html#cb102-2" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="chap-modechoice.html#cb102-3" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
+<pre><code>## Rows: 20 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Name
-## dbl (5): ;N, HBW, HBO, NHB, HBSC</code></pre>
-<pre><code>## 
+## dbl (5): ;N, HBW, HBO, NHB, HBSC
+## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1378,15 +1408,15 @@ with their nesting structure are:</p>
 |   |--Premium
 |
 |-- Non-motorized</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chap-modechoice.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb107-2"><a href="chap-modechoice.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb107-3"><a href="chap-modechoice.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
-<pre><code>## Rows: 10 Columns: 6</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="chap-modechoice.html#cb105-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/rvtpo_data/MC_Constants.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="chap-modechoice.html#cb105-2" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="chap-modechoice.html#cb105-3" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
+<pre><code>## Rows: 10 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Name
-## dbl (5): ;N, HBW, HBO, NHB, HBSC</code></pre>
-<pre><code>## 
+## dbl (5): ;N, HBW, HBO, NHB, HBSC
+## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1626,9 +1656,9 @@ bias adjustment formula,</p>
 <p><span class="math display">\[\alpha_{n+1} = \alpha_n + \log(A_j / S_j) \]</span></p>
 <p>Where <span class="math inline">\(A_j\)</span> is the population share (target) and <span class="math inline">\(S_j\)</span> is the model share.
 The population shares (targets) are given below.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="chap-modechoice.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population shares (targets)</span></span>
-<span id="cb111-2"><a href="chap-modechoice.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="sc">%&gt;%</span></span>
-<span id="cb111-3"><a href="chap-modechoice.html#cb111-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="chap-modechoice.html#cb107-1" tabindex="-1"></a><span class="co"># Population shares (targets)</span></span>
+<span id="cb107-2"><a href="chap-modechoice.html#cb107-2" tabindex="-1"></a><span class="fu">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/mc.xlsx&quot;</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb107-3"><a href="chap-modechoice.html#cb107-3" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1666,8 +1696,8 @@ The population shares (targets) are given below.</p>
 </tbody>
 </table>
 </div>
-<div id="destination-choice-calibration" class="section level3 unnumbered">
-<h3>Destination Choice Calibration</h3>
+<div id="destination-choice-calibration" class="section level3 unnumbered hasAnchor">
+<h3>Destination Choice Calibration<a href="chap-modechoice.html#destination-choice-calibration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A destination choice model has three basic components:</p>
 <ul>
 <li>A size term: these are the trip attraction rates</li>
@@ -1699,8 +1729,8 @@ or another.</p>
 <p>The table and figure below show the observed trip length frequency distributions
 for the purposes you need to calibrate. An Excel file with the values is on
 LearningSuite.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="chap-modechoice.html#cb112-1" aria-hidden="true" tabindex="-1"></a>tlfd <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
-<span id="cb112-2"><a href="chap-modechoice.html#cb112-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tlfd)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="chap-modechoice.html#cb108-1" tabindex="-1"></a>tlfd <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/rvtpo_data/tlfd.xlsx&quot;</span>)</span>
+<span id="cb108-2"><a href="chap-modechoice.html#cb108-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tlfd)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1891,10 +1921,10 @@ LearningSuite.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="chap-modechoice.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tlfd <span class="sc">%&gt;%</span> <span class="fu">gather</span>(purpose, share, HBW<span class="sc">:</span>HBSH), </span>
-<span id="cb113-2"><a href="chap-modechoice.html#cb113-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> LOW, <span class="at">y =</span> share, <span class="at">color =</span> purpose)) <span class="sc">+</span></span>
-<span id="cb113-3"><a href="chap-modechoice.html#cb113-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb113-4"><a href="chap-modechoice.html#cb113-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="chap-modechoice.html#cb109-1" tabindex="-1"></a><span class="fu">ggplot</span>(tlfd <span class="sc">%&gt;%</span> <span class="fu">gather</span>(purpose, share, HBW<span class="sc">:</span>HBSH), </span>
+<span id="cb109-2"><a href="chap-modechoice.html#cb109-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> LOW, <span class="at">y =</span> share, <span class="at">color =</span> purpose)) <span class="sc">+</span></span>
+<span id="cb109-3"><a href="chap-modechoice.html#cb109-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb109-4"><a href="chap-modechoice.html#cb109-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Distance&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;%Trips&quot;</span>)</span></code></pre></div>
 <p><img src="04_modechoice_files/figure-html/tfld-plot-1.png" width="672" /></p>
 <p>The modeled TLFD for each purpose can be had on the model home screen as an
 output of the trip distribution model. Calculate the error between your observed
@@ -1904,8 +1934,8 @@ curve that will compensate for the error in the model.</p>
 <p>Re-run the destination choice model with your new coefficients, run the mode choice
 model, and adjust the coefficients over there.</p>
 </div>
-<div id="report-2" class="section level3 unnumbered">
-<h3>Report</h3>
+<div id="report-2" class="section level3 unnumbered hasAnchor">
+<h3>Report<a href="chap-modechoice.html#report-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Your lab report should describe the trip distribution and mode choice models;
 include discussions of the coefficients and your process to calibrate the mode
 and distance constants. Provide results of the calibration including observed and
@@ -1989,7 +2019,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

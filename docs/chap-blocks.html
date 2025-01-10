@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Building Blocks | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Building Blocks | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2021-10-26" />
+<meta name="date" content="2025-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="chap-tripgen.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,15 +49,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,10 +122,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -300,12 +304,12 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chap-blocks" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Building Blocks</h1>
+<div id="chap-blocks" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Building Blocks<a href="chap-blocks.html#chap-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter contains concepts, definitions, and mathematical techniques that will
 be used throughout the semester. Critical terms to understand are given in <strong>bold</strong>.</p>
-<div id="planning-for-human-systems" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Planning for Human Systems</h2>
+<div id="planning-for-human-systems" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Planning for Human Systems<a href="chap-blocks.html#planning-for-human-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you look out on any sufficiently busy road, you will see a steady stream of
 vehicles passing by. Each vehicle is largely indistinguishable from the others,
 and it is easy as an engineer responsible for that road to see the cars driving
@@ -360,8 +364,8 @@ be possible for anyone to provide analysis entirely free of all personal bias.
 But as you conduct your work as an engineer and planner, you owe the public your
 integrity and competence as you provide information to their representatives.</p>
 </div>
-<div id="the-four-step-transportation-planning-process" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> The Four-Step Transportation Planning Process</h2>
+<div id="the-four-step-transportation-planning-process" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> The Four-Step Transportation Planning Process<a href="chap-blocks.html#the-four-step-transportation-planning-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>How can you know what might happen in the future? And how might that change based
 on decisions that you make today? This basic question is at the heart of
 transportation planning:</p>
@@ -433,7 +437,7 @@ distribution can be represented as
 on each available mode <span class="math inline">\(k\)</span>, based on the travel time by each mode and other
 attributes of the origin and destination zones. Mathematically,
 <span class="math display" id="eq:modechoice">\[\begin{equation}
-  T_{ijk} = f(T_{ij}, c_{ijk}, SE_{i,j}) 
+  T_{ijk} = f(T_{ij}, c_{ijk}, SE_{i,j})
   \tag{1.4}
 \end{equation}\]</span></p>
 <p>A <em>route assignment</em> model determines the specific routes that the trips going
@@ -453,13 +457,13 @@ are a function of the input socioeconomic information and travel costs.</p>
 <p>The details of each of these models will be the topic for the next several
 chapters.</p>
 </div>
-<div id="travel-model-building-blocks" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Travel Model Building Blocks</h2>
+<div id="travel-model-building-blocks" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Travel Model Building Blocks<a href="chap-blocks.html#travel-model-building-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section, we present some of the terms used in transportation planning
 and modeling, as well as some of the data objects used in constructing travel
 demand models.</p>
-<div id="travel-analysis-zones-and-se-data" class="section level3" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> Travel Analysis Zones and SE Data</h3>
+<div id="travel-analysis-zones-and-se-data" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Travel Analysis Zones and SE Data<a href="chap-blocks.html#travel-analysis-zones-and-se-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The “people” in a model conduct <em>activities</em>: work, school, recreation, and
 other activities. Because travel is a derived demand, the purpose of travel is to
 move between these activities. So a travel model needs a way to represent where
@@ -537,29 +541,29 @@ in that TAZ are workers.”</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">44</td>
-<td align="right">25</td>
-<td align="right">22</td>
-<td align="right">129</td>
-<td align="right">96</td>
+<td align="right">30</td>
+<td align="right">18</td>
+<td align="right">12</td>
+<td align="right">120</td>
+<td align="right">70</td>
 <td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">45</td>
-<td align="right">47</td>
-<td align="right">21</td>
-<td align="right">121</td>
-<td align="right">81</td>
+<td align="right">31</td>
+<td align="right">35</td>
+<td align="right">11</td>
+<td align="right">132</td>
+<td align="right">60</td>
 <td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
+<td align="right">42</td>
 <td align="right">32</td>
-<td align="right">35</td>
-<td align="right">17</td>
-<td align="right">148</td>
-<td align="right">89</td>
+<td align="right">20</td>
+<td align="right">147</td>
+<td align="right">57</td>
 <td align="right">0</td>
 </tr>
 </tbody>
@@ -572,6 +576,15 @@ household’s information.</p>
 <p>Two persons live in one household with one worker in zone A. The firm Alice works at
 has an office job for her in Zone B.</p>
 <table>
+<colgroup>
+<col width="7%" />
+<col width="13%" />
+<col width="18%" />
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+<col width="22%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>taz</th>
@@ -606,8 +619,8 @@ has an office job for her in Zone B.</p>
 </table>
 </div>
 </div>
-<div id="transportation-networks" class="section level3" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> Transportation Networks</h3>
+<div id="transportation-networks" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Transportation Networks<a href="chap-blocks.html#transportation-networks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The purpose of a travel model is to understand how people are likely to use
 transportation infrastructure, so there has to be a way to represent
 roadway and transit systems. We do this with a
@@ -625,7 +638,7 @@ these attributes might not always be known at the outset, so instead we use
 attributes of the roadway that influence capacity and speed, and then calculate
 these other values.</p>
 <p><strong>Functional Type</strong> or <strong>Functional Class</strong> describes the relative
-role each road plays in the transportation system <span class="citation">(<a href="#ref-2018aashto" role="doc-biblioref"><em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> 2018</a>)</span>. Every street
+role each road plays in the transportation system <span class="citation">(<a href="#ref-2018aashto"><em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em> 2018</a>)</span>. Every street
 fills a role on a spectrum from mobility on one end to accessibility on the other:
 roads that are good at moving high volumes of vehicles are usually not good at
 providing access to homes and businesses. Common functional types include:</p>
@@ -678,8 +691,8 @@ developed specific capacity estimates for a new project.</p>
 These are different from other links in that they usually don’t have a capacity
 or a speed (they don’t represent real roads).</p>
 </div>
-<div id="matrices" class="section level3" number="1.3.3">
-<h3><span class="header-section-number">1.3.3</span> Matrices</h3>
+<div id="matrices" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Matrices<a href="chap-blocks.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Travel models need to represent travel times, costs, and flows between zones.
 Models store this data in <strong>matrices</strong>, special data structures developed for
 this purpose. Each matrix is a square table where the rows <span class="math inline">\(i\)</span> represent origin
@@ -698,8 +711,8 @@ number of trips made, and represents the demand between two zones in a network.<
 </ul>
 </div>
 </div>
-<div id="data-inputs" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Data Inputs</h2>
+<div id="data-inputs" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Data Inputs<a href="chap-blocks.html#data-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the last section we discussed data <em>structures</em> like highway networks and
 socioeconomic data files. In this section, we are going to talk about the data
 <em>inputs</em> that can be used for developing travel models. Besides highway networks
@@ -713,8 +726,8 @@ GIS files used by other agency departments. This is made even more
 difficult by model networks needing to be <em>routeable</em>: common GIS formats
 like shapefiles have no way of representing routability.</p>
 </div>
-<div id="household-travel-surveys" class="section level3" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Household Travel Surveys</h3>
+<div id="household-travel-surveys" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Household Travel Surveys<a href="chap-blocks.html#household-travel-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Travel demand models try to represent individual behavior. How many trips
 does the average household make per day? How do people respond to changes in
 transit fare? And how can a modeler know if the model accurately reflects
@@ -783,13 +796,20 @@ is a typical day for this person or not, but that’s the data that was collecte
 <td align="right">2</td>
 <td align="right">2</td>
 <td align="right">2</td>
-<td align="left">$100,000 to $124,999</td>
+<td align="left">08</td>
 <td align="right">1148.809</td>
 </tr>
 </tbody>
 </table>
 <table>
 <caption><span id="tab:show-nhts-persons">Table 1.3: </span>NHTS Persons File</caption>
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="8%" />
+<col width="55%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">houseid</th>
@@ -850,8 +870,17 @@ is a typical day for this person or not, but that’s the data that was collecte
 </tr>
 </tbody>
 </table>
-<table>
+<table style="width:100%;">
 <caption><span id="tab:show-nhts-trips">Table 1.5: </span>NHTS Trips File</caption>
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="19%" />
+<col width="19%" />
+<col width="8%" />
+<col width="8%" />
+<col width="26%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">houseid</th>
@@ -867,8 +896,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">01</td>
-<td align="left">2017-10-10 07:45:00</td>
-<td align="left">2017-10-10 07:52:00</td>
+<td align="left">2017-10-17 07:45:00</td>
+<td align="left">2017-10-17 07:52:00</td>
 <td align="right">2.710</td>
 <td align="left">Car</td>
 <td align="left">Home-based trip (other)</td>
@@ -876,8 +905,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">01</td>
-<td align="left">2017-10-10 08:09:00</td>
-<td align="left">2017-10-10 08:13:00</td>
+<td align="left">2017-10-17 08:09:00</td>
+<td align="left">2017-10-17 08:13:00</td>
 <td align="right">1.432</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -885,8 +914,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">01</td>
-<td align="left">2017-10-10 08:24:00</td>
-<td align="left">2017-10-10 08:28:00</td>
+<td align="left">2017-10-17 08:24:00</td>
+<td align="left">2017-10-17 08:28:00</td>
 <td align="right">0.777</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -894,8 +923,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">01</td>
-<td align="left">2017-10-10 16:53:00</td>
-<td align="left">2017-10-10 16:57:00</td>
+<td align="left">2017-10-17 16:53:00</td>
+<td align="left">2017-10-17 16:57:00</td>
 <td align="right">1.075</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -903,8 +932,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">01</td>
-<td align="left">2017-10-10 17:18:00</td>
-<td align="left">2017-10-10 17:26:00</td>
+<td align="left">2017-10-17 17:18:00</td>
+<td align="left">2017-10-17 17:26:00</td>
 <td align="right">2.727</td>
 <td align="left">Car</td>
 <td align="left">Home-based trip (other)</td>
@@ -912,8 +941,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 07:30:00</td>
-<td align="left">2017-10-10 07:33:00</td>
+<td align="left">2017-10-17 07:30:00</td>
+<td align="left">2017-10-17 07:33:00</td>
 <td align="right">2.136</td>
 <td align="left">Car</td>
 <td align="left">Home-based trip (shopping)</td>
@@ -921,8 +950,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 07:38:00</td>
-<td align="left">2017-10-10 08:50:00</td>
+<td align="left">2017-10-17 07:38:00</td>
+<td align="left">2017-10-17 08:50:00</td>
 <td align="right">88.581</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -930,8 +959,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 08:58:00</td>
-<td align="left">2017-10-10 09:49:00</td>
+<td align="left">2017-10-17 08:58:00</td>
+<td align="left">2017-10-17 09:49:00</td>
 <td align="right">45.341</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -939,8 +968,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 10:51:00</td>
-<td align="left">2017-10-10 12:24:00</td>
+<td align="left">2017-10-17 10:51:00</td>
+<td align="left">2017-10-17 12:24:00</td>
 <td align="right">28.208</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -948,8 +977,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 17:00:00</td>
-<td align="left">2017-10-10 17:05:00</td>
+<td align="left">2017-10-17 17:00:00</td>
+<td align="left">2017-10-17 17:05:00</td>
 <td align="right">0.239</td>
 <td align="left">Walk</td>
 <td align="left">Not a home-based trip</td>
@@ -957,8 +986,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="odd">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 19:15:00</td>
-<td align="left">2017-10-10 19:26:00</td>
+<td align="left">2017-10-17 19:15:00</td>
+<td align="left">2017-10-17 19:26:00</td>
 <td align="right">0.267</td>
 <td align="left">Walk</td>
 <td align="left">Not a home-based trip</td>
@@ -966,8 +995,8 @@ is a typical day for this person or not, but that’s the data that was collecte
 <tr class="even">
 <td align="left">30000082</td>
 <td align="left">02</td>
-<td align="left">2017-10-10 19:30:00</td>
-<td align="left">2017-10-10 20:43:00</td>
+<td align="left">2017-10-17 19:30:00</td>
+<td align="left">2017-10-17 20:43:00</td>
 <td align="right">29.293</td>
 <td align="left">Car</td>
 <td align="left">Not a home-based trip</td>
@@ -987,11 +1016,11 @@ calculate statistics or estimate models including weighted values. The code
 chunk below shows how to calculate the average number of workers per household
 with and without weights in R; as you can see, omitting the weights leads
 to a substantial change in the survey analysis.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-blocks.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average workers per household with no weights</span></span>
-<span id="cb1-2"><a href="chap-blocks.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nhts_households<span class="sc">$</span>wrkcount)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="chap-blocks.html#cb1-1" tabindex="-1"></a><span class="co"># Average workers per household with no weights</span></span>
+<span id="cb1-2"><a href="chap-blocks.html#cb1-2" tabindex="-1"></a><span class="fu">mean</span>(nhts_households<span class="sc">$</span>wrkcount)</span></code></pre></div>
 <pre><code>## [1] 0.9891438</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-blocks.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average workers per household, weighted</span></span>
-<span id="cb3-2"><a href="chap-blocks.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_households<span class="sc">$</span>wrkcount, nhts_households<span class="sc">$</span>wthhfin)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="chap-blocks.html#cb3-1" tabindex="-1"></a><span class="co"># Average workers per household, weighted</span></span>
+<span id="cb3-2"><a href="chap-blocks.html#cb3-2" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_households<span class="sc">$</span>wrkcount, nhts_households<span class="sc">$</span>wthhfin)</span></code></pre></div>
 <pre><code>## [1] 1.173206</code></pre>
 <p>Travel survey methodology is changing rapidly as a result of mobile devices with
 location capabilities. First, most travel surveys are now administered through a
@@ -1007,8 +1036,8 @@ would provide, they provide a considerably larger and more detailed sample
 on things like overall trip flows. As a result, it may be possible to collect
 surveys less frequently, or to reduce survey sample sizes.</p>
 </div>
-<div id="us-census-bureau" class="section level3" number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> US Census Bureau</h3>
+<div id="us-census-bureau" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> US Census Bureau<a href="chap-blocks.html#us-census-bureau" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The primary statistical agency of the United States is the U.S. Census Bureau,
 called Census. The need to collect statistics is established in the Constitution,</p>
 <blockquote>
@@ -1060,8 +1089,8 @@ does imputation and data swapping on the records to ensure that private
 information cannot be disclosed. But studies conducted on ACS PUMS records
 reach the same statistical conclusions as studies conducted on the unmodeled and
 raw data, making PUMS a useful tool in studying populations.</p>
-<div id="geographies" class="section level4" number="1.4.2.1">
-<h4><span class="header-section-number">1.4.2.1</span> Geographies</h4>
+<div id="geographies" class="section level4 hasAnchor" number="1.4.2.1">
+<h4><span class="header-section-number">1.4.2.1</span> Geographies<a href="chap-blocks.html#geographies" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Census data are given in a geographical heirarchy:</p>
 <ul>
 <li>State</li>
@@ -1082,14 +1111,14 @@ Figure 1.4: US Census Geographies in Central Provo.
 </div>
 </div>
 </div>
-<div id="statistical-and-mathematical-techniques" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Statistical and Mathematical Techniques</h2>
+<div id="statistical-and-mathematical-techniques" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Statistical and Mathematical Techniques<a href="chap-blocks.html#statistical-and-mathematical-techniques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many elements of travel modeling and forecasting require complex numerical and
 quantitative techniques. In this section we will present some of these techniques.
 Many of the data tables are in the <code>nhts2017</code> package. To install this package,
 follow the directions in the <a href="app-rstudio.html#app-rstudio">Appendix</a>.</p>
-<div id="continuous-and-discrete-distributions" class="section level3" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Continuous and Discrete Distributions</h3>
+<div id="continuous-and-discrete-distributions" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Continuous and Discrete Distributions<a href="chap-blocks.html#continuous-and-discrete-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In general, statistical variables can fall into one of two categories:</p>
 <ul>
 <li><em>Continuous</em> variables can take any numeric value along some range</li>
@@ -1100,32 +1129,32 @@ discrete variables are non-numeric. A continuous variable has statistics such as
 a <em>mean</em>, but these statistics do not make sense on discrete variables. In the
 NHTS trips dataset, we can compute a mean trip miles, but we cannot compute
 a mean trip purpose. Or we can’t compute a mean that makes sense.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chap-blocks.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of continuous variable: trip length</span></span>
-<span id="cb5-2"><a href="chap-blocks.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_trips<span class="sc">$</span>trpmiles, nhts_trips<span class="sc">$</span>wttrdfin)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chap-blocks.html#cb5-1" tabindex="-1"></a><span class="co"># mean of continuous variable: trip length</span></span>
+<span id="cb5-2"><a href="chap-blocks.html#cb5-2" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_trips<span class="sc">$</span>trpmiles, nhts_trips<span class="sc">$</span>wttrdfin)</span></code></pre></div>
 <pre><code>## [1] 10.69119</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chap-blocks.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of categorical variable: trip purpose</span></span>
-<span id="cb7-2"><a href="chap-blocks.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_trips<span class="sc">$</span>trippurp, nhts_trips<span class="sc">$</span>wttrdfin)</span></code></pre></div>
-<pre><code>## Error in x * w: non-numeric argument to binary operator</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="chap-blocks.html#cb7-1" tabindex="-1"></a><span class="co"># mean of categorical variable: trip purpose</span></span>
+<span id="cb7-2"><a href="chap-blocks.html#cb7-2" tabindex="-1"></a><span class="fu">weighted.mean</span>(nhts_trips<span class="sc">$</span>trippurp, nhts_trips<span class="sc">$</span>wttrdfin)</span></code></pre></div>
+<pre><code>## Error in op_fn(vec_data(args[[1L]]), vec_data(args[[2L]])): non-numeric argument to binary operator</code></pre>
 <p>What we can do, however, is we can print a summary table showing the number
 of observations that fit in each trip purpose category. Note that sometimes there
 will be a category devoted to data that is missing or otherwise invalid.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chap-blocks.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>trippurp)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="chap-blocks.html#cb9-1" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>trippurp)</span></code></pre></div>
 <pre><code>## 
 ##       -9      HBO   HBSHOP HBSOCREC      HBW      NHB 
 ##       32   190022   195188   110235   117368   310727</code></pre>
 <p>Sometimes it is handy to split a continuous variable into categories so that you
 can treat it as a discrete variable.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chap-blocks.html#cb11-1" aria-hidden="true" tabindex="-1"></a>nhts_trips<span class="sc">$</span>miles_cat <span class="ot">&lt;-</span> <span class="fu">cut</span>(nhts_trips<span class="sc">$</span>trpmiles, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="cn">Inf</span>))</span>
-<span id="cb11-2"><a href="chap-blocks.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>miles_cat)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="chap-blocks.html#cb11-1" tabindex="-1"></a>nhts_trips<span class="sc">$</span>miles_cat <span class="ot">&lt;-</span> <span class="fu">cut</span>(nhts_trips<span class="sc">$</span>trpmiles, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="cn">Inf</span>))</span>
+<span id="cb11-2"><a href="chap-blocks.html#cb11-2" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>miles_cat)</span></code></pre></div>
 <pre><code>## 
 ##    (0,10]   (10,20]   (20,30]   (30,50]  (50,100] (100,Inf] 
 ##    719812    113383     38724     25064     14388     11060</code></pre>
 <p>When we visualize the distribution of a continuous variable, we might
 use a histogram or density plot, but with a discrete variable we would use
 a bar chart.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chap-blocks.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nhts_trips, <span class="fu">aes</span>(<span class="at">x =</span> trpmiles, <span class="at">weight =</span> wttrdfin)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="chap-blocks.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Trip Distance [Miles]&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="chap-blocks.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="chap-blocks.html#cb13-1" tabindex="-1"></a><span class="fu">ggplot</span>(nhts_trips, <span class="fu">aes</span>(<span class="at">x =</span> trpmiles, <span class="at">weight =</span> wttrdfin)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="chap-blocks.html#cb13-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Trip Distance [Miles]&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="chap-blocks.html#cb13-3" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure"><span style="display:block;" id="fig:dc-histogram"></span>
 <img src="01-intro_files/figure-html/dc-histogram-1.png" alt="Visualizing a continuous distribution with a histogram." width="672" />
@@ -1133,9 +1162,9 @@ a bar chart.</p>
 Figure 1.5: Visualizing a continuous distribution with a histogram.
 </p>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-blocks.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nhts_trips, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as_factor</span>(trippurp, <span class="at">levels =</span> <span class="st">&quot;labels&quot;</span>), </span>
-<span id="cb15-2"><a href="chap-blocks.html#cb15-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">weight =</span> wttrdfin)) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="chap-blocks.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Trip Purpose&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="chap-blocks.html#cb15-1" tabindex="-1"></a><span class="fu">ggplot</span>(nhts_trips, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as_factor</span>(trippurp, <span class="at">levels =</span> <span class="st">&quot;labels&quot;</span>), </span>
+<span id="cb15-2"><a href="chap-blocks.html#cb15-2" tabindex="-1"></a>                       <span class="at">weight =</span> wttrdfin)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="chap-blocks.html#cb15-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Trip Purpose&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Weighted Trips&quot;</span>) </span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:dc-barchart"></span>
 <img src="01-intro_files/figure-html/dc-barchart-1.png" alt="Visualizing a discrete distribution with a bar chart." width="672" />
 <p class="caption">
@@ -1148,7 +1177,7 @@ distribution of two variables. This joint distribution tells you what is happeni
 with one variable while the other variable changes. In a table like the one below,
 the margins of the table (the row and column sums) contain the single variable
 distribution. So sometimes we call these the <em>marginal</em> distributions.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-blocks.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>miles_cat, nhts_trips<span class="sc">$</span>trippurp)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="chap-blocks.html#cb16-1" tabindex="-1"></a><span class="fu">table</span>(nhts_trips<span class="sc">$</span>miles_cat, nhts_trips<span class="sc">$</span>trippurp)</span></code></pre></div>
 <pre><code>##            
 ##                 -9    HBO HBSHOP HBSOCREC    HBW    NHB
 ##   (0,10]        23 156315 162602    84980  67162 248730
@@ -1161,8 +1190,8 @@ distribution. So sometimes we call these the <em>marginal</em> distributions.</p
 quite nice.</p>
 <p><img src="01-intro_files/figure-html/dc-joint-hist-1.png" width="672" /></p>
 </div>
-<div id="ipf" class="section level3" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Iterative Proportional Fitting</h3>
+<div id="ipf" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Iterative Proportional Fitting<a href="chap-blocks.html#ipf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are times when we know two marginal distributions but do not know the
 joint distribution. This can happen for a number of reasons:</p>
 <ul>
@@ -1180,24 +1209,24 @@ We can assume that the two-way AADT is roughly even in each direction, so the
 inbound volume at each station is half the AADT. Let’s also say we have an
 estimate of where the trips coming at those stations <em>today</em> go today. This
 matrix is called a <strong>seed</strong>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chap-blocks.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AADT projections</span></span>
-<span id="cb18-2"><a href="chap-blocks.html#cb18-2" aria-hidden="true" tabindex="-1"></a>volumes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb18-3"><a href="chap-blocks.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Station =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],</span>
-<span id="cb18-4"><a href="chap-blocks.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Volume =</span> <span class="fu">c</span>(<span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">35000</span>),</span>
-<span id="cb18-5"><a href="chap-blocks.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">AADT =</span> Volume <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb18-6"><a href="chap-blocks.html#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-7"><a href="chap-blocks.html#cb18-7" aria-hidden="true" tabindex="-1"></a>volumes</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chap-blocks.html#cb18-1" tabindex="-1"></a><span class="co"># AADT projections</span></span>
+<span id="cb18-2"><a href="chap-blocks.html#cb18-2" tabindex="-1"></a>volumes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb18-3"><a href="chap-blocks.html#cb18-3" tabindex="-1"></a>  <span class="at">Station =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],</span>
+<span id="cb18-4"><a href="chap-blocks.html#cb18-4" tabindex="-1"></a>  <span class="at">Volume =</span> <span class="fu">c</span>(<span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">35000</span>),</span>
+<span id="cb18-5"><a href="chap-blocks.html#cb18-5" tabindex="-1"></a>  <span class="at">AADT =</span> Volume <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb18-6"><a href="chap-blocks.html#cb18-6" tabindex="-1"></a>)</span>
+<span id="cb18-7"><a href="chap-blocks.html#cb18-7" tabindex="-1"></a>volumes</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
 ##   Station Volume  AADT
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
 ## 1 A        20000 40000
 ## 2 B        30000 60000
 ## 3 C        35000 70000</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chap-blocks.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># observed distribution for a seed</span></span>
-<span id="cb20-2"><a href="chap-blocks.html#cb20-2" aria-hidden="true" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="dv">0</span>,    <span class="dv">7501</span>    ,<span class="dv">12500</span>, <span class="dv">8956</span>,   <span class="dv">0</span>, <span class="dv">11879</span>, <span class="dv">9146</span>, <span class="dv">21044</span>,  <span class="dv">4687</span>),</span>
-<span id="cb20-3"><a href="chap-blocks.html#cb20-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-4"><a href="chap-blocks.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(seed) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(seed) <span class="ot">&lt;-</span> volumes<span class="sc">$</span>Station</span>
-<span id="cb20-5"><a href="chap-blocks.html#cb20-5" aria-hidden="true" tabindex="-1"></a>seed</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chap-blocks.html#cb20-1" tabindex="-1"></a><span class="co"># observed distribution for a seed</span></span>
+<span id="cb20-2"><a href="chap-blocks.html#cb20-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="dv">0</span>,    <span class="dv">7501</span>    ,<span class="dv">12500</span>, <span class="dv">8956</span>,   <span class="dv">0</span>, <span class="dv">11879</span>, <span class="dv">9146</span>, <span class="dv">21044</span>,  <span class="dv">4687</span>),</span>
+<span id="cb20-3"><a href="chap-blocks.html#cb20-3" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-4"><a href="chap-blocks.html#cb20-4" tabindex="-1"></a><span class="fu">rownames</span>(seed) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(seed) <span class="ot">&lt;-</span> volumes<span class="sc">$</span>Station</span>
+<span id="cb20-5"><a href="chap-blocks.html#cb20-5" tabindex="-1"></a>seed</span></code></pre></div>
 <pre><code>##      A     B     C
 ## A    0  7501 12500
 ## B 8956     0 11879
@@ -1223,25 +1252,25 @@ the other marginal,</p>
   S_{1, 1 2} &amp;= 20000 * 12500/ 20001  &amp;= 12499.38\\
 \end{align*}\]</span></p>
 <p>And the whole row iteration is</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-blocks.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get factor to multiply each row by</span></span>
-<span id="cb22-2"><a href="chap-blocks.html#cb22-2" aria-hidden="true" tabindex="-1"></a>row_factor <span class="ot">&lt;-</span> volumes<span class="sc">$</span>Volume <span class="sc">/</span> <span class="fu">rowSums</span>(seed)</span>
-<span id="cb22-3"><a href="chap-blocks.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply across rows, see ?sweep()</span></span>
-<span id="cb22-4"><a href="chap-blocks.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sweep</span>(seed, <span class="dv">1</span>, row_factor, <span class="st">&quot;*&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chap-blocks.html#cb22-1" tabindex="-1"></a><span class="co"># get factor to multiply each row by</span></span>
+<span id="cb22-2"><a href="chap-blocks.html#cb22-2" tabindex="-1"></a>row_factor <span class="ot">&lt;-</span> volumes<span class="sc">$</span>Volume <span class="sc">/</span> <span class="fu">rowSums</span>(seed)</span>
+<span id="cb22-3"><a href="chap-blocks.html#cb22-3" tabindex="-1"></a><span class="co"># multiply across rows, see ?sweep()</span></span>
+<span id="cb22-4"><a href="chap-blocks.html#cb22-4" tabindex="-1"></a><span class="fu">sweep</span>(seed, <span class="dv">1</span>, row_factor, <span class="st">&quot;*&quot;</span>)</span></code></pre></div>
 <pre><code>##           A         B        C
 ## A     0.000  7500.625 12499.38
 ## B 12895.608     0.000 17104.39
 ## C  9178.255 21118.215  4703.53</code></pre>
 <p>We can write a function that does a complete round of row, then column fitting.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-blocks.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ipf_round <span class="ot">&lt;-</span> <span class="cf">function</span>(marginal1, marginal2, seed) {</span>
-<span id="cb24-2"><a href="chap-blocks.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># multiply the first marginal through the rows (MARGIN = 1)</span></span>
-<span id="cb24-3"><a href="chap-blocks.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  seed_rows <span class="ot">&lt;-</span> <span class="fu">sweep</span>(seed, <span class="at">MARGIN =</span> <span class="dv">1</span>, marginal1 <span class="sc">/</span> <span class="fu">rowSums</span>(seed), <span class="st">&quot;*&quot;</span>)</span>
-<span id="cb24-4"><a href="chap-blocks.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># multiply the second marginal through the columns (MARGIN = 2)</span></span>
-<span id="cb24-5"><a href="chap-blocks.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  seed_cols <span class="ot">&lt;-</span> <span class="fu">sweep</span>(seed_rows, <span class="at">MARGIN =</span> <span class="dv">2</span>, marginal2 <span class="sc">/</span> <span class="fu">colSums</span>(seed_rows), <span class="st">&quot;*&quot;</span>)</span>
-<span id="cb24-6"><a href="chap-blocks.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># return</span></span>
-<span id="cb24-7"><a href="chap-blocks.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  seed_cols</span>
-<span id="cb24-8"><a href="chap-blocks.html#cb24-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-9"><a href="chap-blocks.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="chap-blocks.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ipf_round</span>(volumes<span class="sc">$</span>Volume, volumes<span class="sc">$</span>Volume, seed)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chap-blocks.html#cb24-1" tabindex="-1"></a>ipf_round <span class="ot">&lt;-</span> <span class="cf">function</span>(marginal1, marginal2, seed) {</span>
+<span id="cb24-2"><a href="chap-blocks.html#cb24-2" tabindex="-1"></a>  <span class="co"># multiply the first marginal through the rows (MARGIN = 1)</span></span>
+<span id="cb24-3"><a href="chap-blocks.html#cb24-3" tabindex="-1"></a>  seed_rows <span class="ot">&lt;-</span> <span class="fu">sweep</span>(seed, <span class="at">MARGIN =</span> <span class="dv">1</span>, marginal1 <span class="sc">/</span> <span class="fu">rowSums</span>(seed), <span class="st">&quot;*&quot;</span>)</span>
+<span id="cb24-4"><a href="chap-blocks.html#cb24-4" tabindex="-1"></a>  <span class="co"># multiply the second marginal through the columns (MARGIN = 2)</span></span>
+<span id="cb24-5"><a href="chap-blocks.html#cb24-5" tabindex="-1"></a>  seed_cols <span class="ot">&lt;-</span> <span class="fu">sweep</span>(seed_rows, <span class="at">MARGIN =</span> <span class="dv">2</span>, marginal2 <span class="sc">/</span> <span class="fu">colSums</span>(seed_rows), <span class="st">&quot;*&quot;</span>)</span>
+<span id="cb24-6"><a href="chap-blocks.html#cb24-6" tabindex="-1"></a>  <span class="co"># return</span></span>
+<span id="cb24-7"><a href="chap-blocks.html#cb24-7" tabindex="-1"></a>  seed_cols</span>
+<span id="cb24-8"><a href="chap-blocks.html#cb24-8" tabindex="-1"></a>}</span>
+<span id="cb24-9"><a href="chap-blocks.html#cb24-9" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="chap-blocks.html#cb24-10" tabindex="-1"></a><span class="fu">ipf_round</span>(volumes<span class="sc">$</span>Volume, volumes<span class="sc">$</span>Volume, seed)</span></code></pre></div>
 <pre><code>##           A         B         C
 ## A     0.000  7862.609 12751.752
 ## B 11684.052     0.000 17449.749
@@ -1249,23 +1278,23 @@ the other marginal,</p>
 <p>If we repeat this process for several iterations, we can see that the change
 between successive values shrinks. We can use this change to set a tolerance
 for when we want the process to stop.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chap-blocks.html#cb26-1" aria-hidden="true" tabindex="-1"></a>change <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;numeric&quot;</span>)</span>
-<span id="cb26-2"><a href="chap-blocks.html#cb26-2" aria-hidden="true" tabindex="-1"></a>joint <span class="ot">&lt;-</span> seed</span>
-<span id="cb26-3"><a href="chap-blocks.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
-<span id="cb26-4"><a href="chap-blocks.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># update joint table</span></span>
-<span id="cb26-5"><a href="chap-blocks.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  new_joint <span class="ot">&lt;-</span> <span class="fu">ipf_round</span>(volumes<span class="sc">$</span>Volume, volumes<span class="sc">$</span>Volume, joint)</span>
-<span id="cb26-6"><a href="chap-blocks.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate absolute error at this iteration</span></span>
-<span id="cb26-7"><a href="chap-blocks.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sum</span>(<span class="fu">abs</span>(new_joint <span class="sc">-</span> joint)))</span>
-<span id="cb26-8"><a href="chap-blocks.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># update joint</span></span>
-<span id="cb26-9"><a href="chap-blocks.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  joint <span class="ot">&lt;-</span> new_joint</span>
-<span id="cb26-10"><a href="chap-blocks.html#cb26-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chap-blocks.html#cb26-1" tabindex="-1"></a>change <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;numeric&quot;</span>)</span>
+<span id="cb26-2"><a href="chap-blocks.html#cb26-2" tabindex="-1"></a>joint <span class="ot">&lt;-</span> seed</span>
+<span id="cb26-3"><a href="chap-blocks.html#cb26-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb26-4"><a href="chap-blocks.html#cb26-4" tabindex="-1"></a>  <span class="co"># update joint table</span></span>
+<span id="cb26-5"><a href="chap-blocks.html#cb26-5" tabindex="-1"></a>  new_joint <span class="ot">&lt;-</span> <span class="fu">ipf_round</span>(volumes<span class="sc">$</span>Volume, volumes<span class="sc">$</span>Volume, joint)</span>
+<span id="cb26-6"><a href="chap-blocks.html#cb26-6" tabindex="-1"></a>  <span class="co"># calculate absolute error at this iteration</span></span>
+<span id="cb26-7"><a href="chap-blocks.html#cb26-7" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sum</span>(<span class="fu">abs</span>(new_joint <span class="sc">-</span> joint)))</span>
+<span id="cb26-8"><a href="chap-blocks.html#cb26-8" tabindex="-1"></a>  <span class="co"># update joint</span></span>
+<span id="cb26-9"><a href="chap-blocks.html#cb26-9" tabindex="-1"></a>  joint <span class="ot">&lt;-</span> new_joint</span>
+<span id="cb26-10"><a href="chap-blocks.html#cb26-10" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 10947.1
 ## [1] 1550.274
 ## [1] 325.7515
 ## [1] 109.2708
 ## [1] 37.10879</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-blocks.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># final estimate</span></span>
-<span id="cb28-2"><a href="chap-blocks.html#cb28-2" aria-hidden="true" tabindex="-1"></a>new_joint</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chap-blocks.html#cb28-1" tabindex="-1"></a><span class="co"># final estimate</span></span>
+<span id="cb28-2"><a href="chap-blocks.html#cb28-2" tabindex="-1"></a>new_joint</span></code></pre></div>
 <pre><code>##           A         B         C
 ## A     0.000  7748.922 12251.164
 ## B 11945.229     0.000 18047.050
@@ -1286,15 +1315,15 @@ outcome. If you are uncertain about your seed matrix, you could consider
 taking the average of multiple potential seed matrices.</li>
 </ul>
 </div>
-<div id="regression-analysis" class="section level3" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Regression Analysis</h3>
+<div id="regression-analysis" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Regression Analysis<a href="chap-blocks.html#regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider the basic model in <a href="chap-blocks.html#eq:basic-model">(1.1)</a>. This is a linear model, meaning
 that it creates a line that minimizes the error between the points. Figure
 <a href="chap-blocks.html#fig:lm-mpg">1.7</a> shows the linear relationship between engine displacement (in
 cubic centimeters) and engine miles per gallon in a sample of cars.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-blocks.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> disp)) <span class="sc">+</span> </span>
-<span id="cb30-2"><a href="chap-blocks.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chap-blocks.html#cb30-1" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> disp)) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="chap-blocks.html#cb30-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span style="display:block;" id="fig:lm-mpg"></span>
 <img src="01-intro_files/figure-html/lm-mpg-1.png" alt="Relationship between engine displacement and miles per gallon." width="672" />
 <p class="caption">
@@ -1303,10 +1332,10 @@ Figure 1.7: Relationship between engine displacement and miles per gallon.
 </div>
 <p>How do we calculate this line? In R, the function to compute a basic linear
 regression is <code>lm()</code>. So to regress the <code>mpg</code> variable on the <code>disp</code> variable,</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-blocks.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y ~ x + x1 + others, from data</span></span>
-<span id="cb32-2"><a href="chap-blocks.html#cb32-2" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span>  <span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb32-3"><a href="chap-blocks.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print summary</span></span>
-<span id="cb32-4"><a href="chap-blocks.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chap-blocks.html#cb32-1" tabindex="-1"></a><span class="co"># y ~ x + x1 + others, from data</span></span>
+<span id="cb32-2"><a href="chap-blocks.html#cb32-2" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span>  <span class="fu">lm</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb32-3"><a href="chap-blocks.html#cb32-3" tabindex="-1"></a><span class="co"># print summary</span></span>
+<span id="cb32-4"><a href="chap-blocks.html#cb32-4" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ disp, data = mtcars)
@@ -1343,18 +1372,18 @@ for <span class="math inline">\(\hat{\beta}\)</span>, we obtain the following es
 \end{equation}\]</span></p>
 <p>We can calculate this manually in R, and verify that it matches the estimates
 obtained through <code>lm()</code>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chap-blocks.html#cb34-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb34-2"><a href="chap-blocks.html#cb34-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
-<span id="cb34-3"><a href="chap-blocks.html#cb34-3" aria-hidden="true" tabindex="-1"></a>(XTX1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chap-blocks.html#cb34-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb34-2"><a href="chap-blocks.html#cb34-2" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars)</span>
+<span id="cb34-3"><a href="chap-blocks.html#cb34-3" tabindex="-1"></a>(XTX1 <span class="ot">&lt;-</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X))</span></code></pre></div>
 <pre><code>##               (Intercept)          disp
 ## (Intercept)  0.1430397593 -4.845217e-04
 ## disp        -0.0004845217  2.100025e-06</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-blocks.html#cb36-1" aria-hidden="true" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> XTX1 <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chap-blocks.html#cb36-1" tabindex="-1"></a>(beta <span class="ot">&lt;-</span> XTX1 <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y)</span></code></pre></div>
 <pre><code>##                    [,1]
 ## (Intercept) 29.59985476
 ## disp        -0.04121512</code></pre>
-<div id="variance-and-confidence-tests" class="section level4" number="1.5.3.1">
-<h4><span class="header-section-number">1.5.3.1</span> Variance and Confidence Tests</h4>
+<div id="variance-and-confidence-tests" class="section level4 hasAnchor" number="1.5.3.1">
+<h4><span class="header-section-number">1.5.3.1</span> Variance and Confidence Tests<a href="chap-blocks.html#variance-and-confidence-tests" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Because <span class="math inline">\(\hat{\beta}\)</span> is an estimate rather than a population statistic, we have
 to consider that the estimate might be erroneous. That is, we need to construct
 a hypothesis test,</p>
@@ -1378,9 +1407,9 @@ with mean 0 and variance <span class="math inline">\(\sigma^2\)</span>,</p>
 \end{align*}\]</span></p>
 <p>What does IID mean? It means that the distribution of <span class="math inline">\(\epsilon\)</span> does not depend
 on the values of <span class="math inline">\(X\)</span>.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-blocks.html#cb38-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> y <span class="sc">-</span> X <span class="sc">%*%</span> beta</span>
-<span id="cb38-2"><a href="chap-blocks.html#cb38-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sum</span>(e<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="fu">nrow</span>(X) <span class="sc">-</span> <span class="fu">ncol</span>(X))) <span class="do">## SSR / degrees of freedom</span></span>
-<span id="cb38-3"><a href="chap-blocks.html#cb38-3" aria-hidden="true" tabindex="-1"></a>(se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(s <span class="sc">*</span> XTX1)))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chap-blocks.html#cb38-1" tabindex="-1"></a>e <span class="ot">&lt;-</span> y <span class="sc">-</span> X <span class="sc">%*%</span> beta</span>
+<span id="cb38-2"><a href="chap-blocks.html#cb38-2" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sum</span>(e<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="fu">nrow</span>(X) <span class="sc">-</span> <span class="fu">ncol</span>(X))) <span class="do">## SSR / degrees of freedom</span></span>
+<span id="cb38-3"><a href="chap-blocks.html#cb38-3" tabindex="-1"></a>(se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(s <span class="sc">*</span> XTX1)))</span></code></pre></div>
 <pre><code>## (Intercept)        disp 
 ## 1.229719515 0.004711833</code></pre>
 <p>So, let’s talk about confidence tests using our new measure of the distribution
@@ -1388,12 +1417,12 @@ of <span class="math inline">\(\hat{\beta}\)</span>. What is the probability of 
 <em>at least this extreme</em> given the null hypothesis that the true value is 0?
 The <span class="math inline">\(t\)</span>-statistic is the quotient of <span class="math inline">\(\beta\)</span> and its standard error, with
 the <span class="math inline">\(p\)</span>-value determined based on the degrees of freedom of the model.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-blocks.html#cb40-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">t =</span> beta <span class="sc">/</span> se)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chap-blocks.html#cb40-1" tabindex="-1"></a>(<span class="at">t =</span> beta <span class="sc">/</span> se)</span></code></pre></div>
 <pre><code>##                  [,1]
 ## (Intercept) 24.070411
 ## disp        -8.747152</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-blocks.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-tailed P test with certain degrees of freedom</span></span>
-<span id="cb42-2"><a href="chap-blocks.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="fu">nrow</span>(X) <span class="sc">-</span> <span class="fu">ncol</span>(X), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chap-blocks.html#cb42-1" tabindex="-1"></a><span class="co"># two-tailed P test with certain degrees of freedom</span></span>
+<span id="cb42-2"><a href="chap-blocks.html#cb42-2" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="fu">nrow</span>(X) <span class="sc">-</span> <span class="fu">ncol</span>(X), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
 <pre><code>##                     [,1]
 ## (Intercept) 3.576586e-21
 ## disp        9.380327e-10</code></pre>
@@ -1401,29 +1430,29 @@ the <span class="math inline">\(p\)</span>-value determined based on the degrees
 When you <code>plot</code> the results of a linear model, you get a series of diagnostic
 plots. The first one is a plot of the residuals at different values of <span class="math inline">\(X\beta\)</span>,
 which allows you to visually inspect whether the IID assumption is valid.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chap-blocks.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chap-blocks.html#cb44-1" tabindex="-1"></a><span class="fu">plot</span>(lm1, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="01-intro_files/figure-html/regression-plot-1.png" width="672" /></p>
 <p>So, what can you do when the IID assumption is violated? Well, you could try
 to transform the data. What if the inverse of displacement is what matters?</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chap-blocks.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform the data</span></span>
-<span id="cb45-2"><a href="chap-blocks.html#cb45-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> <span class="fu">I</span>(<span class="dv">1</span> <span class="sc">/</span> disp), <span class="at">data =</span> mtcars)</span>
-<span id="cb45-3"><a href="chap-blocks.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm2, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chap-blocks.html#cb45-1" tabindex="-1"></a><span class="co"># transform the data</span></span>
+<span id="cb45-2"><a href="chap-blocks.html#cb45-2" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> <span class="fu">I</span>(<span class="dv">1</span> <span class="sc">/</span> disp), <span class="at">data =</span> mtcars)</span>
+<span id="cb45-3"><a href="chap-blocks.html#cb45-3" tabindex="-1"></a><span class="fu">plot</span>(lm2, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="01-intro_files/figure-html/regression-inverse-1.png" width="672" /></p>
 <p>There might also be other variables that matter. We could add the number of
 engine cylinders into our estimation. Both of these are better than the original
 model.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chap-blocks.html#cb46-1" aria-hidden="true" tabindex="-1"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars)</span>
-<span id="cb46-2"><a href="chap-blocks.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm3, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chap-blocks.html#cb46-1" tabindex="-1"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> disp <span class="sc">+</span> cyl, <span class="at">data =</span> mtcars)</span>
+<span id="cb46-2"><a href="chap-blocks.html#cb46-2" tabindex="-1"></a><span class="fu">plot</span>(lm3, <span class="at">which =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="01-intro_files/figure-html/regression-morevars-1.png" width="672" /></p>
 </div>
 </div>
-<div id="numerical-optimization" class="section level3" number="1.5.4">
-<h3><span class="header-section-number">1.5.4</span> Numerical Optimization</h3>
+<div id="numerical-optimization" class="section level3 hasAnchor" number="1.5.4">
+<h3><span class="header-section-number">1.5.4</span> Numerical Optimization<a href="chap-blocks.html#numerical-optimization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s say you have a function with a</p>
 </div>
 </div>
-<div id="hw-blocks" class="section level2 unnumbered">
-<h2>Homework</h2>
+<div id="hw-blocks" class="section level2 unnumbered hasAnchor">
+<h2>Homework<a href="chap-blocks.html#hw-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
 <p>Some of these questions require a completed run of the demonstration model.
 For instructions on accessing and running the model, see the <a href="app-demomodel.html#app-demomodel">Appendix</a></p>
@@ -1504,8 +1533,8 @@ worst-performing major facility?</p></li>
 </tbody>
 </table>
 </div>
-<div id="lab-blocks" class="section level2 unnumbered">
-<h2>Lab</h2>
+<div id="lab-blocks" class="section level2 unnumbered hasAnchor">
+<h2>Lab<a href="chap-blocks.html#lab-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Demographers for the Commonwealth of Virginia — like those in other
 states — forecast a certain number of residents, households, and jobs for
 many years into the future. But this data alone is not sufficient: We believe
@@ -1533,8 +1562,8 @@ model, but the marginal and joint distribution tables the model uses contain
 nonsense. Your task for this lab is to correct the values in these tables so
 that the model will calculate reasonable estimates of the current and future
 population.</p>
-<div id="marginal-distributions" class="section level3 unnumbered">
-<h3>Marginal Distributions</h3>
+<div id="marginal-distributions" class="section level3 unnumbered hasAnchor">
+<h3>Marginal Distributions<a href="chap-blocks.html#marginal-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The United States Census Bureau attempts to count every person in the United
 States every ten years. It also surveys a 1% sample of the population each year
 for additional statistical questions (in a program called the American Community
@@ -1569,7 +1598,7 @@ distribution means that we’re not really confident about where the actual
 proportion is. We’ll need to do some manual adjusting to these curves.</p>
 <p>I have provided you with initial marginal distribution curves for the three
 marginal distributions of interest. These files are available
-<a href="https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg">on Box</a>, and the
+<a href="https://byu.box.com/v/rvtpo-bare-model">on Box</a>, and the
 starting values are shown graphically in Figure <a href="chap-blocks.html#fig:raw-marginals">1.9</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:raw-marginals"></span>
 <img src="01-intro_files/figure-html/raw-marginals-1.png" alt="Raw marginal distribution curves from Roanoke region." width="672" />
@@ -1588,8 +1617,8 @@ contains all households with <em>four or more</em> members.</li>
 must sum to 1.</li>
 </ol>
 </div>
-<div id="joint-distribution" class="section level3 unnumbered">
-<h3>Joint Distribution</h3>
+<div id="joint-distribution" class="section level3 unnumbered hasAnchor">
+<h3>Joint Distribution<a href="chap-blocks.html#joint-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the section above we created curves to get the marginal distribution of
 household size, vehicles, and workers based on the average in a zone. In order to
 make sure that the joint distribution of all of these variables is correct, we
@@ -1599,65 +1628,68 @@ publish 3-dimensional tables, but the Census Transportation Planning Package
 key tables not available in other places.</p>
 <p>The CTPP data is available
 <a href="http://data5.ctpp.transportation.org/ctpp1216">through the AASHTO website</a>,
-or by searching “CTPP.” Find table <code>A112305</code> for the residence counties where
+or by searching “CTPP”. Find table <code>A112305</code> for the residence counties where
 your group members are from. What do you see in this table? What makes sense
 and what does not?</p>
 <p>I have already gathered the data and done some preliminary preparation for
 you to compute the shares that belong in the household seed file. Run the
 code below in an R session (with the <code>tidyverse</code> library loaded) to calculate
 the necessary shares. Follow along with the code to understand what is happening.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chap-blocks.html#cb47-1" aria-hidden="true" tabindex="-1"></a>raw_counts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv&quot;</span>) </span></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   RESIDENCE = col_character(),
-##   persons = col_character(),
-##   workers = col_character(),
-##   vehicles = col_character(),
-##   output = col_character(),
-##   count = col_number()
-## )</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="chap-blocks.html#cb49-1" aria-hidden="true" tabindex="-1"></a>joint_distribution <span class="ot">&lt;-</span> raw_counts <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a href="chap-blocks.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the data contain both &quot;estimates&quot; and &quot;margin of error&quot;. We only want to</span></span>
-<span id="cb49-3"><a href="chap-blocks.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep the estimates rows.</span></span>
-<span id="cb49-4"><a href="chap-blocks.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(output <span class="sc">==</span> <span class="st">&quot;Estimate&quot;</span>)  <span class="sc">%&gt;%</span></span>
-<span id="cb49-5"><a href="chap-blocks.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-6"><a href="chap-blocks.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The data records size as text, with `0 workers`. We want to extract the</span></span>
-<span id="cb49-7"><a href="chap-blocks.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># numeric information from these fields. This line of code says, for the variables</span></span>
-<span id="cb49-8"><a href="chap-blocks.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># persons, workers, and vehicles, take all non-numeric characters and replace</span></span>
-<span id="cb49-9"><a href="chap-blocks.html#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># them with nothing. It looks like gibberish, but it came from lots of Stack</span></span>
-<span id="cb49-10"><a href="chap-blocks.html#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Overflow searching. I can&#39;t come up with this stuff from thin air, you know.</span></span>
-<span id="cb49-11"><a href="chap-blocks.html#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(</span>
-<span id="cb49-12"><a href="chap-blocks.html#cb49-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;persons&quot;</span>, <span class="st">&quot;workers&quot;</span>, <span class="st">&quot;vehicles&quot;</span>), </span>
-<span id="cb49-13"><a href="chap-blocks.html#cb49-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) {<span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;([0-9]+).*$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, x))}</span>
-<span id="cb49-14"><a href="chap-blocks.html#cb49-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb49-15"><a href="chap-blocks.html#cb49-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-16"><a href="chap-blocks.html#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the rows that say &quot;total households&quot; get turned to NA by the above process, and we</span></span>
-<span id="cb49-17"><a href="chap-blocks.html#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># don&#39;t want to keep those in anyways.</span></span>
-<span id="cb49-18"><a href="chap-blocks.html#cb49-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(persons), <span class="sc">!</span><span class="fu">is.na</span>(workers), <span class="sc">!</span><span class="fu">is.na</span>(vehicles)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-19"><a href="chap-blocks.html#cb49-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-20"><a href="chap-blocks.html#cb49-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the roanoke model only includes households with 3+ workers, not 4+. So if a</span></span>
-<span id="cb49-21"><a href="chap-blocks.html#cb49-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># row is for more than 3 workers, we group it as 3</span></span>
-<span id="cb49-22"><a href="chap-blocks.html#cb49-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">workers =</span> <span class="fu">ifelse</span>(workers <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="dv">3</span>, workers)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-23"><a href="chap-blocks.html#cb49-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-24"><a href="chap-blocks.html#cb49-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># but this creates a problem where we now have multiple rows with</span></span>
-<span id="cb49-25"><a href="chap-blocks.html#cb49-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3 workers. So we need to group and add up.</span></span>
-<span id="cb49-26"><a href="chap-blocks.html#cb49-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(persons, workers, vehicles) <span class="sc">%&gt;%</span></span>
-<span id="cb49-27"><a href="chap-blocks.html#cb49-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-28"><a href="chap-blocks.html#cb49-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb49-29"><a href="chap-blocks.html#cb49-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb49-30"><a href="chap-blocks.html#cb49-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Finally, we want to turn the numbers into a share. So we divde the</span></span>
-<span id="cb49-31"><a href="chap-blocks.html#cb49-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># counts by the total count in the whole table.</span></span>
-<span id="cb49-32"><a href="chap-blocks.html#cb49-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count))</span></code></pre></div>
-<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
-<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
-<pre><code>## Warning in (function (x) : NAs introduced by coercion</code></pre>
-<pre><code>## `summarise()` regrouping output by &#39;persons&#39;, &#39;workers&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chap-blocks.html#cb47-1" tabindex="-1"></a>raw_counts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst55t2khnhmcz.csv&quot;</span>) </span></code></pre></div>
+<pre><code>## Rows: 900 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): RESIDENCE, persons, workers, vehicles, output
+## num (1): count
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="chap-blocks.html#cb49-1" tabindex="-1"></a>joint_distribution <span class="ot">&lt;-</span> raw_counts <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="chap-blocks.html#cb49-2" tabindex="-1"></a>  <span class="co"># the data contain both &quot;estimates&quot; and &quot;margin of error&quot;. We only want to</span></span>
+<span id="cb49-3"><a href="chap-blocks.html#cb49-3" tabindex="-1"></a>  <span class="co"># keep the estimates rows.</span></span>
+<span id="cb49-4"><a href="chap-blocks.html#cb49-4" tabindex="-1"></a>  <span class="fu">filter</span>(output <span class="sc">==</span> <span class="st">&quot;Estimate&quot;</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb49-5"><a href="chap-blocks.html#cb49-5" tabindex="-1"></a>  </span>
+<span id="cb49-6"><a href="chap-blocks.html#cb49-6" tabindex="-1"></a>  <span class="co"># The data records size as text, with `0 workers`. We want to extract the</span></span>
+<span id="cb49-7"><a href="chap-blocks.html#cb49-7" tabindex="-1"></a>  <span class="co"># numeric information from these fields. This line of code says, for the variables</span></span>
+<span id="cb49-8"><a href="chap-blocks.html#cb49-8" tabindex="-1"></a>  <span class="co"># persons, workers, and vehicles, take all non-numeric characters and replace</span></span>
+<span id="cb49-9"><a href="chap-blocks.html#cb49-9" tabindex="-1"></a>  <span class="co"># them with nothing. It looks like gibberish, but it came from lots of Stack</span></span>
+<span id="cb49-10"><a href="chap-blocks.html#cb49-10" tabindex="-1"></a>  <span class="co"># Overflow searching. I can&#39;t come up with this stuff from thin air, you know.</span></span>
+<span id="cb49-11"><a href="chap-blocks.html#cb49-11" tabindex="-1"></a>  <span class="fu">mutate_at</span>(</span>
+<span id="cb49-12"><a href="chap-blocks.html#cb49-12" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;persons&quot;</span>, <span class="st">&quot;workers&quot;</span>, <span class="st">&quot;vehicles&quot;</span>), </span>
+<span id="cb49-13"><a href="chap-blocks.html#cb49-13" tabindex="-1"></a>    <span class="cf">function</span>(x) {<span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">&quot;([0-9]+).*$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, x))}</span>
+<span id="cb49-14"><a href="chap-blocks.html#cb49-14" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb49-15"><a href="chap-blocks.html#cb49-15" tabindex="-1"></a>  </span>
+<span id="cb49-16"><a href="chap-blocks.html#cb49-16" tabindex="-1"></a>  <span class="co"># the rows that say &quot;total households&quot; get turned to NA by the above process, and we</span></span>
+<span id="cb49-17"><a href="chap-blocks.html#cb49-17" tabindex="-1"></a>  <span class="co"># don&#39;t want to keep those in anyways.</span></span>
+<span id="cb49-18"><a href="chap-blocks.html#cb49-18" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(persons), <span class="sc">!</span><span class="fu">is.na</span>(workers), <span class="sc">!</span><span class="fu">is.na</span>(vehicles)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-19"><a href="chap-blocks.html#cb49-19" tabindex="-1"></a>  </span>
+<span id="cb49-20"><a href="chap-blocks.html#cb49-20" tabindex="-1"></a>  <span class="co"># the roanoke model only includes households with 3+ workers, not 4+. So if a</span></span>
+<span id="cb49-21"><a href="chap-blocks.html#cb49-21" tabindex="-1"></a>  <span class="co"># row is for more than 3 workers, we group it as 3</span></span>
+<span id="cb49-22"><a href="chap-blocks.html#cb49-22" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">workers =</span> <span class="fu">ifelse</span>(workers <span class="sc">&gt;</span> <span class="dv">3</span>, <span class="dv">3</span>, workers)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-23"><a href="chap-blocks.html#cb49-23" tabindex="-1"></a>  </span>
+<span id="cb49-24"><a href="chap-blocks.html#cb49-24" tabindex="-1"></a>  <span class="co"># but this creates a problem where we now have multiple rows with</span></span>
+<span id="cb49-25"><a href="chap-blocks.html#cb49-25" tabindex="-1"></a>  <span class="co"># 3 workers. So we need to group and add up.</span></span>
+<span id="cb49-26"><a href="chap-blocks.html#cb49-26" tabindex="-1"></a>  <span class="fu">group_by</span>(persons, workers, vehicles) <span class="sc">%&gt;%</span></span>
+<span id="cb49-27"><a href="chap-blocks.html#cb49-27" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-28"><a href="chap-blocks.html#cb49-28" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb49-29"><a href="chap-blocks.html#cb49-29" tabindex="-1"></a>  </span>
+<span id="cb49-30"><a href="chap-blocks.html#cb49-30" tabindex="-1"></a>  <span class="co"># Finally, we want to turn the numbers into a share. So we divde the</span></span>
+<span id="cb49-31"><a href="chap-blocks.html#cb49-31" tabindex="-1"></a>  <span class="co"># counts by the total count in the whole table.</span></span>
+<span id="cb49-32"><a href="chap-blocks.html#cb49-32" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count))</span></code></pre></div>
+<pre><code>## Warning: There were 3 warnings in `mutate()`.
+## The first warning was:
+## ℹ In argument: `persons = (function (x) ...`.
+## Caused by warning:
+## ! NAs introduced by coercion
+## ℹ Run `dplyr::last_dplyr_warnings()` to see the 2 remaining warnings.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;persons&#39;, &#39;workers&#39;. You can override
+## using the `.groups` argument.</code></pre>
 <p>Now we can see the joint distribution of size, workers, and vehicles.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chap-blocks.html#cb54-1" aria-hidden="true" tabindex="-1"></a>joint_distribution <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href="chap-blocks.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(persons) <span class="sc">%&gt;%</span></span>
-<span id="cb54-3"><a href="chap-blocks.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>count) <span class="sc">%&gt;%</span></span>
-<span id="cb54-4"><a href="chap-blocks.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> vehicles, <span class="at">values_from =</span> share, <span class="at">names_prefix =</span> <span class="st">&quot;vehicles &quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-5"><a href="chap-blocks.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="chap-blocks.html#cb52-1" tabindex="-1"></a>joint_distribution <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="chap-blocks.html#cb52-2" tabindex="-1"></a>  <span class="fu">group_by</span>(persons) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="chap-blocks.html#cb52-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>count) <span class="sc">%&gt;%</span></span>
+<span id="cb52-4"><a href="chap-blocks.html#cb52-4" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> vehicles, <span class="at">values_from =</span> share, <span class="at">names_prefix =</span> <span class="st">&quot;vehicles &quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-5"><a href="chap-blocks.html#cb52-5" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1804,11 +1836,11 @@ the necessary shares. Follow along with the code to understand what is happening
 Save this data table as a DBF file that you can put into the model at
 <code>params/classification/hh_seed.dbf</code>. The <code>write.dbf()</code> function is part of the
 <code>foreign</code> library.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chap-blocks.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(joint_distribution) <span class="sc">%&gt;%</span> </span>
-<span id="cb55-2"><a href="chap-blocks.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  foreign<span class="sc">::</span><span class="fu">write.dbf</span>(<span class="st">&quot;data/hh_seed.dbf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="chap-blocks.html#cb53-1" tabindex="-1"></a><span class="fu">as.data.frame</span>(joint_distribution) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="chap-blocks.html#cb53-2" tabindex="-1"></a>  foreign<span class="sc">::</span><span class="fu">write.dbf</span>(<span class="st">&quot;data/hh_seed.dbf&quot;</span>)</span></code></pre></div>
 </div>
-<div id="report" class="section level3 unnumbered">
-<h3>Report</h3>
+<div id="report" class="section level3 unnumbered hasAnchor">
+<h3>Report<a href="chap-blocks.html#report" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For your homework, you should have a complete run of the uncalibrated, “bare”
 RVTPO model. Open the “Trip Generation” submodule by double-clicking on the
 yellow box labeled <code>Trip Generation</code>. This submodule has two steps: the
@@ -1844,18 +1876,18 @@ these numbers make more sense?</p>
 <p>You can edit the DBF files in Cube by hand; its copy-paste feature is not what
 you would expect from a software program in 2020 (or 2005). A more efficient
 way might be to use the <code>write.dbf()</code> function in R.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="chap-blocks.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the file you edited; there is also a readxl() function for excel</span></span>
-<span id="cb56-2"><a href="chap-blocks.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spreadsheets</span></span>
-<span id="cb56-3"><a href="chap-blocks.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/raw_size.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-4"><a href="chap-blocks.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># need to make sure the names on the columns match what Cube is expecting to</span></span>
-<span id="cb56-5"><a href="chap-blocks.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get; you&#39;ll need to change this for the workers and vehicles</span></span>
-<span id="cb56-6"><a href="chap-blocks.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AVG =</span> average, <span class="at">PERSONS_1 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="at">PERSONS_2 =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>,</span>
-<span id="cb56-7"><a href="chap-blocks.html#cb56-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">PERSONS_3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span>, <span class="at">PERSONS_4 =</span> <span class="st">`</span><span class="at">4</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-8"><a href="chap-blocks.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read_csv makes a modern data frame called a `tibble`. The old DBF function</span></span>
-<span id="cb56-9"><a href="chap-blocks.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># has no idea what do to with this. So we need to convert the tibble to an</span></span>
-<span id="cb56-10"><a href="chap-blocks.html#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># old-fashioned `data.frame`</span></span>
-<span id="cb56-11"><a href="chap-blocks.html#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb56-12"><a href="chap-blocks.html#cb56-12" aria-hidden="true" tabindex="-1"></a>  foreign<span class="sc">::</span><span class="fu">write.dbf</span>(<span class="st">&quot;data/hh_size_lookup.dbf&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chap-blocks.html#cb54-1" tabindex="-1"></a><span class="co"># read the file you edited; there is also a readxl() function for excel</span></span>
+<span id="cb54-2"><a href="chap-blocks.html#cb54-2" tabindex="-1"></a><span class="co"># spreadsheets</span></span>
+<span id="cb54-3"><a href="chap-blocks.html#cb54-3" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/raw_size.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="chap-blocks.html#cb54-4" tabindex="-1"></a>  <span class="co"># need to make sure the names on the columns match what Cube is expecting to</span></span>
+<span id="cb54-5"><a href="chap-blocks.html#cb54-5" tabindex="-1"></a>  <span class="co"># get; you&#39;ll need to change this for the workers and vehicles</span></span>
+<span id="cb54-6"><a href="chap-blocks.html#cb54-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AVG =</span> average, <span class="at">PERSONS_1 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="at">PERSONS_2 =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>,</span>
+<span id="cb54-7"><a href="chap-blocks.html#cb54-7" tabindex="-1"></a>         <span class="st">`</span><span class="at">PERSONS_3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span>, <span class="at">PERSONS_4 =</span> <span class="st">`</span><span class="at">4</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-8"><a href="chap-blocks.html#cb54-8" tabindex="-1"></a>  <span class="co"># read_csv makes a modern data frame called a `tibble`. The old DBF function</span></span>
+<span id="cb54-9"><a href="chap-blocks.html#cb54-9" tabindex="-1"></a>  <span class="co"># has no idea what do to with this. So we need to convert the tibble to an</span></span>
+<span id="cb54-10"><a href="chap-blocks.html#cb54-10" tabindex="-1"></a>  <span class="co"># old-fashioned `data.frame`</span></span>
+<span id="cb54-11"><a href="chap-blocks.html#cb54-11" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb54-12"><a href="chap-blocks.html#cb54-12" tabindex="-1"></a>  foreign<span class="sc">::</span><span class="fu">write.dbf</span>(<span class="st">&quot;data/hh_size_lookup.dbf&quot;</span>)</span></code></pre></div>
 </div>
 <p>The classification model incorporates a zone-level IPF process executed in R; the
 script for this process is in <code>R/classification.R</code>. Open the script and find
@@ -1874,7 +1906,7 @@ by classification category to the joint distribution you obtained from the CTPP.
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-2018aashto" class="csl-entry">
 <em>A Policy on Geometric Design of Highways and Streets, 7th Edition,</em>. 2018. The Green Book. American Association of State Highway; Transportation Officials. <a href="https://books.google.com/books?id=MWHBDwAAQBAJ">https://books.google.com/books?id=MWHBDwAAQBAJ</a>.
 </div>
@@ -1953,7 +1985,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

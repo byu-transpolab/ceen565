@@ -250,12 +250,12 @@ these error terms are allowed to be correlated.
 This is equivalent to saying that the choice of mode doesn't look like an
 equal choice among three alternatives,
 
-<img src="04_modechoice_files/figure-epub3/unnamed-chunk-1-1.png" width="30%" style="display: block; margin: auto;" />
+<img src="04_modechoice_files/figure-epub3/tree1-1.png" width="30%" style="display: block; margin: auto;" />
 
 But instead a two-stage choice, where people first choose whether they will take
 transit, and then which transit mode they will choose. 
 
-<img src="04_modechoice_files/figure-epub3/unnamed-chunk-2-1.png" width="30%" style="display: block; margin: auto;" />
+<img src="04_modechoice_files/figure-epub3/treenl-1.png" width="30%" style="display: block; margin: auto;" />
 
 This results in a **nested logit model**. The choice probability of an alternative
 in this model is now
@@ -285,7 +285,7 @@ values for the estimated correlation are $0 < \lambda < 1$.
 
 In this unit's assignment, you will use data from the 2000 Bay Area Travel
 Survey to estimate multinomial  and nested logit models that predict mode choice for work
-trips. The data is available on [on Box](https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds). The data
+trips. The data is available on [on Box]((https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds). The data
 are named as `worktrips_dfidx.rds`. You will also need to load the 
 `mlogit` library package, which contains the tools necessary to estimate
 multinomial logit models.
@@ -293,7 +293,26 @@ multinomial logit models.
 
 ```r
 library(mlogit)
+```
+
+```
+## Loading required package: dfidx
+```
+
+```
+## 
+## Attaching package: 'dfidx'
+```
+
+```
+## The following object is masked from 'package:stats':
+## 
+##     filter
+```
+
+```r
 worktrips <- read_rds("data/worktrips_dfidx.rds")
+system2("wget",args =  c("https://byu.box.com/shared/static/ftzy74uaug0voet2wvwhgicxamhgcvp7.rds", "-O mytrips.rds"))
 ```
 
 Because multinomial logit models are so different from other models, 
@@ -307,19 +326,38 @@ head(worktrips[,1:8], n=12)
 ```
 
 ```
-##                  HHID PERID CASE       ALTNUM NUMALTS CHOSEN  IVTT OVTT
-## 2-1. Drive Alone    2     1    1  Drive Alone       5   TRUE 13.38  2.0
-## 2-1. Share 2        2     1    1      Share 2       5  FALSE 18.38  2.0
-## 2-1. Share 3+       2     1    1     Share 3+       5  FALSE 20.38  2.0
-## 2-1. Transit        2     1    1      Transit       5  FALSE 25.90 15.2
-## 2-1. Bike           2     1    1         Bike       5  FALSE 40.50  2.0
-## 3-1. Drive Alone    3     1    2  Drive Alone       5  FALSE 29.92 10.0
-## 3-1. Share 2        3     1    2      Share 2       5  FALSE 34.92 10.0
-## 3-1. Share 3+       3     1    2     Share 3+       5  FALSE 21.92 10.0
-## 3-1. Transit        3     1    2      Transit       5   TRUE 22.96 14.2
-## 3-1. Bike           3     1    2         Bike       5  FALSE 58.95 10.0
-## 5-1. Drive Alone    5     1    3  Drive Alone       4   TRUE  8.60  6.0
-## 5-1. Share 2        5     1    3      Share 2       4  FALSE 13.60  6.0
+## ~~~~~~~
+##  first 12 observations out of 22033 
+## ~~~~~~~
+##    ALTNUM CHOSEN  IVTT  OVTT  TVTT   COST DIST WKZONE       idx
+## 1       1   TRUE 13.42  4.50 17.92  44.56 4.38    683 100_:lone
+## 2       2  FALSE 18.42  4.50 22.92  22.28 4.38    683 100_:re 2
+## 3       3  FALSE 20.42  4.50 24.92  12.73 4.38    683 100_:e 3+
+## 4       4  FALSE 15.97 44.68 60.65 100.00 4.38    683 100_:nsit
+## 5       2  FALSE 27.54 10.00 37.54 162.28 8.55    723 1000:re 2
+## 6       3  FALSE 14.54 10.00 24.54  79.04 8.55    723 1000:e 3+
+## 7       4   TRUE 21.08 22.40 43.48 150.00 8.55    723 1000:nsit
+## 8       5  FALSE 43.90 10.00 53.90   0.00 8.55    723 1000:Bike
+## 9       1   TRUE 17.20  4.50 21.70  61.04 6.53    716 1005:lone
+## 10      2  FALSE 22.20  4.50 26.70  30.52 6.53    716 1005:re 2
+## 11      3  FALSE 24.20  4.50 28.70  17.44 6.53    716 1005:e 3+
+## 12      4  FALSE 29.73 39.92 69.65 100.00 6.53    716 1005:nsit
+## 
+## ~~~ indexes ~~~~
+##        id alternative
+## 1   100_2 Drive Alone
+## 2   100_2     Share 2
+## 3   100_2    Share 3+
+## 4   100_2     Transit
+## 5  1000_1     Share 2
+## 6  1000_1    Share 3+
+## 7  1000_1     Transit
+## 8  1000_1        Bike
+## 9  1005_1 Drive Alone
+## 10 1005_1     Share 2
+## 11 1005_1    Share 3+
+## 12 1005_1     Transit
+## indexes:  1, 2
 ```
 
 In the first section, you will estimate a multinomial logit mode choice model
@@ -531,16 +569,10 @@ read_csv("data/rvtpo_data/MC_Coefficients.csv") %>%
 
 ```
 ## Rows: 20 Columns: 6
-```
-
-```
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## chr (1): Name
 ## dbl (5): ;N, HBW, HBO, NHB, HBSC
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -746,16 +778,10 @@ read_csv("data/rvtpo_data/MC_Constants.csv") %>%
 
 ```
 ## Rows: 10 Columns: 6
-```
-
-```
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## chr (1): Name
 ## dbl (5): ;N, HBW, HBO, NHB, HBSC
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -881,13 +907,13 @@ read_xlsx("data/rvtpo_data/mc.xlsx")  %>%
 
 
 
-Mode              HBW    HBO
---------------  -----  -----
-Drive Alone      87.5   44.1
-Share             8.4   45.5
-Local Bus         2.7    0.5
-Premium           0.0    0.0
-Non-motorized     1.4    9.9
+|Mode          |  HBW|  HBO|
+|:-------------|----:|----:|
+|Drive Alone   | 87.5| 44.1|
+|Share         |  8.4| 45.5|
+|Local Bus     |  2.7|  0.5|
+|Premium       |  0.0|  0.0|
+|Non-motorized |  1.4|  9.9|
 
 
 
@@ -936,30 +962,30 @@ knitr::kable(tlfd)
 
 
 
- HIGH    MID   LOW          HBW          HBO         HBSH
------  -----  ----  -----------  -----------  -----------
-    1    0.5     0    3.9039039   19.6131359   13.9606519
-    2    1.5     1    5.0050050    7.9734108   10.0849391
-    3    2.5     2    8.3083083   11.9601161   23.5531056
-    4    3.5     3   10.0100100   12.9567925   13.8690052
-    5    4.5     4   10.3103103    8.9700871    8.5542211
-    6    5.5     5    9.0090090    6.9767344    7.1484507
-    7    6.5     6   13.0130130    7.5098897    6.7094465
-    8    7.5     7    9.5095095    4.7840465    4.3326161
-    9    8.5     8    7.6076076    5.0830494    2.8884107
-   10    9.5     9    5.8058058    4.9833817    3.0809714
-   11   10.5    10    4.2042042    4.0863730    2.4070089
-   12   11.5    11    2.0020020    1.7940174    0.4464608
-   13   12.5    12    1.9019019    1.8936851    2.2144482
-   14   13.5    13    3.0030030    0.3986705    0.0000000
-   15   14.5    14    1.9019019    0.6976734    0.3851214
-   16   15.5    15    0.5005005    0.0996676    0.1093873
-   17   16.5    16    1.0010010    0.0897009    0.0772576
-   18   17.5    17    0.3003003    0.0797341    0.0590860
-   19   18.5    18    0.8008008    0.0000000    0.0402657
-   20   19.5    19    0.0000000    0.0498338    0.0304333
-   21   20.5    20    1.0010010    0.0000000    0.0210982
-   22   21.5    21    0.9009009    0.0000000    0.0276142
+| HIGH|  MID| LOW|        HBW|        HBO|       HBSH|
+|----:|----:|---:|----------:|----------:|----------:|
+|    1|  0.5|   0|  3.9039039| 19.6131359| 13.9606519|
+|    2|  1.5|   1|  5.0050050|  7.9734108| 10.0849391|
+|    3|  2.5|   2|  8.3083083| 11.9601161| 23.5531056|
+|    4|  3.5|   3| 10.0100100| 12.9567925| 13.8690052|
+|    5|  4.5|   4| 10.3103103|  8.9700871|  8.5542211|
+|    6|  5.5|   5|  9.0090090|  6.9767344|  7.1484507|
+|    7|  6.5|   6| 13.0130130|  7.5098897|  6.7094465|
+|    8|  7.5|   7|  9.5095095|  4.7840465|  4.3326161|
+|    9|  8.5|   8|  7.6076076|  5.0830494|  2.8884107|
+|   10|  9.5|   9|  5.8058058|  4.9833817|  3.0809714|
+|   11| 10.5|  10|  4.2042042|  4.0863730|  2.4070089|
+|   12| 11.5|  11|  2.0020020|  1.7940174|  0.4464608|
+|   13| 12.5|  12|  1.9019019|  1.8936851|  2.2144482|
+|   14| 13.5|  13|  3.0030030|  0.3986705|  0.0000000|
+|   15| 14.5|  14|  1.9019019|  0.6976734|  0.3851214|
+|   16| 15.5|  15|  0.5005005|  0.0996676|  0.1093873|
+|   17| 16.5|  16|  1.0010010|  0.0897009|  0.0772576|
+|   18| 17.5|  17|  0.3003003|  0.0797341|  0.0590860|
+|   19| 18.5|  18|  0.8008008|  0.0000000|  0.0402657|
+|   20| 19.5|  19|  0.0000000|  0.0498338|  0.0304333|
+|   21| 20.5|  20|  1.0010010|  0.0000000|  0.0210982|
+|   22| 21.5|  21|  0.9009009|  0.0000000|  0.0276142|
 
 
 ```r

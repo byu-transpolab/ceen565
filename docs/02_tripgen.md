@@ -63,6 +63,7 @@ vehicles at 3.
 ```r
 library(tidyverse)
 library(nhts2017)
+library(haven)
 
 hh <- nhts_households %>% 
   # filter to MSA size 2, travel on weekday
@@ -91,7 +92,7 @@ hh
 ##  8 30000770   130.       1        1       1 06 [$50,000 to $74,999]          1
 ##  9 30000983   147.       4        3       4 09 [$125,000 to $149,999]        1
 ## 10 30001177   304.       2        0       2 04 [$25,000 to $34,999]          2
-## # … with 10,371 more rows
+## # ℹ 10,371 more rows
 ```
 
 The next step is we need to calculate how many trips the members of each
@@ -113,7 +114,8 @@ trips <- nhts_trips %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'houseid'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'houseid'. You can override using the
+## `.groups` argument.
 ```
 
 ```r
@@ -135,7 +137,7 @@ trips
 ##  8 30000770     0      3     1        0     1     0
 ##  9 30000983     4      0     2        1     2     0
 ## 10 30001177     3      2     0        2     2     0
-## # … with 9,508 more rows
+## # ℹ 9,508 more rows
 ```
 
 Now, we will `join` the trips data frame to the households data frame so that
@@ -170,8 +172,8 @@ tripprod
 ##  8 30000770   130.       1        1       1 06 [$50…        1     0      3     1
 ##  9 30000983   147.       4        3       4 09 [$12…        1     4      0     2
 ## 10 30001177   304.       2        0       2 04 [$25…        2     3      2     0
-## # … with 10,371 more rows, and 3 more variables: HBSOCREC <dbl>, HBW <dbl>,
-## #   -9 <dbl>
+## # ℹ 10,371 more rows
+## # ℹ 3 more variables: HBSOCREC <dbl>, HBW <dbl>, `-9` <dbl>
 ```
 
 Now we can count up the number of trips by grouping the variables we care 
@@ -189,7 +191,8 @@ hbo_tripprod <- tripprod %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'hhsize'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'hhsize'. You can override using the
+## `.groups` argument.
 ```
 
 ```r
@@ -241,15 +244,9 @@ psrc_attractions <- read_csv("https://byu.box.com/shared/static/7ci8vomip719bdno
 
 ```
 ## Rows: 643 Columns: 12
-```
-
-```
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## dbl (12): attr_tract, HBO, HBShop, HBW, NHB, tothh, retl, manu, offi, gved, ...
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -273,7 +270,8 @@ psrc_attractions
 ##  8 53033000700  5659.    32.4   178.  4.20e3  2222   315     0   967    19    89
 ##  9 53033000800  1653.     1.08    0   2.22e3  1067     0     0    33    61    15
 ## 10 53033000900  2075.     0       0   4.25e0   868     0     0    80     0     5
-## # … with 633 more rows, and 1 more variable: totemp <dbl>
+## # ℹ 633 more rows
+## # ℹ 1 more variable: totemp <dbl>
 ```
 
 This file has, for every tract in the Seattle metro region, how many trips were
@@ -288,15 +286,17 @@ ggplot(psrc_attractions, aes(x = totemp, y = HBW)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 1 rows containing non-finite values (stat_smooth).
+## Warning: Removed 1 row containing non-finite outside the scale range
+## (`stat_smooth()`).
 ```
 
 ```
-## Warning: Removed 1 rows containing missing values (geom_point).
+## Warning: Removed 1 row containing missing values or values outside the scale range
+## (`geom_point()`).
 ```
 
 ![](02_tripgen_files/figure-epub3/totemp-hbw-1.png)<!-- -->
@@ -464,7 +464,7 @@ rvtpo_productions
 ##  8     8 174.   99.2 174.   98.2 174.  336. 
 ##  9     9  82.2  46.9  82.2  46.5  82.2 159. 
 ## 10    10 177.  101.  177.  100.  177.  343. 
-## # … with 257 more rows
+## # ℹ 257 more rows
 ```
 
 ```r

@@ -92,20 +92,16 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-```
-
-```
-## ✓ ggplot2 3.3.2.9000     ✓ purrr   0.3.4     
-## ✓ tibble  3.0.3          ✓ dplyr   1.0.0     
-## ✓ tidyr   1.1.0          ✓ stringr 1.4.0     
-## ✓ readr   1.3.1          ✓ forcats 0.5.0
-```
-
-```
-## ── Conflicts ──────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 If you get errors when you run the command above, it means that for some reason
@@ -131,10 +127,10 @@ kable(tibble(x = 1:2, y = c("blue", "red")))
 
 
 
-  x  y    
----  -----
-  1  blue 
-  2  red  
+|  x|y    |
+|--:|:----|
+|  1|blue |
+|  2|red  |
 
 You can also use a function from a package without loading the library if you 
 use the `::` operator, like you did in the `remotes::install_github()` command
@@ -160,13 +156,14 @@ trips <- read_csv("data/demo_trips.csv")
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   houseid = col_double(),
-##   personid = col_character(),
-##   trpmiles = col_double(),
-##   trippurp = col_character()
-## )
+## Rows: 924 Columns: 4
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): personid, trippurp
+## dbl (2): houseid, trpmiles
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```r
@@ -174,7 +171,7 @@ print(trips)
 ```
 
 ```
-## # A tibble: 924 x 4
+## # A tibble: 924 × 4
 ##     houseid personid trpmiles trippurp
 ##       <dbl> <chr>       <dbl> <chr>   
 ##  1 30182694 01         13.6   HBW     
@@ -187,7 +184,7 @@ print(trips)
 ##  8 30180962 02          0.581 HBSOCREC
 ##  9 40155356 01          2.74  HBO     
 ## 10 30069734 01          4.65  NHB     
-## # … with 914 more rows
+## # ℹ 914 more rows
 ```
 
 This function will make a guess as to what the columns types should be. Often
@@ -202,7 +199,7 @@ print(trips)
 ```
 
 ```
-## # A tibble: 924 x 4
+## # A tibble: 924 × 4
 ##    houseid  personid trpmiles trippurp
 ##    <chr>    <chr>       <dbl> <chr>   
 ##  1 30182694 01         13.6   HBW     
@@ -215,7 +212,7 @@ print(trips)
 ##  8 30180962 02          0.581 HBSOCREC
 ##  9 40155356 01          2.74  HBO     
 ## 10 30069734 01          4.65  NHB     
-## # … with 914 more rows
+## # ℹ 914 more rows
 ```
 
 You can also write tables back to `.csv` with the `write_csv()` command.
@@ -234,37 +231,26 @@ trips
 ```
 
 ```
-## # A tibble: 923,572 x 62
-##    houseid personid tdtrpnum strttime            endtime             trvlcmin
-##    <chr>   <chr>       <dbl> <dttm>              <dttm>              <dbl+lb>
-##  1 300000… 01              1 2017-10-10 10:00:00 2017-10-10 10:15:00       15
-##  2 300000… 01              2 2017-10-10 15:10:00 2017-10-10 15:30:00       20
-##  3 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00      120
-##  4 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00      150
-##  5 300000… 03              1 2017-10-10 08:45:00 2017-10-10 09:00:00       15
-##  6 300000… 03              2 2017-10-10 14:30:00 2017-10-10 14:45:00       15
-##  7 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00       15
-##  8 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00       10
-##  9 300000… 01              1 2017-10-10 05:50:00 2017-10-10 06:05:00       15
-## 10 300000… 01              2 2017-10-10 07:00:00 2017-10-10 07:15:00       15
-## # … with 923,562 more rows, and 56 more variables: trpmiles <dbl+lbl>,
-## #   trptrans <chr+lbl>, trpaccmp <dbl+lbl>, trphhacc <dbl+lbl>,
-## #   vehid <chr+lbl>, trwaittm <dbl+lbl>, numtrans <dbl+lbl>, tracctm <dbl+lbl>,
-## #   drop_prk <chr+lbl>, tregrtm <dbl+lbl>, whodrove <chr+lbl>,
-## #   whyfrom <chr+lbl>, loop_trip <chr+lbl>, trphhveh <chr+lbl>,
-## #   hhmemdrv <chr+lbl>, hh_ontd <dbl+lbl>, nonhhcnt <dbl+lbl>,
-## #   numontrp <dbl+lbl>, psgr_flg <chr+lbl>, pubtrans <chr+lbl>,
-## #   trippurp <chr+lbl>, dweltime <dbl+lbl>, tdwknd <chr+lbl>,
-## #   vmt_mile <dbl+lbl>, drvr_flg <chr+lbl>, whytrp1s <chr+lbl>,
-## #   ontd_p1 <chr+lbl>, ontd_p2 <chr+lbl>, ontd_p3 <chr+lbl>, ontd_p4 <chr+lbl>,
-## #   ontd_p5 <chr+lbl>, ontd_p6 <chr+lbl>, ontd_p7 <chr+lbl>, ontd_p8 <chr+lbl>,
-## #   ontd_p9 <chr+lbl>, ontd_p10 <chr+lbl>, ontd_p11 <chr+lbl>,
-## #   ontd_p12 <chr+lbl>, ontd_p13 <chr+lbl>, tdcaseid <chr>,
-## #   tracc_wlk <chr+lbl>, tracc_pov <chr+lbl>, tracc_bus <chr+lbl>,
-## #   tracc_crl <chr+lbl>, tracc_sub <chr+lbl>, tracc_oth <chr+lbl>,
-## #   tregr_wlk <chr+lbl>, tregr_pov <chr+lbl>, tregr_bus <chr+lbl>,
-## #   tregr_crl <chr+lbl>, tregr_sub <chr+lbl>, tregr_oth <chr+lbl>,
-## #   whyto <chr+lbl>, gasprice <chr>, wttrdfin <dbl>, whytrp90 <chr+lbl>
+## # A tibble: 923,572 × 82
+##    houseid  personid tdtrpnum strttime            endtime               trvlcmin
+##    <chr>    <chr>       <dbl> <dttm>              <dttm>              <hvn_lbll>
+##  1 30000007 01              1 2017-10-16 10:00:00 2017-10-16 10:15:00         15
+##  2 30000007 01              2 2017-10-16 15:10:00 2017-10-16 15:30:00         20
+##  3 30000007 02              1 2017-10-16 07:00:00 2017-10-16 09:00:00        120
+##  4 30000007 02              2 2017-10-16 18:00:00 2017-10-16 20:30:00        150
+##  5 30000007 03              1 2017-10-16 08:45:00 2017-10-16 09:00:00         15
+##  6 30000007 03              2 2017-10-16 14:30:00 2017-10-16 14:45:00         15
+##  7 30000008 01              1 2017-10-19 11:15:00 2017-10-19 11:30:00         15
+##  8 30000008 01              2 2017-10-19 23:30:00 2017-10-19 23:40:00         10
+##  9 30000012 01              1 2017-10-19 05:50:00 2017-10-19 06:05:00         15
+## 10 30000012 01              2 2017-10-19 07:00:00 2017-10-19 07:15:00         15
+## # ℹ 923,562 more rows
+## # ℹ 76 more variables: trpmiles <hvn_lbll>, trptrans <hvn_lbll>,
+## #   trpaccmp <hvn_lbll>, trphhacc <hvn_lbll>, vehid <hvn_lbll>,
+## #   trwaittm <hvn_lbll>, numtrans <hvn_lbll>, tracctm <hvn_lbll>,
+## #   drop_prk <hvn_lbll>, tregrtm <hvn_lbll>, whodrove <hvn_lbll>,
+## #   whyfrom <hvn_lbll>, loop_trip <hvn_lbll>, trphhveh <hvn_lbll>,
+## #   hhmemdrv <hvn_lbll>, hh_ontd <hvn_lbll>, nonhhcnt <hvn_lbll>, …
 ```
 
 #### Select, Filter, and Chains
@@ -283,20 +269,20 @@ select(trips, houseid, personid, trpmiles, trippurp)
 ```
 
 ```
-## # A tibble: 923,572 x 4
-##    houseid  personid  trpmiles trippurp                                        
-##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                                       
-##  1 30000007 01            5.24 HBO [Home-based trip (other)]                   
-##  2 30000007 01            5.15 HBO [Home-based trip (other)]                   
-##  3 30000007 02           84.0  HBW [Home-based trip (work)]                    
-##  4 30000007 02           81.6  HBW [Home-based trip (work)]                    
-##  5 30000007 03            2.25 HBO [Home-based trip (other)]                   
-##  6 30000007 03            2.24 HBO [Home-based trip (other)]                   
-##  7 30000008 01            8.02 HBW [Home-based trip (work)]                    
-##  8 30000008 01            8.02 HBW [Home-based trip (work)]                    
-##  9 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreational)]
-## 10 30000012 01            3.40 HBSOCREC [Home-based trip (social/recreational)]
-## # … with 923,562 more rows
+## # A tibble: 923,572 × 4
+##    houseid  personid   trpmiles trippurp  
+##    <chr>    <chr>    <hvn_lbll> <hvn_lbll>
+##  1 30000007 01            5.244 HBO       
+##  2 30000007 01            5.149 HBO       
+##  3 30000007 02           84.004 HBW       
+##  4 30000007 02           81.628 HBW       
+##  5 30000007 03            2.250 HBO       
+##  6 30000007 03            2.243 HBO       
+##  7 30000008 01            8.017 HBW       
+##  8 30000008 01            8.017 HBW       
+##  9 30000012 01            3.395 HBSOCREC  
+## 10 30000012 01            3.395 HBSOCREC  
+## # ℹ 923,562 more rows
 ```
 
 Let's also practice filtering the `trips` dataset to only include trips 
@@ -309,37 +295,10 @@ filter(trips, trippurp == "HBW") # use double equals as comparison
 ```
 
 ```
-## # A tibble: 117,368 x 62
-##    houseid personid tdtrpnum strttime            endtime             trvlcmin
-##    <chr>   <chr>       <dbl> <dttm>              <dttm>              <dbl+lb>
-##  1 300000… 02              1 2017-10-10 07:00:00 2017-10-10 09:00:00      120
-##  2 300000… 02              2 2017-10-10 18:00:00 2017-10-10 20:30:00      150
-##  3 300000… 01              1 2017-10-10 11:15:00 2017-10-10 11:30:00       15
-##  4 300000… 01              2 2017-10-10 23:30:00 2017-10-10 23:40:00       10
-##  5 300000… 01              5 2017-10-10 09:00:00 2017-10-10 09:20:00       20
-##  6 300000… 01              7 2017-10-10 15:30:00 2017-10-10 16:05:00       35
-##  7 300000… 01              1 2017-10-10 08:00:00 2017-10-10 08:20:00       20
-##  8 300000… 01              2 2017-10-10 18:00:00 2017-10-10 20:00:00      120
-##  9 300000… 02              3 2017-10-10 09:00:00 2017-10-10 11:00:00      120
-## 10 300000… 02              4 2017-10-10 18:30:00 2017-10-10 20:30:00      120
-## # … with 117,358 more rows, and 56 more variables: trpmiles <dbl+lbl>,
-## #   trptrans <chr+lbl>, trpaccmp <dbl+lbl>, trphhacc <dbl+lbl>,
-## #   vehid <chr+lbl>, trwaittm <dbl+lbl>, numtrans <dbl+lbl>, tracctm <dbl+lbl>,
-## #   drop_prk <chr+lbl>, tregrtm <dbl+lbl>, whodrove <chr+lbl>,
-## #   whyfrom <chr+lbl>, loop_trip <chr+lbl>, trphhveh <chr+lbl>,
-## #   hhmemdrv <chr+lbl>, hh_ontd <dbl+lbl>, nonhhcnt <dbl+lbl>,
-## #   numontrp <dbl+lbl>, psgr_flg <chr+lbl>, pubtrans <chr+lbl>,
-## #   trippurp <chr+lbl>, dweltime <dbl+lbl>, tdwknd <chr+lbl>,
-## #   vmt_mile <dbl+lbl>, drvr_flg <chr+lbl>, whytrp1s <chr+lbl>,
-## #   ontd_p1 <chr+lbl>, ontd_p2 <chr+lbl>, ontd_p3 <chr+lbl>, ontd_p4 <chr+lbl>,
-## #   ontd_p5 <chr+lbl>, ontd_p6 <chr+lbl>, ontd_p7 <chr+lbl>, ontd_p8 <chr+lbl>,
-## #   ontd_p9 <chr+lbl>, ontd_p10 <chr+lbl>, ontd_p11 <chr+lbl>,
-## #   ontd_p12 <chr+lbl>, ontd_p13 <chr+lbl>, tdcaseid <chr>,
-## #   tracc_wlk <chr+lbl>, tracc_pov <chr+lbl>, tracc_bus <chr+lbl>,
-## #   tracc_crl <chr+lbl>, tracc_sub <chr+lbl>, tracc_oth <chr+lbl>,
-## #   tregr_wlk <chr+lbl>, tregr_pov <chr+lbl>, tregr_bus <chr+lbl>,
-## #   tregr_crl <chr+lbl>, tregr_sub <chr+lbl>, tregr_oth <chr+lbl>,
-## #   whyto <chr+lbl>, gasprice <chr>, wttrdfin <dbl>, whytrp90 <chr+lbl>
+## Error in `filter()`:
+## ℹ In argument: `trippurp == "HBW"`.
+## Caused by error in `vec_equal()`:
+## ! Can't combine `..1` <haven_labelled> and `..2` <character>.
 ```
 
 One ***extremely*** useful feature of the `tidyverse` functions is the chain 
@@ -358,20 +317,10 @@ trips %>%
 ```
 
 ```
-## # A tibble: 117,368 x 4
-##    houseid  personid  trpmiles trippurp                    
-##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                   
-##  1 30000007 02           84.0  HBW [Home-based trip (work)]
-##  2 30000007 02           81.6  HBW [Home-based trip (work)]
-##  3 30000008 01            8.02 HBW [Home-based trip (work)]
-##  4 30000008 01            8.02 HBW [Home-based trip (work)]
-##  5 30000012 01            4.29 HBW [Home-based trip (work)]
-##  6 30000012 01            6.82 HBW [Home-based trip (work)]
-##  7 30000039 01           11.5  HBW [Home-based trip (work)]
-##  8 30000041 01           73.7  HBW [Home-based trip (work)]
-##  9 30000041 02           77.9  HBW [Home-based trip (work)]
-## 10 30000041 02           77.8  HBW [Home-based trip (work)]
-## # … with 117,358 more rows
+## Error in `filter()`:
+## ℹ In argument: `trippurp == "HBW"`.
+## Caused by error in `vec_equal()`:
+## ! Can't combine `..1` <haven_labelled> and `..2` <character>.
 ```
 
 Notice that we didn't have to tell the `select` and `filter` functions the 
@@ -386,6 +335,13 @@ In this case, let's get `HBO` and `HBW` trips.
 mytrips <- trips %>%
   select(houseid, personid, trpmiles, trippurp) %>%
   filter(trippurp %in% c("HBW", "HBO")) # use %in% for multiple comparisons.
+```
+
+```
+## Error in `filter()`:
+## ℹ In argument: `trippurp %in% c("HBW", "HBO")`.
+## Caused by error in `as.character()`:
+## ! Can't convert `x` <haven_labelled> to <character>.
 ```
 
 ### Mutate, Summarize, and Group {#app-mutate}
@@ -404,20 +360,7 @@ mytrips %>%
 ```
 
 ```
-## # A tibble: 307,390 x 6
-##    houseid  personid  trpmiles trippurp                         tripkm longtrip
-##    <chr>    <chr>    <dbl+lbl> <chr+lbl>                     <dbl+lbl> <lgl>   
-##  1 30000007 01            5.24 HBO [Home-based trip (other)]      8.44 FALSE   
-##  2 30000007 01            5.15 HBO [Home-based trip (other)]      8.29 FALSE   
-##  3 30000007 02           84.0  HBW [Home-based trip (work)]     135.   TRUE    
-##  4 30000007 02           81.6  HBW [Home-based trip (work)]     131.   TRUE    
-##  5 30000007 03            2.25 HBO [Home-based trip (other)]      3.62 FALSE   
-##  6 30000007 03            2.24 HBO [Home-based trip (other)]      3.61 FALSE   
-##  7 30000008 01            8.02 HBW [Home-based trip (work)]      12.9  FALSE   
-##  8 30000008 01            8.02 HBW [Home-based trip (work)]      12.9  FALSE   
-##  9 30000012 01            4.29 HBW [Home-based trip (work)]       6.91 FALSE   
-## 10 30000012 01            6.82 HBW [Home-based trip (work)]      11.0  FALSE   
-## # … with 307,380 more rows
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
 
 Other times we want to calculate summary statistics like means.
@@ -435,10 +378,7 @@ mytrips %>%
 ```
 
 ```
-## # A tibble: 1 x 4
-##   mean_trip sd_trip max_trip min_trip
-##       <dbl>   <dbl>    <dbl>    <dbl>
-## 1      9.81    32.1    5699.       -9
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
 
 Finally, we sometimes want to calculate summary statistics for different groups.
@@ -457,15 +397,7 @@ mytrips %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
-## # A tibble: 2 x 5
-##   trippurp                      mean_trip sd_trip max_trip min_trip
-##   <chr+lbl>                         <dbl>   <dbl>    <dbl>    <dbl>
-## 1 HBO [Home-based trip (other)]      7.73    32.0    5699.       -9
-## 2 HBW [Home-based trip (work)]      13.2     31.9    2927.       -9
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
 
 > As you might expect, work trips are on average longer than other kinds of trips.
@@ -498,14 +430,8 @@ ggplot(mytrips, aes(x = trpmiles)) +
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-histogram-1.png)<!-- -->
 
 This ends up not being very informative because some trips are very long. We 
 could filter out the long trips within the data argument (Note that we still have
@@ -518,14 +444,8 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles)) +
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-histogram1-1.png)<!-- -->
 
 If we wanted to see the difference between lengths of different trip purposes,
 we could add a color aesthetic to the plot. By default this stacks the two 
@@ -538,14 +458,8 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippu
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-histogram2-1.png)<!-- -->
 
 You could also show this with a statistical density (the integral of a density
 function is 1). Note that the `alpha` statement for fill opacity is not included
@@ -559,10 +473,8 @@ ggplot(mytrips %>% filter(trpmiles < 50), aes(x = trpmiles, fill = factor(trippu
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'mytrips' not found
 ```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-histogram3-1.png)<!-- -->
 
 `ggplot2` also excels at building statistical analysis on top of visualization.
 For example, we can see the odometer reading for cars still on the road in 
@@ -599,17 +511,33 @@ vehicles <- nhts_vehicles %>%
   filter(vehyear > 1980) %>%
   filter(od_read > 0, od_read < 500000) %>%
   sample_n(15000) 
-  
+```
+
+```
+## Error in `mutate()`:
+## ℹ In argument: `make = as_factor(make, levels = "labels")`.
+## Caused by error in `as.character()`:
+## ! Can't convert `x` <haven_labelled> to <character>.
+```
+
+```
+## Error in `mutate()`:
+## ℹ In argument: `make = as_factor(make, levels = "labels")`.
+## Caused by error in `as_factor()`:
+## ! Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • levels = "labels"
+## ℹ Did you misspell an argument name?
+```
+
+```r
 ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) + 
   geom_point()
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'vehicles' not found
 ```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles-1.png)<!-- -->
 
 This is pretty unreadable. But we can add a few things to the figure to make it a little bit
 easier to understand, like smooth average lines and point transparency. 
@@ -622,15 +550,8 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'vehicles' not found
 ```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles1-1.png)<!-- -->
 
 Let's break this out by vehicle type.
 
@@ -643,15 +564,8 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'vehicles' not found
 ```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles2-1.png)<!-- -->
 
 And let's clean it up a little bit. This is a figure that you could put in a
 published journal article or thesis, if it showed something you cared to show.
@@ -668,12 +582,5 @@ ggplot(vehicles, aes(x = vehyear, y = od_read, color = make)) +
 ```
 
 ```
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
-## Don't know how to automatically pick scale for object of type haven_labelled. Defaulting to continuous.
+## Error in eval(expr, envir, enclos): object 'vehicles' not found
 ```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-![](12_app_rstudio_files/figure-epub3/ggplot2-vehicles3-1.png)<!-- -->

@@ -30,6 +30,15 @@ shows average values for BPR functions obtained from a sample of MPO travel mode
 of different sizes. As roads become more heavily loaded, the travel time increases
 and other routes become more attractive.
 
+
+```
+## Warning in left_join(., tibble(Facility = rep(c("Freeway", "Arterial"), : Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 1 of `x` matches multiple rows in `y`.
+## ℹ Row 1 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship =
+##   "many-to-many"` to silence this warning.
+```
+
 <div class="figure">
 <img src="05_assignment_files/figure-epub3/bpr-coeffs-1.png" alt="Average BPR VDF curves in a sample of MPO models."  />
 <p class="caption">(\#fig:bpr-coeffs)Average BPR VDF curves in a sample of MPO models.</p>
@@ -297,8 +306,8 @@ opt <- solnp(
 
 ```
 ## 
-## Iter: 1 fn: 15500.0000	 Pars:  599.99719 400.00281
-## Iter: 2 fn: 15500.0000	 Pars:  599.99967 400.00033
+## Iter: 1 fn: 15500.0000	 Pars:  599.99940 400.00060
+## Iter: 2 fn: 15500.0000	 Pars:  599.99940 400.00060
 ## solnp--> Completed in 2 iterations
 ```
 

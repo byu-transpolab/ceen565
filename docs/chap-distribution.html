@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Trip Distribution | Urban Transportation Planning</title>
   <meta name="description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Trip Distribution | Urban Transportation Planning" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="These are notes and assignments related to the Urban Transportation Planning class at BYU." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Gregory Macfarlane, PhD, PE" />
 
 
-<meta name="date" content="2021-10-26" />
+<meta name="date" content="2025-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="chap-tripgen.html"/>
 <link rel="next" href="chap-modechoice.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,15 +49,16 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,10 +122,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -300,8 +304,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chap-distribution" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Trip Distribution</h1>
+<div id="chap-distribution" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Trip Distribution<a href="chap-distribution.html#chap-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The trip distribution model is the second component in a traditional 4-step
 model. The purpose of the trip distribution model is to produce a trip table
 with the estimated number of trips from each TAZ to every other TAZ in the study
@@ -315,8 +319,8 @@ proportional to the travel time between two zones.</p>
 <p>Please reference <a href="https://tfresource.org/topics/Trip_distribution.html">this article from the Travel Forecasting Resource</a>
 for more information about about trip distribution. Section 4.5 of NHCRP report
 716 also provides good background.</p>
-<div id="hw-distribution" class="section level2 unnumbered">
-<h2>Homework</h2>
+<div id="hw-distribution" class="section level2 unnumbered hasAnchor">
+<h2>Homework<a href="chap-distribution.html#hw-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure"><span style="display:block;" id="fig:networkgraph"></span>
 <img src="images/03_networkgraph.png" alt="Simple 3-Zone System." width="570" />
 <p class="caption">
@@ -328,8 +332,8 @@ presents a simple three zone system, the link travel times for this system (for
 internal trips, <span class="math inline">\(t_{ii}=2\)</span> globally), and the zonal productions and attractions.
 In this homework you will develop, calibrate, and apply a doubly-constrained
 gravity model for this system.</p>
-<div id="first-problem-gravity-model-development" class="section level3 unnumbered">
-<h3>First Problem: Gravity Model Development</h3>
+<div id="first-problem-gravity-model-development" class="section level3 unnumbered hasAnchor">
+<h3>First Problem: Gravity Model Development<a href="chap-distribution.html#first-problem-gravity-model-development" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this step, you will develop a gravity model. Assume a gravity model of the
 form</p>
 <p><span class="math display">\[T_{ij}=\frac{P_iA_j^*(t_{ij})^{-b}}{\sum_{j&#39;\in J}A^*_{j&#39;}(t_{ij&#39;})^{-b}}\]</span></p>
@@ -359,39 +363,39 @@ cost matrix and the impedance parameter, and calculates the <span class="math in
 Once you have this function (as well as the necessary vectors and cost matrix),
 you can calculate the gravity model with arbitrary values of the impedance
 coefficient.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chap-distribution.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Gravity Model</span></span>
-<span id="cb88-2"><a href="chap-distribution.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
-<span id="cb88-3"><a href="chap-distribution.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
-<span id="cb88-4"><a href="chap-distribution.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
-<span id="cb88-5"><a href="chap-distribution.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param b impedance parameter</span></span>
-<span id="cb88-6"><a href="chap-distribution.html#cb88-6" aria-hidden="true" tabindex="-1"></a>gravity <span class="ot">&lt;-</span> <span class="cf">function</span>(p, a, C, b){</span>
-<span id="cb88-7"><a href="chap-distribution.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># output matrix (all 0 here)</span></span>
-<span id="cb88-8"><a href="chap-distribution.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  trips <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">length</span>(p), <span class="at">ncol =</span> <span class="fu">length</span>(a)) </span>
-<span id="cb88-9"><a href="chap-distribution.html#cb88-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># loop over all rows (production)</span></span>
-<span id="cb88-10"><a href="chap-distribution.html#cb88-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(p)) {</span>
-<span id="cb88-11"><a href="chap-distribution.html#cb88-11" aria-hidden="true" tabindex="-1"></a>    bottomA <span class="ot">&lt;-</span> <span class="fu">sum</span>(a <span class="sc">*</span> C[i, ]<span class="sc">^</span>(<span class="sc">-</span>b)) <span class="co"># denominator</span></span>
-<span id="cb88-12"><a href="chap-distribution.html#cb88-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb88-13"><a href="chap-distribution.html#cb88-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># loop over all columns (attraction)</span></span>
-<span id="cb88-14"><a href="chap-distribution.html#cb88-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(a)) {</span>
-<span id="cb88-15"><a href="chap-distribution.html#cb88-15" aria-hidden="true" tabindex="-1"></a>      <span class="co"># calculate gravity model for trips from i to j</span></span>
-<span id="cb88-16"><a href="chap-distribution.html#cb88-16" aria-hidden="true" tabindex="-1"></a>      topA <span class="ot">&lt;-</span> a[j] <span class="sc">*</span> C[i,j]<span class="sc">^</span>(<span class="sc">-</span>b)</span>
-<span id="cb88-17"><a href="chap-distribution.html#cb88-17" aria-hidden="true" tabindex="-1"></a>      trips[i, j] <span class="ot">&lt;-</span>  p[i] <span class="sc">*</span> topA <span class="sc">/</span> bottomA</span>
-<span id="cb88-18"><a href="chap-distribution.html#cb88-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb88-19"><a href="chap-distribution.html#cb88-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb88-20"><a href="chap-distribution.html#cb88-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb88-21"><a href="chap-distribution.html#cb88-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(trips)</span>
-<span id="cb88-22"><a href="chap-distribution.html#cb88-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb88-23"><a href="chap-distribution.html#cb88-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-24"><a href="chap-distribution.html#cb88-24" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate one round of gravity model with </span></span>
-<span id="cb88-25"><a href="chap-distribution.html#cb88-25" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">100</span>)</span>
-<span id="cb88-26"><a href="chap-distribution.html#cb88-26" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">150</span>)</span>
-<span id="cb88-27"><a href="chap-distribution.html#cb88-27" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb88-28"><a href="chap-distribution.html#cb88-28" aria-hidden="true" tabindex="-1"></a><span class="fu">gravity</span>(p, a, C, <span class="at">b =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="chap-distribution.html#cb84-1" tabindex="-1"></a><span class="co">#&#39; Gravity Model</span></span>
+<span id="cb84-2"><a href="chap-distribution.html#cb84-2" tabindex="-1"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
+<span id="cb84-3"><a href="chap-distribution.html#cb84-3" tabindex="-1"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
+<span id="cb84-4"><a href="chap-distribution.html#cb84-4" tabindex="-1"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
+<span id="cb84-5"><a href="chap-distribution.html#cb84-5" tabindex="-1"></a><span class="co">#&#39; @param b impedance parameter</span></span>
+<span id="cb84-6"><a href="chap-distribution.html#cb84-6" tabindex="-1"></a>gravity <span class="ot">&lt;-</span> <span class="cf">function</span>(p, a, C, b){</span>
+<span id="cb84-7"><a href="chap-distribution.html#cb84-7" tabindex="-1"></a>  <span class="co"># output matrix (all 0 here)</span></span>
+<span id="cb84-8"><a href="chap-distribution.html#cb84-8" tabindex="-1"></a>  trips <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">length</span>(p), <span class="at">ncol =</span> <span class="fu">length</span>(a)) </span>
+<span id="cb84-9"><a href="chap-distribution.html#cb84-9" tabindex="-1"></a>  <span class="co"># loop over all rows (production)</span></span>
+<span id="cb84-10"><a href="chap-distribution.html#cb84-10" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(p)) {</span>
+<span id="cb84-11"><a href="chap-distribution.html#cb84-11" tabindex="-1"></a>    bottomA <span class="ot">&lt;-</span> <span class="fu">sum</span>(a <span class="sc">*</span> C[i, ]<span class="sc">^</span>(<span class="sc">-</span>b)) <span class="co"># denominator</span></span>
+<span id="cb84-12"><a href="chap-distribution.html#cb84-12" tabindex="-1"></a>    </span>
+<span id="cb84-13"><a href="chap-distribution.html#cb84-13" tabindex="-1"></a>    <span class="co"># loop over all columns (attraction)</span></span>
+<span id="cb84-14"><a href="chap-distribution.html#cb84-14" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(a)) {</span>
+<span id="cb84-15"><a href="chap-distribution.html#cb84-15" tabindex="-1"></a>      <span class="co"># calculate gravity model for trips from i to j</span></span>
+<span id="cb84-16"><a href="chap-distribution.html#cb84-16" tabindex="-1"></a>      topA <span class="ot">&lt;-</span> a[j] <span class="sc">*</span> C[i,j]<span class="sc">^</span>(<span class="sc">-</span>b)</span>
+<span id="cb84-17"><a href="chap-distribution.html#cb84-17" tabindex="-1"></a>      trips[i, j] <span class="ot">&lt;-</span>  p[i] <span class="sc">*</span> topA <span class="sc">/</span> bottomA</span>
+<span id="cb84-18"><a href="chap-distribution.html#cb84-18" tabindex="-1"></a>    }</span>
+<span id="cb84-19"><a href="chap-distribution.html#cb84-19" tabindex="-1"></a>  }</span>
+<span id="cb84-20"><a href="chap-distribution.html#cb84-20" tabindex="-1"></a>  </span>
+<span id="cb84-21"><a href="chap-distribution.html#cb84-21" tabindex="-1"></a>  <span class="fu">return</span>(trips)</span>
+<span id="cb84-22"><a href="chap-distribution.html#cb84-22" tabindex="-1"></a>}</span>
+<span id="cb84-23"><a href="chap-distribution.html#cb84-23" tabindex="-1"></a></span>
+<span id="cb84-24"><a href="chap-distribution.html#cb84-24" tabindex="-1"></a><span class="co"># calculate one round of gravity model with </span></span>
+<span id="cb84-25"><a href="chap-distribution.html#cb84-25" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">100</span>)</span>
+<span id="cb84-26"><a href="chap-distribution.html#cb84-26" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">150</span>)</span>
+<span id="cb84-27"><a href="chap-distribution.html#cb84-27" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb84-28"><a href="chap-distribution.html#cb84-28" tabindex="-1"></a><span class="fu">gravity</span>(p, a, C, <span class="at">b =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>##          [,1]      [,2]     [,3]
 ## [1,] 59.22613  9.364473 31.40940
 ## [2,] 84.61917 33.448665 81.93216
 ## [3,] 42.56523 12.287524 45.14725</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chap-distribution.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gravity</span>(p, a, C, <span class="at">b =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="chap-distribution.html#cb86-1" tabindex="-1"></a><span class="fu">gravity</span>(p, a, C, <span class="at">b =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <pre><code>##          [,1]      [,2]     [,3]
 ## [1,] 75.27793  4.760994 19.96108
 ## [2,] 55.52540 54.870858 89.60374
@@ -400,49 +404,49 @@ coefficient.</p>
 we now need to implement the algorithm presented in <a href="chap-distribution.html#fig:tripbalancing">3.2</a>.
 We now have a model that at least generates a trip matrix that is constrained
 to the attractions.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chap-distribution.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Function to balance gravity model</span></span>
-<span id="cb92-2"><a href="chap-distribution.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
-<span id="cb92-3"><a href="chap-distribution.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
-<span id="cb92-4"><a href="chap-distribution.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
-<span id="cb92-5"><a href="chap-distribution.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param b impedance parameter</span></span>
-<span id="cb92-6"><a href="chap-distribution.html#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param tolerance Acceptable change in trips matrix</span></span>
-<span id="cb92-7"><a href="chap-distribution.html#cb92-7" aria-hidden="true" tabindex="-1"></a>balance_gravity <span class="ot">&lt;-</span> <span class="cf">function</span>(p, a, C, b, tolerance) {</span>
-<span id="cb92-8"><a href="chap-distribution.html#cb92-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb92-9"><a href="chap-distribution.html#cb92-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define starting values</span></span>
-<span id="cb92-10"><a href="chap-distribution.html#cb92-10" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co">#iteration counter</span></span>
-<span id="cb92-11"><a href="chap-distribution.html#cb92-11" aria-hidden="true" tabindex="-1"></a>  astar <span class="ot">&lt;-</span> a <span class="co"># starting unadjusted attractions</span></span>
-<span id="cb92-12"><a href="chap-distribution.html#cb92-12" aria-hidden="true" tabindex="-1"></a>  trips0 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">length</span>(p), <span class="at">ncol =</span> <span class="fu">length</span>(a)) <span class="co">#initial T is 0&#39;s</span></span>
-<span id="cb92-13"><a href="chap-distribution.html#cb92-13" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> <span class="cn">Inf</span> <span class="co"># first time through, error is Infinite</span></span>
-<span id="cb92-14"><a href="chap-distribution.html#cb92-14" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb92-15"><a href="chap-distribution.html#cb92-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># loop through algorithm</span></span>
-<span id="cb92-16"><a href="chap-distribution.html#cb92-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(error <span class="sc">&gt;</span> tolerance){</span>
-<span id="cb92-17"><a href="chap-distribution.html#cb92-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute gravity model with adjusted attractions, using your function</span></span>
-<span id="cb92-18"><a href="chap-distribution.html#cb92-18" aria-hidden="true" tabindex="-1"></a>    trips <span class="ot">&lt;-</span> <span class="fu">gravity</span>(p, astar, C, b) </span>
-<span id="cb92-19"><a href="chap-distribution.html#cb92-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb92-20"><a href="chap-distribution.html#cb92-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the error as the change in trips in successive iterations</span></span>
-<span id="cb92-21"><a href="chap-distribution.html#cb92-21" aria-hidden="true" tabindex="-1"></a>    error <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(trips <span class="sc">-</span> trips0))</span>
-<span id="cb92-22"><a href="chap-distribution.html#cb92-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb92-23"><a href="chap-distribution.html#cb92-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># protect against infinite loops, increment values</span></span>
-<span id="cb92-24"><a href="chap-distribution.html#cb92-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (k <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="cf">break</span> <span class="co"># maximum of 100 iterations</span></span>
-<span id="cb92-25"><a href="chap-distribution.html#cb92-25" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb92-26"><a href="chap-distribution.html#cb92-26" aria-hidden="true" tabindex="-1"></a>    trips0 <span class="ot">&lt;-</span> trips</span>
-<span id="cb92-27"><a href="chap-distribution.html#cb92-27" aria-hidden="true" tabindex="-1"></a>    astar <span class="ot">&lt;-</span> astar <span class="sc">*</span> a <span class="sc">/</span> <span class="fu">colSums</span>(trips) <span class="co"># next iteration astar</span></span>
-<span id="cb92-28"><a href="chap-distribution.html#cb92-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb92-29"><a href="chap-distribution.html#cb92-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb92-30"><a href="chap-distribution.html#cb92-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(trips)</span>
-<span id="cb92-31"><a href="chap-distribution.html#cb92-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb92-32"><a href="chap-distribution.html#cb92-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-33"><a href="chap-distribution.html#cb92-33" aria-hidden="true" tabindex="-1"></a>double_constrained_trips <span class="ot">&lt;-</span> <span class="fu">balance_gravity</span>(p, a, C, <span class="fl">0.5</span>, <span class="fl">0.01</span>)</span>
-<span id="cb92-34"><a href="chap-distribution.html#cb92-34" aria-hidden="true" tabindex="-1"></a>double_constrained_trips</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chap-distribution.html#cb88-1" tabindex="-1"></a><span class="co">#&#39; Function to balance gravity model</span></span>
+<span id="cb88-2"><a href="chap-distribution.html#cb88-2" tabindex="-1"></a><span class="co">#&#39; @param p vector of productions, length n</span></span>
+<span id="cb88-3"><a href="chap-distribution.html#cb88-3" tabindex="-1"></a><span class="co">#&#39; @param A vector of attractions, lenth n</span></span>
+<span id="cb88-4"><a href="chap-distribution.html#cb88-4" tabindex="-1"></a><span class="co">#&#39; @param C matrix of impedances, dim n x n</span></span>
+<span id="cb88-5"><a href="chap-distribution.html#cb88-5" tabindex="-1"></a><span class="co">#&#39; @param b impedance parameter</span></span>
+<span id="cb88-6"><a href="chap-distribution.html#cb88-6" tabindex="-1"></a><span class="co">#&#39; @param tolerance Acceptable change in trips matrix</span></span>
+<span id="cb88-7"><a href="chap-distribution.html#cb88-7" tabindex="-1"></a>balance_gravity <span class="ot">&lt;-</span> <span class="cf">function</span>(p, a, C, b, tolerance) {</span>
+<span id="cb88-8"><a href="chap-distribution.html#cb88-8" tabindex="-1"></a>  </span>
+<span id="cb88-9"><a href="chap-distribution.html#cb88-9" tabindex="-1"></a>  <span class="co"># define starting values</span></span>
+<span id="cb88-10"><a href="chap-distribution.html#cb88-10" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co">#iteration counter</span></span>
+<span id="cb88-11"><a href="chap-distribution.html#cb88-11" tabindex="-1"></a>  astar <span class="ot">&lt;-</span> a <span class="co"># starting unadjusted attractions</span></span>
+<span id="cb88-12"><a href="chap-distribution.html#cb88-12" tabindex="-1"></a>  trips0 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">length</span>(p), <span class="at">ncol =</span> <span class="fu">length</span>(a)) <span class="co">#initial T is 0&#39;s</span></span>
+<span id="cb88-13"><a href="chap-distribution.html#cb88-13" tabindex="-1"></a>  error <span class="ot">&lt;-</span> <span class="cn">Inf</span> <span class="co"># first time through, error is Infinite</span></span>
+<span id="cb88-14"><a href="chap-distribution.html#cb88-14" tabindex="-1"></a>   </span>
+<span id="cb88-15"><a href="chap-distribution.html#cb88-15" tabindex="-1"></a>  <span class="co"># loop through algorithm</span></span>
+<span id="cb88-16"><a href="chap-distribution.html#cb88-16" tabindex="-1"></a>  <span class="cf">while</span>(error <span class="sc">&gt;</span> tolerance){</span>
+<span id="cb88-17"><a href="chap-distribution.html#cb88-17" tabindex="-1"></a>    <span class="co"># compute gravity model with adjusted attractions, using your function</span></span>
+<span id="cb88-18"><a href="chap-distribution.html#cb88-18" tabindex="-1"></a>    trips <span class="ot">&lt;-</span> <span class="fu">gravity</span>(p, astar, C, b) </span>
+<span id="cb88-19"><a href="chap-distribution.html#cb88-19" tabindex="-1"></a>    </span>
+<span id="cb88-20"><a href="chap-distribution.html#cb88-20" tabindex="-1"></a>    <span class="co"># calculate the error as the change in trips in successive iterations</span></span>
+<span id="cb88-21"><a href="chap-distribution.html#cb88-21" tabindex="-1"></a>    error <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(trips <span class="sc">-</span> trips0))</span>
+<span id="cb88-22"><a href="chap-distribution.html#cb88-22" tabindex="-1"></a>    </span>
+<span id="cb88-23"><a href="chap-distribution.html#cb88-23" tabindex="-1"></a>    <span class="co"># protect against infinite loops, increment values</span></span>
+<span id="cb88-24"><a href="chap-distribution.html#cb88-24" tabindex="-1"></a>    <span class="cf">if</span> (k <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="cf">break</span> <span class="co"># maximum of 100 iterations</span></span>
+<span id="cb88-25"><a href="chap-distribution.html#cb88-25" tabindex="-1"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb88-26"><a href="chap-distribution.html#cb88-26" tabindex="-1"></a>    trips0 <span class="ot">&lt;-</span> trips</span>
+<span id="cb88-27"><a href="chap-distribution.html#cb88-27" tabindex="-1"></a>    astar <span class="ot">&lt;-</span> astar <span class="sc">*</span> a <span class="sc">/</span> <span class="fu">colSums</span>(trips) <span class="co"># next iteration astar</span></span>
+<span id="cb88-28"><a href="chap-distribution.html#cb88-28" tabindex="-1"></a>  }</span>
+<span id="cb88-29"><a href="chap-distribution.html#cb88-29" tabindex="-1"></a>  </span>
+<span id="cb88-30"><a href="chap-distribution.html#cb88-30" tabindex="-1"></a>  <span class="fu">return</span>(trips)</span>
+<span id="cb88-31"><a href="chap-distribution.html#cb88-31" tabindex="-1"></a>}</span>
+<span id="cb88-32"><a href="chap-distribution.html#cb88-32" tabindex="-1"></a></span>
+<span id="cb88-33"><a href="chap-distribution.html#cb88-33" tabindex="-1"></a>double_constrained_trips <span class="ot">&lt;-</span> <span class="fu">balance_gravity</span>(p, a, C, <span class="fl">0.5</span>, <span class="fl">0.01</span>)</span>
+<span id="cb88-34"><a href="chap-distribution.html#cb88-34" tabindex="-1"></a>double_constrained_trips</span></code></pre></div>
 <pre><code>##          [,1]      [,2]     [,3]
 ## [1,] 62.50975  8.329009 29.16124
 ## [2,] 91.54031 30.492846 77.96684
 ## [3,] 45.94993 11.178146 42.87193</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chap-distribution.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(double_constrained_trips)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chap-distribution.html#cb90-1" tabindex="-1"></a><span class="fu">colSums</span>(double_constrained_trips)</span></code></pre></div>
 <pre><code>## [1] 200  50 150</code></pre>
 </div>
-<div id="second-problem-model-calibration" class="section level3 unnumbered">
-<h3>Second Problem: Model Calibration</h3>
+<div id="second-problem-model-calibration" class="section level3 unnumbered hasAnchor">
+<h3>Second Problem: Model Calibration<a href="chap-distribution.html#second-problem-model-calibration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The three-zone system defined in Figure <a href="chap-distribution.html#fig:networkgraph">3.1</a> has the observed
 trip matrix listed below. What we need to do now is find the value of <span class="math inline">\(b\)</span> that
 minimizes the difference between the observed and predicted trip matrix.
@@ -481,8 +485,8 @@ calculating the “difference”: sum of absolute error? Root mean squared error
 </tbody>
 </table>
 </div>
-<div id="third-problem-model-application" class="section level3 unnumbered">
-<h3>Third Problem: Model Application</h3>
+<div id="third-problem-model-application" class="section level3 unnumbered hasAnchor">
+<h3>Third Problem: Model Application<a href="chap-distribution.html#third-problem-model-application" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The region represented in Problem 1 has begun improvements to the
 link between zones 1 and 2 that will reduce the travel cost from 5 to 3. Using
 your algorithm and the value of <span class="math inline">\(b\)</span> that you calibrated above, determine the
@@ -567,7 +571,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

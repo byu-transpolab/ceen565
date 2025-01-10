@@ -1,3 +1,7 @@
+eq:basic-model
+eq:tripgen
+eq:tripdist
+eq:modechoice
 eq:tdm
 fig:RoanokeTAZ
 tab:setable
@@ -13,6 +17,7 @@ fig:dc-barchart
 eq:ipf
 eq:ipf2
 fig:lm-mpg
+eq:ssr
 eq:betahat
 fig:hh-marginal
 fig:raw-marginals

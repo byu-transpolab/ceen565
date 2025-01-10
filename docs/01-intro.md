@@ -245,11 +245,11 @@ in that TAZ are workers."
 
 Table: (\#tab:setable)Example SE Table
 
- taz   persons   hh   workers   retail   office   manufacturing
-----  --------  ---  --------  -------  -------  --------------
-   1        32   32        12      121       59               2
-   2        39   32        19      131       99              11
-   3        49   72        17      124       93               0
+| taz| persons| hh| workers| retail| office| manufacturing|
+|---:|-------:|--:|-------:|------:|------:|-------------:|
+|   1|      36| 20|      10|    139|     63|             2|
+|   2|      35| 32|      15|    125|     56|            11|
+|   3|      41| 37|      15|    102|     81|             0|
 
 
 ::::{.rmdexample}
@@ -444,43 +444,43 @@ is a typical day for this person or not, but that's the data that was collected.
 
 Table: (\#tab:show-nhts-hh)NHTS Households File
 
-houseid     hhsize   numadlt   wrkcount   hhvehcnt  hhfaminc                 wthhfin
----------  -------  --------  ---------  ---------  ---------------------  ---------
-30000082         4         2          2          2  $100,000 to $124,999    1148.809
+|houseid  | hhsize| numadlt| wrkcount| hhvehcnt|hhfaminc |  wthhfin|
+|:--------|------:|-------:|--------:|--------:|:--------|--------:|
+|30000082 |      4|       2|        2|        2|08       | 1148.809|
 
 
 Table: (\#tab:show-nhts-persons)NHTS Persons File
 
-houseid    personid    r_age  educ                                     r_sex  
----------  ---------  ------  ---------------------------------------  -------
-30000082   01             39  Graduate degree or professional degree   Female 
-30000082   02             38  Bachelor's degree                        Male   
+|houseid  |personid | r_age|educ                                   |r_sex  |
+|:--------|:--------|-----:|:--------------------------------------|:------|
+|30000082 |01       |    39|Graduate degree or professional degree |Female |
+|30000082 |02       |    38|Bachelor's degree                      |Male   |
 
 
 Table: (\#tab:show-nhts-vehicles)NHTS Vehicles File
 
-houseid    vehid    vehyear  make     model    fueltype    od_read
----------  ------  --------  -------  -------  ---------  --------
-30000082   01          2011  Mazda    Mazda3   Gas           83644
-30000082   02          2007  Toyota   Yaris    Gas          120615
+|houseid  |vehid | vehyear|make   |model  |fueltype | od_read|
+|:--------|:-----|-------:|:------|:------|:--------|-------:|
+|30000082 |01    |    2011|Mazda  |Mazda3 |Gas      |   83644|
+|30000082 |02    |    2007|Toyota |Yaris  |Gas      |  120615|
 
 
 Table: (\#tab:show-nhts-trips)NHTS Trips File
 
-houseid    personid   strttime              endtime                trpmiles  trptrans   trippurp                   
----------  ---------  --------------------  --------------------  ---------  ---------  ---------------------------
-30000082   01         2017-10-10 07:45:00   2017-10-10 07:52:00       2.710  Car        Home-based trip (other)    
-30000082   01         2017-10-10 08:09:00   2017-10-10 08:13:00       1.432  Car        Not a home-based trip      
-30000082   01         2017-10-10 08:24:00   2017-10-10 08:28:00       0.777  Car        Not a home-based trip      
-30000082   01         2017-10-10 16:53:00   2017-10-10 16:57:00       1.075  Car        Not a home-based trip      
-30000082   01         2017-10-10 17:18:00   2017-10-10 17:26:00       2.727  Car        Home-based trip (other)    
-30000082   02         2017-10-10 07:30:00   2017-10-10 07:33:00       2.136  Car        Home-based trip (shopping) 
-30000082   02         2017-10-10 07:38:00   2017-10-10 08:50:00      88.581  Car        Not a home-based trip      
-30000082   02         2017-10-10 08:58:00   2017-10-10 09:49:00      45.341  Car        Not a home-based trip      
-30000082   02         2017-10-10 10:51:00   2017-10-10 12:24:00      28.208  Car        Not a home-based trip      
-30000082   02         2017-10-10 17:00:00   2017-10-10 17:05:00       0.239  Walk       Not a home-based trip      
-30000082   02         2017-10-10 19:15:00   2017-10-10 19:26:00       0.267  Walk       Not a home-based trip      
-30000082   02         2017-10-10 19:30:00   2017-10-10 20:43:00      29.293  Car        Not a home-based trip      
+|houseid  |personid |strttime            |endtime             | trpmiles|trptrans |trippurp                   |
+|:--------|:--------|:-------------------|:-------------------|--------:|:--------|:--------------------------|
+|30000082 |01       |2017-10-17 07:45:00 |2017-10-17 07:52:00 |    2.710|Car      |Home-based trip (other)    |
+|30000082 |01       |2017-10-17 08:09:00 |2017-10-17 08:13:00 |    1.432|Car      |Not a home-based trip      |
+|30000082 |01       |2017-10-17 08:24:00 |2017-10-17 08:28:00 |    0.777|Car      |Not a home-based trip      |
+|30000082 |01       |2017-10-17 16:53:00 |2017-10-17 16:57:00 |    1.075|Car      |Not a home-based trip      |
+|30000082 |01       |2017-10-17 17:18:00 |2017-10-17 17:26:00 |    2.727|Car      |Home-based trip (other)    |
+|30000082 |02       |2017-10-17 07:30:00 |2017-10-17 07:33:00 |    2.136|Car      |Home-based trip (shopping) |
+|30000082 |02       |2017-10-17 07:38:00 |2017-10-17 08:50:00 |   88.581|Car      |Not a home-based trip      |
+|30000082 |02       |2017-10-17 08:58:00 |2017-10-17 09:49:00 |   45.341|Car      |Not a home-based trip      |
+|30000082 |02       |2017-10-17 10:51:00 |2017-10-17 12:24:00 |   28.208|Car      |Not a home-based trip      |
+|30000082 |02       |2017-10-17 17:00:00 |2017-10-17 17:05:00 |    0.239|Walk     |Not a home-based trip      |
+|30000082 |02       |2017-10-17 19:15:00 |2017-10-17 19:26:00 |    0.267|Walk     |Not a home-based trip      |
+|30000082 |02       |2017-10-17 19:30:00 |2017-10-17 20:43:00 |   29.293|Car      |Not a home-based trip      |
 
 Note that that the households data in Table \@ref(tab:show-nhts-hh) contains a
 numeric column called `wthhfin`. This is a survey *weight*. Because it is impossible
@@ -645,7 +645,7 @@ weighted.mean(nhts_trips$trippurp, nhts_trips$wttrdfin)
 ```
 
 ```
-## Error in x * w: non-numeric argument to binary operator
+## Error in op_fn(vec_data(args[[1L]]), vec_data(args[[2L]])): non-numeric argument to binary operator
 ```
 
 What we can do, however, is we can print a summary table showing the number
@@ -775,7 +775,7 @@ volumes
 ```
 
 ```
-## # A tibble: 3 x 3
+## # A tibble: 3 × 3
 ##   Station Volume  AADT
 ##   <chr>    <dbl> <dbl>
 ## 1 A        20000 40000
@@ -931,7 +931,7 @@ ggplot(mtcars, aes(y = mpg, x = disp)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <div class="figure">
@@ -1173,14 +1173,14 @@ below. How would you characterize traffic in Roanoke? Which is the
 worst-performing major facility?
 
 
-LOS   V/C           Color     
-----  ------------  ----------
-A     < 0.35        Blue      
-B     0.35 - 0.54   LightBlue 
-C     0.55 - 0.77   Green     
-D     0.78 - 0.93   Yellow    
-E     0.94 - 0.99   Orange    
-F     $\geq$ 1.00   Red       
+|LOS |V/C         |Color     |
+|:---|:-----------|:---------|
+|A   |< 0.35      |Blue      |
+|B   |0.35 - 0.54 |LightBlue |
+|C   |0.55 - 0.77 |Green     |
+|D   |0.78 - 0.93 |Yellow    |
+|E   |0.94 - 0.99 |Orange    |
+|F   |$\geq$ 1.00 |Red       |
 
 ## Lab {-#lab-blocks}
 
@@ -1253,7 +1253,7 @@ proportion is. We'll need to do some manual adjusting to these curves.
 
 I have provided you with initial marginal distribution curves for the three
 marginal distributions of interest. These files are available 
-[on Box](https://byu.box.com/s/gx9s8ylp46qywo9ira9dxv35f31wz5sg), and the
+[on Box](https://byu.box.com/v/rvtpo-bare-model), and the
 starting values are shown graphically in Figure \@ref(fig:raw-marginals).
 
 <div class="figure">
@@ -1299,15 +1299,14 @@ raw_counts <- read_csv("https://byu.box.com/shared/static/03t5b6g9cw59aroqxarst5
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   RESIDENCE = col_character(),
-##   persons = col_character(),
-##   workers = col_character(),
-##   vehicles = col_character(),
-##   output = col_character(),
-##   count = col_number()
-## )
+## Rows: 900 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (5): RESIDENCE, persons, workers, vehicles, output
+## num (1): count
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```r
@@ -1346,19 +1345,17 @@ joint_distribution <- raw_counts %>%
 ```
 
 ```
-## Warning in (function (x) : NAs introduced by coercion
+## Warning: There were 3 warnings in `mutate()`.
+## The first warning was:
+## ℹ In argument: `persons = (function (x) ...`.
+## Caused by warning:
+## ! NAs introduced by coercion
+## ℹ Run `dplyr::last_dplyr_warnings()` to see the 2 remaining warnings.
 ```
 
 ```
-## Warning in (function (x) : NAs introduced by coercion
-```
-
-```
-## Warning in (function (x) : NAs introduced by coercion
-```
-
-```
-## `summarise()` regrouping output by 'persons', 'workers' (override with `.groups` argument)
+## `summarise()` has grouped output by 'persons', 'workers'. You can override
+## using the `.groups` argument.
 ```
 
 Now we can see the joint distribution of size, workers, and vehicles.
@@ -1373,24 +1370,24 @@ joint_distribution %>%
 
 
 
- persons   workers   vehicles 0   vehicles 1   vehicles 2   vehicles 3
---------  --------  -----------  -----------  -----------  -----------
-       1         0    0.0424577    0.0937149    0.0193590    0.0040148
-       1         1    0.0129243    0.1195635    0.0273885    0.0073146
-       1         2    0.0000000    0.0000000    0.0000000    0.0000000
-       1         3    0.0000000    0.0000000    0.0000000    0.0000000
-       2         0    0.0079746    0.0269485    0.0441076    0.0211739
-       2         1    0.0088545    0.0369580    0.0531271    0.0283235
-       2         2    0.0019249    0.0120993    0.0742460    0.0378930
-       2         3    0.0000000    0.0000000    0.0000000    0.0000000
-       3         0    0.0031348    0.0067096    0.0040148    0.0029698
-       3         1    0.0041248    0.0192490    0.0178740    0.0114394
-       3         2    0.0008250    0.0051697    0.0323383    0.0255736
-       3         3    0.0002750    0.0005500    0.0038498    0.0146842
-       4         0    0.0015949    0.0033548    0.0010999    0.0024749
-       4         1    0.0025299    0.0140792    0.0231537    0.0153992
-       4         2    0.0015399    0.0087445    0.0382779    0.0257936
-       4         3    0.0001540    0.0021999    0.0027499    0.0237037
+| persons| workers| vehicles 0| vehicles 1| vehicles 2| vehicles 3|
+|-------:|-------:|----------:|----------:|----------:|----------:|
+|       1|       0|  0.0424577|  0.0937149|  0.0193590|  0.0040148|
+|       1|       1|  0.0129243|  0.1195635|  0.0273885|  0.0073146|
+|       1|       2|  0.0000000|  0.0000000|  0.0000000|  0.0000000|
+|       1|       3|  0.0000000|  0.0000000|  0.0000000|  0.0000000|
+|       2|       0|  0.0079746|  0.0269485|  0.0441076|  0.0211739|
+|       2|       1|  0.0088545|  0.0369580|  0.0531271|  0.0283235|
+|       2|       2|  0.0019249|  0.0120993|  0.0742460|  0.0378930|
+|       2|       3|  0.0000000|  0.0000000|  0.0000000|  0.0000000|
+|       3|       0|  0.0031348|  0.0067096|  0.0040148|  0.0029698|
+|       3|       1|  0.0041248|  0.0192490|  0.0178740|  0.0114394|
+|       3|       2|  0.0008250|  0.0051697|  0.0323383|  0.0255736|
+|       3|       3|  0.0002750|  0.0005500|  0.0038498|  0.0146842|
+|       4|       0|  0.0015949|  0.0033548|  0.0010999|  0.0024749|
+|       4|       1|  0.0025299|  0.0140792|  0.0231537|  0.0153992|
+|       4|       2|  0.0015399|  0.0087445|  0.0382779|  0.0257936|
+|       4|       3|  0.0001540|  0.0021999|  0.0027499|  0.0237037|
 
 This table serves as the seed for the IPF process in the household classification
 Save this data table as a DBF file that you can put into the model at
